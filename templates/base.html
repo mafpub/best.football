@@ -18,29 +18,18 @@
             theme: {
                 extend: {
                     colors: {
-                        'field': '#2d5a27',
-                        'field-dark': '#1e3d1a',
-                        'gold': '#d4af37',
+                        'field': '#22c55e',
+                        'field-dark': '#111111',
+                        'field-surface': '#1a1a1a',
                     }
                 }
             }
         }
     </script>
-    <style>
-        .yard-line {
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 10%,
-                rgba(255,255,255,0.1) 10%,
-                rgba(255,255,255,0.1) 10.5%
-            );
-        }
-    </style>
 </head>
-<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col">
     <!--#include virtual="/includes/header.html" -->
-    <main class="flex-1 container mx-auto px-4 py-8">
+    <main class="flex-1">
         {% block content %}{% endblock %}
     </main>
     <!--#include virtual="/includes/footer.html" -->

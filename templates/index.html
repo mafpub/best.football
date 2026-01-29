@@ -5,65 +5,108 @@
 {% block canonical %}<link rel="canonical" href="https://best.football/">{% endblock %}
 
 {% block content %}
-<header class="text-center py-12 mb-8 bg-field text-white rounded-lg yard-line">
-    <h1 class="text-4xl font-bold mb-4">best.football</h1>
-    <p class="text-xl opacity-90 mb-8">Youth & High School Football Information</p>
+<div class="max-w-6xl mx-auto px-3 py-3">
+    <div class="grid grid-cols-4 gap-3">
+        <!-- Main content -->
+        <div class="col-span-3">
+            <!-- Featured box with image -->
+            <div class="bg-white rounded shadow-sm mb-3 overflow-hidden">
+                <div class="bg-black text-white px-3 py-1.5 text-xs font-bold uppercase">Featured</div>
+                <div class="flex">
+                    <div class="p-3 flex-1">
+                        <h1 class="font-bold text-lg mb-1">7,800+ High School Programs</h1>
+                        <p class="text-sm text-gray-600 mb-2">Search schools, camps, and guides across Texas, California, Florida, and Ohio.</p>
+                        <div class="flex gap-2">
+                            <a href="/schools/" class="bg-green-500 text-white px-3 py-1 rounded text-xs font-bold hover:bg-green-600">Browse Schools</a>
+                            <a href="/camps/" class="bg-gray-800 text-white px-3 py-1 rounded text-xs font-bold hover:bg-gray-700">Find Camps</a>
+                        </div>
+                    </div>
+                    <img src="/images/player-running-ball.webp" alt="Youth football player" class="w-32 h-auto object-cover hidden sm:block">
+                </div>
+            </div>
 
-    <div class="max-w-xl mx-auto px-4">
-        <div id="search"></div>
-    </div>
-</header>
-
-<section class="mb-12">
-    <h2 class="text-2xl font-semibold mb-6 text-field-dark">Browse by State</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {% for state in states %}
-        <a href="/schools/{{ state.abbr|lower }}/"
-           class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-semibold text-field-dark">{{ state.name }}</h3>
-            <p class="text-gray-600">{{ "{:,}".format(state.school_count) }} schools</p>
-        </a>
-        {% endfor %}
-    </div>
-</section>
-
-<div class="grid md:grid-cols-2 gap-8 mb-12">
-    <section class="bg-white rounded-lg shadow p-6">
-        <h2 class="text-xl font-semibold mb-4 text-field-dark">Find Football Camps</h2>
-        <p class="text-gray-600 mb-4">
-            Search for youth football camps by location, date, or skill level.
-        </p>
-        <a href="/camps/" class="inline-block bg-field text-white px-6 py-2 rounded hover:bg-field-dark transition-colors">
-            Browse Camps
-        </a>
-    </section>
-
-    <section class="bg-white rounded-lg shadow p-6">
-        <h2 class="text-xl font-semibold mb-4 text-field-dark">Recruiting Guides</h2>
-        <ul class="space-y-2 mb-4">
-            {% for guide in featured_guides %}
-            <li>
-                <a href="/guides/{{ guide.slug }}.html" class="text-field hover:underline">
-                    {{ guide.title }}
+            <!-- State boxes -->
+            <div class="grid grid-cols-2 gap-2 mb-3">
+                {% for state in states %}
+                <a href="/schools/{{ state.abbr|lower }}/" class="bg-white rounded shadow-sm p-3 hover:shadow transition">
+                    <div class="flex justify-between items-center">
+                        <div class="font-bold">{{ state.name }}</div>
+                        <div class="text-xs text-gray-500">{{ "{:,}".format(state.school_count) }} schools</div>
+                    </div>
+                    <div class="text-xs text-gray-600 mt-1">
+                        {% if state.abbr == 'TX' %}11 UIL classifications
+                        {% elif state.abbr == 'CA' %}10 CIF sections
+                        {% elif state.abbr == 'FL' %}8 FHSAA classifications
+                        {% elif state.abbr == 'OH' %}7 OHSAA divisions
+                        {% else %}State athletic programs
+                        {% endif %}
+                    </div>
                 </a>
-            </li>
-            {% endfor %}
-        </ul>
-        <a href="/guides/" class="inline-block text-field hover:underline">
-            View all guides &rarr;
-        </a>
-    </section>
-</div>
+                {% endfor %}
+            </div>
 
-<section class="bg-gray-100 rounded-lg p-8 text-center">
-    <h2 class="text-xl font-semibold mb-4 text-field-dark">List Your Camp</h2>
-    <p class="text-gray-600 mb-4">
-        Running a football camp? Add it to our directory for free.
-    </p>
-    <a href="/camps/submit.html" class="inline-block bg-gold text-white px-6 py-2 rounded hover:opacity-90 transition-opacity">
-        Submit a Camp
-    </a>
-</section>
+            <!-- Camps section with image -->
+            <div class="bg-white rounded shadow-sm mb-3 overflow-hidden">
+                <div class="bg-green-500 text-white px-3 py-1.5 text-xs font-bold uppercase">Football Camps</div>
+                <div class="flex">
+                    <div class="p-3 flex-1">
+                        <p class="text-sm text-gray-600 mb-2">Find youth football camps by location, date, or skill level. University camps, private training, and team camps.</p>
+                        <a href="/camps/" class="text-green-600 text-sm font-medium hover:underline">Browse all camps →</a>
+                    </div>
+                    <img src="/images/youth-game-action.webp" alt="Youth football game" class="w-28 h-auto object-cover hidden sm:block">
+                </div>
+            </div>
+
+            <!-- Guides -->
+            <div class="bg-white rounded shadow-sm">
+                <div class="bg-gray-800 text-white px-3 py-1.5 text-xs font-bold uppercase">Guides</div>
+                <div class="divide-y text-sm">
+                    {% for guide in featured_guides %}
+                    <a href="/guides/{{ guide.slug }}.html" class="block px-3 py-2 hover:bg-gray-50">{{ guide.title }}</a>
+                    {% endfor %}
+                    <a href="/guides/" class="block px-3 py-2 hover:bg-gray-50 text-green-600 font-medium">View all guides →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-span-1">
+            <!-- Search -->
+            <div class="bg-white rounded shadow-sm mb-3">
+                <div class="bg-green-500 text-white px-3 py-1.5 text-xs font-bold uppercase">Search</div>
+                <div class="p-2">
+                    <div id="search"></div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="bg-white rounded shadow-sm mb-3">
+                <div class="bg-gray-800 text-white px-3 py-1.5 text-xs font-bold uppercase">Quick Links</div>
+                <div class="p-2 space-y-1 text-xs">
+                    <a href="/camps/submit.html" class="block px-2 py-1 hover:bg-gray-100 rounded">→ Submit a Camp</a>
+                    <a href="/guides/competitive-index-explained.html" class="block px-2 py-1 hover:bg-gray-100 rounded">→ Competitive Index</a>
+                    <a href="/rankings/" class="block px-2 py-1 hover:bg-gray-100 rounded">→ School Rankings</a>
+                    <a href="/guides/" class="block px-2 py-1 hover:bg-gray-100 rounded">→ All Guides</a>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <div class="bg-white rounded shadow-sm mb-3 overflow-hidden">
+                <img src="/images/boy-holding-football.webp" alt="Young football player" class="w-full h-auto">
+            </div>
+
+            <!-- Stats -->
+            <div class="bg-white rounded shadow-sm">
+                <div class="bg-black text-white px-3 py-1.5 text-xs font-bold uppercase">Stats</div>
+                <div class="p-3 text-xs space-y-2">
+                    <div class="flex justify-between"><span class="text-gray-600">Total Schools</span><span class="font-bold">{{ "{:,}".format(total_schools) }}</span></div>
+                    <div class="flex justify-between"><span class="text-gray-600">Guides</span><span class="font-bold">{{ guide_count }}</span></div>
+                    <div class="flex justify-between"><span class="text-gray-600">States</span><span class="font-bold">{{ states|length }}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
@@ -71,26 +114,26 @@
 window.addEventListener('DOMContentLoaded', () => {
     new PagefindUI({
         element: "#search",
-        showSubResults: true,
+        showSubResults: false,
         showImages: false,
     });
 });
 </script>
 <style>
-    /* Override Pagefind UI styles to match site theme */
     .pagefind-ui {
-        --pagefind-ui-scale: 1;
-        --pagefind-ui-primary: #2d5a27;
+        --pagefind-ui-scale: 0.8;
+        --pagefind-ui-primary: #22c55e;
         --pagefind-ui-text: #1f2937;
         --pagefind-ui-background: #ffffff;
         --pagefind-ui-border: #e5e7eb;
-        --pagefind-ui-tag: #2d5a27;
+        --pagefind-ui-tag: #22c55e;
         --pagefind-ui-border-width: 1px;
-        --pagefind-ui-border-radius: 8px;
+        --pagefind-ui-border-radius: 4px;
         --pagefind-ui-font: inherit;
     }
     .pagefind-ui__search-input {
-        padding: 0.75rem 1rem !important;
+        padding: 0.5rem !important;
+        font-size: 0.75rem !important;
     }
 </style>
 {% endblock %}

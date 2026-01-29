@@ -339,19 +339,24 @@ def generate_homepage(env: Environment) -> None:
     with get_db() as conn:
         # Get state stats
         states = []
+        total_schools = 0
         for abbr, name in STATE_NAMES.items():
             count = conn.execute(
                 "SELECT COUNT(*) FROM schools WHERE state = ?", (abbr,)
             ).fetchone()[0]
             states.append({"abbr": abbr, "name": name, "school_count": count})
+            total_schools += count
 
         # Get featured guides for homepage
         featured_guides = get_featured_guides(limit=4)
+        guide_count = len(get_featured_guides(limit=100))  # Get total count
 
         template = env.get_template("index.html")
         html = template.render(
             states=states,
             featured_guides=featured_guides,
+            total_schools=total_schools,
+            guide_count=guide_count,
         )
 
         (HTDOCS_DIR / "index.html").write_text(html)
