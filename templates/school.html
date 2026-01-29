@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}{{ school.name }} Football - {{ school.city }}, {{ school.state }} | best.football{% endblock %}
+{% block description %}{{ school.name }} high school football program in {{ school.city }}, {{ school.state }}. Enrollment: {{ school.enrollment or 'N/A' }}. Classification: {{ program.classification or 'N/A' }}.{% endblock %}
+{% block canonical %}<link rel="canonical" href="https://best.football/schools/{{ school.state|lower }}/{{ school.slug }}.html">{% endblock %}
+
+{% block head %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SportsTeam",
+    "name": "{{ school.name }} Football",
+    "sport": "American Football",
+    "location": {
+        "@type": "Place",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ school.address }}",
+            "addressLocality": "{{ school.city }}",
+            "addressRegion": "{{ school.state }}",
+            "postalCode": "{{ school.zip }}"
+        }
+        {% if school.lat and school.lng %}
+        ,"geo": {
+            "@type": "GeoCoordinates",
+            "latitude": {{ school.lat }},
+            "longitude": {{ school.lng }}
+        }
+        {% endif %}
+    },
+    "memberOf": {
+        "@type": "SportsOrganization",
+        "name": "{{ program.conference or 'High School Football' }}"
+    }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<nav class="text-sm text-gray-600 mb-6">
+    <a href="/" class="hover:text-field">Home</a> &raquo;
+    <a href="/schools/{{ school.state|lower }}/" class="hover:text-field">{{ school.state }}</a> &raquo;
+    <span>{{ school.name }}</span>
+</nav>
+
+<article class="max-w-4xl">
+    <header class="mb-8">
+        <h1 class="text-3xl font-bold text-field-dark mb-2">{{ school.name }}</h1>
+        <p class="text-xl text-gray-600">{{ school.city }}, {{ school.state }}</p>
+    </header>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-8">
+        <section class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-lg font-semibold mb-4 text-field-dark">School Information</h2>
+            <dl class="space-y-2">
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">Address</dt>
+                    <dd>{{ school.address }}, {{ school.city }}, {{ school.state }} {{ school.zip }}</dd>
+                </div>
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">School Type</dt>
+                    <dd class="capitalize">{{ school.school_type }}</dd>
+                </div>
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">Enrollment</dt>
+                    <dd>{{ "{:,}".format(school.enrollment) if school.enrollment else 'N/A' }}</dd>
+                </div>
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">Grades</dt>
+                    <dd>{{ school.grades }}</dd>
+                </div>
+                {% if school.urban_locale %}
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">Setting</dt>
+                    <dd>{{ school.urban_locale }}</dd>
+                </div>
+                {% endif %}
+            </dl>
+        </section>
+
+        <section class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-lg font-semibold mb-4 text-field-dark">Football Program</h2>
+            <dl class="space-y-2">
+                {% if program %}
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">Classification</dt>
+                    <dd>{{ program.classification or 'N/A' }}</dd>
+                </div>
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">Conference</dt>
+                    <dd>{{ program.conference or 'N/A' }}</dd>
+                </div>
+                {% if program.division %}
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">Division</dt>
+                    <dd>{{ program.division }}</dd>
+                </div>
+                {% endif %}
+                {% else %}
+                <p class="text-gray-500">No athletic program data available.</p>
+                {% endif %}
+            </dl>
+        </section>
+    </div>
+
+    {% if metrics %}
+    <section class="bg-white rounded-lg shadow p-6 mb-8">
+        <h2 class="text-lg font-semibold mb-4 text-field-dark">Program Metrics</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {% if metrics.competitive_index %}
+            <div class="text-center">
+                <div class="text-2xl font-bold text-field">{{ "%.1f"|format(metrics.competitive_index) }}</div>
+                <div class="text-sm text-gray-600">Competitive Index</div>
+            </div>
+            {% endif %}
+            {% if metrics.enrollment_percentile %}
+            <div class="text-center">
+                <div class="text-2xl font-bold text-field">{{ "%.0f"|format(metrics.enrollment_percentile) }}%</div>
+                <div class="text-sm text-gray-600">Enrollment Percentile</div>
+            </div>
+            {% endif %}
+            {% if metrics.playoff_appearances_5yr %}
+            <div class="text-center">
+                <div class="text-2xl font-bold text-field">{{ metrics.playoff_appearances_5yr }}</div>
+                <div class="text-sm text-gray-600">Playoff Apps (5yr)</div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if county %}
+    <section class="bg-white rounded-lg shadow p-6 mb-8">
+        <h2 class="text-lg font-semibold mb-4 text-field-dark">{{ county.name }} County</h2>
+        <dl class="space-y-2">
+            <div class="flex justify-between">
+                <dt class="text-gray-600">Population</dt>
+                <dd>{{ "{:,}".format(county.population) if county.population else 'N/A' }}</dd>
+            </div>
+            <div class="flex justify-between">
+                <dt class="text-gray-600">Median Income</dt>
+                <dd>{{ "${:,}".format(county.median_income) if county.median_income else 'N/A' }}</dd>
+            </div>
+        </dl>
+        <a href="/regions/{{ school.state|lower }}/{{ county.name|lower|replace(' ', '-') }}.html"
+           class="mt-4 inline-block text-field hover:underline">
+            View all {{ county.name }} County schools &rarr;
+        </a>
+    </section>
+    {% endif %}
+
+    {% if nearby_camps %}
+    <section class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-lg font-semibold mb-4 text-field-dark">Nearby Football Camps</h2>
+        <ul class="space-y-2">
+            {% for camp in nearby_camps %}
+            <li>
+                <a href="/camps/{{ camp.state|lower }}/{{ camp.slug }}.html" class="text-field hover:underline">
+                    {{ camp.name }}
+                </a>
+                <span class="text-gray-500">- {{ camp.city }}, {{ camp.state }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="/camps/{{ school.state|lower }}/" class="mt-4 inline-block text-field hover:underline">
+            Find more camps in {{ school.state }} &rarr;
+        </a>
+    </section>
+    {% endif %}
+</article>
+{% endblock %}

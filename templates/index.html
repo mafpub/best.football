@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}best.football - Youth & High School Football Information{% endblock %}
+{% block description %}Find high school football programs, camps, and recruiting information across the United States. Search by state, school, or camp.{% endblock %}
+{% block canonical %}<link rel="canonical" href="https://best.football/">{% endblock %}
+
+{% block content %}
+<header class="text-center py-12 mb-8 bg-field text-white rounded-lg yard-line">
+    <h1 class="text-4xl font-bold mb-4">best.football</h1>
+    <p class="text-xl opacity-90 mb-8">Youth & High School Football Information</p>
+
+    <div class="max-w-xl mx-auto px-4">
+        <div class="relative">
+            <input type="search"
+                   id="search"
+                   placeholder="Search schools, camps, or locations..."
+                   class="w-full px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500"
+                   hx-get="/api/search"
+                   hx-trigger="keyup changed delay:300ms"
+                   hx-target="#search-results">
+            <div id="search-results" class="absolute w-full mt-1 bg-white rounded-lg shadow-lg text-left text-gray-900 z-10 hidden"></div>
+        </div>
+    </div>
+</header>
+
+<section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-6 text-field-dark">Browse by State</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {% for state in states %}
+        <a href="/schools/{{ state.abbr|lower }}/"
+           class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-field-dark">{{ state.name }}</h3>
+            <p class="text-gray-600">{{ "{:,}".format(state.school_count) }} schools</p>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<div class="grid md:grid-cols-2 gap-8 mb-12">
+    <section class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold mb-4 text-field-dark">Find Football Camps</h2>
+        <p class="text-gray-600 mb-4">
+            Search for youth football camps by location, date, or skill level.
+        </p>
+        <a href="/camps/" class="inline-block bg-field text-white px-6 py-2 rounded hover:bg-field-dark transition-colors">
+            Browse Camps
+        </a>
+    </section>
+
+    <section class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold mb-4 text-field-dark">Recruiting Guides</h2>
+        <ul class="space-y-2 mb-4">
+            {% for guide in featured_guides %}
+            <li>
+                <a href="/guides/{{ guide.slug }}.html" class="text-field hover:underline">
+                    {{ guide.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="/guides/" class="inline-block text-field hover:underline">
+            View all guides &rarr;
+        </a>
+    </section>
+</div>
+
+<section class="bg-gray-100 rounded-lg p-8 text-center">
+    <h2 class="text-xl font-semibold mb-4 text-field-dark">List Your Camp</h2>
+    <p class="text-gray-600 mb-4">
+        Running a football camp? Add it to our directory for free.
+    </p>
+    <a href="/camps/submit.html" class="inline-block bg-gold text-white px-6 py-2 rounded hover:opacity-90 transition-opacity">
+        Submit a Camp
+    </a>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById('search').addEventListener('htmx:afterSwap', function(e) {
+    const results = document.getElementById('search-results');
+    results.classList.toggle('hidden', results.innerHTML.trim() === '');
+});
+</script>
+{% endblock %}

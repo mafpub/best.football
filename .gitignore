@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Data (regenerated from sources)
+data/cache/
+data/*.db
+
+# Generated site (built from database)
+htdocs/schools/
+htdocs/regions/
+htdocs/camps/
+htdocs/guides/
+htdocs/rankings/
+htdocs/search/
+htdocs/index.html
+
+# Keep these static assets
+!htdocs/includes/
+!htdocs/css/
+!htdocs/js/
+!htdocs/favicon.svg
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Find Football Camps{% if state %} in {{ state_name }}{% endif %} | best.football{% endblock %}
+{% block description %}Search youth and high school football camps by location, date, and skill level.{% endblock %}
+
+{% block content %}
+<header class="mb-8">
+    <h1 class="text-3xl font-bold text-field-dark mb-2">Find Football Camps</h1>
+    <p class="text-xl text-gray-600">Search camps by location, date, or skill level</p>
+</header>
+
+<div class="grid md:grid-cols-4 gap-8">
+    <aside class="md:col-span-1">
+        <form id="camp-filters" class="bg-white rounded-lg shadow p-6 space-y-4">
+            <div>
+                <label for="state" class="block text-sm font-medium text-gray-700 mb-1">State</label>
+                <select id="state" name="state"
+                        class="w-full border-gray-300 rounded"
+                        hx-get="/api/camps"
+                        hx-trigger="change"
+                        hx-target="#camp-results"
+                        hx-include="#camp-filters">
+                    <option value="">All States</option>
+                    <option value="TX">Texas</option>
+                    <option value="CA">California</option>
+                    <option value="FL">Florida</option>
+                    <option value="OH">Ohio</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="city" class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                <input type="text" id="city" name="city"
+                       class="w-full border-gray-300 rounded"
+                       placeholder="e.g., Austin"
+                       hx-get="/api/camps"
+                       hx-trigger="keyup changed delay:500ms"
+                       hx-target="#camp-results"
+                       hx-include="#camp-filters">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Camp Type</label>
+                <div class="space-y-1">
+                    <label class="flex items-center">
+                        <input type="checkbox" name="type" value="university" class="mr-2">
+                        University
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" name="type" value="private" class="mr-2">
+                        Private
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" name="type" value="school" class="mr-2">
+                        High School
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <label class="flex items-center">
+                    <input type="checkbox" name="overnight" class="mr-2">
+                    Overnight camps only
+                </label>
+            </div>
+        </form>
+
+        <div class="mt-6 bg-gold bg-opacity-20 rounded-lg p-6">
+            <h3 class="font-semibold text-field-dark mb-2">List Your Camp</h3>
+            <p class="text-sm text-gray-600 mb-4">Running a football camp? Add it to our directory for free.</p>
+            <a href="/camps/submit.html" class="inline-block bg-gold text-white px-4 py-2 rounded text-sm hover:opacity-90">
+                Submit Camp
+            </a>
+        </div>
+    </aside>
+
+    <main class="md:col-span-3">
+        <div id="camp-results" class="space-y-4">
+            {% if camps %}
+                {% for camp in camps %}
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 class="text-xl font-semibold">
+                                <a href="/camps/{{ camp.state|lower }}/{{ camp.id }}.html" class="text-field hover:underline">
+                                    {{ camp.name }}
+                                </a>
+                            </h2>
+                            <p class="text-gray-600">{{ camp.city }}, {{ camp.state }}</p>
+                        </div>
+                        {% if camp.verified %}
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Verified</span>
+                        {% endif %}
+                    </div>
+                    <div class="mt-3 flex flex-wrap gap-4 text-sm text-gray-600">
+                        {% if camp.start_date %}
+                        <span>{{ camp.start_date }}</span>
+                        {% endif %}
+                        {% if camp.ages_min or camp.ages_max %}
+                        <span>Ages {{ camp.ages_min or '?' }}-{{ camp.ages_max or '?' }}</span>
+                        {% endif %}
+                        <span class="capitalize">{{ camp.organizer_type or 'Camp' }}</span>
+                        {% if camp.overnight %}
+                        <span>Overnight</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="bg-white rounded-lg shadow p-6 text-center text-gray-500">
+                    <p>No camps found matching your criteria.</p>
+                    <p class="mt-2">Try adjusting your filters or <a href="/camps/submit.html" class="text-field hover:underline">submit a camp</a>.</p>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+</div>
+{% endblock %}

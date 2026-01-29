@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}{{ camp.name }} - Football Camp in {{ camp.city }}, {{ camp.state }} | best.football{% endblock %}
+{% block description %}{{ camp.name }} football camp in {{ camp.city }}, {{ camp.state }}. Ages {{ camp.ages_min or '?' }}-{{ camp.ages_max or '?' }}. {% if camp.start_date %}{{ camp.start_date }}{% endif %}{% endblock %}
+
+{% block content %}
+<nav class="text-sm text-gray-600 mb-6">
+    <a href="/" class="hover:text-field">Home</a> &raquo;
+    <a href="/camps/" class="hover:text-field">Camps</a> &raquo;
+    <a href="/camps/{{ camp.state|lower }}/" class="hover:text-field">{{ camp.state }}</a> &raquo;
+    <span>{{ camp.name }}</span>
+</nav>
+
+<article class="max-w-4xl">
+    <header class="mb-8">
+        <h1 class="text-3xl font-bold text-field-dark mb-2">{{ camp.name }}</h1>
+        <p class="text-xl text-gray-600">{{ camp.city }}, {{ camp.state }}</p>
+        {% if camp.verified %}
+        <span class="inline-block mt-2 bg-green-100 text-green-800 text-sm px-2 py-1 rounded">Verified</span>
+        {% endif %}
+    </header>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-8">
+        <section class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-lg font-semibold mb-4 text-field-dark">Camp Details</h2>
+            <dl class="space-y-2">
+                {% if camp.start_date %}
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">Dates</dt>
+                    <dd>{{ camp.start_date }}{% if camp.end_date %} - {{ camp.end_date }}{% endif %}</dd>
+                </div>
+                {% endif %}
+                {% if camp.ages_min or camp.ages_max %}
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">Ages</dt>
+                    <dd>{{ camp.ages_min or '?' }} - {{ camp.ages_max or '?' }}</dd>
+                </div>
+                {% endif %}
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">Type</dt>
+                    <dd class="capitalize">{{ camp.organizer_type or 'Camp' }}</dd>
+                </div>
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">Overnight</dt>
+                    <dd>{{ 'Yes' if camp.overnight else 'Day camp' }}</dd>
+                </div>
+                {% if camp.cost_min or camp.cost_max %}
+                <div class="flex justify-between">
+                    <dt class="text-gray-600">Cost</dt>
+                    <dd>
+                        {% if camp.cost_min and camp.cost_max %}
+                            ${{ "%.0f"|format(camp.cost_min) }} - ${{ "%.0f"|format(camp.cost_max) }}
+                        {% elif camp.cost_min %}
+                            From ${{ "%.0f"|format(camp.cost_min) }}
+                        {% else %}
+                            Up to ${{ "%.0f"|format(camp.cost_max) }}
+                        {% endif %}
+                    </dd>
+                </div>
+                {% endif %}
+            </dl>
+        </section>
+
+        <section class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-lg font-semibold mb-4 text-field-dark">Location</h2>
+            <address class="not-italic text-gray-600">
+                {% if camp.venue_name %}<strong>{{ camp.venue_name }}</strong><br>{% endif %}
+                {% if camp.address %}{{ camp.address }}<br>{% endif %}
+                {{ camp.city }}, {{ camp.state }} {{ camp.zip or '' }}
+            </address>
+            {% if camp.registration_url %}
+            <a href="{{ camp.registration_url }}"
+               target="_blank"
+               rel="noopener"
+               class="mt-4 inline-block bg-field text-white px-6 py-2 rounded hover:bg-field-dark transition-colors">
+                Register Now
+            </a>
+            {% endif %}
+        </section>
+    </div>
+
+    {% if nearby_schools %}
+    <section class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-lg font-semibold mb-4 text-field-dark">Nearby High Schools</h2>
+        <ul class="grid grid-cols-2 md:grid-cols-3 gap-2">
+            {% for school in nearby_schools %}
+            <li>
+                <a href="/schools/{{ camp.state|lower }}/{{ school.slug }}.html" class="text-field hover:underline">
+                    {{ school.name }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+</article>
+{% endblock %}

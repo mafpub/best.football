@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}best.football{% endblock %}</title>
+    <meta name="description" content="{% block description %}Youth and high school football information{% endblock %}">
+    {% block canonical %}{% endblock %}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    {% block head %}{% endblock %}
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'field': '#2d5a27',
+                        'field-dark': '#1e3d1a',
+                        'gold': '#d4af37',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .yard-line {
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 10%,
+                rgba(255,255,255,0.1) 10%,
+                rgba(255,255,255,0.1) 10.5%
+            );
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+    <!--#include virtual="/includes/header.html" -->
+    <main class="flex-1 container mx-auto px-4 py-8">
+        {% block content %}{% endblock %}
+    </main>
+    <!--#include virtual="/includes/footer.html" -->
+    {% block scripts %}{% endblock %}
+</body>
+</html>

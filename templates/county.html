@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}{{ county.name }} County High School Football - {{ state_name }} | best.football{% endblock %}
+{% block description %}High school football programs in {{ county.name }} County, {{ state_name }}. {{ school_count }} schools with football programs.{% endblock %}
+{% block canonical %}<link rel="canonical" href="https://best.football/regions/{{ state|lower }}/{{ county.slug }}.html">{% endblock %}
+
+{% block content %}
+<nav class="text-sm text-gray-600 mb-6">
+    <a href="/" class="hover:text-field">Home</a> &raquo;
+    <a href="/schools/{{ state|lower }}/" class="hover:text-field">{{ state_name }}</a> &raquo;
+    <span>{{ county.name }} County</span>
+</nav>
+
+<header class="mb-8">
+    <h1 class="text-3xl font-bold text-field-dark mb-2">{{ county.name }} County Football</h1>
+    <p class="text-xl text-gray-600">{{ state_name }} &bull; {{ school_count }} schools</p>
+</header>
+
+<div class="grid md:grid-cols-2 gap-8 mb-8">
+    <section class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-lg font-semibold mb-4 text-field-dark">County Demographics</h2>
+        <dl class="space-y-2">
+            <div class="flex justify-between">
+                <dt class="text-gray-600">Population</dt>
+                <dd class="font-semibold">{{ "{:,}".format(county.population) if county.population else 'N/A' }}</dd>
+            </div>
+            <div class="flex justify-between">
+                <dt class="text-gray-600">Median Income</dt>
+                <dd>{{ "${:,}".format(county.median_income) if county.median_income else 'N/A' }}</dd>
+            </div>
+            <div class="flex justify-between">
+                <dt class="text-gray-600">High Schools</dt>
+                <dd>{{ school_count }}</dd>
+            </div>
+            <div class="flex justify-between">
+                <dt class="text-gray-600">Avg Enrollment</dt>
+                <dd>{{ "{:,.0f}".format(avg_enrollment) if avg_enrollment else 'N/A' }}</dd>
+            </div>
+        </dl>
+    </section>
+
+    <section class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-lg font-semibold mb-4 text-field-dark">Nearby Camps</h2>
+        {% if camps %}
+        <ul class="space-y-2">
+            {% for camp in camps[:5] %}
+            <li>
+                <a href="/camps/{{ state|lower }}/{{ camp.slug }}.html" class="text-field hover:underline">
+                    {{ camp.name }}
+                </a>
+                <div class="text-sm text-gray-500">{{ camp.city }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-gray-500">No camps in this area yet.</p>
+        <a href="/camps/submit.html" class="mt-2 inline-block text-field hover:underline">
+            Submit a camp &rarr;
+        </a>
+        {% endif %}
+    </section>
+</div>
+
+<section>
+    <h2 class="text-2xl font-semibold mb-4 text-field-dark">Schools in {{ county.name }} County</h2>
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <table class="w-full">
+            <thead class="bg-field text-white">
+                <tr>
+                    <th class="px-4 py-2 text-left">School</th>
+                    <th class="px-4 py-2 text-left">City</th>
+                    <th class="px-4 py-2 text-right">Enrollment</th>
+                    <th class="px-4 py-2 text-left">Type</th>
+                    <th class="px-4 py-2 text-left">Classification</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for school in schools %}
+                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                    <td class="px-4 py-2">
+                        <a href="/schools/{{ state|lower }}/{{ school.slug }}.html" class="text-field hover:underline">
+                            {{ school.name }}
+                        </a>
+                    </td>
+                    <td class="px-4 py-2 text-gray-600">{{ school.city }}</td>
+                    <td class="px-4 py-2 text-right">{{ "{:,}".format(school.enrollment) if school.enrollment else 'N/A' }}</td>
+                    <td class="px-4 py-2 capitalize">{{ school.school_type }}</td>
+                    <td class="px-4 py-2">{{ school.classification or '-' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
