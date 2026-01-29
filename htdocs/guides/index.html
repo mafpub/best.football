@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Guides | best.football</title>
+    <meta name="description" content="Recruiting guides, training tips, and resources for youth and high school football players.">
+    <link rel="canonical" href="https://best.football/guides/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'field': '#2d5a27',
+                        'field-dark': '#1e3d1a',
+                        'gold': '#d4af37',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .yard-line {
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 10%,
+                rgba(255,255,255,0.1) 10%,
+                rgba(255,255,255,0.1) 10.5%
+            );
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+    <!--#include virtual="/includes/header.html" -->
+    <main class="flex-1 container mx-auto px-4 py-8">
+
+<header class="mb-8">
+    <h1 class="text-3xl font-bold text-field-dark mb-2">Football Guides</h1>
+    <p class="text-xl text-gray-600">Recruiting tips, training resources, and player development guides</p>
+</header>
+
+<div class="max-w-4xl">
+    <!-- Coming Soon Notice -->
+    <div class="bg-white rounded-lg shadow p-8 text-center mb-8">
+        <div class="text-6xl mb-4">📚</div>
+        <h2 class="text-2xl font-semibold text-field-dark mb-4">Guides Coming Soon</h2>
+        <p class="text-gray-600 mb-6">
+            We're working on comprehensive guides to help players, parents, and coaches
+            navigate youth and high school football recruiting, training, and development.
+        </p>
+    </div>
+
+    <!-- Planned Topics -->
+    <section class="mb-8">
+        <h2 class="text-xl font-semibold text-field-dark mb-4">Topics We're Working On</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="font-semibold text-lg mb-2">Recruiting Basics</h3>
+                <p class="text-gray-600 text-sm">Understanding the recruiting process, timelines, and what coaches look for.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="font-semibold text-lg mb-2">Creating a Highlight Reel</h3>
+                <p class="text-gray-600 text-sm">Tips for filming, editing, and sharing game film with college coaches.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="font-semibold text-lg mb-2">Camp Selection Guide</h3>
+                <p class="text-gray-600 text-sm">How to choose the right camps for your age, skill level, and goals.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="font-semibold text-lg mb-2">Academic Requirements</h3>
+                <p class="text-gray-600 text-sm">NCAA eligibility, grade requirements, and balancing academics with athletics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup Placeholder -->
+    <section class="bg-field text-white rounded-lg p-8 text-center">
+        <h2 class="text-xl font-semibold mb-4">Get Notified When Guides Launch</h2>
+        <p class="opacity-90 mb-6">
+            Be the first to know when new guides are published.
+        </p>
+        <p class="text-sm opacity-75">
+            Newsletter signup coming soon. Check back later!
+        </p>
+    </section>
+</div>
+
+    </main>
+    <!--#include virtual="/includes/footer.html" -->
+</body>
+</html>

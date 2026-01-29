@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High School Football Rankings | best.football</title>
+    <meta name="description" content="High school football rankings by state. Find top programs in Texas, California, Florida, Ohio, and more.">
+    <link rel="canonical" href="https://best.football/rankings/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'field': '#2d5a27',
+                        'field-dark': '#1e3d1a',
+                        'gold': '#d4af37',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .yard-line {
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 10%,
+                rgba(255,255,255,0.1) 10%,
+                rgba(255,255,255,0.1) 10.5%
+            );
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+    <!--#include virtual="/includes/header.html" -->
+    <main class="flex-1 container mx-auto px-4 py-8">
+
+<header class="mb-8">
+    <h1 class="text-3xl font-bold text-field-dark mb-2">High School Football Rankings</h1>
+    <p class="text-xl text-gray-600">Find top football programs by state</p>
+</header>
+
+<div class="max-w-4xl">
+    <!-- State Rankings Grid -->
+    <section class="mb-12">
+        <h2 class="text-xl font-semibold text-field-dark mb-4">Rankings by State</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a href="/rankings/tx/" class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow text-center">
+                <h3 class="text-xl font-semibold text-field-dark">Texas</h3>
+                <p class="text-gray-600 text-sm mt-1">UIL Football Rankings</p>
+            </a>
+            <a href="/rankings/ca/" class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow text-center">
+                <h3 class="text-xl font-semibold text-field-dark">California</h3>
+                <p class="text-gray-600 text-sm mt-1">CIF Football Rankings</p>
+            </a>
+            <a href="/rankings/fl/" class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow text-center">
+                <h3 class="text-xl font-semibold text-field-dark">Florida</h3>
+                <p class="text-gray-600 text-sm mt-1">FHSAA Football Rankings</p>
+            </a>
+            <a href="/rankings/oh/" class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow text-center">
+                <h3 class="text-xl font-semibold text-field-dark">Ohio</h3>
+                <p class="text-gray-600 text-sm mt-1">OHSAA Football Rankings</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Coming Soon Notice -->
+    <section class="bg-white rounded-lg shadow p-8 text-center mb-8">
+        <div class="text-6xl mb-4">🏆</div>
+        <h2 class="text-2xl font-semibold text-field-dark mb-4">State Rankings Coming Soon</h2>
+        <p class="text-gray-600 mb-6">
+            We're compiling comprehensive rankings for high school football programs
+            across Texas, California, Florida, and Ohio. Rankings will include:
+        </p>
+        <ul class="text-left max-w-md mx-auto text-gray-600 space-y-2">
+            <li class="flex items-start">
+                <span class="text-field mr-2">•</span>
+                <span>Overall state rankings by classification</span>
+            </li>
+            <li class="flex items-start">
+                <span class="text-field mr-2">•</span>
+                <span>Regional and district standings</span>
+            </li>
+            <li class="flex items-start">
+                <span class="text-field mr-2">•</span>
+                <span>Historical program records</span>
+            </li>
+            <li class="flex items-start">
+                <span class="text-field mr-2">•</span>
+                <span>State championship history</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Classification Info -->
+    <section class="bg-gray-100 rounded-lg p-6">
+        <h2 class="text-lg font-semibold text-field-dark mb-4">About Classifications</h2>
+        <p class="text-gray-600 text-sm">
+            High school football programs are divided into classifications based on school enrollment.
+            Each state uses a different system:
+        </p>
+        <div class="grid md:grid-cols-2 gap-4 mt-4 text-sm">
+            <div>
+                <p class="font-medium text-gray-700">Texas (UIL)</p>
+                <p class="text-gray-600">6A, 5A, 4A, 3A, 2A, 1A</p>
+            </div>
+            <div>
+                <p class="font-medium text-gray-700">California (CIF)</p>
+                <p class="text-gray-600">Open, D1-D14 (varies by section)</p>
+            </div>
+            <div>
+                <p class="font-medium text-gray-700">Florida (FHSAA)</p>
+                <p class="text-gray-600">8A, 7A, 6A, 5A, 4A, 3A, 2A, 1A</p>
+            </div>
+            <div>
+                <p class="font-medium text-gray-700">Ohio (OHSAA)</p>
+                <p class="text-gray-600">D1, D2, D3, D4, D5, D6, D7</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+    </main>
+    <!--#include virtual="/includes/footer.html" -->
+</body>
+</html>

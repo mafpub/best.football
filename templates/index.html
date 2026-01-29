@@ -10,16 +10,7 @@
     <p class="text-xl opacity-90 mb-8">Youth & High School Football Information</p>
 
     <div class="max-w-xl mx-auto px-4">
-        <div class="relative">
-            <input type="search"
-                   id="search"
-                   placeholder="Search schools, camps, or locations..."
-                   class="w-full px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500"
-                   hx-get="/api/search"
-                   hx-trigger="keyup changed delay:300ms"
-                   hx-target="#search-results">
-            <div id="search-results" class="absolute w-full mt-1 bg-white rounded-lg shadow-lg text-left text-gray-900 z-10 hidden"></div>
-        </div>
+        <div id="search"></div>
     </div>
 </header>
 
@@ -77,9 +68,29 @@
 
 {% block scripts %}
 <script>
-document.getElementById('search').addEventListener('htmx:afterSwap', function(e) {
-    const results = document.getElementById('search-results');
-    results.classList.toggle('hidden', results.innerHTML.trim() === '');
+window.addEventListener('DOMContentLoaded', () => {
+    new PagefindUI({
+        element: "#search",
+        showSubResults: true,
+        showImages: false,
+    });
 });
 </script>
+<style>
+    /* Override Pagefind UI styles to match site theme */
+    .pagefind-ui {
+        --pagefind-ui-scale: 1;
+        --pagefind-ui-primary: #2d5a27;
+        --pagefind-ui-text: #1f2937;
+        --pagefind-ui-background: #ffffff;
+        --pagefind-ui-border: #e5e7eb;
+        --pagefind-ui-tag: #2d5a27;
+        --pagefind-ui-border-width: 1px;
+        --pagefind-ui-border-radius: 8px;
+        --pagefind-ui-font: inherit;
+    }
+    .pagefind-ui__search-input {
+        padding: 0.75rem 1rem !important;
+    }
+</style>
 {% endblock %}

@@ -10,17 +10,24 @@ data/*.db
 # Generated site (built from database)
 htdocs/schools/
 htdocs/regions/
-htdocs/camps/
-htdocs/guides/
-htdocs/rankings/
 htdocs/search/
 htdocs/index.html
+htdocs/sitemap.xml
 
-# Keep these static assets
+# Generated camp/guide/ranking detail pages
+htdocs/camps/*.html
+htdocs/guides/*.html
+htdocs/rankings/*/*.html
+
+# Keep static assets and hand-crafted index pages
 !htdocs/includes/
 !htdocs/css/
 !htdocs/js/
 !htdocs/favicon.svg
+!htdocs/camps/index.html
+!htdocs/camps/submit.html
+!htdocs/guides/index.html
+!htdocs/rankings/index.html
 
 # IDE
 .idea/

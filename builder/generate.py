@@ -246,6 +246,114 @@ def generate_homepage(env: Environment) -> None:
         (HTDOCS_DIR / "index.html").write_text(html)
 
 
+def generate_schools_index(env: Environment) -> None:
+    """Generate the schools index page listing all states."""
+    with get_db() as conn:
+        states = []
+        total_schools = 0
+        for abbr, name in STATE_NAMES.items():
+            school_count = conn.execute(
+                "SELECT COUNT(*) FROM schools WHERE state = ?", (abbr,)
+            ).fetchone()[0]
+            county_count = conn.execute(
+                "SELECT COUNT(*) FROM counties WHERE state = ?", (abbr,)
+            ).fetchone()[0]
+            states.append({
+                "abbr": abbr,
+                "name": name,
+                "school_count": school_count,
+                "county_count": county_count,
+            })
+            total_schools += school_count
+
+        template = env.get_template("schools_index.html")
+        html = template.render(
+            states=states,
+            total_schools=total_schools,
+        )
+
+        schools_dir = HTDOCS_DIR / "schools"
+        schools_dir.mkdir(parents=True, exist_ok=True)
+        (schools_dir / "index.html").write_text(html)
+
+
+def generate_regions_index(env: Environment) -> None:
+    """Generate the regions index page listing all states."""
+    with get_db() as conn:
+        states = []
+        for abbr, name in STATE_NAMES.items():
+            school_count = conn.execute(
+                "SELECT COUNT(*) FROM schools WHERE state = ?", (abbr,)
+            ).fetchone()[0]
+            county_count = conn.execute(
+                "SELECT COUNT(*) FROM counties WHERE state = ?", (abbr,)
+            ).fetchone()[0]
+            states.append({
+                "abbr": abbr,
+                "name": name,
+                "school_count": school_count,
+                "county_count": county_count,
+            })
+
+        template = env.get_template("regions_index.html")
+        html = template.render(states=states)
+
+        regions_dir = HTDOCS_DIR / "regions"
+        regions_dir.mkdir(parents=True, exist_ok=True)
+        (regions_dir / "index.html").write_text(html)
+
+
+def generate_state_regions_indexes(env: Environment) -> int:
+    """Generate state-level region index pages (e.g., /regions/tx/index.html)."""
+    count = 0
+
+    with get_db() as conn:
+        template = env.get_template("state_regions.html")
+
+        for state, state_name in STATE_NAMES.items():
+            # Get school count
+            school_count = conn.execute(
+                "SELECT COUNT(*) FROM schools WHERE state = ?", (state,)
+            ).fetchone()[0]
+
+            # Get total population
+            pop_result = conn.execute(
+                "SELECT SUM(population) FROM counties WHERE state = ?", (state,)
+            ).fetchone()[0]
+            total_population = pop_result or 0
+
+            # Get counties with school counts
+            counties = conn.execute("""
+                SELECT c.name, c.fips, COUNT(s.nces_id) as school_count
+                FROM counties c
+                LEFT JOIN schools s ON c.name = s.county AND c.state = s.state
+                WHERE c.state = ?
+                GROUP BY c.fips
+                ORDER BY c.name
+            """, (state,)).fetchall()
+
+            county_list = [
+                {"name": c["name"], "slug": slugify(c["name"]), "school_count": c["school_count"]}
+                for c in counties
+            ]
+
+            html = template.render(
+                state=state,
+                state_name=state_name,
+                county_count=len(counties),
+                school_count=school_count,
+                total_population=total_population,
+                counties=county_list,
+            )
+
+            region_dir = HTDOCS_DIR / "regions" / state.lower()
+            region_dir.mkdir(parents=True, exist_ok=True)
+            (region_dir / "index.html").write_text(html)
+            count += 1
+
+    return count
+
+
 def build_site() -> dict:
     """Build the entire static site."""
     print("Building best.football static site...")
@@ -259,6 +367,16 @@ def build_site() -> dict:
 
     print("Generating homepage...")
     generate_homepage(env)
+
+    print("Generating schools index...")
+    generate_schools_index(env)
+
+    print("Generating regions index...")
+    generate_regions_index(env)
+
+    print("Generating state region indexes...")
+    stats["state_regions"] = generate_state_regions_indexes(env)
+    print(f"  Generated {stats['state_regions']} state region index pages")
 
     print("Generating state pages...")
     stats["states"] = generate_state_pages(env)

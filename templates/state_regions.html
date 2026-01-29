@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}{{ state_name }} Counties - High School Football Regions | best.football{% endblock %}
+{% block description %}Browse high school football programs by county in {{ state_name }}. {{ county_count }} counties with {{ "{:,}".format(school_count) }} schools.{% endblock %}
+{% block canonical %}<link rel="canonical" href="https://best.football/regions/{{ state|lower }}/">{% endblock %}
+
+{% block content %}
+<nav class="text-sm text-gray-600 mb-6">
+    <a href="/" class="hover:text-field">Home</a> &raquo;
+    <a href="/regions/" class="hover:text-field">Regions</a> &raquo;
+    <span>{{ state_name }}</span>
+</nav>
+
+<header class="mb-8">
+    <h1 class="text-3xl font-bold text-field-dark mb-2">{{ state_name }} Counties</h1>
+    <p class="text-xl text-gray-600">{{ county_count }} counties &bull; {{ "{:,}".format(school_count) }} high school football programs</p>
+</header>
+
+<section class="mb-8">
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+        <h2 class="text-lg font-semibold mb-4 text-field-dark">Quick Stats</h2>
+        <dl class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div>
+                <dt class="text-gray-600 text-sm">Counties</dt>
+                <dd class="text-2xl font-semibold">{{ county_count }}</dd>
+            </div>
+            <div>
+                <dt class="text-gray-600 text-sm">Total Schools</dt>
+                <dd class="text-2xl font-semibold">{{ "{:,}".format(school_count) }}</dd>
+            </div>
+            <div>
+                <dt class="text-gray-600 text-sm">Avg Schools/County</dt>
+                <dd class="text-2xl font-semibold">{{ "{:.1f}".format(school_count / county_count) if county_count else 'N/A' }}</dd>
+            </div>
+            <div>
+                <dt class="text-gray-600 text-sm">State Population</dt>
+                <dd class="text-2xl font-semibold">{{ "{:,.0f}".format(total_population / 1000000) }}M</dd>
+            </div>
+        </dl>
+    </div>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-2xl font-semibold mb-4 text-field-dark">All Counties</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        {% for county in counties %}
+        <a href="/regions/{{ state|lower }}/{{ county.slug }}.html"
+           class="bg-white rounded shadow px-4 py-3 hover:bg-field hover:text-white transition-colors">
+            <div class="font-medium">{{ county.name }}</div>
+            <div class="text-sm opacity-75">{{ county.school_count }} school{{ 's' if county.school_count != 1 else '' }}</div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="bg-gray-100 rounded-lg p-8">
+    <h2 class="text-xl font-semibold mb-4 text-field-dark">View All {{ state_name }} Schools</h2>
+    <p class="text-gray-600 mb-4">
+        See the complete list of high school football programs in {{ state_name }}.
+    </p>
+    <a href="/schools/{{ state|lower }}/" class="inline-block bg-field text-white px-6 py-2 rounded hover:bg-field-dark transition-colors">
+        View {{ state_name }} Schools
+    </a>
+</section>
+{% endblock %}

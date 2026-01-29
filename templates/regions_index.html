@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Browse by Region | best.football{% endblock %}
+{% block description %}Browse high school football programs by region and county. Find schools in your local area.{% endblock %}
+{% block canonical %}<link rel="canonical" href="https://best.football/regions/">{% endblock %}
+
+{% block content %}
+<nav class="text-sm text-gray-600 mb-6">
+    <a href="/" class="hover:text-field">Home</a> &raquo;
+    <span>Regions</span>
+</nav>
+
+<header class="mb-8">
+    <h1 class="text-3xl font-bold text-field-dark mb-2">Browse by Region</h1>
+    <p class="text-xl text-gray-600">Find high school football programs in your area</p>
+</header>
+
+<section class="mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {% for state in states %}
+        <a href="/regions/{{ state.abbr|lower }}/"
+           class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow block">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h2 class="text-2xl font-semibold text-field-dark mb-2">{{ state.name }}</h2>
+                    <p class="text-gray-600">{{ state.county_count }} counties</p>
+                    <p class="text-gray-500 text-sm">{{ "{:,}".format(state.school_count) }} schools</p>
+                </div>
+                <span class="text-4xl font-bold text-field opacity-20">{{ state.abbr }}</span>
+            </div>
+            <div class="mt-4 text-field hover:underline">
+                Browse {{ state.name }} counties &rarr;
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="bg-gray-100 rounded-lg p-8">
+    <h2 class="text-xl font-semibold mb-4 text-field-dark">Looking for a specific school?</h2>
+    <p class="text-gray-600 mb-4">
+        Browse all schools by state in our schools section.
+    </p>
+    <a href="/schools/" class="inline-block bg-field text-white px-6 py-2 rounded hover:bg-field-dark transition-colors">
+        Browse Schools
+    </a>
+</section>
+{% endblock %}
