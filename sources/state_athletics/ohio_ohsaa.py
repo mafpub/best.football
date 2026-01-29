@@ -4,14 +4,19 @@ Data source: https://ohsaa.finalforms.com/state_schools
 Format: Paginated HTML tables with comprehensive school data including NCES IDs.
 """
 
+import logging
 import re
 from pathlib import Path
+from typing import Optional
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 
 from pipeline.cache import CacheManager
 from pipeline.database import get_db
 from .scraper_base import ProxiedScraper
+
+# Module logger
+logger = logging.getLogger(__name__)
 
 # OHSAA FinalForms base URL
 BASE_URL = "https://ohsaa.finalforms.com/state_schools"
@@ -38,10 +43,10 @@ class OHSAAScraper(ProxiedScraper):
         cache_key = "ohsaa_schools_all"
         cached = self.processed_cache.get(cache_key, max_age_days=7)
         if cached:
-            print(f"Using cached OHSAA data ({len(cached)} schools)")
+            logger.info("Using cached OHSAA data (%d schools)", len(cached))
             return cached
 
-        print("Fetching OHSAA school data from FinalForms...")
+        logger.info("Fetching OHSAA school data from FinalForms...")
 
         all_schools = []
         page = 1
@@ -52,20 +57,20 @@ class OHSAAScraper(ProxiedScraper):
             html = self.fetch(url, cache_hours=24)
 
             if not html:
-                print(f"  [error] Failed to fetch page {page}")
+                logger.error("Failed to fetch page %d", page)
                 break
 
             schools, total_pages = self._parse_page(html)
             all_schools.extend(schools)
 
-            print(f"  Page {page}/{total_pages or '?'}: found {len(schools)} schools")
+            logger.info("Page %d/%s: found %d schools", page, total_pages or "?", len(schools))
 
             if not schools or (total_pages and page >= total_pages):
                 break
 
             page += 1
 
-        print(f"Total: {len(all_schools)} OHSAA schools")
+        logger.info("Total: %d OHSAA schools", len(all_schools))
         self.processed_cache.set(cache_key, all_schools, BASE_URL)
         return all_schools
 
@@ -118,6 +123,45 @@ class OHSAAScraper(ProxiedScraper):
                     max_page = max(max_page, int(text))
             return max_page
 
+        return None
+
+    def _extract_small_value(
+        self,
+        cell: Tag,
+        title: str,
+        exclude: Optional[set[str]] = None,
+        use_dropdown: bool = False,
+    ) -> Optional[str]:
+        """
+        Extract a value from a <small title="..."> element within a cell.
+
+        Args:
+            cell: BeautifulSoup Tag for the table cell
+            title: The title attribute to search for
+            exclude: Set of values to treat as empty/invalid
+            use_dropdown: If True, look for dropdown-toggle class instead of first link
+
+        Returns:
+            Extracted text value or None
+        """
+        if exclude is None:
+            exclude = {"--", ""}
+
+        small_tag = cell.find("small", title=title)
+        if not small_tag:
+            return None
+
+        if use_dropdown:
+            link = small_tag.find("a", class_="dropdown-toggle")
+        else:
+            link = small_tag.find("a")
+
+        if not link:
+            return None
+
+        value = link.get_text(strip=True)
+        if value and value not in exclude:
+            return value
         return None
 
     def _parse_row(self, row, cells) -> dict | None:
@@ -190,33 +234,20 @@ class OHSAAScraper(ProxiedScraper):
             # Parse cell 3 using HTML structure (small tags with titles)
             cell3 = cells[3]
 
-            # Extract conference from <small title="Conference">
-            conf_small = cell3.find("small", title="Conference")
-            if conf_small:
-                conf_link = conf_small.find("a")
-                if conf_link:
-                    conf = conf_link.get_text(strip=True)
-                    if conf and conf not in ("--", "Primary Athletic"):
-                        school["conference"] = conf
+            # Extract conference
+            school["conference"] = self._extract_small_value(
+                cell3, "Conference", exclude={"--", "", "Primary Athletic"}
+            )
 
-            # Extract athletic district from <small title="District">
-            dist_small = cell3.find("small", title="District")
-            if dist_small:
-                dist_link = dist_small.find("a")
-                if dist_link:
-                    district = dist_link.get_text(strip=True)
-                    if district and district != "--":
-                        school["athletic_district"] = district
+            # Extract athletic district
+            school["athletic_district"] = self._extract_small_value(
+                cell3, "District"
+            )
 
-            # Extract classes from <small title="Class">
-            class_small = cell3.find("small", title="Class")
-            if class_small:
-                # First dropdown shows primary class
-                dropdown = class_small.find("a", class_="dropdown-toggle")
-                if dropdown:
-                    classes = dropdown.get_text(strip=True)
-                    if classes and classes not in ("--", ""):
-                        school["classes"] = classes
+            # Extract classes (uses dropdown-toggle)
+            school["classes"] = self._extract_small_value(
+                cell3, "Class", use_dropdown=True
+            )
 
             # Extract football division from <small title="Division">
             # Look for dropdown menu item containing "Boys Football"
@@ -234,7 +265,7 @@ class OHSAAScraper(ProxiedScraper):
             return school
 
         except Exception as e:
-            print(f"  [parse error] {e}")
+            logger.warning("Parse error for row: %s - %s", row.get_text(" ", strip=True)[:100], e)
             return None
 
     def fetch_football_schools(self) -> list[dict]:
@@ -249,7 +280,7 @@ class OHSAAScraper(ProxiedScraper):
         # Schools with a football division are football schools
         football_schools = [s for s in all_schools if s.get("division")]
 
-        print(f"Football schools: {len(football_schools)}/{len(all_schools)}")
+        logger.info("Football schools: %d/%d", len(football_schools), len(all_schools))
         return football_schools
 
     def load_to_db(self, schools: list[dict]) -> int:
@@ -264,7 +295,7 @@ class OHSAAScraper(ProxiedScraper):
 
             for school in schools:
                 # Try to find matching school in our database
-                nces_id = school.get("nces_id")
+                nces_id = school["nces_id"]
                 school_row = None
 
                 if nces_id:
@@ -274,14 +305,21 @@ class OHSAAScraper(ProxiedScraper):
                     ).fetchone()
 
                 if not school_row:
-                    # Try name match
+                    # Try name match - escape LIKE special characters to prevent injection
+                    escaped_name = (
+                        school["name"]
+                        .lower()
+                        .replace("\\", "\\\\")
+                        .replace("%", "\\%")
+                        .replace("_", "\\_")
+                    )
                     school_row = conn.execute(
                         """
                         SELECT nces_id FROM schools
-                        WHERE state = 'OH' AND LOWER(name) LIKE ?
+                        WHERE state = 'OH' AND LOWER(name) LIKE ? ESCAPE '\\'
                         LIMIT 1
                         """,
-                        (f"%{school['name'].lower()}%",)
+                        (f"%{escaped_name}%",)
                     ).fetchone()
 
                 if school_row:
@@ -294,21 +332,21 @@ class OHSAAScraper(ProxiedScraper):
                         """,
                         (
                             school_row["nces_id"],
-                            school.get("division"),  # Division I-VII
-                            school.get("conference"),
-                            school.get("district"),  # Athletic district
-                            school.get("nces_id"),  # Use as state association ID
+                            school["division"],  # Division I-VII
+                            school["conference"],
+                            school["athletic_district"],  # Athletic district
+                            school["nces_id"],  # Use as state association ID
                         )
                     )
                     matched += 1
                 else:
                     unmatched.append(school["name"])
 
-            print(f"Matched {matched}/{len(schools)} schools to database")
+            logger.info("Matched %d/%d schools to database", matched, len(schools))
             if unmatched and len(unmatched) <= 10:
-                print(f"Unmatched: {unmatched}")
+                logger.info("Unmatched: %s", unmatched)
             elif unmatched:
-                print(f"Unmatched: {len(unmatched)} schools (first 5: {unmatched[:5]})")
+                logger.info("Unmatched: %d schools (first 5: %s)", len(unmatched), unmatched[:5])
 
             return matched
 

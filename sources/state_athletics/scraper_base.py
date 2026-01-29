@@ -3,7 +3,9 @@
 Uses the same proxy configuration as ~/tools/web-scraper.py
 """
 
+import hashlib
 import json
+import logging
 import os
 import random
 import time
@@ -12,20 +14,17 @@ from typing import Optional
 
 import httpx
 
-# Oxylabs proxy configuration (same as ~/tools/web-scraper.py)
+# Module logger
+logger = logging.getLogger(__name__)
+
+# Oxylabs proxy configuration from environment variables with fallback defaults
+_OXYLABS_USERNAME = os.environ.get("OXYLABS_USERNAME", "palpha_Thtm9")
+_OXYLABS_PASSWORD = os.environ.get("OXYLABS_PASSWORD", "ULcLdrJ+d_4mXBM")
+
 OXYLABS_PROXIES = [
-    {
-        "proxy": "ddc.oxylabs.io:8001",
-        "auth": {"username": "palpha_Thtm9", "password": "ULcLdrJ+d_4mXBM"}
-    },
-    {
-        "proxy": "ddc.oxylabs.io:8002",
-        "auth": {"username": "palpha_Thtm9", "password": "ULcLdrJ+d_4mXBM"}
-    },
-    {
-        "proxy": "ddc.oxylabs.io:8003",
-        "auth": {"username": "palpha_Thtm9", "password": "ULcLdrJ+d_4mXBM"}
-    }
+    {"proxy": "ddc.oxylabs.io:8001"},
+    {"proxy": "ddc.oxylabs.io:8002"},
+    {"proxy": "ddc.oxylabs.io:8003"},
 ]
 
 # Shared blocklist path
@@ -59,15 +58,15 @@ class ProxiedScraper:
             try:
                 data = json.loads(BLOCKLIST_FILE.read_text())
                 return set(data.get("domains", []))
-            except Exception:
-                pass
+            except (json.JSONDecodeError, OSError) as e:
+                logger.warning("Failed to load blocklist from %s: %s", BLOCKLIST_FILE, e)
         return set()
 
     def _get_proxy_url(self) -> str:
         """Get next proxy URL with auth."""
         proxy = OXYLABS_PROXIES[self.proxy_index]
         self.proxy_index = (self.proxy_index + 1) % len(OXYLABS_PROXIES)
-        return f"http://{proxy['auth']['username']}:{proxy['auth']['password']}@{proxy['proxy']}"
+        return f"http://{_OXYLABS_USERNAME}:{_OXYLABS_PASSWORD}@{proxy['proxy']}"
 
     def _respect_rate_limit(self):
         """Wait if needed to respect rate limits."""
@@ -79,7 +78,6 @@ class ProxiedScraper:
     def _get_cache_path(self, url: str) -> Path:
         """Get cache file path for a URL."""
         # Create a safe filename from URL
-        import hashlib
         url_hash = hashlib.md5(url.encode()).hexdigest()[:12]
         return self.cache_dir / f"{url_hash}.html"
 
@@ -124,7 +122,7 @@ class ProxiedScraper:
         if cache_hours > 0:
             cached = self._get_cached(url, cache_hours)
             if cached:
-                print(f"  [cache hit] {url}")
+                logger.debug("Cache hit: %s", url)
                 return cached
 
         # Respect rate limit
@@ -137,12 +135,11 @@ class ProxiedScraper:
                 if use_proxy:
                     proxy_url = self._get_proxy_url()
                     transport = httpx.HTTPTransport(proxy=proxy_url)
-                    client = httpx.Client(transport=transport, timeout=30.0)
                 else:
-                    client = httpx.Client(timeout=30.0)
+                    transport = None
 
-                with client:
-                    print(f"  [fetch] {url} (attempt {attempt + 1})")
+                with httpx.Client(transport=transport, timeout=30.0) as client:
+                    logger.debug("Fetching %s (attempt %d)", url, attempt + 1)
                     response = client.get(url, headers=headers, follow_redirects=True)
                     response.raise_for_status()
 
@@ -154,11 +151,11 @@ class ProxiedScraper:
 
                     return content
 
-            except Exception as e:
-                print(f"  [error] {url}: {e}")
+            except (httpx.HTTPStatusError, httpx.RequestError, httpx.TimeoutException) as e:
+                logger.warning("Fetch error for %s: %s", url, e)
                 if attempt < max_retries - 1:
                     wait = random.uniform(2, 5)
-                    print(f"  [retry] waiting {wait:.1f}s...")
+                    logger.debug("Retrying in %.1fs...", wait)
                     time.sleep(wait)
 
         return None
