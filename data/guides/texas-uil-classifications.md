@@ -42,7 +42,7 @@ Current enrollment data from Texas schools reveals the distribution:
 
 ## Division I vs Division II: The Competitive Balance Mechanism
 
-The division split within classifications 1A through 5A serves a crucial purpose that many parents misunderstand. It is not a quality designation. Division I is not "better" than Division II. Instead, the division split creates fairer competition within each classification.
+The division split within classifications 1A through 5A serves a purpose that many parents misunderstand. It is not a quality designation. Division I is not "better" than Division II. Instead, the division split creates fairer competition within each classification.
 
 Here is how it works: After schools are placed into a classification, the UIL sorts them by enrollment within that class. The larger half becomes Division I, and the smaller half becomes Division II. This means a 4A-D1 school competes for a Division I championship against other 4A-D1 schools, while a 4A-D2 school competes for a Division II championship against similar-sized opponents.
 
@@ -86,7 +86,7 @@ When evaluating football programs, classification matters in several ways that p
 
 ### Playing Time and Development
 
-Smaller classification schools often provide more playing time opportunities. A roster at a 1A school might include 25-35 players, meaning most athletes play both ways (offense and defense). At a 6A program, rosters can exceed 150 players across varsity, junior varsity, and freshman teams. Playing time becomes fiercely competitive.
+Smaller classification schools often provide more playing time opportunities. A roster at a 1A school might include 25-35 players, meaning most athletes play both ways (offense and defense). At a 6A program, rosters can exceed 150 players across varsity, junior varsity, and freshman teams. Playing time is competitive.
 
 For development purposes, more playing time generally benefits younger athletes. A freshman who plays every snap at a 3A school may develop faster than one who practices but rarely plays at a 6A power.
 
@@ -106,11 +106,11 @@ Neither scenario is inherently better. Some players thrive against elite competi
 
 Larger schools typically have more resources: better facilities, larger coaching staffs, more specialized training equipment. But smaller schools often provide tighter community support and more personalized attention from coaches.
 
-A 1A program where the head coach knows every player's family differs fundamentally from a 6A program where coordinators might not know a backup's name until junior year.
+A 1A program where the head coach knows every player's family differs from a 6A program where coordinators might not know a backup's name until junior year.
 
 ### College Considerations vs High School Success
 
-Families sometimes face a choice: attend a smaller school where their athlete can star, or attend a larger school with better facilities and competition. There is no universal right answer.
+Families sometimes face a choice: attend a smaller school where their athlete can star, or attend a larger school with better facilities and competition. There is no right answer.
 
 If the goal is college football, playing time and game film matter most. A player who dominates at the 3A level and produces excellent highlight tape may attract more college interest than a player who sits behind older athletes at a 6A school.
 

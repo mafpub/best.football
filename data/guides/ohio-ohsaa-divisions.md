@@ -4,9 +4,9 @@ category: Classifications
 description: "Complete guide to Ohio OHSAA football divisions I-VII, regional structure, and how Ohio organizes high school football."
 ---
 
-## Understanding Ohio High School Football Organization
+## How Ohio Organizes High School Football
 
-Ohio operates one of the most sophisticated high school football classification systems in the country. The Ohio High School Athletic Association (OHSAA) oversees approximately 706 schools playing 11-man football, organizing them into seven divisions based on enrollment and 28 playoff regions based on geography. This guide explains how the system works and what it means for your student-athlete.
+Ohio has one of the more detailed high school football classification systems in the country. The Ohio High School Athletic Association (OHSAA) oversees approximately 706 schools playing 11-man football, organizing them into seven divisions based on enrollment and 28 playoff regions based on geography. This guide explains how the system works and what it means for your student-athlete.
 
 ## The Seven-Division Structure
 
@@ -28,7 +28,7 @@ Division I is intentionally smaller, containing only the 72 largest schools. The
 
 ## How Enrollment is Calculated
 
-The OHSAA uses adjusted male enrollment figures rather than total school enrollment. This metric counts male students in grades 9-12 as reported through the Ohio Education Management Information System (EMIS). Using male-only counts prevents coeducational schools from competing against significantly smaller all-boys institutions at an enrollment disadvantage.
+The OHSAA uses adjusted male enrollment figures rather than total school enrollment. This metric counts male students in grades 9-12 as reported through the Ohio Education Management Information System (EMIS). Using male-only counts prevents coeducational schools from competing against much smaller all-boys institutions at an enrollment disadvantage.
 
 Several factors can adjust a school's base enrollment figure:
 
@@ -40,7 +40,7 @@ Several factors can adjust a school's base enrollment figure:
 
 ## The Competitive Balance System
 
-Ohio's competitive balance process addresses a common challenge in high school athletics: some schools consistently perform above their enrollment tier. This happens when programs attract talented athletes from outside their typical boundaries or when coaching and facilities create persistent advantages.
+Ohio's competitive balance process addresses a common challenge in high school athletics: some schools win more than their enrollment would suggest. This happens when programs attract talented athletes from outside their typical boundaries or when coaching and facilities create persistent advantages.
 
 For the 2025 season, 46 schools were elevated above their base enrollment division through competitive balance adjustments. Of these, 12 were newly elevated based on analysis of roster information from the previous season. This system prevents small-enrollment powerhouses from dominating lower divisions year after year.
 
@@ -78,7 +78,7 @@ This format rewards strong regular-season performance with home games and bye ad
 
 ## The Harbin Computer Ranking System
 
-Ohio pioneered the use of computer rankings for playoff qualification, a system developed by Jack Harbin, a typewriter repairman from Wickliffe. First implemented in 1972, the Harbin system has influenced playoff formats across the country and remains the foundation of Ohio's selection process.
+Ohio was the first state to use computer rankings for playoff qualification, a system developed by Jack Harbin, a typewriter repairman from Wickliffe. First implemented in 1972, the Harbin system has influenced playoff formats across the country and remains the foundation of Ohio's selection process.
 
 ### How Points Are Earned
 
@@ -151,7 +151,7 @@ Your child's team may play a conference schedule against opponents from multiple
 
 ### The Competitive Balance Factor
 
-If your school consistently wins and advances deep in the playoffs, it may be elevated to a higher division through competitive balance. This is designed to maintain fairness across the system. Some parents view this negatively, but it reflects the OHSAA's commitment to competitive equity.
+If your school consistently wins and advances deep in the playoffs, it may be elevated to a higher division through competitive balance. The goal is to maintain fairness across the system. Some parents view this negatively, but it reflects the OHSAA's commitment to competitive equity.
 
 ### Geographic Realities
 

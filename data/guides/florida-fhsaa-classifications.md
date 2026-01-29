@@ -16,19 +16,19 @@ The FHSAA Points system was introduced to address competitive imbalance caused b
 
 **Base Enrollment Factor**: The school's total student enrollment serves as the starting point for classification. The FHSAA uses student population data reported through official state channels.
 
-**Competitive Index Multiplier**: This is where Florida's system becomes unique. Schools that have success on the field see their effective classification points increase. The competitive index factors in:
+**Competitive Index Multiplier**: Schools that win see their effective classification points increase. The competitive index factors in:
 
 - Win-loss record over the previous two-year reclassification cycle
 - Playoff performance and advancement
 - Head-to-head results against schools in various classifications
 
-**The Result**: A school with high enrollment but poor competitive results receives a lower index multiplier (as low as 1.0), allowing them to compete in a lower classification. This is why you see schools like Navarre High School (2,430 students) and Atlantic Coast High School (2,768 students) competing in Class 1A and 2A respectively, despite enrollments that would typically place them in Class 5A or higher.
+A school with high enrollment but poor competitive results receives a lower index multiplier (as low as 1.0), allowing them to compete in a lower classification. This is why schools like Navarre High School (2,430 students) and Atlantic Coast High School (2,768 students) compete in Class 1A and 2A respectively, despite enrollments that would typically place them in Class 5A or higher.
 
 The classification formula is recalculated every two years, with the current cycle determining placements through the 2025-2026 season.
 
 ## Classification Breakdown by the Numbers
 
-Florida's seven classifications show interesting patterns when you examine enrollment data:
+Florida's seven classifications show distinct patterns when you examine enrollment data:
 
 **Class 1A**: 40 schools with an average enrollment of 1,155 students. Despite being the "smallest" classification, 1A includes several schools with enrollments exceeding 2,000 students. These are typically programs that have struggled competitively and received a 1.0 competitive index.
 
@@ -38,7 +38,7 @@ Florida's seven classifications show interesting patterns when you examine enrol
 
 **Class 4A**: 30 schools with an average enrollment of 2,086 students. The smallest classification by school count, 4A serves as a transitional tier between the smaller and larger classifications.
 
-**Class 5A**: 52 schools with an average enrollment of 1,934 students. Interestingly, the average enrollment is slightly lower than 4A, demonstrating how the competitive index can shift schools between classifications in ways that do not strictly follow enrollment patterns.
+**Class 5A**: 52 schools with an average enrollment of 1,934 students. The average enrollment is slightly lower than 4A, demonstrating how the competitive index can shift schools between classifications in ways that do not strictly follow enrollment patterns.
 
 **Class 6A**: 53 schools with an average enrollment of 1,898 students. Again, the average is lower than some smaller classifications, reflecting the competitive index influence.
 
@@ -46,7 +46,7 @@ Florida's seven classifications show interesting patterns when you examine enrol
 
 ## Independent Schools and Metro Considerations
 
-Florida makes an important distinction between two types of school classifications:
+Florida distinguishes between several types of schools:
 
 **Metro Schools**: These are public schools located in the state's major metropolitan areas (Miami-Dade, Broward, Hillsborough, Orange, Duval, and Palm Beach counties). Metro schools typically have larger student bodies and compete against similarly sized programs.
 
@@ -54,7 +54,7 @@ Florida makes an important distinction between two types of school classificatio
 
 **Rural Schools**: Smaller public schools in non-metro counties often make up the bulk of Classes 1A through 3A. These programs face unique challenges including longer travel distances for games and smaller talent pools.
 
-The metro versus rural divide creates interesting dynamics during the state playoffs, when teams from vastly different environments meet. A rural 4A school might have entirely different resources and challenges compared to a metro 4A school with the same enrollment.
+The metro versus rural divide plays out during the state playoffs, when teams from vastly different environments meet. A rural 4A school might have entirely different resources and challenges compared to a metro 4A school with the same enrollment.
 
 ## District and Regional Structure
 
@@ -62,7 +62,7 @@ The FHSAA organizes its classifications into districts and regions to structure 
 
 **Districts**: Each classification is divided into districts based on geography. Districts typically contain 4-8 schools that compete against each other during the regular season. District standings determine playoff qualification, with the top teams advancing to the postseason.
 
-District titles carry significant weight in Florida high school football. Winning your district guarantees a home playoff game in the first round and establishes seeding advantages that can last deep into the postseason.
+District titles matter. Winning your district guarantees a home playoff game in the first round and establishes seeding advantages that can last deep into the postseason.
 
 **Regions**: For playoff purposes, districts are grouped into four regions (Regions 1-4, roughly organized from north to south). Regional play begins after district champions are determined.
 
@@ -76,15 +76,15 @@ The playoff format varies slightly across classifications, reflecting the differ
 
 **Classes 5A-7A**: The larger classifications use expanded 16-team regional brackets, allowing more teams to participate. Second and third-place district finishers often receive at-large bids based on their overall record and strength of schedule.
 
-**State Championships**: All seven classifications hold their state championship games at a central location, typically in the Orlando area. Championship week has become a major event on the Florida high school football calendar, drawing significant attention from college recruiters and media.
+**State Championships**: All seven classifications hold their state championship games at a central location, typically in the Orlando area. Championship week draws college recruiters and media from across the state.
 
 **Playoff Timing**: Florida's playoffs run from November through December, with championship games typically held in mid-December. The warm Florida weather allows for outdoor games throughout the postseason without weather delays common in northern states.
 
 ## What the Enrollment Distributions Mean for Competition
 
-The unusual enrollment patterns across Florida's classifications create several competitive dynamics that parents and players should understand:
+The enrollment patterns across Florida's classifications create competitive dynamics that parents and players should understand:
 
-**Lower Classifications Are Not Always Easier**: The presence of large-enrollment schools in Classes 1A and 2A means the competition level can be surprisingly high. A school with 2,500 students competing in 1A may have talent equivalent to a 5A or 6A program, just without the recent competitive success to prove it.
+**Lower Classifications Are Not Always Easier**: Large-enrollment schools in Classes 1A and 2A can be formidable opponents. A school with 2,500 students competing in 1A may have talent equivalent to a 5A or 6A program, just without the recent competitive success to prove it.
 
 **Reclassification Can Shift Landscapes Quickly**: Because the competitive index is recalculated every two years, today's 1A power could be a 3A team in the next cycle if they start winning championships. This creates incentive for schools to find the right competitive balance.
 

@@ -40,7 +40,7 @@ Charter schools operate with per-pupil funding that follows the student, but the
 - Smaller equipment budgets
 - Creative solutions for weight training space
 
-However, this gap is not universal. Some charter schools have developed impressive athletic facilities through private fundraising, grants, or partnerships. Others have found that lean operations force innovation and build program culture in unexpected ways.
+However, this gap is not universal. Some charter schools have developed strong athletic facilities through private fundraising, grants, or partnerships. Others have found that lean operations force innovation and strengthen program culture.
 
 ## Enrollment Patterns and Classification
 
@@ -88,7 +88,7 @@ Charter schools often rely on:
 - Volunteer assistant coaches
 - Partnership arrangements for specialized training
 
-The quality of coaching matters more than the quantity of staff, and many charter programs have developed excellent coaching cultures despite resource constraints. Parents should evaluate coaching philosophy, player development track records, and communication styles regardless of school type.
+The quality of coaching matters more than the quantity of staff, and many charter programs have developed strong coaching cultures with fewer resources. Parents should evaluate coaching philosophy, player development track records, and communication styles regardless of school type.
 
 ## College Recruiting Considerations
 
@@ -100,7 +100,7 @@ For families with college football aspirations, both school types can provide pa
 
 **Academic Preparation**: Both school types must meet NCAA eligibility requirements. Some charter schools have more rigorous academic programs that can be attractive to selective universities.
 
-The bottom line for recruiting is that talent rises to the top. Players from charter schools earn scholarships every year, just as players from traditional publics do.
+The bottom line for recruiting: college coaches find players who can play, regardless of school type. Players from charter schools earn scholarships every year, just as players from traditional publics do.
 
 ## What Parents Should Consider
 
@@ -118,4 +118,4 @@ When deciding between public and charter school football programs, consider thes
 
 **What academic support exists?** Evaluate study halls, tutoring, and how the school balances athletics with academics.
 
-The best football program for your child depends on individual goals, learning style, and family priorities. Both traditional public and charter schools can provide meaningful football experiences that build character, teach teamwork, and create lasting memories. The key is finding the right fit for your specific situation.
+The best football program for your child depends on individual goals, learning style, and family priorities. Both traditional public and charter schools can provide solid football experiences. The key is finding the right fit for your situation.

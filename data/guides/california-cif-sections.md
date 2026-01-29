@@ -46,7 +46,7 @@ The CIF Southern Section (CIFSS) deserves special attention due to its size and 
 
 CIFSS organizes football into 14 competitive divisions, numbered 1 through 14. Division 1 contains the most competitive programs, while Division 14 contains smaller or less competitive schools. This structure differs fundamentally from other states' classification systems.
 
-The critical distinction: CIFSS divisions are based on competitive success, not enrollment. A small school with a winning tradition could be placed in a higher division than a large school with a struggling program. This "competitive equity" model aims to create balanced playoff brackets where teams face opponents of similar strength.
+CIFSS divisions are based on competitive success, not enrollment. A small school with a winning tradition could be placed in a higher division than a large school with a struggling program. This "competitive equity" model aims to create balanced playoff brackets where teams face opponents of similar strength.
 
 ### How Schools Move Between Divisions
 
@@ -59,7 +59,7 @@ CIFSS uses a points-based system to evaluate programs and determine divisional p
 
 Every two years (with annual adjustments as needed), CIFSS reevaluates all programs and reassigns divisions. A school that dominates Division 8 for several years will likely be moved up to Division 6 or 7. Conversely, a traditional power that falls on hard times may drop down.
 
-This system creates genuine opportunity for emerging programs while preventing established teams from padding records against weaker opponents. It also means parents cannot assume their school's division will remain constant. A coaching change, demographic shift, or run of success can move a program up or down the competitive ladder.
+This system creates opportunity for rising programs while preventing established teams from padding records against weaker opponents. It also means parents cannot assume their school's division will remain constant. A coaching change, demographic shift, or run of success can move a program up or down the competitive ladder.
 
 ### Major CIFSS Conferences
 
@@ -81,7 +81,7 @@ California's section system creates a unique postseason structure. Rather than a
 
 ### Section Championships
 
-Each section runs its own playoff tournament, crowning section champions in each division. For CIFSS, this means 14 division champions emerge from section playoffs. Other sections have varying numbers of divisions based on their membership size.
+Each section runs its own playoff tournament, with section champions in each division. For CIFSS, this means 14 division champions emerge from section playoffs. Other sections have varying numbers of divisions based on their membership size.
 
 Section playoffs typically run from mid-November through early December. Brackets are seeded based on regular season performance, with higher seeds earning home field advantage.
 
@@ -103,7 +103,7 @@ The Open Division invites the top programs regardless of their regular division 
 
 Selection for the Open Division is typically by committee, based on rankings, strength of schedule, and overall program quality. Schools can decline an Open Division invitation but may face criticism for avoiding top competition.
 
-The Open Division has created a de facto "super league" of California high school football, featuring programs like Mater Dei, St. John Bosco, Mission Viejo, and other traditional powers. For elite prospects, Open Division competition provides the highest level of play in the state.
+The Open Division has become the top tier of California high school football, featuring programs like Mater Dei, St. John Bosco, Mission Viejo, and other traditional powers. For elite prospects, Open Division competition provides the highest level of play in the state.
 
 ## What Parents Should Know
 
@@ -135,6 +135,6 @@ Each section sets its own transfer and eligibility rules within CIF guidelines. 
 
 California's section-based system reflects the state's diversity and scale. While it can seem complicated compared to other states' straightforward classification structures, the system allows for regional flexibility and competitive balance. Understanding your section's specific rules and competitive structure is essential for navigating California high school football successfully.
 
-For families in CIFSS, the division system based on competitive success rather than enrollment creates a unique dynamic where performance directly shapes future competition. This meritocratic approach keeps programs accountable and ensures that playoff brackets feature genuinely competitive matchups.
+For families in CIFSS, the division system based on competitive success rather than enrollment creates a unique dynamic where performance directly shapes future competition. This performance-based approach keeps programs accountable and ensures that playoff brackets feature competitive matchups.
 
 Whether you are in the massive Southern Section or a smaller section in Northern California, knowing how your section operates helps you make informed decisions about your child's football experience.
