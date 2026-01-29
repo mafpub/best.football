@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}{{ state_name }} High School Football Rankings | best.football{% endblock %}
+
+{% block description %}Rankings for {{ state_name }} high school football programs. View {{ association_name }} football rankings by classification.{% endblock %}
+
+{% block canonical %}<link rel="canonical" href="https://best.football/rankings/{{ state|lower }}/">{% endblock %}
+
+{% block breadcrumb_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://best.football/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Rankings",
+      "item": "https://best.football/rankings/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ state_name }}",
+      "item": "https://best.football/rankings/{{ state|lower }}/"
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<nav class="text-sm text-gray-500 mb-4">
+    <a href="/" class="hover:text-field">Home</a>
+    <span class="mx-2">›</span>
+    <a href="/rankings/" class="hover:text-field">Rankings</a>
+    <span class="mx-2">›</span>
+    <span class="text-gray-700">{{ state_name }}</span>
+</nav>
+
+<header class="mb-8">
+    <h1 class="text-3xl font-bold text-field-dark mb-2">{{ state_name }} High School Football Rankings</h1>
+    <p class="text-xl text-gray-600">{{ association_full_name }} ({{ association_name }}) Football Programs</p>
+</header>
+
+<div class="max-w-4xl">
+    <!-- Stats Summary -->
+    <section class="bg-white rounded-lg shadow p-6 mb-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+            <div>
+                <p class="text-3xl font-bold text-field-dark">{{ total_programs }}</p>
+                <p class="text-gray-600 text-sm">Football Programs</p>
+            </div>
+            <div>
+                <p class="text-3xl font-bold text-field-dark">{{ classifications|length }}</p>
+                <p class="text-gray-600 text-sm">Classifications</p>
+            </div>
+            <div>
+                <p class="text-3xl font-bold text-gold">{{ association_name }}</p>
+                <p class="text-gray-600 text-sm">State Association</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classifications Grid -->
+    <section class="mb-8">
+        <h2 class="text-xl font-semibold text-field-dark mb-4">Rankings by Classification</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {% for cls in classifications %}
+            <a href="/rankings/{{ state|lower }}/{{ cls.slug }}.html"
+               class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition-shadow text-center">
+                <h3 class="text-lg font-semibold text-field-dark">{{ cls.classification }}</h3>
+                <p class="text-gray-600 text-sm mt-1">{{ cls.school_count }} programs</p>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    {% if not classifications %}
+    <!-- No Data Notice -->
+    <section class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
+        <p class="text-yellow-800">
+            Rankings data is currently being compiled for {{ state_name }}.
+            Check back soon for complete standings.
+        </p>
+    </section>
+    {% endif %}
+
+    <!-- About Rankings -->
+    <section class="bg-gray-100 rounded-lg p-6 mt-8">
+        <h2 class="text-lg font-semibold text-field-dark mb-3">About {{ state_name }} Football Rankings</h2>
+        <p class="text-gray-600 text-sm mb-3">
+            Schools are ranked within their classification based on the <strong>Competitive Index</strong>,
+            which measures a school's enrollment relative to other schools in the same class.
+        </p>
+        <p class="text-gray-600 text-sm">
+            A higher competitive index means the school has larger enrollment compared to peers,
+            potentially indicating access to more athletes and resources.
+        </p>
+    </section>
+</div>
+{% endblock %}

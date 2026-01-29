@@ -7,10 +7,12 @@
     <meta name="description" content="{% block description %}Youth and high school football information{% endblock %}">
     {% block canonical %}{% endblock %}
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link href="/search/pagefind-ui.css" rel="stylesheet">
     <script src="/search/pagefind-ui.js"></script>
     {% block head %}{% endblock %}
+    {% block breadcrumb_schema %}{% endblock %}
     <script>
         tailwind.config = {
             theme: {

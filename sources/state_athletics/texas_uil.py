@@ -660,7 +660,7 @@ class TexasUILScraper(ProxiedScraper):
         row = conn.execute(
             """
             SELECT nces_id, name FROM schools
-            WHERE state = 'TX' AND LOWER(name) = ? ESCAPE '\\'
+            WHERE state = 'TX' AND LOWER(name) = ?
             LIMIT 1
             """,
             (normalized,),

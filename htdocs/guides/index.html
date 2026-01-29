@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Guides | best.football</title>
-    <meta name="description" content="Recruiting guides, training tips, and resources for youth and high school football players.">
-    <link rel="canonical" href="https://best.football/guides/">
+    <title>Football Guides & Resources | best.football</title>
+    <meta name="description" content="Comprehensive guides for youth and high school football players and parents covering recruiting, safety, camps, transfers, and more.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
+    <link href="/search/pagefind-ui.css" rel="stylesheet">
+    <script src="/search/pagefind-ui.js"></script>
+    
+    
     <script>
         tailwind.config = {
             theme: {
@@ -38,59 +41,167 @@
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
     <!--#include virtual="/includes/header.html" -->
     <main class="flex-1 container mx-auto px-4 py-8">
+        
+<nav class="text-sm text-gray-600 mb-6">
+    <a href="/" class="hover:text-field">Home</a> &raquo;
+    <span>Guides</span>
+</nav>
 
-<header class="mb-8">
-    <h1 class="text-3xl font-bold text-field-dark mb-2">Football Guides</h1>
-    <p class="text-xl text-gray-600">Recruiting tips, training resources, and player development guides</p>
+<header class="mb-12">
+    <h1 class="text-4xl font-bold text-field-dark mb-4">Football Guides & Resources</h1>
+    <p class="text-lg text-gray-600 max-w-3xl">
+        Everything you need to know about youth and high school football. From recruiting basics
+        to safety equipment, these guides provide practical, actionable information for players
+        and parents.
+    </p>
 </header>
 
-<div class="max-w-4xl">
-    <!-- Coming Soon Notice -->
-    <div class="bg-white rounded-lg shadow p-8 text-center mb-8">
-        <div class="text-6xl mb-4">📚</div>
-        <h2 class="text-2xl font-semibold text-field-dark mb-4">Guides Coming Soon</h2>
-        <p class="text-gray-600 mb-6">
-            We're working on comprehensive guides to help players, parents, and coaches
-            navigate youth and high school football recruiting, training, and development.
-        </p>
-    </div>
 
-    <!-- Planned Topics -->
-    <section class="mb-8">
-        <h2 class="text-xl font-semibold text-field-dark mb-4">Topics We're Working On</h2>
-        <div class="grid md:grid-cols-2 gap-4">
-            <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="font-semibold text-lg mb-2">Recruiting Basics</h3>
-                <p class="text-gray-600 text-sm">Understanding the recruiting process, timelines, and what coaches look for.</p>
-            </div>
-            <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="font-semibold text-lg mb-2">Creating a Highlight Reel</h3>
-                <p class="text-gray-600 text-sm">Tips for filming, editing, and sharing game film with college coaches.</p>
-            </div>
-            <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="font-semibold text-lg mb-2">Camp Selection Guide</h3>
-                <p class="text-gray-600 text-sm">How to choose the right camps for your age, skill level, and goals.</p>
-            </div>
-            <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="font-semibold text-lg mb-2">Academic Requirements</h3>
-                <p class="text-gray-600 text-sm">NCAA eligibility, grade requirements, and balancing academics with athletics.</p>
-            </div>
+<div class="space-y-12">
+    
+    <section>
+        <h2 class="text-2xl font-semibold text-field-dark mb-6 pb-2 border-b border-gray-200">Development</h2>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">
+                        <a href="/guides/summer-camps.html" class="text-field-dark hover:text-field">
+                            How to Choose a Football Camp: A Guide for Players and Parents
+                        </a>
+                    </h3>
+                    
+                    <p class="text-gray-600 text-sm">Navigate the world of football camps with tips on choosing the right camp, what to expect, and how to maximize your experience.</p>
+                    
+                </div>
+                <div class="px-6 pb-4">
+                    <a href="/guides/summer-camps.html" class="text-field hover:underline text-sm font-medium">
+                        Read Guide &rarr;
+                    </a>
+                </div>
+            </article>
+            
         </div>
     </section>
-
-    <!-- Newsletter Signup Placeholder -->
-    <section class="bg-field text-white rounded-lg p-8 text-center">
-        <h2 class="text-xl font-semibold mb-4">Get Notified When Guides Launch</h2>
-        <p class="opacity-90 mb-6">
-            Be the first to know when new guides are published.
-        </p>
-        <p class="text-sm opacity-75">
-            Newsletter signup coming soon. Check back later!
-        </p>
+    
+    <section>
+        <h2 class="text-2xl font-semibold text-field-dark mb-6 pb-2 border-b border-gray-200">Eligibility</h2>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">
+                        <a href="/guides/transfer-rules.html" class="text-field-dark hover:text-field">
+                            High School Football Transfer Rules: Eligibility and Waiting Periods
+                        </a>
+                    </h3>
+                    
+                    <p class="text-gray-600 text-sm">Understand state transfer eligibility rules, waiting periods, and hardship waivers for high school football players changing schools.</p>
+                    
+                </div>
+                <div class="px-6 pb-4">
+                    <a href="/guides/transfer-rules.html" class="text-field hover:underline text-sm font-medium">
+                        Read Guide &rarr;
+                    </a>
+                </div>
+            </article>
+            
+        </div>
     </section>
+    
+    <section>
+        <h2 class="text-2xl font-semibold text-field-dark mb-6 pb-2 border-b border-gray-200">Parents</h2>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">
+                        <a href="/guides/parent-guide.html" class="text-field-dark hover:text-field">
+                            The Parent&#39;s Guide to Youth Football: What You Need to Know
+                        </a>
+                    </h3>
+                    
+                    <p class="text-gray-600 text-sm">A comprehensive guide for football parents covering time commitments, costs, communication with coaches, injury prevention, and supporting your young athlete.</p>
+                    
+                </div>
+                <div class="px-6 pb-4">
+                    <a href="/guides/parent-guide.html" class="text-field hover:underline text-sm font-medium">
+                        Read Guide &rarr;
+                    </a>
+                </div>
+            </article>
+            
+        </div>
+    </section>
+    
+    <section>
+        <h2 class="text-2xl font-semibold text-field-dark mb-6 pb-2 border-b border-gray-200">Recruiting</h2>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">
+                        <a href="/guides/recruiting-basics.html" class="text-field-dark hover:text-field">
+                            College Football Recruiting: A Complete Guide for High School Athletes
+                        </a>
+                    </h3>
+                    
+                    <p class="text-gray-600 text-sm">Learn how college football recruiting works, from NCAA eligibility requirements to contacting coaches and making official visits.</p>
+                    
+                </div>
+                <div class="px-6 pb-4">
+                    <a href="/guides/recruiting-basics.html" class="text-field hover:underline text-sm font-medium">
+                        Read Guide &rarr;
+                    </a>
+                </div>
+            </article>
+            
+        </div>
+    </section>
+    
+    <section>
+        <h2 class="text-2xl font-semibold text-field-dark mb-6 pb-2 border-b border-gray-200">Safety</h2>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">
+                        <a href="/guides/safety-equipment.html" class="text-field-dark hover:text-field">
+                            Football Safety Equipment: A Complete Guide to Protective Gear
+                        </a>
+                    </h3>
+                    
+                    <p class="text-gray-600 text-sm">Everything you need to know about football helmets, shoulder pads, mouthguards, and other protective equipment to keep players safe.</p>
+                    
+                </div>
+                <div class="px-6 pb-4">
+                    <a href="/guides/safety-equipment.html" class="text-field hover:underline text-sm font-medium">
+                        Read Guide &rarr;
+                    </a>
+                </div>
+            </article>
+            
+        </div>
+    </section>
+    
 </div>
+
+
+<aside class="mt-16 bg-gray-100 rounded-lg p-8">
+    <h2 class="text-xl font-semibold text-field-dark mb-4">Have a Question?</h2>
+    <p class="text-gray-600 mb-4">
+        These guides cover the most common topics for football players and families. If you have
+        a specific question not addressed here, reach out to your local athletic director or
+        state athletic association.
+    </p>
+    <p class="text-gray-600">
+        <strong>5</strong> guides available covering recruiting, safety, camps,
+        transfers, and parent resources.
+    </p>
+</aside>
 
     </main>
     <!--#include virtual="/includes/footer.html" -->
+    
 </body>
 </html>

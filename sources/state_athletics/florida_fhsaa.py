@@ -327,10 +327,10 @@ class FHSAAScraper(ProxiedScraper):
                     school_row = conn.execute(
                         """
                         SELECT nces_id FROM schools
-                        WHERE state = 'FL' AND LOWER(name) = ? ESCAPE '\\'
+                        WHERE state = 'FL' AND LOWER(name) = ?
                         LIMIT 1
                         """,
-                        (escaped_name,)
+                        (name.lower(),)
                     ).fetchone()
 
                     if not school_row:

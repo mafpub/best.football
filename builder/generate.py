@@ -7,6 +7,8 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
 
+from builder.guides import generate_guide_pages, generate_guides_index, get_featured_guides
+from builder.rankings import generate_all_rankings
 from pipeline.database import get_db
 
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -237,10 +239,13 @@ def generate_homepage(env: Environment) -> None:
             ).fetchone()[0]
             states.append({"abbr": abbr, "name": name, "school_count": count})
 
+        # Get featured guides for homepage
+        featured_guides = get_featured_guides(limit=4)
+
         template = env.get_template("index.html")
         html = template.render(
             states=states,
-            featured_guides=[],  # TODO: Query guides
+            featured_guides=featured_guides,
         )
 
         (HTDOCS_DIR / "index.html").write_text(html)
@@ -389,6 +394,17 @@ def build_site() -> dict:
     print("Generating school pages...")
     stats["schools"] = generate_school_pages(env)
     print(f"  Generated {stats['schools']} school pages")
+
+    print("Generating guide pages...")
+    stats["guides"] = generate_guide_pages(env)
+    print(f"  Generated {stats['guides']} guide pages")
+
+    print("Generating guides index...")
+    generate_guides_index(env)
+
+    print("Generating rankings pages...")
+    stats["rankings"] = generate_all_rankings(env)
+    print(f"  Generated {stats['rankings']} rankings pages")
 
     print("\nBuild complete!")
     return stats

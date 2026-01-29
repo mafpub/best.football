@@ -2,12 +2,19 @@
 
 import uuid
 from datetime import datetime
+from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
+from jinja2 import Environment, FileSystemLoader
 from pydantic import BaseModel, EmailStr
 
 from pipeline.database import get_db
+
+# Setup Jinja2 for HTML responses
+TEMPLATES_DIR = Path(__file__).parent.parent / "templates"
+jinja_env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
 
 app = FastAPI(
     title="best.football API",
@@ -169,12 +176,15 @@ async def search(
 
 @app.get("/api/camps")
 async def list_camps(
+    request: Request,
     state: str | None = Query(None, description="Filter by state"),
     city: str | None = Query(None, description="Filter by city"),
+    type: list[str] | None = Query(None, description="Filter by organizer type"),
+    overnight: str | None = Query(None, description="Filter for overnight camps"),
     verified_only: bool = Query(True, description="Only show verified camps"),
     limit: int = Query(50, le=200, description="Max results"),
 ):
-    """List camps with optional filters."""
+    """List camps with optional filters. Returns HTML for HTMX requests, JSON otherwise."""
     with get_db() as conn:
         query = "SELECT * FROM camps WHERE 1=1"
         params = []
@@ -187,15 +197,30 @@ async def list_camps(
             params.append(state.upper())
 
         if city:
-            query += " AND LOWER(city) = LOWER(?)"
-            params.append(city)
+            query += " AND LOWER(city) LIKE LOWER(?)"
+            params.append(f"%{city}%")
+
+        if type:
+            placeholders = ",".join("?" * len(type))
+            query += f" AND organizer_type IN ({placeholders})"
+            params.extend(type)
+
+        if overnight == "on":
+            query += " AND overnight = 1"
 
         query += " ORDER BY start_date ASC LIMIT ?"
         params.append(limit)
 
         camps = conn.execute(query, params).fetchall()
+        camps_list = [dict(c) for c in camps]
+
+        # Return HTML for HTMX requests
+        if request.headers.get("HX-Request"):
+            template = jinja_env.get_template("partials/camp_results.html")
+            html = template.render(camps=camps_list)
+            return HTMLResponse(content=html)
 
         return {
-            "camps": [dict(c) for c in camps],
-            "total": len(camps),
+            "camps": camps_list,
+            "total": len(camps_list),
         }
