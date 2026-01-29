@@ -17,9 +17,9 @@ from pipeline.database import get_db
 # MVP states
 MVP_STATES = {"TX", "CA", "FL", "OH"}
 
-# NCES CCD data URLs (2022-2023 school year - most recent complete)
+# NCES CCD data URLs (2023-2024 school year)
 # Directory listing: https://nces.ed.gov/ccd/files.asp
-CCD_SCHOOL_URL = "https://nces.ed.gov/ccd/data/zip/ccd_sch_029_2223_w_1a_071824.zip"
+CCD_SCHOOL_URL = "https://nces.ed.gov/ccd/Data/zip/ccd_sch_029_2324_w_1a_073124.zip"
 
 CACHE_DIR = Path(__file__).parent.parent / "data" / "cache" / "nces"
 
