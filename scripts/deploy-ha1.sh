@@ -15,8 +15,14 @@ rsync -avz api/ ha1:/home/bestfootball/api/
 rsync -avz pipeline/ ha1:/home/bestfootball/pipeline/
 rsync -avz templates/ ha1:/home/bestfootball/templates/
 
+echo "Syncing dependencies..."
+rsync -avz pyproject.toml uv.lock ha1:/home/bestfootball/
+
 echo "Syncing database..."
 rsync -avz data/best_football.db ha1:/home/bestfootball/data/
+
+echo "Installing dependencies on server..."
+ssh ha1 "cd /home/bestfootball && /home/bestfootball/.local/bin/uv sync"
 
 echo "Restarting API service..."
 ssh ha1 "sudo systemctl restart bestfootball-api"
