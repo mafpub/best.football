@@ -267,6 +267,13 @@
     <!--#include virtual="/includes/footer.html" -->
 
 <script>
+// Escape HTML to prevent XSS
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 document.getElementById('camp-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -313,10 +320,11 @@ document.getElementById('camp-form').addEventListener('submit', async function(e
 
         if (response.ok) {
             const result = await response.json();
+            // Use escapeHtml to prevent XSS from server response
             messageDiv.innerHTML = `
                 <div class="bg-green-100 text-green-800 p-4 rounded">
                     <p class="font-semibold">Thank you for your submission!</p>
-                    <p class="mt-2">Your camp "${result.name}" has been submitted for review.
+                    <p class="mt-2">Your camp "${escapeHtml(result.name)}" has been submitted for review.
                     We'll notify you at your email address when it's published.</p>
                 </div>
             `;
@@ -324,10 +332,12 @@ document.getElementById('camp-form').addEventListener('submit', async function(e
             form.reset();
         } else {
             const error = await response.json();
+            // Use escapeHtml to prevent XSS from error messages
+            const errorMsg = escapeHtml(error.detail || 'Please check your form and try again.');
             messageDiv.innerHTML = `
                 <div class="bg-red-100 text-red-800 p-4 rounded">
                     <p class="font-semibold">Submission failed</p>
-                    <p class="mt-2">${error.detail || 'Please check your form and try again.'}</p>
+                    <p class="mt-2">${errorMsg}</p>
                 </div>
             `;
             messageDiv.classList.remove('hidden');

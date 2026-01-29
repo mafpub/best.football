@@ -5,9 +5,25 @@ import re
 from datetime import datetime
 from pathlib import Path
 
+import bleach
 import markdown
 import yaml
 from jinja2 import Environment
+
+# Allowed HTML tags and attributes for guide content (from trusted markdown sources)
+ALLOWED_TAGS = [
+    "a", "abbr", "acronym", "b", "blockquote", "code", "em", "i", "li", "ol",
+    "p", "pre", "strong", "ul", "h1", "h2", "h3", "h4", "h5", "h6", "br", "hr",
+    "div", "span", "table", "thead", "tbody", "tr", "th", "td", "img", "figure",
+    "figcaption", "sup", "sub", "dl", "dt", "dd",
+]
+ALLOWED_ATTRS = {
+    "*": ["class", "id"],
+    "a": ["href", "title", "rel"],
+    "img": ["src", "alt", "title", "width", "height"],
+    "th": ["scope"],
+    "td": ["colspan", "rowspan"],
+}
 
 PROJECT_ROOT = Path(__file__).parent.parent
 GUIDES_DIR = PROJECT_ROOT / "data" / "guides"
@@ -64,9 +80,11 @@ def load_guide(filepath: Path) -> dict | None:
     # Generate slug from filename
     slug = filepath.stem
 
-    # Convert markdown to HTML
+    # Convert markdown to HTML and sanitize
     md = markdown.Markdown(extensions=["extra", "smarty", "toc"])
-    content_html = md.convert(body)
+    raw_html = md.convert(body)
+    # Sanitize HTML to prevent XSS even from trusted markdown sources
+    content_html = bleach.clean(raw_html, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRS)
 
     # Get file modification time for dates
     mtime = datetime.fromtimestamp(filepath.stat().st_mtime)

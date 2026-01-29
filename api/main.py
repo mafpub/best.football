@@ -1,26 +1,40 @@
 """FastAPI application for camp submissions and search."""
 
+import logging
 import uuid
 from datetime import datetime
+from enum import Enum
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from jinja2 import Environment, FileSystemLoader
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, field_validator
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
 
 from pipeline.database import get_db
+
+logger = logging.getLogger(__name__)
 
 # Setup Jinja2 for HTML responses
 TEMPLATES_DIR = Path(__file__).parent.parent / "templates"
 jinja_env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
+
+# Rate limiting
+limiter = Limiter(key_func=get_remote_address)
 
 app = FastAPI(
     title="best.football API",
     description="Camp submissions and search for best.football",
     version="0.1.0",
 )
+
+# Add rate limiter to app state
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.add_middleware(
     CORSMiddleware,
@@ -29,12 +43,34 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Valid organizer types for validation
+VALID_ORGANIZER_TYPES = {"university", "private", "school", "organization"}
+
+
+class OrganizerType(str, Enum):
+    """Valid organizer types."""
+    university = "university"
+    private = "private"
+    school = "school"
+    organization = "organization"
+
+
+# Generic exception handler for production (hide internal details)
+@app.exception_handler(Exception)
+async def generic_exception_handler(request: Request, exc: Exception):
+    """Handle unexpected exceptions without leaking internal details."""
+    logger.exception("Unhandled exception: %s", exc)
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "An internal error occurred. Please try again later."},
+    )
+
 
 class CampSubmission(BaseModel):
     """Camp submission payload."""
 
     name: str
-    organizer_type: str  # 'university', 'private', 'school', 'organization'
+    organizer_type: OrganizerType  # Validated enum
     venue_name: str | None = None
     address: str | None = None
     city: str
@@ -52,6 +88,26 @@ class CampSubmission(BaseModel):
     registration_url: str | None = None
     submitted_by: str
     submitted_email: EmailStr
+
+    @field_validator("name", "city", "submitted_by")
+    @classmethod
+    def strip_and_validate_length(cls, v: str) -> str:
+        """Strip whitespace and validate length."""
+        v = v.strip()
+        if len(v) < 2:
+            raise ValueError("Must be at least 2 characters")
+        if len(v) > 200:
+            raise ValueError("Must be 200 characters or less")
+        return v
+
+    @field_validator("state")
+    @classmethod
+    def validate_state(cls, v: str) -> str:
+        """Validate state is one of the supported states."""
+        v = v.strip().upper()
+        if v not in {"TX", "CA", "FL", "OH"}:
+            raise ValueError("State must be TX, CA, FL, or OH")
+        return v
 
 
 class CampResponse(BaseModel):
@@ -71,8 +127,9 @@ async def health_check():
 
 
 @app.post("/api/camps", response_model=CampResponse)
-async def submit_camp(camp: CampSubmission):
-    """Submit a new camp for review."""
+@limiter.limit("5/minute")
+async def submit_camp(request: Request, camp: CampSubmission):
+    """Submit a new camp for review. Rate limited to 5 per minute per IP."""
     camp_id = str(uuid.uuid4())
 
     with get_db() as conn:
@@ -88,7 +145,7 @@ async def submit_camp(camp: CampSubmission):
             (
                 camp_id,
                 camp.name,
-                camp.organizer_type,
+                camp.organizer_type.value,  # Convert enum to string
                 camp.venue_name,
                 camp.address,
                 camp.city,
@@ -122,11 +179,13 @@ async def submit_camp(camp: CampSubmission):
 
 
 @app.get("/api/search")
+@limiter.limit("30/minute")
 async def search(
-    q: str = Query(..., min_length=2, description="Search query"),
+    request: Request,
+    q: str = Query(..., min_length=2, max_length=100, description="Search query"),
     limit: int = Query(10, le=50, description="Max results"),
 ):
-    """Search schools and camps."""
+    """Search schools and camps. Rate limited to 30 per minute per IP."""
     results = []
     query = f"%{q}%"
 
@@ -175,16 +234,26 @@ async def search(
 
 
 @app.get("/api/camps")
+@limiter.limit("60/minute")
 async def list_camps(
     request: Request,
     state: str | None = Query(None, description="Filter by state"),
-    city: str | None = Query(None, description="Filter by city"),
+    city: str | None = Query(None, max_length=100, description="Filter by city"),
     type: list[str] | None = Query(None, description="Filter by organizer type"),
     overnight: str | None = Query(None, description="Filter for overnight camps"),
     verified_only: bool = Query(True, description="Only show verified camps"),
     limit: int = Query(50, le=200, description="Max results"),
 ):
     """List camps with optional filters. Returns HTML for HTMX requests, JSON otherwise."""
+    # Validate organizer types if provided
+    if type:
+        invalid_types = set(type) - VALID_ORGANIZER_TYPES
+        if invalid_types:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Invalid organizer types: {', '.join(invalid_types)}",
+            )
+
     with get_db() as conn:
         query = "SELECT * FROM camps WHERE 1=1"
         params = []
@@ -194,11 +263,11 @@ async def list_camps(
 
         if state:
             query += " AND state = ?"
-            params.append(state.upper())
+            params.append(state.upper()[:2])  # Limit to 2 chars
 
         if city:
             query += " AND LOWER(city) LIKE LOWER(?)"
-            params.append(f"%{city}%")
+            params.append(f"%{city[:100]}%")  # Limit city length
 
         if type:
             placeholders = ",".join("?" * len(type))

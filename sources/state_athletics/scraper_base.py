@@ -17,9 +17,18 @@ import httpx
 # Module logger
 logger = logging.getLogger(__name__)
 
-# Oxylabs proxy configuration from environment variables with fallback defaults
-_OXYLABS_USERNAME = os.environ.get("OXYLABS_USERNAME", "palpha_Thtm9")
-_OXYLABS_PASSWORD = os.environ.get("OXYLABS_PASSWORD", "ULcLdrJ+d_4mXBM")
+# Oxylabs proxy configuration from environment variables (required for proxy usage)
+_OXYLABS_USERNAME = os.environ.get("OXYLABS_USERNAME")
+_OXYLABS_PASSWORD = os.environ.get("OXYLABS_PASSWORD")
+
+
+def _check_proxy_credentials():
+    """Verify proxy credentials are available."""
+    if not _OXYLABS_USERNAME or not _OXYLABS_PASSWORD:
+        raise ValueError(
+            "Oxylabs proxy credentials not configured. "
+            "Set OXYLABS_USERNAME and OXYLABS_PASSWORD environment variables."
+        )
 
 OXYLABS_PROXIES = [
     {"proxy": "ddc.oxylabs.io:8001"},
@@ -64,6 +73,7 @@ class ProxiedScraper:
 
     def _get_proxy_url(self) -> str:
         """Get next proxy URL with auth."""
+        _check_proxy_credentials()
         proxy = OXYLABS_PROXIES[self.proxy_index]
         self.proxy_index = (self.proxy_index + 1) % len(OXYLABS_PROXIES)
         return f"http://{_OXYLABS_USERNAME}:{_OXYLABS_PASSWORD}@{proxy['proxy']}"
