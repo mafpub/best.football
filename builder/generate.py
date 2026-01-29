@@ -81,12 +81,99 @@ def generate_school_pages(env: Environment) -> int:
                     "median_income": school["county_income"],
                 }
 
+            # Query school metrics
+            metrics_row = conn.execute("""
+                SELECT competitive_index, playoff_appearances_5yr,
+                       enrollment_percentile, travel_burden_score
+                FROM school_metrics
+                WHERE school_id = ?
+            """, (school["nces_id"],)).fetchone()
+
+            metrics = None
+            if metrics_row:
+                metrics = {
+                    "competitive_index": metrics_row["competitive_index"],
+                    "playoff_appearances_5yr": metrics_row["playoff_appearances_5yr"],
+                    "enrollment_percentile": metrics_row["enrollment_percentile"] * 100 if metrics_row["enrollment_percentile"] else None,
+                    "travel_burden_score": metrics_row["travel_burden_score"],
+                }
+
+            # Query related schools for internal linking
+            same_city = conn.execute("""
+                SELECT nces_id, name, city, state
+                FROM schools
+                WHERE state = ? AND city = ? AND nces_id != ?
+                ORDER BY name
+                LIMIT 5
+            """, (school["state"], school["city"], school["nces_id"])).fetchall()
+
+            same_classification = []
+            if school["classification"]:
+                same_classification = conn.execute("""
+                    SELECT s.nces_id, s.name, s.city, s.state
+                    FROM schools s
+                    JOIN athletic_programs ap ON s.nces_id = ap.school_id
+                    WHERE s.state = ? AND ap.classification = ? AND s.nces_id != ?
+                    ORDER BY RANDOM()
+                    LIMIT 5
+                """, (school["state"], school["classification"], school["nces_id"])).fetchall()
+
+            related_schools = {
+                "same_city": [
+                    {"nces_id": r["nces_id"], "name": r["name"], "city": r["city"], "state": r["state"], "slug": slugify(r["name"])}
+                    for r in same_city
+                ],
+                "same_classification": [
+                    {"nces_id": r["nces_id"], "name": r["name"], "city": r["city"], "state": r["state"], "slug": slugify(r["name"])}
+                    for r in same_classification
+                ],
+            }
+
+            # Query nearby camps - same city first, then same state
+            camps_same_city = conn.execute('''
+                SELECT id, name, city, state, start_date
+                FROM camps
+                WHERE verified = 1 AND state = ? AND LOWER(city) = LOWER(?)
+                LIMIT 3
+            ''', (school['state'], school['city'])).fetchall()
+
+            nearby_camps = []
+            for c in camps_same_city:
+                nearby_camps.append({
+                    "id": c["id"],
+                    "name": c["name"],
+                    "city": c["city"],
+                    "state": c["state"],
+                    "slug": slugify(c["name"]),
+                    "start_date": c["start_date"],
+                })
+
+            # Get more camps from same state if needed
+            if len(nearby_camps) < 5:
+                camps_same_state = conn.execute('''
+                    SELECT id, name, city, state, start_date
+                    FROM camps
+                    WHERE verified = 1 AND state = ? AND LOWER(city) != LOWER(?)
+                    LIMIT ?
+                ''', (school['state'], school['city'], 5 - len(nearby_camps))).fetchall()
+
+                for c in camps_same_state:
+                    nearby_camps.append({
+                        "id": c["id"],
+                        "name": c["name"],
+                        "city": c["city"],
+                        "state": c["state"],
+                        "slug": slugify(c["name"]),
+                        "start_date": c["start_date"],
+                    })
+
             html = template.render(
                 school=school,
                 program=program,
-                metrics=None,  # TODO: Add metrics
+                metrics=metrics,
                 county=county,
-                nearby_camps=[],  # TODO: Query nearby camps
+                related_schools=related_schools,
+                nearby_camps=nearby_camps,
             )
 
             output_path = state_dir / f"{school['slug']}.html"
@@ -153,6 +240,25 @@ def generate_state_pages(env: Environment) -> int:
                 for s in top_schools
             ]
 
+            # Get classifications with school counts
+            classifications = conn.execute("""
+                SELECT ap.classification, COUNT(*) as school_count
+                FROM schools s
+                JOIN athletic_programs ap ON s.nces_id = ap.school_id
+                WHERE s.state = ? AND ap.classification IS NOT NULL
+                GROUP BY ap.classification
+                ORDER BY ap.classification
+            """, (state,)).fetchall()
+
+            classification_list = [
+                {
+                    "name": c["classification"],
+                    "slug": slugify(c["classification"]),
+                    "count": c["school_count"],
+                }
+                for c in classifications
+            ]
+
             html = template.render(
                 state=state,
                 state_name=state_name,
@@ -163,7 +269,7 @@ def generate_state_pages(env: Environment) -> int:
                 county_count=len(counties),
                 counties=county_list,
                 top_schools=top_list,
-                classifications=[],  # TODO: Get from athletic_programs
+                classifications=classification_list,
                 upcoming_camps=[],
             )
 

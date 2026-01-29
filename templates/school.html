@@ -24,6 +24,15 @@
         "longitude": {{ school.lng }}
     }
     {% endif %}
+    {% if school.phone %}
+    ,"telephone": "{{ school.phone }}"
+    {% endif %}
+    {% if school.website %}
+    ,"url": "{{ school.website }}"
+    {% endif %}
+    {% if school.enrollment %}
+    ,"numberOfStudents": {{ school.enrollment }}
+    {% endif %}
 }
 </script>
 {% if program %}
@@ -201,6 +210,39 @@
            class="mt-4 inline-block text-field hover:underline">
             View all {{ county.name }} County schools &rarr;
         </a>
+    </section>
+    {% endif %}
+
+    {% if related_schools and (related_schools.same_city or related_schools.same_classification) %}
+    <section class="bg-white rounded-lg shadow p-6 mb-8">
+        <h2 class="text-lg font-semibold mb-4 text-field-dark">Related Schools</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            {% if related_schools.same_city %}
+            <div>
+                <h3 class="font-medium text-gray-700 mb-2">Schools in {{ school.city }}</h3>
+                <ul class="space-y-1">
+                    {% for rs in related_schools.same_city %}
+                    <li>
+                        <a href="/schools/{{ rs.state|lower }}/{{ rs.slug }}.html" class="text-field hover:underline">{{ rs.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% if related_schools.same_classification %}
+            <div>
+                <h3 class="font-medium text-gray-700 mb-2">{{ program.classification }} Schools</h3>
+                <ul class="space-y-1">
+                    {% for rs in related_schools.same_classification %}
+                    <li>
+                        <a href="/schools/{{ rs.state|lower }}/{{ rs.slug }}.html" class="text-field hover:underline">{{ rs.name }}</a>
+                        <span class="text-gray-500 text-sm">- {{ rs.city }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
     </section>
     {% endif %}
 
