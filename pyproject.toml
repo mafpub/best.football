@@ -16,6 +16,7 @@ dependencies = [
     "bleach>=6.2",
     "slowapi>=0.1.9",
     "email-validator>=2.2",
+    "requests>=2.32",
 ]
 
 [project.optional-dependencies]

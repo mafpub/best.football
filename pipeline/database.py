@@ -117,8 +117,22 @@ def init_db():
         submitted_email TEXT,
         verified BOOLEAN DEFAULT FALSE,
         featured BOOLEAN DEFAULT FALSE,
+        action_token TEXT,  -- Secure token for approve/reject links
         created_at TEXT DEFAULT CURRENT_TIMESTAMP,
         updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    );
+
+    -- Consent logging for GDPR/CCPA compliance
+    CREATE TABLE IF NOT EXISTS consent_log (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        camp_id TEXT REFERENCES camps(id),
+        ip_address TEXT NOT NULL,
+        user_agent TEXT,
+        tos_consent BOOLEAN NOT NULL DEFAULT TRUE,
+        marketing_consent BOOLEAN NOT NULL DEFAULT FALSE,
+        consent_timestamp TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        tos_version TEXT DEFAULT '1.0',
+        privacy_version TEXT DEFAULT '1.0'
     );
 
     -- Guides (long-form content)
