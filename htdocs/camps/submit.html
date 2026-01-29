@@ -246,6 +246,31 @@
                 </div>
             </fieldset>
 
+            <!-- Terms & Privacy -->
+            <fieldset>
+                <legend class="text-lg font-semibold text-field-dark mb-4">Terms & Privacy</legend>
+
+                <div class="space-y-3">
+                    <label class="flex items-start">
+                        <input type="checkbox" id="tos_consent" name="tos_consent" required
+                               class="mt-1 mr-3 h-4 w-4 text-field focus:ring-field border-gray-300 rounded">
+                        <span class="text-sm text-gray-700">
+                            I agree to the <a href="/terms.html" class="text-field underline" target="_blank">Terms of Service</a>
+                            and <a href="/privacy.html" class="text-field underline" target="_blank">Privacy Policy</a>
+                            <span class="text-red-500">*</span>
+                        </span>
+                    </label>
+
+                    <label class="flex items-start">
+                        <input type="checkbox" id="marketing_consent" name="marketing_consent"
+                               class="mt-1 mr-3 h-4 w-4 text-field focus:ring-field border-gray-300 rounded">
+                        <span class="text-sm text-gray-700">
+                            Yes, you may contact me with updates and special offers from time to time
+                        </span>
+                    </label>
+                </div>
+            </fieldset>
+
             <!-- Submit Button -->
             <div class="pt-4">
                 <button type="submit"
@@ -304,6 +329,10 @@ document.getElementById('camp-form').addEventListener('submit', async function(e
     if (!data.overnight) {
         data.overnight = false;
     }
+
+    // Handle consent checkboxes
+    data.tos_consent = document.getElementById('tos_consent').checked;
+    data.marketing_consent = document.getElementById('marketing_consent').checked;
 
     // Disable submit button
     submitButton.disabled = true;

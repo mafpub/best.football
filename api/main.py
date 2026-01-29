@@ -1,6 +1,7 @@
 """FastAPI application for camp submissions and search."""
 
 import logging
+import secrets
 import uuid
 from datetime import datetime
 from enum import Enum
@@ -16,6 +17,11 @@ from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address
 
 from pipeline.database import get_db
+from api.zoho_email import (
+    send_camp_submitted_email,
+    send_camp_approved_email,
+    send_camp_rejected_email,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -88,6 +94,8 @@ class CampSubmission(BaseModel):
     registration_url: str | None = None
     submitted_by: str
     submitted_email: EmailStr
+    tos_consent: bool  # Required, must be True
+    marketing_consent: bool = False  # Optional
 
     @field_validator("name", "city", "submitted_by")
     @classmethod
@@ -107,6 +115,14 @@ class CampSubmission(BaseModel):
         v = v.strip().upper()
         if v not in {"TX", "CA", "FL", "OH"}:
             raise ValueError("State must be TX, CA, FL, or OH")
+        return v
+
+    @field_validator("tos_consent")
+    @classmethod
+    def validate_tos_consent(cls, v: bool) -> bool:
+        """Validate that TOS consent is True."""
+        if not v:
+            raise ValueError("You must agree to the Terms of Service and Privacy Policy")
         return v
 
 
@@ -131,16 +147,22 @@ async def health_check():
 async def submit_camp(request: Request, camp: CampSubmission):
     """Submit a new camp for review. Rate limited to 5 per minute per IP."""
     camp_id = str(uuid.uuid4())
+    action_token = secrets.token_urlsafe(32)
+
+    # Get client info for consent logging
+    client_ip = get_remote_address(request)
+    user_agent = request.headers.get("user-agent", "")
 
     with get_db() as conn:
+        # Insert camp with action token
         conn.execute(
             """
             INSERT INTO camps
             (id, name, organizer_type, venue_name, address, city, state, zip,
              start_date, end_date, ages_min, ages_max, skill_levels, focus_areas,
              overnight, cost_min, cost_max, registration_url, submitted_by,
-             submitted_email, verified, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+             submitted_email, verified, action_token, created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 camp_id,
@@ -164,10 +186,48 @@ async def submit_camp(request: Request, camp: CampSubmission):
                 camp.submitted_by,
                 camp.submitted_email,
                 False,  # Not verified by default
+                action_token,
                 datetime.utcnow().isoformat(),
                 datetime.utcnow().isoformat(),
             ),
         )
+
+        # Log consent for compliance
+        conn.execute(
+            """
+            INSERT INTO consent_log
+            (camp_id, ip_address, user_agent, tos_consent, marketing_consent,
+             consent_timestamp, tos_version, privacy_version)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                camp_id,
+                client_ip,
+                user_agent[:500] if user_agent else None,  # Truncate long user agents
+                camp.tos_consent,
+                camp.marketing_consent,
+                datetime.utcnow().isoformat(),
+                "1.0",
+                "1.0",
+            ),
+        )
+
+    # Send admin notification email (non-blocking, don't fail if email fails)
+    try:
+        send_camp_submitted_email(
+            camp_id=camp_id,
+            camp_name=camp.name,
+            city=camp.city,
+            state=camp.state.upper(),
+            organizer_type=camp.organizer_type.value,
+            submitted_by=camp.submitted_by,
+            submitted_email=camp.submitted_email,
+            start_date=camp.start_date,
+            end_date=camp.end_date,
+            action_token=action_token,
+        )
+    except Exception as e:
+        logger.error(f"Failed to send camp submission email: {e}")
 
     return CampResponse(
         id=camp_id,
@@ -293,3 +353,169 @@ async def list_camps(
             "camps": camps_list,
             "total": len(camps_list),
         }
+
+
+@app.get("/api/camps/{camp_id}/approve")
+async def approve_camp(
+    camp_id: str,
+    token: str = Query(..., description="Security token for approval"),
+):
+    """Approve a camp submission. Called from admin email link."""
+    with get_db() as conn:
+        # Fetch camp and validate token
+        camp = conn.execute(
+            "SELECT * FROM camps WHERE id = ?",
+            (camp_id,),
+        ).fetchone()
+
+        if not camp:
+            return HTMLResponse(
+                content=_render_action_result("Camp Not Found", "This camp does not exist.", False),
+                status_code=404,
+            )
+
+        if camp["action_token"] != token:
+            return HTMLResponse(
+                content=_render_action_result("Invalid Token", "The approval link is invalid or expired.", False),
+                status_code=403,
+            )
+
+        if camp["verified"]:
+            return HTMLResponse(
+                content=_render_action_result("Already Approved", f"The camp '{camp['name']}' has already been approved.", True),
+            )
+
+        # Approve the camp
+        conn.execute(
+            "UPDATE camps SET verified = 1, updated_at = ? WHERE id = ?",
+            (datetime.utcnow().isoformat(), camp_id),
+        )
+
+    # Send approval email to submitter
+    try:
+        send_camp_approved_email(
+            to_email=camp["submitted_email"],
+            camp_name=camp["name"],
+            camp_id=camp_id,
+            state=camp["state"],
+        )
+    except Exception as e:
+        logger.error(f"Failed to send approval email: {e}")
+
+    return HTMLResponse(
+        content=_render_action_result(
+            "Camp Approved!",
+            f"The camp '{camp['name']}' is now live on best.football. An email notification has been sent to {camp['submitted_email']}.",
+            True,
+        ),
+    )
+
+
+@app.get("/api/camps/{camp_id}/reject")
+async def reject_camp(
+    camp_id: str,
+    token: str = Query(..., description="Security token for rejection"),
+):
+    """Reject a camp submission. Called from admin email link."""
+    with get_db() as conn:
+        # Fetch camp and validate token
+        camp = conn.execute(
+            "SELECT * FROM camps WHERE id = ?",
+            (camp_id,),
+        ).fetchone()
+
+        if not camp:
+            return HTMLResponse(
+                content=_render_action_result("Camp Not Found", "This camp does not exist or has already been deleted.", False),
+                status_code=404,
+            )
+
+        if camp["action_token"] != token:
+            return HTMLResponse(
+                content=_render_action_result("Invalid Token", "The rejection link is invalid or expired.", False),
+                status_code=403,
+            )
+
+        submitter_email = camp["submitted_email"]
+        camp_name = camp["name"]
+
+        # Delete the camp
+        conn.execute("DELETE FROM camps WHERE id = ?", (camp_id,))
+
+    # Send rejection email to submitter
+    try:
+        send_camp_rejected_email(
+            to_email=submitter_email,
+            camp_name=camp_name,
+        )
+    except Exception as e:
+        logger.error(f"Failed to send rejection email: {e}")
+
+    return HTMLResponse(
+        content=_render_action_result(
+            "Camp Rejected",
+            f"The camp '{camp_name}' has been removed. An email notification has been sent to {submitter_email}.",
+            True,
+        ),
+    )
+
+
+def _render_action_result(title: str, message: str, success: bool) -> str:
+    """Render HTML result page for approve/reject actions."""
+    color = "#27ae60" if success else "#e74c3c"
+    icon = "&#10003;" if success else "&#10007;"
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} | best.football</title>
+    <style>
+        body {{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f5f5f5;
+        }}
+        .card {{
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+        }}
+        .icon {{
+            font-size: 60px;
+            color: {color};
+            margin-bottom: 20px;
+        }}
+        h1 {{
+            color: #333;
+            margin-bottom: 15px;
+        }}
+        p {{
+            color: #666;
+            line-height: 1.6;
+        }}
+        a {{
+            color: #2d5a27;
+            text-decoration: none;
+        }}
+        a:hover {{
+            text-decoration: underline;
+        }}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon">{icon}</div>
+        <h1>{title}</h1>
+        <p>{message}</p>
+        <p style="margin-top: 30px;"><a href="https://best.football">&larr; Back to best.football</a></p>
+    </div>
+</body>
+</html>"""
