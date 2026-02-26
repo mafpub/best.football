@@ -17,6 +17,8 @@ dependencies = [
     "slowapi>=0.1.9",
     "email-validator>=2.2",
     "requests>=2.32",
+    "google-api-python-client>=2.189.0",
+    "playwright>=1.48.0",
 ]
 
 [project.optional-dependencies]
