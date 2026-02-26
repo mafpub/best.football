@@ -48,6 +48,7 @@ def init_db():
         school_type TEXT,  -- 'public', 'private', 'charter'
         title_i BOOLEAN,
         urban_locale TEXT,
+        website TEXT,  -- School website URL from NCES
         created_at TEXT DEFAULT CURRENT_TIMESTAMP,
         updated_at TEXT DEFAULT CURRENT_TIMESTAMP
     );
@@ -145,12 +146,31 @@ def init_db():
         updated_at TEXT DEFAULT CURRENT_TIMESTAMP
     );
 
+    -- Scraper State Tracking (for self-healing scrapers)
+    CREATE TABLE IF NOT EXISTS scraper_state (
+        scraper_name TEXT PRIMARY KEY,
+        last_run TEXT,
+        last_success TEXT,
+        consecutive_failures INTEGER DEFAULT 0,
+        last_error TEXT,
+        last_selector_hash TEXT
+    );
+
+    -- Content Hashes (for change detection)
+    CREATE TABLE IF NOT EXISTS content_hashes (
+        url TEXT PRIMARY KEY,
+        content_hash TEXT,
+        last_checked TEXT,
+        scraper_name TEXT
+    );
+
     -- Indexes
     CREATE INDEX IF NOT EXISTS idx_schools_state ON schools(state);
     CREATE INDEX IF NOT EXISTS idx_schools_county ON schools(county, state);
     CREATE INDEX IF NOT EXISTS idx_athletic_programs_school ON athletic_programs(school_id);
     CREATE INDEX IF NOT EXISTS idx_camps_state_city ON camps(state, city);
     CREATE INDEX IF NOT EXISTS idx_camps_verified ON camps(verified);
+    CREATE INDEX IF NOT EXISTS idx_content_hashes_scraper ON content_hashes(scraper_name);
     """
 
     with get_db() as conn:
