@@ -36,3 +36,18 @@ htdocs/rankings/*/*.html
 
 # OS
 .DS_Store
+
+# Playwright MCP cache
+.playwright-mcp/
+
+# Old plan artifacts (not implementing)
+agents/
+orchestrator/
+
+# Coverage reports
+coverage/
+*.zip
+best.football-Coverage-*.zip
+
+# Themes directory (not in use)
+themes/
