@@ -99,3 +99,134 @@ Priority guides based on computed data analysis. These leverage unique data (com
 - [ ] Set up monitoring/alerting
 - [ ] Configure Cloudflare caching rules
 - [ ] Set up automated data refresh pipeline
+
+---
+
+## School Athletic Website Discovery (DEVELOPMENT PHASE)
+
+### Overview
+
+**This is a one-time setup phase to build 7,000+ individual school scrapers.**
+
+After this phase is complete, running all scrapers will be fast and parallelizable. During development, Claude (the AI operator) manually discovers each school's athletic website using Playwright.
+
+### Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ PHASE 1: Discovery (Current Phase - SLOW, One-Time)            │
+└─────────────────────────────────────────────────────────────────┘
+
+For each of ~7,426 schools:
+1. Claude uses Playwright MCP tool
+2. Browses school website like a human
+3. Finds athletic section (/athletics, /sports, /football, etc.)
+4. Identifies exact selectors for:
+   - News/announcements
+   - Schedule/games
+   - Rosters
+   - Coaches
+5. Generates deterministic Python scraper script
+6. Saves to: scrapers/schools/{state}/{nces_id}.py
+
+┌─────────────────────────────────────────────────────────────────┐
+│ PHASE 2: Runtime (After Discovery - FAST, Parallel)            │
+└─────────────────────────────────────────────────────────────────┘
+
+$ uv run python scrapers/schools/tx/060000103278.py  # Allen HS
+$ uv run python scrapers/schools/ca/060000210346.py  # CA School for Blind
+... (fire off 7,000+ scripts in parallel batches)
+
+Each script:
+- Uses Playwright with Oxylabs proxy
+- Has deterministic selectors for THAT school
+- Returns structured data (news, schedule, roster, etc.)
+- Writes to database
+
+┌─────────────────────────────────────────────────────────────────┐
+│ PHASE 3: Repair (When Scrapers Break)                          │
+└─────────────────────────────────────────────────────────────────┘
+
+When scraper fails:
+1. Claude uses Playwright MCP tool
+2. Re-browses the school athletic website
+3. Sees what changed (new DOM structure)
+4. Updates the scraper script with new selectors
+5. Git commits the fix
+6. Reset failure counter
+```
+
+### Key Design Decisions
+
+**Individual Scripts, NOT Generic Templates**
+- Each school gets its own Python script
+- No "one size fits all" YAML configs
+- Deterministic selectors for each site
+- If Allen High School changes their site, only `allen_high.py` breaks
+
+**Claude is the Discovery Agent**
+- Uses Playwright MCP (mcp__playwright-stealth__ tools)
+- Browses like a human - clicks menus, looks for links
+- Intelligently finds athletic content
+- Generates working scraper scripts
+
+**Sequential Discovery, Parallel Runtime**
+- Discovery: ONE school at a time (slow, careful)
+- Runtime: ALL schools in parallel (fast, efficient)
+
+**Self-Healing via Repair Agent**
+- 2 consecutive failures triggers repair
+- Claude re-inspects site with Playwright
+- Updates selectors, tests, git commits
+- No manual intervention for most breaks
+
+### Data to Scrape
+
+From each school athletic website:
+- News/announcements (articles, updates)
+- Football schedule (games, times, locations)
+- Roster (player names, numbers, positions)
+- Coaching staff (head coach, assistants)
+- Stadium/location details
+
+### Files
+
+**Orchestration:**
+- `scripts/discover_schools.py` - Get next batch, mark status
+- `scrapers/schools/{state}/{nces_id}.py` - Generated scrapers
+
+**Database Tables:**
+- `school_scraper_status` - Track discovery progress
+- `school_athletic_urls` - Discovered athletic URLs
+- `scraped_athletic_data` - Actual scraped content
+
+### Commands
+
+```bash
+# Get next batch of schools to discover
+python scripts/discover_schools.py --next-batch --count 10
+
+# Mark school as complete (with generated scraper)
+python scripts/discover_schools.py --complete 060000103278
+
+# Mark school as blocked (Cloudflare, etc.)
+python scripts/discover_schools.py --blocked 060000103278 --reason "cloudflare"
+
+# Status report
+python scripts/discover_schools.py --status
+```
+
+### Progress Tracking
+
+Goal: 7,426 individual school scrapers
+- TX: ~1,900 schools
+- CA: ~2,800 schools
+- FL: ~800 schools
+- OH: ~700 schools
+- Other states: ~1,200 schools
+
+Blocked sites (separate bucket):
+- Cloudflare-protected
+- Require JavaScript beyond Playwright
+- No athletic website found
+- Need manual review
