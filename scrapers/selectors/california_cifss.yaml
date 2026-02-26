@@ -1,0 +1,25 @@
+# California CIF-SS (CIF Southern Section) scraper configuration
+# Data source: https://www.cifsshome.org/widget/school/directory
+# Format: Dynamic widget/table with school directory
+
+page:
+  base_url: "https://www.cifsshome.org/widget/school/directory"
+  wait_for: "table, .school-directory, .widget"
+
+selectors:
+  # School rows in the directory table
+  school_rows: "table tbody tr, .school-row, .directory-item"
+
+  # Individual school data cells
+  school_name: "td:nth-child(1), .school-name, .name"
+  classification: "td:nth-child(2), .classification, .division"
+  conference: "td:nth-child(3), .conference, .league"
+  city: "td:nth-child(4), .city"
+
+  # Pagination
+  next_page: "a.next, .pagination-next, [aria-label='Next']"
+
+# Content selectors for change detection
+content:
+  news: ".news-item, article, .post"
+  announcements: ".announcement, .notice, .alert"

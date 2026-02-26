@@ -1,0 +1,43 @@
+# Ohio OHSAA (Ohio High School Athletic Association) scraper configuration
+# Data source: https://ohsaa.finalforms.com/state_schools
+# Format: Paginated HTML tables with comprehensive school data
+
+page:
+  base_url: "https://ohsaa.finalforms.com/state_schools"
+  wait_for: "table"
+
+selectors:
+  # Main table with school data
+  table: "table"
+
+  # School rows
+  school_rows: "tbody tr"
+
+  # Individual school cells (FinalForms specific structure)
+  # Cell 0: Empty (checkbox)
+  # Cell 1: Enrollment number
+  # Cell 2: School name with grades and district info
+  # Cell 3: Conference, Athletic District, Classes, Division
+  # Cell 4: Address info
+
+  enrollment: "td:nth-child(1)"
+  school_name_cell: "td:nth-child(2)"
+  school_name_link: "td:nth-child(2) a:not([href*='['])"
+
+  # Cell 3 uses <small title="..."> structure
+  conference: "td:nth-child(3) small[title='Conference'] a"
+  athletic_district: "td:nth-child(3) small[title='District'] a"
+  classes: "td:nth-child(3) small[title='Class'] a.dropdown-toggle"
+  division: "td:nth-child(3) small[title='Division'] a"
+
+  # NCES ID extraction from row text
+  nces_id_pattern: "NCES ID:\\s*(\\d{12})"
+
+  # Pagination
+  pagination: "nav[aria-label='Pagination'], ul.pagination"
+  next_page: "a[aria-label='Next'], .pagination-next"
+
+# Content selectors for change detection
+content:
+  news: ".news-item, article, .post"
+  announcements: ".announcement, .notice, .alert"

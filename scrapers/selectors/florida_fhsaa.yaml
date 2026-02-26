@@ -1,0 +1,26 @@
+# Florida FHSAA (Florida High School Athletic Association) scraper configuration
+# Data source: https://www.fhsaahome.org/widget/school-directory-locations
+# Format: Dynamic widget with school directory and locations
+
+page:
+  base_url: "https://www.fhsaahome.org/widget/school-directory-locations"
+  wait_for: "table, .school-directory, .widget"
+
+selectors:
+  # School rows in the directory
+  school_rows: "table tbody tr, .school-row, .directory-item"
+
+  # Individual school data
+  school_name: "td:nth-child(1), .school-name, .name"
+  classification: "td:nth-child(2), .classification, .class"
+  conference: "td:nth-child(3), .conference, .district"
+  city: "td:nth-child(4), .city"
+  county: "td:nth-child(5), .county"
+
+  # Pagination
+  next_page: "a.next, .pagination-next, [aria-label='Next']"
+
+# Content selectors for change detection
+content:
+  news: ".news-item, article, .post"
+  announcements: ".announcement, .notice, .alert"

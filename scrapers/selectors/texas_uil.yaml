@@ -1,0 +1,25 @@
+# Texas UIL (University Interscholastic League) scraper configuration
+# Data source: https://www.uiltexas.org/football/alignments
+# Format: PDF documents containing district alignments
+
+page:
+  base_url: "https://www.uiltexas.org/football/alignments"
+  wait_for: "a[href$='.pdf']"
+
+# Selectors for finding PDF links
+selectors:
+  pdf_links: "a[href$='.pdf']"
+
+  # Classification and division extraction from PDF links
+  classification:
+    pattern: "(\\d+)A"
+    from: "link_text"
+
+  division:
+    pattern: "(?:Division\\s*)?(I|II|D1|D2)"
+    from: "link_text"
+
+# Content selectors for change detection (news, announcements)
+content:
+  news: ".news-item, article, .post"
+  announcements: ".announcement, .notice, .alert"
