@@ -196,6 +196,14 @@ class NCESClient:
         else:
             school_type = "public"
 
+        # Extract website URL from NCES data
+        website = row.get("WEBSITE", "").strip()
+        # Clean up website URL - remove http:// prefix for consistency
+        if website and website.lower().startswith("http://"):
+            website = website[7:]
+        elif website and website.lower().startswith("https://"):
+            website = website[8:]
+
         return {
             "nces_id": nces_id,
             "name": row.get("SCH_NAME", "").strip(),
@@ -211,6 +219,7 @@ class NCESClient:
             "school_type": school_type,
             "title_i": row.get("TITLEI_STATUS_TEXT", "") == "Yes",
             "urban_locale": row.get("ULOCALE", "").strip(),
+            "website": website or None,
         }
 
     def load_to_db(self, schools: list[dict]) -> int:
@@ -224,9 +233,8 @@ class NCESClient:
                         INSERT OR REPLACE INTO schools
                         (nces_id, name, address, city, county, state, zip,
                          lat, lng, enrollment, grades, school_type, title_i,
-                         urban_locale, updated_at)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
-                                CURRENT_TIMESTAMP)
+                         urban_locale, updated_at, website)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?)
                         """,
                         (
                             school["nces_id"],
@@ -243,11 +251,21 @@ class NCESClient:
                             school["school_type"],
                             school["title_i"],
                             school["urban_locale"],
+                            school["website"],
                         ),
                     )
                     inserted += 1
                 except Exception as e:
-                    print(f"Error inserting {school['nces_id']}: {e}")
+                    import traceback
+                    print(f"Error inserting {school['nces_id']}: {type(e).__name__}: {e}")
+                    print(f"Has website key: {'website' in school}")
+                    if 'website' in school:
+                        print(f"Website value: {repr(school['website'])}")
+                    print(f"School data keys: {list(school.keys())}")
+                    # Only print traceback for first error
+                    if inserted == 0:
+                        traceback.print_exc()
+                        break  # Stop after first error to see what's happening
 
             print(f"Loaded {inserted} schools into database")
             return inserted
