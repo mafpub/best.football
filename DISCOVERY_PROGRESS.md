@@ -11,14 +11,27 @@
 # Check current status
 uv run python scripts/discover_schools.py --status
 
+# Seed pending queue rows from schools with websites
+uv run python scripts/discover_schools.py --seed
+
 # Get next batch of schools to discover
 uv run python scripts/discover_schools.py --next-batch --count 5
+
+# Claim exactly one school (moves to in_progress)
+uv run python scripts/discover_schools.py --claim-next
 
 # Mark school as complete (with scraper)
 uv run python scripts/discover_schools.py --complete <nces_id> --scraper-file scrapers/schools/<state>/<nces_id>.py
 
 # Mark school as blocked
 uv run python scripts/discover_schools.py --blocked <nces_id> --reason "<reason>"
+
+# Weekly runtime and repair queue
+uv run python scripts/run_school_scrapes.py --workers 8
+uv run python scripts/run_repair_queue.py --repair-command "<repair command template>"
+
+# Re-open all blocked schools (force back to pending)
+uv run python scripts/discover_schools.py --clear-blocked
 ```
 
 ---
