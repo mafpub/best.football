@@ -164,6 +164,35 @@ def init_db():
         scraper_name TEXT
     );
 
+    -- Per-school deterministic scraper queue state
+    CREATE TABLE IF NOT EXISTS school_scraper_status (
+        nces_id TEXT PRIMARY KEY REFERENCES schools(nces_id),
+        status TEXT NOT NULL DEFAULT 'pending',
+        scraper_file TEXT,
+        started_at TEXT,
+        completed_at TEXT,
+        last_success_at TEXT,
+        last_failure_at TEXT,
+        failure_reason TEXT,
+        notes TEXT,
+        attempts INTEGER NOT NULL DEFAULT 0,
+        consecutive_failures INTEGER NOT NULL DEFAULT 0,
+        next_recheck_at TEXT,
+        updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    );
+
+    -- Runtime results for each school scrape invocation
+    CREATE TABLE IF NOT EXISTS school_scrape_runs (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nces_id TEXT NOT NULL REFERENCES schools(nces_id),
+        status TEXT NOT NULL,
+        script_path TEXT,
+        started_at TEXT NOT NULL,
+        ended_at TEXT NOT NULL,
+        error_message TEXT,
+        output_json TEXT
+    );
+
     -- Indexes
     CREATE INDEX IF NOT EXISTS idx_schools_state ON schools(state);
     CREATE INDEX IF NOT EXISTS idx_schools_county ON schools(county, state);
@@ -171,6 +200,9 @@ def init_db():
     CREATE INDEX IF NOT EXISTS idx_camps_state_city ON camps(state, city);
     CREATE INDEX IF NOT EXISTS idx_camps_verified ON camps(verified);
     CREATE INDEX IF NOT EXISTS idx_content_hashes_scraper ON content_hashes(scraper_name);
+    CREATE INDEX IF NOT EXISTS idx_school_scraper_status_status ON school_scraper_status(status);
+    CREATE INDEX IF NOT EXISTS idx_school_scraper_status_recheck ON school_scraper_status(next_recheck_at);
+    CREATE INDEX IF NOT EXISTS idx_school_scrape_runs_nces ON school_scrape_runs(nces_id, ended_at);
     """
 
     with get_db() as conn:
