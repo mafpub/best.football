@@ -17,6 +17,11 @@ import tempfile
 from pathlib import Path
 
 ALLOWED_STATUSES = {"complete", "blocked", "failed"}
+PROJECT_ROOT = Path(__file__).parent.parent
+DEFAULT_TEMPLATE_BY_MODE = {
+    "create": PROJECT_ROOT / "templates" / "agent_prompts" / "school_creator.md",
+    "repair": PROJECT_ROOT / "templates" / "agent_prompts" / "school_repair.md",
+}
 
 
 def _prompt_text(
@@ -30,46 +35,17 @@ def _prompt_text(
     script_path: str,
     failure_reason: str,
 ) -> str:
-    shared = f"""
-School: {school_name}
-NCES ID: {nces_id}
-State: {state}
-City: {city}
-Website: {website}
-Script path: {script_path}
-
-Hard requirements:
-- Use Playwright with Oxylabs proxy only. No direct/non-proxy requests.
-- Respect provider blocklist and school website constraints.
-- Build/repair deterministic selectors for this single school only.
-- Output must be one JSON object on the last line:
-  {{"status":"complete|blocked|failed","script_path":"{script_path}","reason":"..."}}
-""".strip()
-
-    if mode == "create":
-        return (
-            "Create a new deterministic per-school scraper script.\n\n"
-            f"{shared}\n\n"
-            "Actions:\n"
-            "1. Manually navigate the school site and athletics-related pages/subdomains.\n"
-            "2. Capture high-value locations (news, schedule, roster, coaches, contacts, camp pages where present).\n"
-            "3. Write scraper script to the exact script path above.\n"
-            "4. Script must return the shared envelope:\n"
-            "   nces_id, school_name, state, source_pages, extracted_items, scrape_meta, errors\n"
-            "5. Run once and verify non-empty extraction.\n"
-            "6. If no athletics program/public content exists, return status=blocked with reason."
-        )
-
-    return (
-        "Repair an existing deterministic per-school scraper script.\n\n"
-        f"{shared}\n\n"
-        f"Last failure reason: {failure_reason}\n\n"
-        "Actions:\n"
-        "1. Compare live site DOM/structure with current script selectors.\n"
-        "2. Patch only this school script to restore deterministic extraction.\n"
-        "3. Preserve proxy-only behavior.\n"
-        "4. Run once and verify non-empty extraction + required envelope.\n"
-        "5. If school no longer has accessible athletics content, return status=blocked with reason."
+    template_path = DEFAULT_TEMPLATE_BY_MODE[mode]
+    template = template_path.read_text(encoding="utf-8")
+    return template.format(
+        mode=mode,
+        nces_id=nces_id,
+        school_name=school_name,
+        state=state,
+        website=website,
+        city=city,
+        script_path=script_path,
+        failure_reason=failure_reason,
     )
 
 

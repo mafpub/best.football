@@ -270,6 +270,53 @@ def claim_next_school(
         conn.close()
 
 
+def claim_school(nces_id: str) -> Optional[dict]:
+    """Atomically claim a specific school by NCES ID."""
+    init_tables()
+    conn = get_connection()
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        row = conn.execute(
+            """
+            SELECT s.nces_id, s.name, s.website, s.city, s.state,
+                   q.status, q.scraper_file, q.failure_reason,
+                   q.attempts, q.consecutive_failures
+            FROM schools s
+            JOIN school_scraper_status q ON q.nces_id = s.nces_id
+            WHERE s.nces_id = ?
+            LIMIT 1
+            """,
+            (nces_id,),
+        ).fetchone()
+
+        if not row:
+            conn.commit()
+            return None
+
+        now = _now()
+        conn.execute(
+            """
+            UPDATE school_scraper_status
+            SET status = ?,
+                started_at = ?,
+                attempts = COALESCE(attempts, 0) + 1,
+                updated_at = ?
+            WHERE nces_id = ?
+            """,
+            (STATUS_IN_PROGRESS, now, now, nces_id),
+        )
+        conn.commit()
+
+        claimed = dict(row)
+        claimed["status"] = STATUS_IN_PROGRESS
+        return claimed
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
+
+
 def upsert_status(
     nces_id: str,
     status: str,
