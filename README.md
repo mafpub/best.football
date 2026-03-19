@@ -64,14 +64,24 @@ Current scraper workflow:
 - Reconnaissance uses the Oxylabs-backed `browse` CLI.
 - Final scraper scripts remain deterministic Playwright.
 - Creator and repair launcher subprocesses inherit Oxylabs proxy env from `scripts/agent_session_adapter.py`.
-- The default proxy pool is `https://us-pr.oxylabs.io:10001`, `10002`, and `10003`.
-- Blocklisted domains in `~/.web_scraper_blocklist.json` are skipped.
+- Mobile uses the profile-specific gateway `https://pr.oxylabs.io:7777` by default.
+- Blocklisted domains are loaded from profile-specific files:
+  - `~/.web_scraper_blocklist_mobile.json`
+  - `~/.web_scraper_blocklist_datacenter.json`
 
 Environment:
-- IP-whitelist mode works without `OXYLABS_USERNAME` or `OXYLABS_PASSWORD`.
-- Credential auth is opt-in via `OXYLABS_PROXY_AUTH_MODE=credentials`.
-- If credentials are required for your Oxylabs setup, export them before running creator, repair, or scraper execution.
-- Override the proxy pool only if needed via `OXYLABS_PROXY_SERVER` or `OXYLABS_PROXY_SERVERS`.
+- Mobile profile:
+  - `OXYLABS_MOBILE_PROXY_SERVER` (optional, defaults to `https://pr.oxylabs.io:7777`)
+  - `OXYLABS_MOBILE_USERNAME`
+  - `OXYLABS_MOBILE_PASSWORD`
+- Datacenter profile:
+  - `OXYLABS_DATACENTER_PROXY_SERVER` (required if datacenter profile is selected)
+  - `OXYLABS_DATACENTER_USERNAME`
+  - `OXYLABS_DATACENTER_PASSWORD`
+- Optional profile selector: `OXYLABS_PROXY_PROFILE=mobile|datacenter`.
+
+Optional flags:
+- `--proxy-profile mobile|datacenter` on queue scripts.
 
 Queue lifecycle:
 
@@ -82,9 +92,10 @@ uv run python scripts/discover_schools.py --seed
 # View queue status
 uv run python scripts/discover_schools.py --status
 
-# Optional when not using IP whitelist
-export OXYLABS_USERNAME=...
-export OXYLABS_PASSWORD=...
+# Optional credentialed profile configuration
+export OXYLABS_MOBILE_USERNAME=...
+export OXYLABS_MOBILE_PASSWORD=...
+export OXYLABS_MOBILE_PROXY_SERVER=https://pr.oxylabs.io:7777
 
 # Run one creator loop (single-browser lock)
 uv run python scripts/school_creator_loop.py \
@@ -92,7 +103,8 @@ uv run python scripts/school_creator_loop.py \
     --mode create \
     --launcher-command '<your-launcher-command using {prompt_path}>' \
     --nces-id {nces_id} --school-name {name} --state {state} \
-    --website {website} --city {city} --script-path {script_path}"
+    --website {website} --city {city} --script-path {script_path}" \
+  --proxy-profile mobile
 
 # Run weekly school scrapes in parallel
 uv run python scripts/run_school_scrapes.py --workers 8
@@ -104,7 +116,8 @@ uv run python scripts/run_repair_queue.py \
     --launcher-command '<your-launcher-command using {prompt_path}>' \
     --nces-id {nces_id} --school-name {name} --state {state} \
     --website {website} --city {city} --script-path {script_path} \
-    --failure-reason {failure_reason}"
+    --failure-reason {failure_reason}" \
+  --proxy-profile datacenter
 
 # Requeue blocked schools whose recheck date has arrived
 uv run python scripts/recheck_blocked.py

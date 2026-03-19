@@ -45,8 +45,8 @@ Youth/high school football information platform.
 - Recon uses the Oxylabs-backed `browse` CLI.
 - Runtime remains proxied Playwright.
 - Creator/repair launcher subprocesses inherit proxy env from `scripts/agent_session_adapter.py`.
-- Default Oxylabs mobile pool: `https://us-pr.oxylabs.io:10001`, `10002`, `10003`.
-- IP-whitelist mode is supported; credentials are optional when the whitelist is active.
+- Mobile profile defaults to `https://pr.oxylabs.io:7777`.
+- IP-whitelist mode is supported when credentials are not configured for the active profile.
 - Use `AGENT_CONDUCTOR.md` when resuming bulk scraper creation.
 
 ## MVP Scope

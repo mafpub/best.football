@@ -47,9 +47,13 @@ Agents are ephemeral and scoped to one school only:
 ### 4) Proxy and Safety Policy
 
 - Proxy is mandatory in runtime paths.
-- `OXYLABS_USERNAME` and `OXYLABS_PASSWORD` are required.
+- Profile-aware configuration is required:
+  - `OXYLABS_MOBILE_*` for the mobile profile (default).
+  - `OXYLABS_DATACENTER_*` for the datacenter profile.
 - Repo scripts auto-load credentials from project `.env`/`.env.local`.
-- Provider blocklist (`~/.web_scraper_blocklist.json`) is enforced.
+- Profile blocklists are enforced:
+  - `~/.web_scraper_blocklist_mobile.json`
+  - `~/.web_scraper_blocklist_datacenter.json`.
 - No non-proxy execution path should be used.
 
 ---

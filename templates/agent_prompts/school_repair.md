@@ -11,7 +11,7 @@ Last failure: {failure_reason}
 Requirements:
 - Use the hardwired Oxylabs-backed `browse` CLI to inspect the live site before patching.
 - Use Playwright with Oxylabs proxy for the repaired scraper script and any script-level validation.
-- Respect ~/.web_scraper_blocklist.json.
+- Respect the active profile blocklist file for the selected profile.
 - Compare live DOM/navigation against current script.
 - Patch only this script with deterministic selectors/paths.
 - Keep the extraction football-specific. Repair toward concrete football page value, not generic sports mentions.

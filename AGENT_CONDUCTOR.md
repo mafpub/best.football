@@ -10,7 +10,9 @@ Use this file when asked to continue school scraper creation from the last compl
 - In this repo, creator/repair launcher subprocesses already inject proxy env for browser work.
 - The deliverable remains a deterministic Playwright scraper script.
 - Optimize for football-specific public data, not generic athletics existence.
-- Respect `~/.web_scraper_blocklist.json`.
+- Respect profile-specific blocklists:
+  - `~/.web_scraper_blocklist_mobile.json`
+  - `~/.web_scraper_blocklist_datacenter.json`.
 - No heuristic-only decisions; worker must navigate pages like a human.
 
 ## Source of Truth
@@ -49,10 +51,9 @@ Use this file when asked to continue school scraper creation from the last compl
 ## Helper Commands
 - Run URL-targeted one-shot creation wrapper:
   - `uv run python scripts/create_scraper_from_url.py --url "<school_url>" --launcher-command "<launcher with {prompt_path}>" [--nces-id <id>]`
-- Default mobile proxy pool:
-  - `https://us-pr.oxylabs.io:10001`
-  - `https://us-pr.oxylabs.io:10002`
-  - `https://us-pr.oxylabs.io:10003`
+- Proxy profiles:
+  - `mobile`: defaults to `https://pr.oxylabs.io:7777`
+  - `datacenter`: uses `OXYLABS_DATACENTER_PROXY_SERVER`
 - Requeue due blocked rows:
   - `uv run python scripts/recheck_blocked.py`
 - Force clear blocked rows (only when explicitly requested):
