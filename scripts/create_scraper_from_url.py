@@ -184,13 +184,14 @@ def main() -> int:
     try:
         assert_not_blocklisted([claimed.get("website") or args.url], profile=args.proxy_profile)
     except BlocklistedDomainError as exc:
-        queue.mark_blocked(claimed["nces_id"], f"blocklisted_domain:{exc}")
-        print(json.dumps({"status": "blocked", "reason": str(exc), "nces_id": claimed["nces_id"]}))
+        queue.mark_restricted(claimed["nces_id"], f"proxy_restricted:{exc}")
+        print(json.dumps({"status": "restricted", "reason": str(exc), "nces_id": claimed["nces_id"]}))
         return 0
 
     result = _run_adapter(claimed, args.launcher_command, proxy_profile=args.proxy_profile)
     status = str(result.get("status") or "failed")
     reason = str(result.get("reason") or "")
+    notes = str(result.get("notes") or "")
     script_path = Path(str(result.get("script_path") or queue.resolve_script_path(PROJECT_ROOT, claimed["nces_id"], claimed["state"])))
 
     if status == "complete":
@@ -219,12 +220,42 @@ def main() -> int:
             print(json.dumps({"status": "failed", "reason": f"validation_error:{exc}", "nces_id": claimed["nces_id"]}))
             return 0
 
+    if status == "restricted":
+        queue.mark_restricted(claimed["nces_id"], reason or "restricted_by_creator")
+        print(
+            json.dumps(
+                {
+                    "status": "restricted",
+                    "reason": reason or "restricted_by_creator",
+                    "nces_id": claimed["nces_id"],
+                }
+            )
+        )
+        return 0
+
     if status == "blocked":
         queue.mark_blocked(claimed["nces_id"], reason or "blocked_by_creator")
         print(json.dumps({"status": "blocked", "reason": reason or "blocked_by_creator", "nces_id": claimed["nces_id"]}))
         return 0
 
-    queue.mark_failed(claimed["nces_id"], reason or "creator_failed")
+    if status == "no_football":
+        queue.mark_no_football(
+            claimed["nces_id"],
+            reason or "no_public_football_program_found",
+            notes=notes or "No football program found during creator reconnaissance.",
+        )
+        print(
+            json.dumps(
+                {
+                    "status": "no_football",
+                    "reason": reason or "no_public_football_program_found",
+                    "nces_id": claimed["nces_id"],
+                }
+            )
+        )
+        return 0
+
+    queue.mark_failed(claimed["nces_id"], reason or "creator_failed", notes=notes or None)
     print(json.dumps({"status": "failed", "reason": reason or "creator_failed", "nces_id": claimed["nces_id"]}))
     return 0
 

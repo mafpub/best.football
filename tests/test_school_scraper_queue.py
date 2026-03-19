@@ -152,3 +152,33 @@ def test_restricted_does_not_requeue(tmp_path):
 
     report = queue.get_status_report()
     assert report[queue.STATUS_RESTRICTED] == 1
+
+
+def test_mark_no_football_is_terminal_without_scraper(tmp_path):
+    _init_minimal_schema(tmp_path)
+    queue.seed_queue()
+
+    queue.mark_no_football(
+        "1",
+        "no_public_football_program_found",
+        notes="Sports page lists soccer and basketball only.",
+    )
+
+    report = queue.get_status_report()
+    assert report[queue.STATUS_NO_FOOTBALL] == 1
+    assert report["progress_resolved_pct"] == 50.0
+
+    with db.get_db() as conn:
+        row = conn.execute(
+            """
+            SELECT status, scraper_file, failure_reason, notes
+            FROM school_scraper_status
+            WHERE nces_id = ?
+            """,
+            ("1",),
+        ).fetchone()
+
+    assert row["status"] == queue.STATUS_NO_FOOTBALL
+    assert row["scraper_file"] == ""
+    assert row["failure_reason"] == "no_public_football_program_found"
+    assert row["notes"] == "Sports page lists soccer and basketball only."

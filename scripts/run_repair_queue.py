@@ -103,8 +103,8 @@ def _process_one(
         print(f"{nces_id}: remains needs_repair (proxy not configured)")
         return True
     except BlocklistedDomainError as exc:
-        queue.mark_blocked(nces_id, f"blocklisted_domain:{exc}")
-        print(f"{nces_id}: blocked ({exc})")
+        queue.mark_restricted(nces_id, f"proxy_restricted:{exc}")
+        print(f"{nces_id}: restricted ({exc})")
         return True
 
     command = _build_command(repair_template, row, script_path, proxy_profile)
@@ -137,13 +137,28 @@ def _process_one(
 
     status = (payload or {}).get("status", "complete")
     reason = (payload or {}).get("reason")
+    notes = (payload or {}).get("notes")
     payload_script = (payload or {}).get("script_path")
     if payload_script:
         script_path = Path(payload_script)
 
+    if status == queue.STATUS_RESTRICTED:
+        queue.mark_restricted(nces_id, reason or "restricted_by_repair")
+        print(f"{nces_id}: restricted")
+        return True
+
     if status == queue.STATUS_BLOCKED:
         queue.mark_blocked(nces_id, reason or "blocked_by_repair")
         print(f"{nces_id}: blocked")
+        return True
+
+    if status == queue.STATUS_NO_FOOTBALL:
+        queue.mark_no_football(
+            nces_id,
+            reason or "no_public_football_program_found",
+            notes=notes or "No football program found during repair reconnaissance.",
+        )
+        print(f"{nces_id}: no_football")
         return True
 
     if status in {queue.STATUS_FAILED, queue.STATUS_NEEDS_REPAIR}:

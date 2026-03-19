@@ -70,6 +70,11 @@ Current scraper workflow:
   - `~/.web_scraper_blocklist_datacenter.json`
 - Creator work should use the `datacenter` proxy profile.
 - Creator queue seeding/claiming is restricted to the latest completed datacenter website survey `success` set.
+- This workflow is football-only. If a school has sports but no football program, mark it `no_football` and do not create a scraper.
+- Status meanings:
+  - `restricted`: Oxylabs/provider restriction
+  - `blocked`: target-side blocks such as Cloudflare or other site denials
+  - `no_football`: school inspected, no public football program found, no scraper created
 
 Environment:
 - Mobile profile:
@@ -96,6 +101,11 @@ uv run python scripts/probe_school_websites.py --workers 10 --wave-delay 1 --pro
 
 # View queue status
 uv run python scripts/discover_schools.py --status
+
+# Mark a school as resolved with no football program
+uv run python scripts/discover_schools.py --no-football <nces_id> \
+  --reason "no_public_football_program_found" \
+  --notes "<evidence summary>"
 
 # Optional credentialed profile configuration
 export OXYLABS_MOBILE_USERNAME=...

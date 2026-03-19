@@ -5,6 +5,7 @@ Lifecycle states:
 - pending
 - in_progress
 - complete
+- no_football
 - blocked
 - restricted
 - failed
@@ -52,6 +53,7 @@ def main() -> int:
     parser.add_argument("--complete", metavar="NCES_ID", help="Mark school as complete")
     parser.add_argument("--scraper-file", metavar="PATH", help="Path to generated scraper script")
 
+    parser.add_argument("--no-football", metavar="NCES_ID", help="Mark school as complete with no football program")
     parser.add_argument("--blocked", metavar="NCES_ID", help="Mark school as blocked")
     parser.add_argument("--restricted", metavar="NCES_ID", help="Mark school as restricted")
     parser.add_argument("--failed", metavar="NCES_ID", help="Mark school as failed")
@@ -117,6 +119,18 @@ def main() -> int:
         print(f"Marked {args.blocked} as blocked: {args.reason or 'blocked_no_reason'}")
         return 0
 
+    if args.no_football:
+        queue.mark_no_football(
+            args.no_football,
+            args.reason or "no_public_football_program_found",
+            notes=args.notes,
+        )
+        print(
+            f"Marked {args.no_football} as no_football: "
+            f"{args.reason or 'no_public_football_program_found'}"
+        )
+        return 0
+
     if args.restricted:
         queue.mark_restricted(args.restricted, args.reason or "restricted_no_reason")
         print(f"Marked {args.restricted} as restricted: {args.reason or 'restricted_no_reason'}")
@@ -149,11 +163,13 @@ def main() -> int:
         print(f"Pending: {report[queue.STATUS_PENDING]}")
         print(f"In Progress: {report[queue.STATUS_IN_PROGRESS]}")
         print(f"Complete: {report[queue.STATUS_COMPLETE]}")
+        print(f"No Football: {report[queue.STATUS_NO_FOOTBALL]}")
         print(f"Blocked: {report[queue.STATUS_BLOCKED]}")
         print(f"Restricted: {report[queue.STATUS_RESTRICTED]}")
         print(f"Failed: {report[queue.STATUS_FAILED]}")
         print(f"Needs Repair: {report[queue.STATUS_NEEDS_REPAIR]}")
-        print(f"\nProgress (complete only): {report['progress_complete_pct']:.1f}%")
+        print(f"\nFootball Scrapers Complete: {report['progress_complete_pct']:.1f}%")
+        print(f"Resolved (complete + no_football): {report['progress_resolved_pct']:.1f}%")
         return 0
 
     parser.print_help()

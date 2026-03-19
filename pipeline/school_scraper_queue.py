@@ -12,6 +12,7 @@ from pipeline.database import get_connection, get_db
 STATUS_PENDING = "pending"
 STATUS_IN_PROGRESS = "in_progress"
 STATUS_COMPLETE = "complete"
+STATUS_NO_FOOTBALL = "no_football"
 STATUS_BLOCKED = "blocked"
 STATUS_RESTRICTED = "restricted"
 STATUS_FAILED = "failed"
@@ -21,6 +22,7 @@ ALL_STATUSES = {
     STATUS_PENDING,
     STATUS_IN_PROGRESS,
     STATUS_COMPLETE,
+    STATUS_NO_FOOTBALL,
     STATUS_BLOCKED,
     STATUS_RESTRICTED,
     STATUS_FAILED,
@@ -293,7 +295,7 @@ def get_next_batch(
         rows = conn.execute(
             f"""
             SELECT s.nces_id, s.name, s.website, s.city, s.state,
-                   q.status, q.scraper_file, q.failure_reason, q.attempts,
+                   q.status, q.scraper_file, q.failure_reason, q.notes, q.attempts,
                    q.consecutive_failures, q.next_recheck_at
             FROM schools s
             JOIN school_scraper_status q ON q.nces_id = s.nces_id
@@ -338,7 +340,7 @@ def claim_next_school(
         row = conn.execute(
             f"""
             SELECT s.nces_id, s.name, s.website, s.city, s.state,
-                   q.status, q.scraper_file, q.failure_reason,
+                   q.status, q.scraper_file, q.failure_reason, q.notes,
                    q.attempts, q.consecutive_failures
             FROM schools s
             JOIN school_scraper_status q ON q.nces_id = s.nces_id
@@ -389,7 +391,7 @@ def claim_school(nces_id: str, *, survey_run_id: int | None = None) -> Optional[
         row = conn.execute(
             """
             SELECT s.nces_id, s.name, s.website, s.city, s.state,
-                   q.status, q.scraper_file, q.failure_reason,
+                   q.status, q.scraper_file, q.failure_reason, q.notes,
                    q.attempts, q.consecutive_failures
             FROM schools s
             JOIN school_scraper_status q ON q.nces_id = s.nces_id
@@ -453,12 +455,22 @@ def upsert_status(
         attempts = existing["attempts"] if existing else 0
         failures = existing["consecutive_failures"] if existing else 0
 
-        completed_at = now if status in {STATUS_COMPLETE, STATUS_BLOCKED, STATUS_RESTRICTED, STATUS_FAILED} else None
+        completed_at = (
+            now
+            if status in {
+                STATUS_COMPLETE,
+                STATUS_NO_FOOTBALL,
+                STATUS_BLOCKED,
+                STATUS_RESTRICTED,
+                STATUS_FAILED,
+            }
+            else None
+        )
         last_success_at = now if status == STATUS_COMPLETE else None
         last_failure_at = now if status in {STATUS_FAILED, STATUS_NEEDS_REPAIR} else None
         next_recheck_at = _recheck_at(blocked_recheck_days) if status == STATUS_BLOCKED else None
 
-        if reset_failures or status == STATUS_COMPLETE:
+        if reset_failures or status in {STATUS_COMPLETE, STATUS_NO_FOOTBALL}:
             failures = 0
 
         conn.execute(
@@ -504,6 +516,22 @@ def mark_complete(nces_id: str, scraper_file: str) -> None:
         STATUS_COMPLETE,
         scraper_file=scraper_file,
         reason=None,
+        reset_failures=True,
+    )
+
+
+def mark_no_football(
+    nces_id: str,
+    reason: str,
+    *,
+    notes: str | None = None,
+) -> None:
+    upsert_status(
+        nces_id,
+        STATUS_NO_FOOTBALL,
+        scraper_file="",
+        reason=reason,
+        notes=notes,
         reset_failures=True,
     )
 
@@ -819,6 +847,11 @@ def get_status_report(state: str | None = None) -> dict:
             "total_schools": total,
             **counts,
             "progress_complete_pct": (counts[STATUS_COMPLETE] / total * 100.0) if total else 0.0,
+            "progress_resolved_pct": (
+                (counts[STATUS_COMPLETE] + counts[STATUS_NO_FOOTBALL]) / total * 100.0
+            )
+            if total
+            else 0.0,
         }
 
 

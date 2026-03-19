@@ -73,6 +73,7 @@ def main() -> int:
         "Post-normalization status: "
         f"pending={report[queue.STATUS_PENDING]} "
         f"complete={report[queue.STATUS_COMPLETE]} "
+        f"no_football={report[queue.STATUS_NO_FOOTBALL]} "
         f"blocked={report[queue.STATUS_BLOCKED]} "
         f"restricted={report[queue.STATUS_RESTRICTED]} "
         f"failed={report[queue.STATUS_FAILED]} "

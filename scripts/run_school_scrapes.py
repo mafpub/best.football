@@ -94,17 +94,17 @@ async def _run_one(
             }
 
         except BlocklistedDomainError as exc:
-            reason = f"blocklisted_domain:{exc}"
-            queue.mark_blocked(nces_id, reason)
+            reason = f"proxy_restricted:{exc}"
+            queue.mark_restricted(nces_id, reason)
             queue.add_scrape_run(
                 nces_id,
-                "blocked",
+                "restricted",
                 script_path=str(script_path),
                 started_at=started,
                 ended_at=datetime.now().isoformat(timespec="seconds"),
                 error_message=reason,
             )
-            return {"nces_id": nces_id, "status": "blocked", "reason": reason}
+            return {"nces_id": nces_id, "status": "restricted", "reason": reason}
 
         except Exception as exc:
             reason = f"runtime_error:{exc}"

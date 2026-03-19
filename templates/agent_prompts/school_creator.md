@@ -16,10 +16,11 @@ Requirements:
 - Current auth mode: {proxy_auth_mode}. If auth mode is `ip_whitelist`, do not fail just because profile creds are unset.
 - Respect the active profile blocklist file for this profile.
 - Manually navigate school pages like a human (menus/subpages); do not rely on one-pass keyword heuristics.
-- This repo is football-first. Extract football-useful public data, not generic athletics coverage.
+- This repo is football-only. Do not build a generic athletics or general sports scraper when football is absent.
 - Derive stable selectors and paths from the live DOM, then encode them in the Playwright scraper.
 - When football pages exist, prefer concrete fields like team page URLs, coach names, schedule links, football contacts, and practice/location details.
 - Proxy variance is real. A site may load through one Oxylabs exit and fail or block on another, so judge the current run on the evidence you can verify.
+- Use `restricted` for Oxylabs/provider restriction and `blocked` for target-side access blocks such as Cloudflare or site-side denials.
 - Do not hardcode legacy `OXYLABS_PROXY_SERVER`, `OXYLABS_USERNAME`, or `OXYLABS_PASSWORD` in new scripts. Import the shared helper instead:
   `from scrapers.schools.runtime import assert_not_blocklisted, get_playwright_proxy_config, require_proxy_credentials`
 - Launch Playwright with `proxy=get_playwright_proxy_config(profile="...")` so new scrapers inherit the selected profile proxy configuration automatically.
@@ -31,7 +32,8 @@ If useful public football content exists:
 
 If useful public football content does not exist:
 - Do not invent data.
-- Return blocked with clear reason.
+- Do not build a scraper.
+- Return `no_football` with a clear reason and a short `notes` summary of the evidence.
 
 Return one-line JSON only:
-{"status":"complete|blocked|failed","script_path":"{script_path}","reason":"..."}
+{"status":"complete|no_football|blocked|restricted|failed","script_path":"{script_path}","reason":"...","notes":"..."}

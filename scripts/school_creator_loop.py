@@ -125,8 +125,8 @@ def _process_one(
         print(f"{nces_id}: failed (proxy not configured)", file=sys.stderr)
         return True
     except BlocklistedDomainError as exc:
-        queue.mark_blocked(nces_id, f"blocklisted_domain:{exc}")
-        print(f"{nces_id}: blocked ({exc})")
+        queue.mark_restricted(nces_id, f"proxy_restricted:{exc}")
+        print(f"{nces_id}: restricted ({exc})")
         return True
 
     command = _build_command(
@@ -153,18 +153,33 @@ def _process_one(
 
     status = (creator_payload or {}).get("status", "complete")
     reason = (creator_payload or {}).get("reason")
+    notes = (creator_payload or {}).get("notes")
     payload_script = (creator_payload or {}).get("script_path")
 
     if payload_script:
         script_path = Path(payload_script)
+
+    if status == queue.STATUS_RESTRICTED:
+        queue.mark_restricted(nces_id, reason or "restricted_by_creator")
+        print(f"{nces_id}: restricted ({reason or 'restricted_by_creator'})")
+        return True
 
     if status == queue.STATUS_BLOCKED:
         queue.mark_blocked(nces_id, reason or "blocked_by_creator")
         print(f"{nces_id}: blocked ({reason or 'blocked_by_creator'})")
         return True
 
+    if status == queue.STATUS_NO_FOOTBALL:
+        queue.mark_no_football(
+            nces_id,
+            reason or "no_public_football_program_found",
+            notes=notes or "No football program found during creator reconnaissance.",
+        )
+        print(f"{nces_id}: no_football ({reason or 'no_public_football_program_found'})")
+        return True
+
     if status in {queue.STATUS_FAILED, queue.STATUS_NEEDS_REPAIR}:
-        queue.mark_failed(nces_id, reason or "failed_by_creator")
+        queue.mark_failed(nces_id, reason or "failed_by_creator", notes=notes)
         print(f"{nces_id}: failed ({reason or 'failed_by_creator'})")
         return True
 

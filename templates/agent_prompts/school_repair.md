@@ -15,12 +15,13 @@ Requirements:
 - Compare live DOM/navigation against current script.
 - Patch only this script with deterministic selectors/paths.
 - Keep the extraction football-specific. Repair toward concrete football page value, not generic sports mentions.
+- Use `restricted` for Oxylabs/provider restriction and `blocked` for target-side access blocks such as Cloudflare or site-side denials.
 - If the current proxy session sees a block or inconsistent response, account for proxy variance before assuming the site structure changed.
 
 Validation target:
 - Script returns required envelope keys.
 - extracted_items is non-empty if public football content exists.
-- If site truly has no useful public football content, return blocked with reason.
+- If site truly has no useful public football content, return `no_football` with reason and a short `notes` summary.
 
 Return one-line JSON only:
-{"status":"complete|blocked|failed","script_path":"{script_path}","reason":"..."}
+{"status":"complete|no_football|blocked|restricted|failed","script_path":"{script_path}","reason":"...","notes":"..."}

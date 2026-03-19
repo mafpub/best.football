@@ -2,7 +2,7 @@
 """Adapter for one-shot creator/repair agent launcher commands.
 
 This script standardizes launcher output into a strict JSON contract:
-{"status":"complete|blocked|failed","script_path":"...","reason":"..."}
+{"status":"complete|no_football|blocked|restricted|failed","script_path":"...","reason":"...","notes":"..."}
 """
 
 from __future__ import annotations
@@ -18,7 +18,7 @@ from pathlib import Path
 
 from pipeline.proxy import describe_oxylabs_proxy_mode, get_browser_proxy_env
 
-ALLOWED_STATUSES = {"complete", "blocked", "failed"}
+ALLOWED_STATUSES = {"complete", "no_football", "blocked", "restricted", "failed"}
 PROJECT_ROOT = Path(__file__).parent.parent
 DEFAULT_TEMPLATE_BY_MODE = {
     "create": PROJECT_ROOT / "templates" / "agent_prompts" / "school_creator.md",
@@ -94,6 +94,7 @@ def _normalize_result(raw: dict | None, script_path: str) -> dict:
         "status": status,
         "script_path": str(raw.get("script_path") or script_path),
         "reason": raw.get("reason"),
+        "notes": raw.get("notes"),
     }
 
     if status == "complete" and not Path(result["script_path"]).exists():
