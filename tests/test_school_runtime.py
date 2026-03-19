@@ -42,3 +42,21 @@ def test_blocklist_enforced(tmp_path):
             raise AssertionError("Expected BlocklistedDomainError")
     finally:
         runtime.BLOCKLIST_FILE = original
+
+
+def test_playwright_proxy_config_defaults_to_mobile_pool():
+    proxy = runtime.get_playwright_proxy_config(proxy_index=1)
+    assert proxy["server"] == "https://us-pr.oxylabs.io:10002"
+    assert "username" not in proxy
+    assert "password" not in proxy
+
+
+def test_playwright_proxy_config_includes_auth(monkeypatch):
+    monkeypatch.setenv("OXYLABS_USERNAME", "user")
+    monkeypatch.setenv("OXYLABS_PASSWORD", "pass")
+
+    proxy = runtime.get_playwright_proxy_config(proxy_index=2)
+
+    assert proxy["server"] == "https://us-pr.oxylabs.io:10003"
+    assert proxy["username"] == "user"
+    assert proxy["password"] == "pass"
