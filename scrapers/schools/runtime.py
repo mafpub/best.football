@@ -6,6 +6,8 @@ import asyncio
 import importlib.util
 import inspect
 import json
+import os
+from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -15,8 +17,11 @@ from urllib.parse import urlparse
 from pipeline.env import load_repo_env
 from pipeline.proxy import (
     describe_proxy_mode,
+    get_browser_proxy_env,
+    get_proxy_auth_mode,
     get_oxylabs_proxy_servers,
     get_playwright_proxy_config as _get_playwright_proxy_config,
+    get_proxy_profile,
     require_oxylabs_proxy_configuration,
 )
 
@@ -35,6 +40,7 @@ REQUIRED_KEYS = {
     "scrape_meta",
     "errors",
 }
+LEGACY_IP_WHITELIST_SENTINEL = "__oxylabs_ip_whitelist__"
 
 
 class ProxyNotConfiguredError(RuntimeError):
@@ -299,6 +305,107 @@ def _load_module(scraper_path: Path):
     return module
 
 
+def _get_legacy_proxy_env(profile: str) -> dict[str, str]:
+    proxy = _get_playwright_proxy_config(profile=profile)
+    username = proxy.get("username")
+    password = proxy.get("password")
+
+    if get_proxy_auth_mode(profile) == "ip_whitelist":
+        username = username or LEGACY_IP_WHITELIST_SENTINEL
+        password = password or LEGACY_IP_WHITELIST_SENTINEL
+
+    values = {
+        "OXYLABS_PROXY_PROFILE": profile,
+        "OXYLABS_PROXY_SERVER": proxy["server"],
+    }
+    if username:
+        values["OXYLABS_USERNAME"] = username
+    if password:
+        values["OXYLABS_PASSWORD"] = password
+    return values
+
+
+@contextmanager
+def _scoped_proxy_environment(profile: str | None = None):
+    active_profile = get_proxy_profile(profile)
+    updates = {
+        **get_browser_proxy_env(profile=active_profile),
+        **_get_legacy_proxy_env(active_profile),
+    }
+    previous = {key: os.environ.get(key) for key in updates}
+
+    try:
+        for key, value in updates.items():
+            os.environ[key] = value
+        yield active_profile
+    finally:
+        for key, value in previous.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+
+
+def _patch_legacy_proxy_globals(module: Any, profile: str) -> None:
+    proxy = _get_playwright_proxy_config(profile=profile)
+    username = proxy.get("username")
+    password = proxy.get("password")
+
+    if get_proxy_auth_mode(profile) == "ip_whitelist":
+        username = username or LEGACY_IP_WHITELIST_SENTINEL
+        password = password or LEGACY_IP_WHITELIST_SENTINEL
+
+    replacements = {
+        "PROXY_SERVER": proxy["server"],
+        "PROXY_USERNAME": username,
+        "PROXY_PASSWORD": password,
+    }
+    for name, value in replacements.items():
+        if hasattr(module, name) and value is not None:
+            setattr(module, name, value)
+
+
+def _patch_module_async_playwright(module: Any, profile: str) -> None:
+    factory = getattr(module, "async_playwright", None)
+    if factory is None or getattr(factory, "__proxy_profile_wrapped__", False):
+        return
+
+    def profiled_async_playwright(*args: Any, **kwargs: Any):
+        manager = factory(*args, **kwargs)
+
+        class _ProfiledPlaywrightContext:
+            async def __aenter__(self):
+                playwright = await manager.__aenter__()
+
+                for browser_name in ("chromium", "firefox", "webkit"):
+                    browser_type = getattr(playwright, browser_name, None)
+                    launch = getattr(browser_type, "launch", None)
+                    if browser_type is None or launch is None or getattr(launch, "__proxy_profile_wrapped__", False):
+                        continue
+
+                    async def profiled_launch(*launch_args: Any, _launch=launch, **launch_kwargs: Any):
+                        launch_kwargs["proxy"] = _get_playwright_proxy_config(profile=profile)
+                        return await _launch(*launch_args, **launch_kwargs)
+
+                    setattr(profiled_launch, "__proxy_profile_wrapped__", True)
+                    setattr(browser_type, "launch", profiled_launch)
+
+                return playwright
+
+            async def __aexit__(self, exc_type, exc, tb):
+                return await manager.__aexit__(exc_type, exc, tb)
+
+        return _ProfiledPlaywrightContext()
+
+    setattr(profiled_async_playwright, "__proxy_profile_wrapped__", True)
+    setattr(module, "async_playwright", profiled_async_playwright)
+
+
+def _prepare_module_for_proxy_profile(module: Any, profile: str) -> None:
+    _patch_legacy_proxy_globals(module, profile)
+    _patch_module_async_playwright(module, profile)
+
+
 def _discover_entrypoint(module) -> Callable[[], Awaitable[dict[str, Any]]]:
     preferred_names = [
         "scrape_school",
@@ -327,13 +434,15 @@ async def run_scraper_file(
     profile: str | None = None,
 ) -> ScrapeRunResult:
     """Load and execute one deterministic school scraper script."""
-    require_proxy_credentials(profile=profile)
-    if website:
-        assert_not_blocklisted([website], profile=profile)
+    with _scoped_proxy_environment(profile) as active_profile:
+        require_proxy_credentials(profile=active_profile)
+        if website:
+            assert_not_blocklisted([website], profile=active_profile)
 
-    module = _load_module(scraper_path)
-    fn = _discover_entrypoint(module)
-    raw = await fn()
+        module = _load_module(scraper_path)
+        _prepare_module_for_proxy_profile(module, active_profile)
+        fn = _discover_entrypoint(module)
+        raw = await fn()
 
     if not isinstance(raw, dict):
         raise RuntimeError("Scraper did not return a dict payload")
