@@ -6,35 +6,30 @@ Uses the same proxy configuration as ~/tools/web-scraper.py
 import hashlib
 import json
 import logging
-import os
 import random
 import time
 from pathlib import Path
 from typing import Optional
 
 import httpx
+from pipeline.env import load_repo_env
+from pipeline.proxy import (
+    get_httpx_proxy_url,
+    get_oxylabs_proxy_servers,
+    require_oxylabs_proxy_configuration,
+)
+
+load_repo_env()
 
 # Module logger
 logger = logging.getLogger(__name__)
 
-# Oxylabs proxy configuration from environment variables (required for proxy usage)
-_OXYLABS_USERNAME = os.environ.get("OXYLABS_USERNAME")
-_OXYLABS_PASSWORD = os.environ.get("OXYLABS_PASSWORD")
-
-
 def _check_proxy_credentials():
-    """Verify proxy credentials are available."""
-    if not _OXYLABS_USERNAME or not _OXYLABS_PASSWORD:
-        raise ValueError(
-            "Oxylabs proxy credentials not configured. "
-            "Set OXYLABS_USERNAME and OXYLABS_PASSWORD environment variables."
-        )
+    """Verify proxy configuration is available."""
+    require_oxylabs_proxy_configuration()
 
-OXYLABS_PROXIES = [
-    {"proxy": "ddc.oxylabs.io:8001"},
-    {"proxy": "ddc.oxylabs.io:8002"},
-    {"proxy": "ddc.oxylabs.io:8003"},
-]
+
+OXYLABS_PROXIES = tuple({"proxy": value} for value in get_oxylabs_proxy_servers())
 
 # Shared blocklist path
 BLOCKLIST_FILE = Path.home() / ".web_scraper_blocklist.json"
@@ -74,9 +69,10 @@ class ProxiedScraper:
     def _get_proxy_url(self) -> str:
         """Get next proxy URL with auth."""
         _check_proxy_credentials()
-        proxy = OXYLABS_PROXIES[self.proxy_index]
-        self.proxy_index = (self.proxy_index + 1) % len(OXYLABS_PROXIES)
-        return f"http://{_OXYLABS_USERNAME}:{_OXYLABS_PASSWORD}@{proxy['proxy']}"
+        proxies = get_oxylabs_proxy_servers()
+        proxy_index = self.proxy_index % len(proxies)
+        self.proxy_index = (self.proxy_index + 1) % len(proxies)
+        return get_httpx_proxy_url(proxy_index)
 
     def _respect_rate_limit(self):
         """Wait if needed to respect rate limits."""

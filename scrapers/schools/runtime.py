@@ -6,12 +6,21 @@ import asyncio
 import importlib.util
 import inspect
 import json
-import os
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Awaitable, Callable, Optional
 from urllib.parse import urlparse
+
+from pipeline.env import load_repo_env
+from pipeline.proxy import (
+    describe_oxylabs_proxy_mode,
+    get_oxylabs_proxy_servers,
+    get_playwright_proxy_config as _get_playwright_proxy_config,
+    require_oxylabs_proxy_configuration,
+)
+
+load_repo_env()
 
 BLOCKLIST_FILE = Path.home() / ".web_scraper_blocklist.json"
 REQUIRED_KEYS = {
@@ -26,7 +35,7 @@ REQUIRED_KEYS = {
 
 
 class ProxyNotConfiguredError(RuntimeError):
-    """Raised when Oxylabs credentials are missing."""
+    """Raised when Oxylabs proxy configuration is missing."""
 
 
 class BlocklistedDomainError(RuntimeError):
@@ -60,14 +69,35 @@ def _has_data(value: Any) -> bool:
 
 
 def require_proxy_credentials() -> None:
-    """Fail fast if Oxylabs credentials are unavailable."""
-    username = os.environ.get("OXYLABS_USERNAME")
-    password = os.environ.get("OXYLABS_PASSWORD")
-    if not username or not password:
+    """Fail fast if neither proxy endpoints nor auth mode are configured."""
+    try:
+        require_oxylabs_proxy_configuration()
+    except ValueError as exc:
         raise ProxyNotConfiguredError(
-            "Oxylabs proxy credentials not configured. "
-            "Set OXYLABS_USERNAME and OXYLABS_PASSWORD."
-        )
+            "Oxylabs proxy not configured. "
+            "Set OXYLABS_PROXY_SERVERS/OXYLABS_PROXY_SERVER, and optionally "
+            "OXYLABS_USERNAME/OXYLABS_PASSWORD when not using IP whitelist."
+        ) from exc
+
+
+def get_playwright_proxy_config(proxy_index: int | None = None) -> dict[str, str]:
+    """Return the shared Playwright proxy config for school scrapers."""
+    require_proxy_credentials()
+    return _get_playwright_proxy_config(proxy_index)
+
+
+def get_proxy_runtime_meta() -> dict[str, Any]:
+    """Return lightweight proxy metadata for scraper diagnostics."""
+    details = describe_oxylabs_proxy_mode()
+    return {
+        "proxy_servers": details["servers"],
+        "proxy_auth_mode": details["auth_mode"],
+    }
+
+
+def get_proxy_server_list() -> list[str]:
+    """Return the configured proxy server pool as a list."""
+    return list(get_oxylabs_proxy_servers())
 
 
 def _normalize_url(url: str) -> str:

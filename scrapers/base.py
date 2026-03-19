@@ -6,35 +6,30 @@ This ensures reliable, rate-limited access to state athletics websites.
 
 import hashlib
 import logging
-import os
 import random
 from pathlib import Path
 from typing import Any, Optional
 
 from playwright.async_api import async_playwright, Browser, Page, BrowserContext
 import yaml
+from pipeline.env import load_repo_env
+from pipeline.proxy import (
+    get_oxylabs_proxy_servers,
+    get_playwright_proxy_config,
+    require_oxylabs_proxy_configuration,
+)
+
+load_repo_env()
 
 # Module logger
 logger = logging.getLogger(__name__)
 
-# Oxylabs proxy configuration (REQUIRED - no bypass)
-_OXYLABS_USERNAME = os.environ.get("OXYLABS_USERNAME")
-_OXYLABS_PASSWORD = os.environ.get("OXYLABS_PASSWORD")
-
-OXYLABS_PROXIES = [
-    "ddc.oxylabs.io:8001",
-    "ddc.oxylabs.io:8002",
-    "ddc.oxylabs.io:8003",
-]
+OXYLABS_PROXIES = get_oxylabs_proxy_servers()
 
 
 def _check_proxy_credentials():
-    """Verify proxy credentials are available."""
-    if not _OXYLABS_USERNAME or not _OXYLABS_PASSWORD:
-        raise ValueError(
-            "Oxylabs proxy credentials not configured. "
-            "Set OXYLABS_USERNAME and OXYLABS_PASSWORD environment variables."
-        )
+    """Verify proxy configuration is available."""
+    require_oxylabs_proxy_configuration()
 
 
 class SelectorConfig:
@@ -108,7 +103,7 @@ class PlaywrightScraper:
     """Base scraper using Playwright with mandatory Oxylabs proxy.
 
     Features:
-    - Oxylabs proxy rotation (8001-8003)
+    - Oxylabs proxy rotation across the configured pool
     - Selector configuration from YAML
     - Content hashing for change detection
     - Automatic retry with proxy rotation
@@ -149,9 +144,10 @@ class PlaywrightScraper:
 
     def _get_proxy_server(self) -> str:
         """Get next proxy server URL."""
-        proxy = OXYLABS_PROXIES[self.proxy_index]
-        self.proxy_index = (self.proxy_index + 1) % len(OXYLABS_PROXIES)
-        return f"http://{proxy}"
+        proxies = get_oxylabs_proxy_servers()
+        proxy = proxies[self.proxy_index % len(proxies)]
+        self.proxy_index = (self.proxy_index + 1) % len(proxies)
+        return proxy
 
     async def _get_browser(self) -> Browser:
         """Launch browser with Oxylabs proxy.
@@ -167,11 +163,7 @@ class PlaywrightScraper:
 
         playwright_instance = await async_playwright().start()
         browser = await playwright_instance.chromium.launch(
-            proxy={
-                "server": proxy_server,
-                "username": _OXYLABS_USERNAME,
-                "password": _OXYLABS_PASSWORD,
-            },
+            proxy=get_playwright_proxy_config(self.proxy_index - 1),
             headless=True,
         )
 
