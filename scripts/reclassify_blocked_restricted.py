@@ -15,8 +15,9 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from pipeline import school_scraper_queue as queue
 from pipeline.database import get_db
 from pipeline.proxy import get_oxylabs_proxy_servers
+from scrapers.schools.runtime import append_blocklist_domain
 
-RESTRICTED_MARKER = "restricted target"
+RESTRICTED_HEADER_MARKER = "x-error-description: access denied: restricted target"
 
 
 def _normalize_url(value: str) -> str:
@@ -67,19 +68,32 @@ def _probe(proxy: str, url: str, timeout_seconds: int) -> tuple[bool, str]:
         text=True,
         check=False,
     )
-    text = f"{proc.stdout}\n{proc.stderr}".lower()
-    return RESTRICTED_MARKER in text, text
+    text = f"{proc.stdout}\n{proc.stderr}"
+    return _is_restricted_output(text), text
+
+
+def _is_restricted_output(payload: str) -> bool:
+    lines = payload.splitlines()
+    for line in lines:
+        if RESTRICTED_HEADER_MARKER in line.lower():
+            return True
+    return False
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Relabel blocked rows that are proxy-restricted")
+    parser.add_argument(
+        "--proxy-profile",
+        choices=["mobile", "datacenter"],
+        help="Select proxy profile (mobile|datacenter). Defaults to OXYLABS_PROXY_PROFILE/mobile.",
+    )
     parser.add_argument("--limit", type=int, help="Optional max rows to inspect")
     parser.add_argument("--timeout", type=int, default=20, help="curl max-time per proxy")
     parser.add_argument("--dry-run", action="store_true", help="Report changes without writing")
     args = parser.parse_args()
 
     queue.init_tables()
-    proxies = list(get_oxylabs_proxy_servers())
+    proxies = list(get_oxylabs_proxy_servers(profile=args.proxy_profile))
     rows = _list_blocked_rows(limit=args.limit)
 
     inspected = 0
@@ -100,6 +114,7 @@ def main() -> int:
         print(f"RESTRICTED {row['nces_id']} {row['name']} {url}")
         if not args.dry_run:
             queue.mark_restricted(row["nces_id"], reason)
+            append_blocklist_domain(url, profile=args.proxy_profile, reason=reason)
         relabeled += 1
 
     print(f"\nInspected: {inspected}")

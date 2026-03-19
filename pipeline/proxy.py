@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import itertools
 import os
 from typing import Any
 from urllib.parse import quote, urlsplit
@@ -11,14 +10,35 @@ from pipeline.env import load_repo_env
 
 load_repo_env()
 
-DEFAULT_OXYLABS_PROXY_SERVERS = (
-    "https://us-pr.oxylabs.io:10001",
-    "https://us-pr.oxylabs.io:10002",
-    "https://us-pr.oxylabs.io:10003",
-)
-VALID_OXYLABS_PROXY_AUTH_MODES = {"credentials", "ip_whitelist"}
+DEFAULT_MOBILE_PROXY_SERVER = "https://pr.oxylabs.io:7777"
+DEFAULT_PROFILE_CONFIGS = {
+    "mobile": {
+        "server": "OXYLABS_MOBILE_PROXY_SERVER",
+        "username": "OXYLABS_MOBILE_USERNAME",
+        "password": "OXYLABS_MOBILE_PASSWORD",
+    },
+    "datacenter": {
+        "server": "OXYLABS_DATACENTER_PROXY_SERVER",
+        "username": "OXYLABS_DATACENTER_USERNAME",
+        "password": "OXYLABS_DATACENTER_PASSWORD",
+    },
+}
+PROXY_PROFILE_OPTIONS = {"mobile", "datacenter"}
 
-_PROXY_CURSOR = itertools.count()
+
+def get_proxy_profile(profile: str | None = None) -> str:
+    """Return active proxy profile from argument or environment."""
+    raw = (profile or os.environ.get("OXYLABS_PROXY_PROFILE") or "mobile").strip().lower()
+    if not raw:
+        return "mobile"
+
+    if raw not in PROXY_PROFILE_OPTIONS:
+        raise ValueError(
+            "Unknown proxy profile. Expected 'mobile' or 'datacenter', "
+            f"got: {raw}"
+        )
+
+    return raw
 
 
 def _normalize_proxy_server(value: str) -> str:
@@ -40,65 +60,101 @@ def _split_proxy_servers(raw: str) -> list[str]:
     return servers
 
 
-def get_oxylabs_proxy_servers() -> tuple[str, ...]:
-    """Return configured Oxylabs proxy servers, defaulting to the mobile pool."""
-    multi = os.environ.get("OXYLABS_PROXY_SERVERS")
-    if multi:
-        servers = _split_proxy_servers(multi)
+def get_proxy_servers(profile: str | None = None) -> tuple[str, ...]:
+    """Return configured Oxylabs proxy servers for the active profile."""
+    active_profile = get_proxy_profile(profile)
+    env_name = DEFAULT_PROFILE_CONFIGS[active_profile]["server"]
+    raw = os.environ.get(env_name, "")
+
+    if raw:
+        servers = _split_proxy_servers(raw)
         if servers:
             return tuple(servers)
 
-    single = os.environ.get("OXYLABS_PROXY_SERVER")
-    if single:
-        normalized = _normalize_proxy_server(single)
-        if normalized:
-            return (normalized,)
+    if active_profile == "mobile":
+        return (DEFAULT_MOBILE_PROXY_SERVER,)
 
-    return DEFAULT_OXYLABS_PROXY_SERVERS
+    raise ValueError(f"No proxy servers configured for profile '{active_profile}'")
 
 
-def get_oxylabs_proxy_auth_mode() -> str:
-    """Return proxy auth mode, defaulting to IP whitelist."""
-    raw = (os.environ.get("OXYLABS_PROXY_AUTH_MODE") or "").strip().lower()
-    if raw in VALID_OXYLABS_PROXY_AUTH_MODES:
-        return raw
-    return "ip_whitelist"
+def get_oxylabs_proxy_servers(profile: str | None = None) -> tuple[str, ...]:
+    """Compatibility wrapper for existing callers."""
+    return get_proxy_servers(profile=profile)
 
 
-def get_oxylabs_proxy_auth() -> tuple[str | None, str | None]:
-    """Return optional Oxylabs username/password credentials."""
-    if get_oxylabs_proxy_auth_mode() != "credentials":
-        return None, None
+def get_proxy_auth(profile: str | None = None) -> tuple[str | None, str | None]:
+    """Return optional Oxylabs username/password credentials for the active profile."""
+    active_profile = get_proxy_profile(profile)
+    username_env = DEFAULT_PROFILE_CONFIGS[active_profile]["username"]
+    password_env = DEFAULT_PROFILE_CONFIGS[active_profile]["password"]
 
-    username = os.environ.get("OXYLABS_USERNAME") or None
-    password = os.environ.get("OXYLABS_PASSWORD") or None
+    username = os.environ.get(username_env) or None
+    password = os.environ.get(password_env) or None
+
+    # Keep a compatibility path for pre-migration artifacts that still use shared creds.
+    if active_profile == "datacenter" and (not username or not password):
+        username = username or os.environ.get("OXYLABS_USERNAME")
+        password = password or os.environ.get("OXYLABS_PASSWORD")
+
     return username, password
 
 
-def get_oxylabs_proxy_server(proxy_index: int | None = None) -> str:
+def get_oxylabs_proxy_auth(profile: str | None = None) -> tuple[str | None, str | None]:
+    """Compatibility wrapper for existing callers."""
+    return get_proxy_auth(profile=profile)
+
+
+def get_proxy_auth_mode(profile: str | None = None) -> str:
+    """Return proxy auth mode for the active profile."""
+    username, password = get_proxy_auth(profile)
+    return "credentials" if username and password else "ip_whitelist"
+
+
+def get_oxylabs_proxy_auth_mode(profile: str | None = None) -> str:
+    """Compatibility wrapper for existing callers."""
+    return get_proxy_auth_mode(profile=profile)
+
+
+def get_proxy_server(
+    profile: str | None = None,
+    proxy_index: int | None = None,
+) -> str:
     """Return one proxy server, rotating when index is omitted."""
-    servers = get_oxylabs_proxy_servers()
+    servers = get_proxy_servers(profile)
     if not servers:
         raise ValueError("No Oxylabs proxy servers configured")
 
-    index = next(_PROXY_CURSOR) if proxy_index is None else proxy_index
-    return servers[index % len(servers)]
+    if proxy_index is None:
+        proxy_index = 0
+
+    return servers[proxy_index % len(servers)]
 
 
-def get_playwright_proxy_config(proxy_index: int | None = None) -> dict[str, str]:
+def get_oxylabs_proxy_server(
+    proxy_index: int | None = None,
+    profile: str | None = None,
+) -> str:
+    """Compatibility wrapper for existing callers."""
+    return get_proxy_server(profile=profile, proxy_index=proxy_index)
+
+
+def get_playwright_proxy_config(
+    proxy_index: int | None = None,
+    profile: str | None = None,
+) -> dict[str, str]:
     """Return Playwright proxy settings for Oxylabs."""
-    username, password = get_oxylabs_proxy_auth()
-    proxy: dict[str, str] = {"server": get_oxylabs_proxy_server(proxy_index)}
+    username, password = get_proxy_auth(profile)
+    proxy: dict[str, str] = {"server": get_proxy_server(profile=profile, proxy_index=proxy_index)}
     if username and password:
         proxy["username"] = username
         proxy["password"] = password
     return proxy
 
 
-def get_httpx_proxy_url(proxy_index: int | None = None) -> str:
+def get_httpx_proxy_url(proxy_index: int | None = None, profile: str | None = None) -> str:
     """Return an httpx-compatible proxy URL."""
-    server = get_oxylabs_proxy_server(proxy_index)
-    username, password = get_oxylabs_proxy_auth()
+    server = get_proxy_server(profile=profile, proxy_index=proxy_index)
+    username, password = get_proxy_auth(profile)
     if not username or not password:
         return server
 
@@ -109,9 +165,9 @@ def get_httpx_proxy_url(proxy_index: int | None = None) -> str:
     return f"{scheme}://{auth}@{netloc}"
 
 
-def get_browser_proxy_env(proxy_index: int | None = None) -> dict[str, str]:
+def get_browser_proxy_env(proxy_index: int | None = None, profile: str | None = None) -> dict[str, str]:
     """Return proxy env vars for browser/CLI launcher subprocesses."""
-    proxy_url = get_httpx_proxy_url(proxy_index)
+    proxy_url = get_httpx_proxy_url(proxy_index=proxy_index, profile=profile)
     return {
         "HTTP_PROXY": proxy_url,
         "HTTPS_PROXY": proxy_url,
@@ -125,19 +181,26 @@ def get_browser_proxy_env(proxy_index: int | None = None) -> dict[str, str]:
     }
 
 
-def require_oxylabs_proxy_configuration() -> None:
-    """Fail fast only when no proxy endpoints are configured at all."""
-    if not get_oxylabs_proxy_servers():
-        raise ValueError(
-            "Oxylabs proxy servers not configured. "
-            "Set OXYLABS_PROXY_SERVERS or OXYLABS_PROXY_SERVER."
-        )
+def require_oxylabs_proxy_configuration(profile: str | None = None) -> None:
+    """Fail fast when active profile proxy configuration is incomplete."""
+    profile_name = get_proxy_profile(profile)
+    get_proxy_servers(profile_name)
+    get_proxy_auth(profile_name)
 
 
-def describe_oxylabs_proxy_mode() -> dict[str, Any]:
+def describe_proxy_mode(profile: str | None = None) -> dict[str, Any]:
     """Return lightweight metadata for prompts and diagnostics."""
-    auth_mode = get_oxylabs_proxy_auth_mode()
+    profile_name = get_proxy_profile(profile)
+    servers = list(get_proxy_servers(profile_name))
+    auth_mode = get_proxy_auth_mode(profile_name)
+
     return {
-        "servers": list(get_oxylabs_proxy_servers()),
+        "profile": profile_name,
+        "servers": servers,
         "auth_mode": auth_mode,
     }
+
+
+def describe_oxylabs_proxy_mode(profile: str | None = None) -> dict[str, Any]:
+    """Backward-compatible metadata function name used by existing agents."""
+    return describe_proxy_mode(profile=profile)

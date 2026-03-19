@@ -59,7 +59,12 @@ def _parse_json_stdout(stdout: str) -> dict | None:
         return None
 
 
-def _build_command(template: str, row: dict, script_path: Path) -> list[str]:
+def _build_command(
+    template: str,
+    row: dict,
+    script_path: Path,
+    proxy_profile: str | None,
+) -> list[str]:
     rendered = template.format(
         nces_id=row["nces_id"],
         name=row["name"],
@@ -68,11 +73,17 @@ def _build_command(template: str, row: dict, script_path: Path) -> list[str]:
         city=row.get("city") or "",
         script_path=str(script_path),
         failure_reason=row.get("failure_reason") or "",
+        proxy_profile=proxy_profile or "",
     )
     return shlex.split(rendered)
 
 
-def _process_one(repair_template: str, state: str | None, dry_run: bool) -> bool:
+def _process_one(
+    repair_template: str,
+    state: str | None,
+    dry_run: bool,
+    proxy_profile: str | None,
+) -> bool:
     row = queue.claim_next_school(state=state, statuses=(queue.STATUS_NEEDS_REPAIR,))
     if not row:
         print("No schools in needs_repair")
@@ -84,8 +95,8 @@ def _process_one(repair_template: str, state: str | None, dry_run: bool) -> bool
     )
 
     try:
-        require_proxy_credentials()
-        assert_not_blocklisted([row.get("website") or ""])
+        require_proxy_credentials(profile=proxy_profile)
+        assert_not_blocklisted([row.get("website") or ""], profile=proxy_profile)
     except ProxyNotConfiguredError as exc:
         queue.mark_needs_repair(nces_id, f"proxy_not_configured:{exc}")
         print(f"{nces_id}: remains needs_repair (proxy not configured)")
@@ -95,7 +106,7 @@ def _process_one(repair_template: str, state: str | None, dry_run: bool) -> bool
         print(f"{nces_id}: blocked ({exc})")
         return True
 
-    command = _build_command(repair_template, row, script_path)
+    command = _build_command(repair_template, row, script_path, proxy_profile)
     print(f"Running repair for {nces_id}: {' '.join(shlex.quote(part) for part in command)}")
 
     if dry_run:
@@ -104,6 +115,8 @@ def _process_one(repair_template: str, state: str | None, dry_run: bool) -> bool
         return True
 
     env = os.environ.copy()
+    if proxy_profile:
+        env["OXYLABS_PROXY_PROFILE"] = proxy_profile
     env.setdefault("PYTHONUNBUFFERED", "1")
     proc = subprocess.run(
         command,
@@ -144,7 +157,11 @@ def _process_one(repair_template: str, state: str | None, dry_run: bool) -> bool
         return True
 
     try:
-        run = run_scraper_file_sync(script_path, website=row.get("website"))
+        run = run_scraper_file_sync(
+            script_path,
+            website=row.get("website"),
+            profile=proxy_profile,
+        )
     except Exception as exc:
         queue.mark_needs_repair(nces_id, f"repair_validation_error:{exc}")
         print(f"{nces_id}: repair validation failed ({exc})", file=sys.stderr)
@@ -175,12 +192,18 @@ def main() -> int:
         required=True,
         help=(
             "Command template for one-shot repair session. "
-            "Supports {nces_id} {name} {website} {state} {city} {script_path} {failure_reason}."
+            "Supports {nces_id} {name} {website} {state} {city} {script_path}"
+            " {failure_reason} {proxy_profile}."
         ),
     )
     parser.add_argument("--state", help="Optional state filter")
     parser.add_argument("--continuous", action="store_true", help="Run continuously")
     parser.add_argument("--sleep-seconds", type=int, default=30, help="Idle sleep seconds")
+    parser.add_argument(
+        "--proxy-profile",
+        choices=["mobile", "datacenter"],
+        help="Select proxy profile (mobile|datacenter). Defaults to OXYLABS_PROXY_PROFILE/mobile.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Do not invoke repair command")
 
     args = parser.parse_args()
@@ -191,11 +214,21 @@ def main() -> int:
     try:
         if args.continuous:
             while True:
-                handled = _process_one(args.repair_command, args.state, args.dry_run)
+                handled = _process_one(
+                    args.repair_command,
+                    args.state,
+                    args.dry_run,
+                    args.proxy_profile,
+                )
                 if not handled:
                     time.sleep(max(1, args.sleep_seconds))
         else:
-            _process_one(args.repair_command, args.state, args.dry_run)
+            _process_one(
+                args.repair_command,
+                args.state,
+                args.dry_run,
+                args.proxy_profile,
+            )
     finally:
         lock.close()
 

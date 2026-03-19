@@ -74,7 +74,7 @@ def _find_school_by_url(url: str, nces_id: str | None = None) -> dict:
     return matches[0]
 
 
-def _run_adapter(row: dict, launcher_command: str) -> dict:
+def _run_adapter(row: dict, launcher_command: str, proxy_profile: str | None) -> dict:
     script_path = queue.resolve_script_path(PROJECT_ROOT, row["nces_id"], row["state"])
     cmd = [
         "uv",
@@ -98,6 +98,8 @@ def _run_adapter(row: dict, launcher_command: str) -> dict:
         "--script-path",
         str(script_path),
     ]
+    if proxy_profile:
+        cmd.extend(["--proxy-profile", proxy_profile])
 
     proc = subprocess.run(cmd, cwd=PROJECT_ROOT, capture_output=True, text=True, check=False)
     if proc.returncode != 0:
@@ -128,12 +130,17 @@ def main() -> int:
     parser.add_argument("--url", required=True, help="School website URL")
     parser.add_argument("--launcher-command", required=True, help="Underlying one-shot launcher command")
     parser.add_argument("--nces-id", help="Disambiguate when URL is shared by multiple schools")
+    parser.add_argument(
+        "--proxy-profile",
+        choices=["mobile", "datacenter"],
+        help="Select proxy profile (mobile|datacenter). Defaults to OXYLABS_PROXY_PROFILE/mobile.",
+    )
     args = parser.parse_args()
 
     queue.init_tables()
 
     try:
-        require_proxy_credentials()
+        require_proxy_credentials(profile=args.proxy_profile)
     except ProxyNotConfiguredError as exc:
         print(f"proxy_error: {exc}", file=sys.stderr)
         return 2
@@ -145,13 +152,13 @@ def main() -> int:
         return 1
 
     try:
-        assert_not_blocklisted([claimed.get("website") or args.url])
+        assert_not_blocklisted([claimed.get("website") or args.url], profile=args.proxy_profile)
     except BlocklistedDomainError as exc:
         queue.mark_blocked(claimed["nces_id"], f"blocklisted_domain:{exc}")
         print(json.dumps({"status": "blocked", "reason": str(exc), "nces_id": claimed["nces_id"]}))
         return 0
 
-    result = _run_adapter(claimed, args.launcher_command)
+    result = _run_adapter(claimed, args.launcher_command, proxy_profile=args.proxy_profile)
     status = str(result.get("status") or "failed")
     reason = str(result.get("reason") or "")
     script_path = Path(str(result.get("script_path") or queue.resolve_script_path(PROJECT_ROOT, claimed["nces_id"], claimed["state"])))
@@ -163,7 +170,11 @@ def main() -> int:
             return 0
 
         try:
-            run = run_scraper_file_sync(script_path, website=claimed.get("website") or args.url)
+            run = run_scraper_file_sync(
+                script_path,
+                website=claimed.get("website") or args.url,
+                profile=args.proxy_profile,
+            )
             if run.valid and run.non_empty_extraction:
                 queue.mark_complete(claimed["nces_id"], str(script_path))
                 print(json.dumps({"status": "complete", "reason": reason, "nces_id": claimed["nces_id"], "script_path": str(script_path)}))

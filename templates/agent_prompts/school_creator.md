@@ -11,8 +11,8 @@ Requirements:
 - Use the hardwired Oxylabs-backed `browse` CLI for live reconnaissance.
 - Use Playwright with Oxylabs proxy for the final scraper script and any script-level validation.
 - The current proxy pool is: {proxy_servers}
-- Current auth mode: {proxy_auth_mode}. If auth mode is `ip_whitelist`, do not fail just because `OXYLABS_USERNAME`/`OXYLABS_PASSWORD` are unset.
-- Respect ~/.web_scraper_blocklist.json.
+- Current auth mode: {proxy_auth_mode}. If auth mode is `ip_whitelist`, do not fail just because profile creds are unset.
+- Respect the active runtime blocklist file for this profile.
 - Manually navigate school pages like a human (menus/subpages); do not rely on one-pass keyword heuristics.
 - This repo is football-first. Extract football-useful public data, not generic athletics coverage.
 - Derive stable selectors and paths from the live DOM, then encode them in the Playwright scraper.

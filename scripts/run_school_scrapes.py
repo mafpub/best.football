@@ -25,7 +25,12 @@ from scrapers.schools.runtime import (
 logger = logging.getLogger(__name__)
 
 
-async def _run_one(row: dict, semaphore: asyncio.Semaphore, dry_run: bool) -> dict:
+async def _run_one(
+    row: dict,
+    semaphore: asyncio.Semaphore,
+    dry_run: bool,
+    proxy_profile: str | None,
+) -> dict:
     async with semaphore:
         nces_id = row["nces_id"]
         script_path = Path(row["scraper_file"])
@@ -49,8 +54,12 @@ async def _run_one(row: dict, semaphore: asyncio.Semaphore, dry_run: bool) -> di
             return {"nces_id": nces_id, "status": "failed", "reason": reason}
 
         try:
-            assert_not_blocklisted([row.get("website") or ""])
-            run = await run_scraper_file(script_path, website=row.get("website"))
+            assert_not_blocklisted([row.get("website") or ""], profile=proxy_profile)
+            run = await run_scraper_file(
+                script_path,
+                website=row.get("website"),
+                profile=proxy_profile,
+            )
 
             if not run.valid:
                 reason = f"validation_failed:{'; '.join(run.validation_errors)}"
@@ -111,9 +120,19 @@ async def _run_one(row: dict, semaphore: asyncio.Semaphore, dry_run: bool) -> di
             return {"nces_id": nces_id, "status": "failed", "reason": reason}
 
 
-async def _run_all(rows: list[dict], workers: int, dry_run: bool) -> list[dict]:
+async def _run_all(
+    rows: list[dict],
+    workers: int,
+    dry_run: bool,
+    proxy_profile: str | None,
+) -> list[dict]:
     semaphore = asyncio.Semaphore(max(1, workers))
-    tasks = [asyncio.create_task(_run_one(row, semaphore, dry_run=dry_run)) for row in rows]
+    tasks = [
+        asyncio.create_task(
+            _run_one(row, semaphore, dry_run=dry_run, proxy_profile=proxy_profile)
+        )
+        for row in rows
+    ]
     return await asyncio.gather(*tasks)
 
 
@@ -123,6 +142,11 @@ def main() -> int:
     parser.add_argument("--state", help="Optional state filter")
     parser.add_argument("--limit", type=int, help="Optional max scripts to run")
     parser.add_argument("--dry-run", action="store_true", help="List work without executing scripts")
+    parser.add_argument(
+        "--proxy-profile",
+        choices=["mobile", "datacenter"],
+        help="Select proxy profile (mobile|datacenter). Defaults to OXYLABS_PROXY_PROFILE/mobile.",
+    )
     args = parser.parse_args()
 
     logging.basicConfig(
@@ -133,7 +157,7 @@ def main() -> int:
     queue.init_tables()
 
     try:
-        require_proxy_credentials()
+        require_proxy_credentials(profile=args.proxy_profile)
     except ProxyNotConfiguredError as exc:
         logger.error(str(exc))
         return 2
@@ -144,7 +168,14 @@ def main() -> int:
     if not rows:
         return 0
 
-    results = asyncio.run(_run_all(rows, workers=args.workers, dry_run=args.dry_run))
+    results = asyncio.run(
+        _run_all(
+            rows,
+            workers=args.workers,
+            dry_run=args.dry_run,
+            proxy_profile=args.proxy_profile,
+        )
+    )
 
     success = sum(1 for row in results if row["status"] == "success")
     failed = sum(1 for row in results if row["status"] == "failed")

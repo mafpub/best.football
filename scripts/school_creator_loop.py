@@ -63,7 +63,12 @@ def _parse_json_stdout(stdout: str) -> dict | None:
         return None
 
 
-def _build_command(template: str, school: dict, script_path: Path) -> list[str]:
+def _build_command(
+    template: str,
+    school: dict,
+    script_path: Path,
+    proxy_profile: str | None,
+) -> list[str]:
     rendered = template.format(
         nces_id=school["nces_id"],
         name=school["name"],
@@ -71,12 +76,15 @@ def _build_command(template: str, school: dict, script_path: Path) -> list[str]:
         state=school["state"],
         city=school.get("city") or "",
         script_path=str(script_path),
+        proxy_profile=proxy_profile or "",
     )
     return shlex.split(rendered)
 
 
-def _run_creator_command(command: list[str]) -> subprocess.CompletedProcess[str]:
+def _run_creator_command(command: list[str], proxy_profile: str | None) -> subprocess.CompletedProcess[str]:
     env = os.environ.copy()
+    if proxy_profile:
+        env["OXYLABS_PROXY_PROFILE"] = proxy_profile
     env.setdefault("PYTHONUNBUFFERED", "1")
     return subprocess.run(
         command,
@@ -92,6 +100,7 @@ def _process_one(
     creator_command_template: str,
     state: str | None,
     dry_run: bool,
+    proxy_profile: str | None,
 ) -> bool:
     school = queue.claim_next_school(state=state, statuses=(queue.STATUS_PENDING,))
     if not school:
@@ -102,8 +111,8 @@ def _process_one(
     script_path = queue.resolve_script_path(PROJECT_ROOT, nces_id, school["state"])
 
     try:
-        require_proxy_credentials()
-        assert_not_blocklisted([school.get("website") or ""])
+        require_proxy_credentials(profile=proxy_profile)
+        assert_not_blocklisted([school.get("website") or ""], profile=proxy_profile)
     except ProxyNotConfiguredError as exc:
         queue.mark_failed(nces_id, f"proxy_not_configured:{exc}")
         print(f"{nces_id}: failed (proxy not configured)", file=sys.stderr)
@@ -113,7 +122,12 @@ def _process_one(
         print(f"{nces_id}: blocked ({exc})")
         return True
 
-    command = _build_command(creator_command_template, school, script_path)
+    command = _build_command(
+        creator_command_template,
+        school,
+        script_path,
+        proxy_profile=proxy_profile,
+    )
     print(f"Running creator for {nces_id}: {' '.join(shlex.quote(part) for part in command)}")
 
     if dry_run:
@@ -121,7 +135,7 @@ def _process_one(
         queue.upsert_status(nces_id, queue.STATUS_PENDING, notes="dry_run_creator")
         return True
 
-    result = _run_creator_command(command)
+    result = _run_creator_command(command, proxy_profile)
     creator_payload = _parse_json_stdout(result.stdout)
 
     if result.returncode != 0:
@@ -153,7 +167,11 @@ def _process_one(
         return True
 
     try:
-        run = run_scraper_file_sync(script_path, website=school.get("website"))
+        run = run_scraper_file_sync(
+            script_path,
+            website=school.get("website"),
+            profile=proxy_profile,
+        )
     except Exception as exc:
         queue.mark_failed(nces_id, f"validation_run_error:{exc}")
         print(f"{nces_id}: failed validation run ({exc})", file=sys.stderr)
@@ -181,12 +199,18 @@ def main() -> int:
         required=True,
         help=(
             "Command template for one-shot creator session. "
-            "Supports {nces_id} {name} {website} {state} {city} {script_path}."
+            "Supports {nces_id} {name} {website} {state} {city} {script_path}"
+            " {proxy_profile}"
         ),
     )
     parser.add_argument("--state", help="Optional state filter")
     parser.add_argument("--continuous", action="store_true", help="Run continuously")
     parser.add_argument("--sleep-seconds", type=int, default=15, help="Idle sleep between iterations")
+    parser.add_argument(
+        "--proxy-profile",
+        choices=["mobile", "datacenter"],
+        help="Select proxy profile (mobile|datacenter). Defaults to OXYLABS_PROXY_PROFILE/mobile.",
+    )
     parser.add_argument("--seed-missing", action="store_true", help="Seed queue from schools before running")
     parser.add_argument("--dry-run", action="store_true", help="Do not invoke command or write final statuses")
 
@@ -205,6 +229,7 @@ def main() -> int:
                     creator_command_template=args.creator_command,
                     state=args.state,
                     dry_run=args.dry_run,
+                    proxy_profile=args.proxy_profile,
                 )
                 if not handled:
                     time.sleep(max(1, args.sleep_seconds))
@@ -213,6 +238,7 @@ def main() -> int:
                 creator_command_template=args.creator_command,
                 state=args.state,
                 dry_run=args.dry_run,
+                proxy_profile=args.proxy_profile,
             )
     finally:
         lock.close()

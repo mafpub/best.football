@@ -36,10 +36,11 @@ def _prompt_text(
     city: str,
     script_path: str,
     failure_reason: str,
+    proxy_profile: str | None,
 ) -> str:
     template_path = DEFAULT_TEMPLATE_BY_MODE[mode]
     template = template_path.read_text(encoding="utf-8")
-    proxy_mode = describe_oxylabs_proxy_mode()
+    proxy_mode = describe_oxylabs_proxy_mode(proxy_profile)
     return template.format(
         mode=mode,
         nces_id=nces_id,
@@ -119,6 +120,11 @@ def main() -> int:
     parser.add_argument("--city", default="")
     parser.add_argument("--script-path", required=True)
     parser.add_argument("--failure-reason", default="")
+    parser.add_argument(
+        "--proxy-profile",
+        choices=["mobile", "datacenter"],
+        help="Select proxy profile (mobile|datacenter). Defaults to OXYLABS_PROXY_PROFILE/mobile.",
+    )
     parser.add_argument("--timeout-seconds", type=int, default=1800)
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args()
@@ -132,6 +138,7 @@ def main() -> int:
         city=args.city,
         script_path=args.script_path,
         failure_reason=args.failure_reason,
+        proxy_profile=args.proxy_profile,
     )
 
     with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False, encoding="utf-8") as tmp:
@@ -147,13 +154,16 @@ def main() -> int:
         "city": args.city,
         "script_path": args.script_path,
         "failure_reason": args.failure_reason,
+        "proxy_profile": args.proxy_profile or "",
         "prompt_path": prompt_path,
     }
 
     command = _build_command(args.launcher_command, values)
     env = os.environ.copy()
+    if args.proxy_profile:
+        env["OXYLABS_PROXY_PROFILE"] = args.proxy_profile
     env.setdefault("PYTHONUNBUFFERED", "1")
-    env.update(get_browser_proxy_env())
+    env.update(get_browser_proxy_env(profile=args.proxy_profile))
 
     try:
         proc = subprocess.run(

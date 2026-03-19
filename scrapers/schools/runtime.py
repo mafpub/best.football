@@ -9,12 +9,12 @@ import json
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Awaitable, Callable, Optional
+from typing import Any, Awaitable, Callable
 from urllib.parse import urlparse
 
 from pipeline.env import load_repo_env
 from pipeline.proxy import (
-    describe_oxylabs_proxy_mode,
+    describe_proxy_mode,
     get_oxylabs_proxy_servers,
     get_playwright_proxy_config as _get_playwright_proxy_config,
     require_oxylabs_proxy_configuration,
@@ -22,7 +22,10 @@ from pipeline.proxy import (
 
 load_repo_env()
 
-BLOCKLIST_FILE = Path.home() / ".web_scraper_blocklist.json"
+BLOCKLIST_FILE_BY_PROFILE = {
+    "mobile": Path.home() / ".web_scraper_blocklist_mobile.json",
+    "datacenter": Path.home() / ".web_scraper_blocklist_datacenter.json",
+}
 REQUIRED_KEYS = {
     "nces_id",
     "school_name",
@@ -68,36 +71,47 @@ def _has_data(value: Any) -> bool:
     return True
 
 
-def require_proxy_credentials() -> None:
+def get_blocklist_file(profile: str | None = None) -> Path:
+    """Return active profile blocklist file."""
+    from pipeline.proxy import get_proxy_profile
+
+    return BLOCKLIST_FILE_BY_PROFILE[get_proxy_profile(profile)]
+
+
+def require_proxy_credentials(profile: str | None = None) -> None:
     """Fail fast if neither proxy endpoints nor auth mode are configured."""
     try:
-        require_oxylabs_proxy_configuration()
+        require_oxylabs_proxy_configuration(profile=profile)
     except ValueError as exc:
         raise ProxyNotConfiguredError(
             "Oxylabs proxy not configured. "
-            "Set OXYLABS_PROXY_SERVERS/OXYLABS_PROXY_SERVER, and optionally "
-            "OXYLABS_USERNAME/OXYLABS_PASSWORD when not using IP whitelist."
+            "Set OXYLABS_MOBILE_*/OXYLABS_DATACENTER_* proxy env vars, "
+            "and OXYLABS_PROXY_PROFILE when selecting a non-default profile."
         ) from exc
 
 
-def get_playwright_proxy_config(proxy_index: int | None = None) -> dict[str, str]:
+def get_playwright_proxy_config(
+    proxy_index: int | None = None,
+    profile: str | None = None,
+) -> dict[str, str]:
     """Return the shared Playwright proxy config for school scrapers."""
-    require_proxy_credentials()
-    return _get_playwright_proxy_config(proxy_index)
+    require_proxy_credentials(profile=profile)
+    return _get_playwright_proxy_config(proxy_index=proxy_index, profile=profile)
 
 
-def get_proxy_runtime_meta() -> dict[str, Any]:
+def get_proxy_runtime_meta(profile: str | None = None) -> dict[str, Any]:
     """Return lightweight proxy metadata for scraper diagnostics."""
-    details = describe_oxylabs_proxy_mode()
+    details = describe_proxy_mode(profile)
     return {
+        "proxy_profile": details["profile"],
         "proxy_servers": details["servers"],
         "proxy_auth_mode": details["auth_mode"],
     }
 
 
-def get_proxy_server_list() -> list[str]:
+def get_proxy_server_list(profile: str | None = None) -> list[str]:
     """Return the configured proxy server pool as a list."""
-    return list(get_oxylabs_proxy_servers())
+    return list(get_oxylabs_proxy_servers(profile))
 
 
 def _normalize_url(url: str) -> str:
@@ -109,12 +123,13 @@ def _normalize_url(url: str) -> str:
     return value
 
 
-def _load_blocklist_domains() -> set[str]:
-    if not BLOCKLIST_FILE.exists():
+def load_blocklist_domains(profile: str | None = None) -> set[str]:
+    blocklist_file = get_blocklist_file(profile)
+    if not blocklist_file.exists():
         return set()
 
     try:
-        data = json.loads(BLOCKLIST_FILE.read_text(encoding="utf-8"))
+        data = json.loads(blocklist_file.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return set()
 
@@ -129,15 +144,42 @@ def _load_blocklist_domains() -> set[str]:
     return values
 
 
+def _load_blocklist_domains(profile: str | None = None) -> set[str]:
+    return load_blocklist_domains(profile=profile)
+
+
 def _extract_domain(url: str) -> str:
     normalized = _normalize_url(url)
     parsed = urlparse(normalized)
     return (parsed.hostname or "").lower()
 
 
-def assert_not_blocklisted(urls: list[str]) -> None:
+def append_blocklist_domain(
+    url_or_domain: str,
+    profile: str | None = None,
+    reason: str | None = None,
+) -> None:
+    """Append a domain to the active profile blocklist immediately."""
+    blocklist_file = get_blocklist_file(profile)
+    blocked = load_blocklist_domains(profile)
+
+    domain = _extract_domain(url_or_domain)
+    if not domain:
+        return
+
+    if domain in blocked:
+        return
+
+    blocked.add(domain)
+    blocklist_file.write_text(
+        json.dumps({"domains": sorted(blocked)}, ensure_ascii=True, indent=2),
+        encoding="utf-8",
+    )
+
+
+def assert_not_blocklisted(urls: list[str], profile: str | None = None) -> None:
     """Raise if any URL domain is blocklisted."""
-    blocked = _load_blocklist_domains()
+    blocked = _load_blocklist_domains(profile)
     if not blocked:
         return
 
@@ -279,11 +321,15 @@ def _discover_entrypoint(module) -> Callable[[], Awaitable[dict[str, Any]]]:
     return candidates[0][1]
 
 
-async def run_scraper_file(scraper_path: Path, website: str | None = None) -> ScrapeRunResult:
+async def run_scraper_file(
+    scraper_path: Path,
+    website: str | None = None,
+    profile: str | None = None,
+) -> ScrapeRunResult:
     """Load and execute one deterministic school scraper script."""
-    require_proxy_credentials()
+    require_proxy_credentials(profile=profile)
     if website:
-        assert_not_blocklisted([website])
+        assert_not_blocklisted([website], profile=profile)
 
     module = _load_module(scraper_path)
     fn = _discover_entrypoint(module)
@@ -297,6 +343,10 @@ async def run_scraper_file(scraper_path: Path, website: str | None = None) -> Sc
     return ScrapeRunResult(payload=payload, valid=not errors, validation_errors=errors)
 
 
-def run_scraper_file_sync(scraper_path: Path, website: str | None = None) -> ScrapeRunResult:
+def run_scraper_file_sync(
+    scraper_path: Path,
+    website: str | None = None,
+    profile: str | None = None,
+) -> ScrapeRunResult:
     """Synchronous wrapper for CLI scripts."""
-    return asyncio.run(run_scraper_file(scraper_path, website=website))
+    return asyncio.run(run_scraper_file(scraper_path, website=website, profile=profile))
