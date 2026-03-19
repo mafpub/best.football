@@ -97,6 +97,22 @@ def get_httpx_proxy_url(proxy_index: int | None = None) -> str:
     return f"{scheme}://{auth}@{netloc}"
 
 
+def get_browser_proxy_env(proxy_index: int | None = None) -> dict[str, str]:
+    """Return proxy env vars for browser/CLI launcher subprocesses."""
+    proxy_url = get_httpx_proxy_url(proxy_index)
+    return {
+        "HTTP_PROXY": proxy_url,
+        "HTTPS_PROXY": proxy_url,
+        "ALL_PROXY": proxy_url,
+        "http_proxy": proxy_url,
+        "https_proxy": proxy_url,
+        "all_proxy": proxy_url,
+        # Keep local control-plane traffic direct.
+        "NO_PROXY": "127.0.0.1,localhost,::1",
+        "no_proxy": "127.0.0.1,localhost,::1",
+    }
+
+
 def require_oxylabs_proxy_configuration() -> None:
     """Fail fast only when no proxy endpoints are configured at all."""
     if not get_oxylabs_proxy_servers():

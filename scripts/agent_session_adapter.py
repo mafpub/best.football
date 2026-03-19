@@ -16,7 +16,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from pipeline.proxy import describe_oxylabs_proxy_mode
+from pipeline.proxy import describe_oxylabs_proxy_mode, get_browser_proxy_env
 
 ALLOWED_STATUSES = {"complete", "blocked", "failed"}
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -153,6 +153,7 @@ def main() -> int:
     command = _build_command(args.launcher_command, values)
     env = os.environ.copy()
     env.setdefault("PYTHONUNBUFFERED", "1")
+    env.update(get_browser_proxy_env())
 
     try:
         proc = subprocess.run(
