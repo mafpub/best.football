@@ -52,6 +52,7 @@ def test_playwright_proxy_config_defaults_to_mobile_pool():
 
 
 def test_playwright_proxy_config_includes_auth(monkeypatch):
+    monkeypatch.setenv("OXYLABS_PROXY_AUTH_MODE", "credentials")
     monkeypatch.setenv("OXYLABS_USERNAME", "user")
     monkeypatch.setenv("OXYLABS_PASSWORD", "pass")
 

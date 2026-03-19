@@ -69,6 +69,7 @@ Current scraper workflow:
 
 Environment:
 - IP-whitelist mode works without `OXYLABS_USERNAME` or `OXYLABS_PASSWORD`.
+- Credential auth is opt-in via `OXYLABS_PROXY_AUTH_MODE=credentials`.
 - If credentials are required for your Oxylabs setup, export them before running creator, repair, or scraper execution.
 - Override the proxy pool only if needed via `OXYLABS_PROXY_SERVER` or `OXYLABS_PROXY_SERVERS`.
 

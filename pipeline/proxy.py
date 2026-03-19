@@ -16,6 +16,7 @@ DEFAULT_OXYLABS_PROXY_SERVERS = (
     "https://us-pr.oxylabs.io:10002",
     "https://us-pr.oxylabs.io:10003",
 )
+VALID_OXYLABS_PROXY_AUTH_MODES = {"credentials", "ip_whitelist"}
 
 _PROXY_CURSOR = itertools.count()
 
@@ -56,8 +57,19 @@ def get_oxylabs_proxy_servers() -> tuple[str, ...]:
     return DEFAULT_OXYLABS_PROXY_SERVERS
 
 
+def get_oxylabs_proxy_auth_mode() -> str:
+    """Return proxy auth mode, defaulting to IP whitelist."""
+    raw = (os.environ.get("OXYLABS_PROXY_AUTH_MODE") or "").strip().lower()
+    if raw in VALID_OXYLABS_PROXY_AUTH_MODES:
+        return raw
+    return "ip_whitelist"
+
+
 def get_oxylabs_proxy_auth() -> tuple[str | None, str | None]:
     """Return optional Oxylabs username/password credentials."""
+    if get_oxylabs_proxy_auth_mode() != "credentials":
+        return None, None
+
     username = os.environ.get("OXYLABS_USERNAME") or None
     password = os.environ.get("OXYLABS_PASSWORD") or None
     return username, password
@@ -124,8 +136,8 @@ def require_oxylabs_proxy_configuration() -> None:
 
 def describe_oxylabs_proxy_mode() -> dict[str, Any]:
     """Return lightweight metadata for prompts and diagnostics."""
-    username, password = get_oxylabs_proxy_auth()
+    auth_mode = get_oxylabs_proxy_auth_mode()
     return {
         "servers": list(get_oxylabs_proxy_servers()),
-        "auth_mode": "credentials" if username and password else "ip_whitelist",
+        "auth_mode": auth_mode,
     }
