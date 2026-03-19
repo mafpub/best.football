@@ -58,11 +58,21 @@ Static files deploy to Cloudflare Pages. Camp API runs on ha1.
 
 ## Deterministic School Scrapers
 
-Per-school scraping uses deterministic scripts at:
+Per-school scraping uses deterministic scripts at `scrapers/schools/{state_lower}/{nces_id}.py`.
 
-`scrapers/schools/{state_lower}/{nces_id}.py`
+Current scraper workflow:
+- Reconnaissance uses the Oxylabs-backed `browse` CLI.
+- Final scraper scripts remain deterministic Playwright.
+- Creator and repair launcher subprocesses inherit Oxylabs proxy env from `scripts/agent_session_adapter.py`.
+- The default proxy pool is `https://us-pr.oxylabs.io:10001`, `10002`, and `10003`.
+- Blocklisted domains in `~/.web_scraper_blocklist.json` are skipped.
 
-Queue lifecycle and execution:
+Environment:
+- IP-whitelist mode works without `OXYLABS_USERNAME` or `OXYLABS_PASSWORD`.
+- If credentials are required for your Oxylabs setup, export them before running creator, repair, or scraper execution.
+- Override the proxy pool only if needed via `OXYLABS_PROXY_SERVER` or `OXYLABS_PROXY_SERVERS`.
+
+Queue lifecycle:
 
 ```bash
 # Seed queue rows for schools that have websites
@@ -71,7 +81,11 @@ uv run python scripts/discover_schools.py --seed
 # View queue status
 uv run python scripts/discover_schools.py --status
 
-# Run one creator session (single-browser lock)
+# Optional when not using IP whitelist
+export OXYLABS_USERNAME=...
+export OXYLABS_PASSWORD=...
+
+# Run one creator loop (single-browser lock)
 uv run python scripts/school_creator_loop.py \
   --creator-command "uv run python scripts/agent_session_adapter.py \
     --mode create \
@@ -91,11 +105,11 @@ uv run python scripts/run_repair_queue.py \
     --website {website} --city {city} --script-path {script_path} \
     --failure-reason {failure_reason}"
 
-# Requeue blocked schools that reached recheck date
+# Requeue blocked schools whose recheck date has arrived
 uv run python scripts/recheck_blocked.py
 
 # Force-clear blocked schools back to pending
 uv run python scripts/discover_schools.py --clear-blocked
 ```
 
-Proxy policy is strict: all scraper execution paths require Oxylabs credentials and blocklisted domains are skipped.
+The creator and repair prompts are in `templates/agent_prompts/school_creator.md` and `templates/agent_prompts/school_repair.md`. Use them as the contract for worker behavior.

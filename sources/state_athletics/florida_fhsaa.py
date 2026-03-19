@@ -25,7 +25,7 @@ FOOTBALL_URL = f"{BASE_URL}?sport_id=1"
 # Cache directory
 CACHE_DIR = Path(__file__).parent.parent.parent / "data" / "cache" / "state_athletics" / "florida"
 
-# Florida classification structure (from STATE_SITES.md)
+# Florida classification structure used by the FHSAA widget
 # Classes: 1A (smallest) through 7A (largest), plus Rural
 CLASSIFICATIONS = ["1A", "2A", "3A", "4A", "5A", "6A", "7A", "Rural"]
 
