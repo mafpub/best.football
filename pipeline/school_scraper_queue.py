@@ -26,6 +26,8 @@ ALL_STATUSES = {
     STATUS_FAILED,
     STATUS_NEEDS_REPAIR,
 }
+CREATOR_SURVEY_PROXY_PROFILE = "datacenter"
+CREATOR_SURVEY_REQUIRED_RESULT = "success"
 
 
 def _now() -> str:
@@ -39,6 +41,97 @@ def _recheck_at(days: int = 182) -> str:
 def _table_columns(conn, table_name: str) -> set[str]:
     rows = conn.execute(f"PRAGMA table_info({table_name})").fetchall()
     return {row[1] for row in rows}
+
+
+def _table_exists(conn, table_name: str) -> bool:
+    row = conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ? LIMIT 1",
+        (table_name,),
+    ).fetchone()
+    return row is not None
+
+
+def get_latest_creator_survey_run_id(
+    proxy_profile: str = CREATOR_SURVEY_PROXY_PROFILE,
+) -> int | None:
+    """Return the latest completed website probe run id for creator eligibility."""
+    with get_db() as conn:
+        if not _table_exists(conn, "school_website_probe_runs"):
+            return None
+
+        row = conn.execute(
+            """
+            SELECT id
+            FROM school_website_probe_runs
+            WHERE completed_at IS NOT NULL
+              AND proxy_profile = ?
+            ORDER BY id DESC
+            LIMIT 1
+            """,
+            (proxy_profile,),
+        ).fetchone()
+        return int(row["id"]) if row else None
+
+
+def require_latest_creator_survey_run_id(
+    proxy_profile: str = CREATOR_SURVEY_PROXY_PROFILE,
+) -> int:
+    """Return the latest completed website probe run id or raise."""
+    run_id = get_latest_creator_survey_run_id(proxy_profile=proxy_profile)
+    if run_id is None:
+        raise RuntimeError(
+            "No completed school website probe run found for creator eligibility. "
+            "Run scripts/probe_school_websites.py with --proxy-profile datacenter first."
+        )
+    return run_id
+
+
+def is_creator_eligible(
+    nces_id: str,
+    *,
+    survey_run_id: int | None = None,
+) -> bool:
+    """Return whether a school is eligible for creator work from the latest success survey."""
+    effective_run_id = survey_run_id or require_latest_creator_survey_run_id()
+    with get_db() as conn:
+        if not _table_exists(conn, "school_website_probe_results"):
+            return False
+
+        row = conn.execute(
+            """
+            SELECT 1
+            FROM school_website_probe_results
+            WHERE run_id = ?
+              AND nces_id = ?
+              AND result = ?
+            LIMIT 1
+            """,
+            (effective_run_id, nces_id, CREATOR_SURVEY_REQUIRED_RESULT),
+        ).fetchone()
+        return row is not None
+
+
+def _append_creator_eligibility_filter(
+    where_parts: list[str],
+    params: list[object],
+    *,
+    survey_run_id: int | None,
+) -> None:
+    if survey_run_id is None:
+        return
+
+    where_parts.append(
+        """
+        EXISTS (
+            SELECT 1
+            FROM school_website_probe_results probe
+            WHERE probe.nces_id = s.nces_id
+              AND probe.run_id = ?
+              AND probe.result = ?
+        )
+        """.strip()
+    )
+    params.extend([survey_run_id, CREATOR_SURVEY_REQUIRED_RESULT])
 
 
 def init_tables() -> None:
@@ -111,12 +204,18 @@ def init_tables() -> None:
         )
 
 
-def seed_queue(state: str | None = None, limit: int | None = None) -> int:
+def seed_queue(
+    state: str | None = None,
+    limit: int | None = None,
+    *,
+    survey_run_id: int | None = None,
+) -> int:
     """Insert pending queue rows for schools with websites missing status rows."""
     init_tables()
     with get_db() as conn:
         params: list[object] = []
         where_parts = ["s.website IS NOT NULL", "TRIM(s.website) != ''"]
+        _append_creator_eligibility_filter(where_parts, params, survey_run_id=survey_run_id)
         if state:
             where_parts.append("s.state = ?")
             params.append(state.upper())
@@ -167,6 +266,8 @@ def get_next_batch(
     count: int = 10,
     state: str | None = None,
     statuses: Iterable[str] = (STATUS_PENDING,),
+    *,
+    survey_run_id: int | None = None,
 ) -> list[dict]:
     """Get the next schools matching queue states."""
     init_tables()
@@ -177,6 +278,7 @@ def get_next_batch(
         params: list[object] = list(status_values)
         where_parts = [f"q.status IN ({','.join('?' * len(status_values))})"]
         where_parts.extend(["s.website IS NOT NULL", "TRIM(s.website) != ''"])
+        _append_creator_eligibility_filter(where_parts, params, survey_run_id=survey_run_id)
 
         if STATUS_BLOCKED in status_values:
             where_parts.append("(q.next_recheck_at IS NULL OR q.next_recheck_at <= ?)")
@@ -208,10 +310,12 @@ def get_next_batch(
 def claim_next_school(
     state: str | None = None,
     statuses: Iterable[str] = (STATUS_PENDING,),
+    *,
+    survey_run_id: int | None = None,
 ) -> Optional[dict]:
     """Atomically claim one school and set it to in_progress."""
     init_tables()
-    seed_queue(state=state)
+    seed_queue(state=state, survey_run_id=survey_run_id)
     status_values = _status_list(statuses)
 
     conn = get_connection()
@@ -221,6 +325,7 @@ def claim_next_school(
         params: list[object] = list(status_values)
         where_parts = [f"q.status IN ({','.join('?' * len(status_values))})"]
         where_parts.extend(["s.website IS NOT NULL", "TRIM(s.website) != ''"])
+        _append_creator_eligibility_filter(where_parts, params, survey_run_id=survey_run_id)
 
         if STATUS_BLOCKED in status_values:
             where_parts.append("(q.next_recheck_at IS NULL OR q.next_recheck_at <= ?)")
@@ -272,12 +377,15 @@ def claim_next_school(
         conn.close()
 
 
-def claim_school(nces_id: str) -> Optional[dict]:
+def claim_school(nces_id: str, *, survey_run_id: int | None = None) -> Optional[dict]:
     """Atomically claim a specific school by NCES ID."""
     init_tables()
     conn = get_connection()
     try:
         conn.execute("BEGIN IMMEDIATE")
+        where_parts = ["s.nces_id = ?"]
+        params: list[object] = [nces_id]
+        _append_creator_eligibility_filter(where_parts, params, survey_run_id=survey_run_id)
         row = conn.execute(
             """
             SELECT s.nces_id, s.name, s.website, s.city, s.state,
@@ -285,10 +393,10 @@ def claim_school(nces_id: str) -> Optional[dict]:
                    q.attempts, q.consecutive_failures
             FROM schools s
             JOIN school_scraper_status q ON q.nces_id = s.nces_id
-            WHERE s.nces_id = ?
+            WHERE {where_clause}
             LIMIT 1
-            """,
-            (nces_id,),
+            """.format(where_clause=" AND ".join(where_parts)),
+            tuple(params),
         ).fetchone()
 
         if not row:

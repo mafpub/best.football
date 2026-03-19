@@ -67,10 +67,21 @@ def main() -> int:
     args = parser.parse_args()
 
     queue.init_tables()
+    creator_survey_run_id = None
+    if args.seed or args.next_batch or args.claim_next:
+        try:
+            creator_survey_run_id = queue.require_latest_creator_survey_run_id()
+        except RuntimeError as exc:
+            print(str(exc), file=sys.stderr)
+            return 2
 
     if args.seed:
-        inserted = queue.seed_queue(state=args.state, limit=args.limit)
-        print(f"Seeded {inserted} school(s)")
+        inserted = queue.seed_queue(
+            state=args.state,
+            limit=args.limit,
+            survey_run_id=creator_survey_run_id,
+        )
+        print(f"Seeded {inserted} school(s) from survey success run {creator_survey_run_id}")
         return 0
 
     if args.next_batch:
@@ -78,6 +89,7 @@ def main() -> int:
             count=max(1, args.count),
             state=args.state,
             statuses=_parse_statuses(args.statuses),
+            survey_run_id=creator_survey_run_id,
         )
         print(json.dumps(rows, indent=2))
         return 0
@@ -86,6 +98,7 @@ def main() -> int:
         row = queue.claim_next_school(
             state=args.state,
             statuses=_parse_statuses(args.statuses),
+            survey_run_id=creator_survey_run_id,
         )
         print(json.dumps(row, indent=2) if row else "null")
         return 0

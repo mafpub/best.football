@@ -68,6 +68,8 @@ Current scraper workflow:
 - Blocklisted domains are loaded from profile-specific files:
   - `~/.web_scraper_blocklist_mobile.json`
   - `~/.web_scraper_blocklist_datacenter.json`
+- Creator work should use the `datacenter` proxy profile.
+- Creator queue seeding/claiming is restricted to the latest completed datacenter website survey `success` set.
 
 Environment:
 - Mobile profile:
@@ -89,6 +91,9 @@ Queue lifecycle:
 # Seed queue rows for schools that have websites
 uv run python scripts/discover_schools.py --seed
 
+# Run/update the datacenter website survey before creator work
+uv run python scripts/probe_school_websites.py --workers 10 --wave-delay 1 --proxy-profile datacenter
+
 # View queue status
 uv run python scripts/discover_schools.py --status
 
@@ -104,7 +109,7 @@ uv run python scripts/school_creator_loop.py \
     --launcher-command '<your-launcher-command using {prompt_path}>' \
     --nces-id {nces_id} --school-name {name} --state {state} \
     --website {website} --city {city} --script-path {script_path}" \
-  --proxy-profile mobile
+  --proxy-profile datacenter
 
 # Run weekly school scrapes in parallel
 uv run python scripts/run_school_scrapes.py --workers 8

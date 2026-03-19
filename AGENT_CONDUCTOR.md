@@ -17,12 +17,13 @@ Use this file when asked to continue school scraper creation from the last compl
 
 ## Source of Truth
 - Queue table `school_scraper_status` in `data/best_football.db`.
-- Resume point is always the next `pending` row in queue order.
+- Creator eligibility comes from the latest completed datacenter website survey run in `school_website_probe_runs` / `school_website_probe_results`.
+- Resume point is always the next `pending` row in queue order that is also `success` in that latest datacenter survey run.
 
 ## Quick Resume
 1. Check status:
    - `uv run python scripts/discover_schools.py --status`
-2. Claim next school:
+2. Claim next eligible school:
    - `uv run python scripts/discover_schools.py --claim-next`
 3. Resolve deterministic output path:
    - `scrapers/schools/{state_lower}/{nces_id}.py`
@@ -42,7 +43,9 @@ Use this file when asked to continue school scraper creation from the last compl
 - Fill template fields directly from the claimed row and resolved script path.
 - Keep worker ownership to one file only: `scrapers/schools/{state_lower}/{nces_id}.py`.
 - Worker reconnaissance must use the hardwired Oxylabs-backed `browse` CLI, not direct browsing.
+- Worker must use the `datacenter` proxy profile, not `mobile`.
 - Worker output must be a Playwright scraper script that can run in the normal proxied runtime.
+- Do not claim or work schools outside the latest completed datacenter survey `success` set.
 - Proxy variance is normal. A site that loaded on one Oxylabs exit may block or behave differently on another, so treat access failures as evidence to evaluate, not as proof that your earlier reconnaissance was wrong.
 - When the school site exposes football pages, prioritize fields that would improve a football page on best.football: football page URLs, team names, coach names, schedule links, contact info, practice/location details, and other concrete football signals.
 - Wait for worker completion; if wait times out, continue polling same agent id instead of spawning duplicates.
@@ -54,6 +57,7 @@ Use this file when asked to continue school scraper creation from the last compl
 - Proxy profiles:
   - `mobile`: defaults to `https://pr.oxylabs.io:7777`
   - `datacenter`: uses `OXYLABS_DATACENTER_PROXY_SERVER`
+- Creator work should use `datacenter`.
 - Requeue due blocked rows:
   - `uv run python scripts/recheck_blocked.py`
 - Force clear blocked rows (only when explicitly requested):

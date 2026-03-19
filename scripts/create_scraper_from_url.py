@@ -149,6 +149,11 @@ def main() -> int:
     args = parser.parse_args()
 
     queue.init_tables()
+    try:
+        creator_survey_run_id = queue.require_latest_creator_survey_run_id()
+    except RuntimeError as exc:
+        print(f"eligibility_error: {exc}", file=sys.stderr)
+        return 2
 
     try:
         require_proxy_credentials(profile=args.proxy_profile)
@@ -157,7 +162,21 @@ def main() -> int:
         return 2
 
     row = _find_school_by_url(args.url, nces_id=args.nces_id)
-    claimed = queue.claim_school(row["nces_id"])
+    if not queue.is_creator_eligible(row["nces_id"], survey_run_id=creator_survey_run_id):
+        print(
+            json.dumps(
+                {
+                    "status": "failed",
+                    "reason": (
+                        "ineligible_for_creation:not_in_latest_datacenter_survey_success_list"
+                    ),
+                    "nces_id": row["nces_id"],
+                }
+            )
+        )
+        return 0
+
+    claimed = queue.claim_school(row["nces_id"], survey_run_id=creator_survey_run_id)
     if not claimed:
         print("failed to claim school", file=sys.stderr)
         return 1

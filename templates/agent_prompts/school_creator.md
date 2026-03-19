@@ -8,8 +8,10 @@ Website: {website}
 Output script path: {script_path}
 
 Requirements:
+- This school was prequalified by the latest completed datacenter website survey success list. If live evidence contradicts that survey, return `failed` with the concrete reason rather than switching targets or proxy profiles.
 - Use the hardwired Oxylabs-backed `browse` CLI for live reconnaissance.
 - Use Playwright with Oxylabs proxy for the final scraper script and any script-level validation.
+- Use the `datacenter` proxy profile for reconnaissance, script execution, and validation. Do not switch to `mobile`.
 - The current proxy pool is: {proxy_servers}
 - Current auth mode: {proxy_auth_mode}. If auth mode is `ip_whitelist`, do not fail just because profile creds are unset.
 - Respect the active profile blocklist file for this profile.

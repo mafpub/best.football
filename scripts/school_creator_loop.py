@@ -101,10 +101,17 @@ def _process_one(
     state: str | None,
     dry_run: bool,
     proxy_profile: str | None,
+    creator_survey_run_id: int,
 ) -> bool:
-    school = queue.claim_next_school(state=state, statuses=(queue.STATUS_PENDING,))
+    school = queue.claim_next_school(
+        state=state,
+        statuses=(queue.STATUS_PENDING,),
+        survey_run_id=creator_survey_run_id,
+    )
     if not school:
-        print("No pending schools available")
+        print(
+            "No pending schools available from the latest datacenter survey success list"
+        )
         return False
 
     nces_id = school["nces_id"]
@@ -217,9 +224,18 @@ def main() -> int:
     args = parser.parse_args()
 
     queue.init_tables()
+    try:
+        creator_survey_run_id = queue.require_latest_creator_survey_run_id()
+    except RuntimeError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+
     if args.seed_missing:
-        seeded = queue.seed_queue(state=args.state)
-        print(f"Seeded {seeded} queue rows")
+        seeded = queue.seed_queue(state=args.state, survey_run_id=creator_survey_run_id)
+        print(
+            f"Seeded {seeded} queue rows from datacenter survey success run "
+            f"{creator_survey_run_id}"
+        )
 
     lock = _acquire_lock(LOCK_PATH)
     try:
@@ -230,6 +246,7 @@ def main() -> int:
                     state=args.state,
                     dry_run=args.dry_run,
                     proxy_profile=args.proxy_profile,
+                    creator_survey_run_id=creator_survey_run_id,
                 )
                 if not handled:
                     time.sleep(max(1, args.sleep_seconds))
@@ -239,6 +256,7 @@ def main() -> int:
                 state=args.state,
                 dry_run=args.dry_run,
                 proxy_profile=args.proxy_profile,
+                creator_survey_run_id=creator_survey_run_id,
             )
     finally:
         lock.close()
