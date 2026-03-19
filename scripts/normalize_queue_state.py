@@ -32,12 +32,17 @@ def main() -> int:
             "SELECT COUNT(*) FROM school_scraper_status WHERE status = ?",
             (queue.STATUS_BLOCKED,),
         ).fetchone()[0]
+        restricted = conn.execute(
+            "SELECT COUNT(*) FROM school_scraper_status WHERE status = ?",
+            (queue.STATUS_RESTRICTED,),
+        ).fetchone()[0]
         in_progress = conn.execute(
             "SELECT COUNT(*) FROM school_scraper_status WHERE status = ?",
             (queue.STATUS_IN_PROGRESS,),
         ).fetchone()[0]
 
     print(f"Blocked rows: {blocked}")
+    print(f"Restricted rows: {restricted}")
     print(f"In-progress rows: {in_progress}")
 
     if args.dry_run:
@@ -69,6 +74,7 @@ def main() -> int:
         f"pending={report[queue.STATUS_PENDING]} "
         f"complete={report[queue.STATUS_COMPLETE]} "
         f"blocked={report[queue.STATUS_BLOCKED]} "
+        f"restricted={report[queue.STATUS_RESTRICTED]} "
         f"failed={report[queue.STATUS_FAILED]} "
         f"needs_repair={report[queue.STATUS_NEEDS_REPAIR]}"
     )

@@ -6,6 +6,7 @@ Lifecycle states:
 - in_progress
 - complete
 - blocked
+- restricted
 - failed
 - needs_repair
 
@@ -52,6 +53,7 @@ def main() -> int:
     parser.add_argument("--scraper-file", metavar="PATH", help="Path to generated scraper script")
 
     parser.add_argument("--blocked", metavar="NCES_ID", help="Mark school as blocked")
+    parser.add_argument("--restricted", metavar="NCES_ID", help="Mark school as restricted")
     parser.add_argument("--failed", metavar="NCES_ID", help="Mark school as failed")
     parser.add_argument("--needs-repair", metavar="NCES_ID", help="Mark school as needs_repair")
 
@@ -102,6 +104,11 @@ def main() -> int:
         print(f"Marked {args.blocked} as blocked: {args.reason or 'blocked_no_reason'}")
         return 0
 
+    if args.restricted:
+        queue.mark_restricted(args.restricted, args.reason or "restricted_no_reason")
+        print(f"Marked {args.restricted} as restricted: {args.reason or 'restricted_no_reason'}")
+        return 0
+
     if args.failed:
         queue.mark_failed(args.failed, args.reason or "failed_no_reason", notes=args.notes)
         print(f"Marked {args.failed} as failed")
@@ -130,6 +137,7 @@ def main() -> int:
         print(f"In Progress: {report[queue.STATUS_IN_PROGRESS]}")
         print(f"Complete: {report[queue.STATUS_COMPLETE]}")
         print(f"Blocked: {report[queue.STATUS_BLOCKED]}")
+        print(f"Restricted: {report[queue.STATUS_RESTRICTED]}")
         print(f"Failed: {report[queue.STATUS_FAILED]}")
         print(f"Needs Repair: {report[queue.STATUS_NEEDS_REPAIR]}")
         print(f"\nProgress (complete only): {report['progress_complete_pct']:.1f}%")

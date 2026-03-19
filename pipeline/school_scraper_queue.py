@@ -13,6 +13,7 @@ STATUS_PENDING = "pending"
 STATUS_IN_PROGRESS = "in_progress"
 STATUS_COMPLETE = "complete"
 STATUS_BLOCKED = "blocked"
+STATUS_RESTRICTED = "restricted"
 STATUS_FAILED = "failed"
 STATUS_NEEDS_REPAIR = "needs_repair"
 
@@ -21,6 +22,7 @@ ALL_STATUSES = {
     STATUS_IN_PROGRESS,
     STATUS_COMPLETE,
     STATUS_BLOCKED,
+    STATUS_RESTRICTED,
     STATUS_FAILED,
     STATUS_NEEDS_REPAIR,
 }
@@ -343,7 +345,7 @@ def upsert_status(
         attempts = existing["attempts"] if existing else 0
         failures = existing["consecutive_failures"] if existing else 0
 
-        completed_at = now if status in {STATUS_COMPLETE, STATUS_BLOCKED, STATUS_FAILED} else None
+        completed_at = now if status in {STATUS_COMPLETE, STATUS_BLOCKED, STATUS_RESTRICTED, STATUS_FAILED} else None
         last_success_at = now if status == STATUS_COMPLETE else None
         last_failure_at = now if status in {STATUS_FAILED, STATUS_NEEDS_REPAIR} else None
         next_recheck_at = _recheck_at(blocked_recheck_days) if status == STATUS_BLOCKED else None
@@ -402,6 +404,19 @@ def mark_blocked(nces_id: str, reason: str, blocked_recheck_days: int = 182) -> 
     upsert_status(
         nces_id,
         STATUS_BLOCKED,
+        reason=reason,
+        blocked_recheck_days=blocked_recheck_days,
+    )
+
+
+def mark_restricted(
+    nces_id: str,
+    reason: str,
+    blocked_recheck_days: int = 182,
+) -> None:
+    upsert_status(
+        nces_id,
+        STATUS_RESTRICTED,
         reason=reason,
         blocked_recheck_days=blocked_recheck_days,
     )

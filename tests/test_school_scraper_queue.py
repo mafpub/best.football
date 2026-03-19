@@ -71,3 +71,15 @@ def test_blocked_requeue_due(tmp_path):
     row = queue.get_next_batch(count=10, statuses=(queue.STATUS_PENDING,))
     ids = {item["nces_id"] for item in row}
     assert "1" in ids
+
+
+def test_restricted_does_not_requeue(tmp_path):
+    _init_minimal_schema(tmp_path)
+    queue.seed_queue()
+
+    queue.mark_restricted("1", "restricted_target", blocked_recheck_days=0)
+    moved = queue.requeue_due_blocked()
+    assert moved == 0
+
+    report = queue.get_status_report()
+    assert report[queue.STATUS_RESTRICTED] == 1
