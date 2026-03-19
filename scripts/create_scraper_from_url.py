@@ -17,6 +17,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from pipeline import school_scraper_queue as queue
 from pipeline.database import get_db
+from pipeline.proxy import get_browser_proxy_env
 from scrapers.schools.runtime import (
     BlocklistedDomainError,
     ProxyNotConfiguredError,
@@ -101,7 +102,17 @@ def _run_adapter(row: dict, launcher_command: str, proxy_profile: str | None) ->
     if proxy_profile:
         cmd.extend(["--proxy-profile", proxy_profile])
 
-    proc = subprocess.run(cmd, cwd=PROJECT_ROOT, capture_output=True, text=True, check=False)
+    env = os.environ.copy()
+    env.setdefault("PYTHONUNBUFFERED", "1")
+    env.update(get_browser_proxy_env(profile=proxy_profile))
+    proc = subprocess.run(
+        cmd,
+        cwd=PROJECT_ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+        env=env,
+    )
     if proc.returncode != 0:
         stderr = (proc.stderr or "").strip()[-300:]
         return {

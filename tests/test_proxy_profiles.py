@@ -79,6 +79,6 @@ def test_browser_proxy_env_includes_proxy_profile(monkeypatch):
     monkeypatch.setenv("OXYLABS_DATACENTER_PASSWORD", "dc-pass")
 
     env = proxy.get_browser_proxy_env(profile="datacenter")
+    assert env["OXYLABS_PROXY_PROFILE"] == "datacenter"
     assert env["HTTP_PROXY"] == "https://dc-user:dc-pass@dc-gateway.example"
     assert env["HTTPS_PROXY"] == "https://dc-user:dc-pass@dc-gateway.example"
-

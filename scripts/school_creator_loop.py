@@ -20,6 +20,7 @@ PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from pipeline import school_scraper_queue as queue
+from pipeline.proxy import get_browser_proxy_env
 from scrapers.schools.runtime import (
     BlocklistedDomainError,
     ProxyNotConfiguredError,
@@ -83,9 +84,8 @@ def _build_command(
 
 def _run_creator_command(command: list[str], proxy_profile: str | None) -> subprocess.CompletedProcess[str]:
     env = os.environ.copy()
-    if proxy_profile:
-        env["OXYLABS_PROXY_PROFILE"] = proxy_profile
     env.setdefault("PYTHONUNBUFFERED", "1")
+    env.update(get_browser_proxy_env(profile=proxy_profile))
     return subprocess.run(
         command,
         cwd=PROJECT_ROOT,

@@ -160,8 +160,6 @@ def main() -> int:
 
     command = _build_command(args.launcher_command, values)
     env = os.environ.copy()
-    if args.proxy_profile:
-        env["OXYLABS_PROXY_PROFILE"] = args.proxy_profile
     env.setdefault("PYTHONUNBUFFERED", "1")
     env.update(get_browser_proxy_env(profile=args.proxy_profile))
 

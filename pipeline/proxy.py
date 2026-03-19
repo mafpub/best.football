@@ -167,8 +167,10 @@ def get_httpx_proxy_url(proxy_index: int | None = None, profile: str | None = No
 
 def get_browser_proxy_env(proxy_index: int | None = None, profile: str | None = None) -> dict[str, str]:
     """Return proxy env vars for browser/CLI launcher subprocesses."""
+    active_profile = get_proxy_profile(profile)
     proxy_url = get_httpx_proxy_url(proxy_index=proxy_index, profile=profile)
     return {
+        "OXYLABS_PROXY_PROFILE": active_profile,
         "HTTP_PROXY": proxy_url,
         "HTTPS_PROXY": proxy_url,
         "ALL_PROXY": proxy_url,
