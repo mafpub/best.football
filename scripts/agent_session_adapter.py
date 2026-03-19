@@ -16,6 +16,8 @@ import sys
 import tempfile
 from pathlib import Path
 
+from pipeline.proxy import describe_oxylabs_proxy_mode
+
 ALLOWED_STATUSES = {"complete", "blocked", "failed"}
 PROJECT_ROOT = Path(__file__).parent.parent
 DEFAULT_TEMPLATE_BY_MODE = {
@@ -37,6 +39,7 @@ def _prompt_text(
 ) -> str:
     template_path = DEFAULT_TEMPLATE_BY_MODE[mode]
     template = template_path.read_text(encoding="utf-8")
+    proxy_mode = describe_oxylabs_proxy_mode()
     return template.format(
         mode=mode,
         nces_id=nces_id,
@@ -46,6 +49,8 @@ def _prompt_text(
         city=city,
         script_path=script_path,
         failure_reason=failure_reason,
+        proxy_servers=", ".join(proxy_mode["servers"]),
+        proxy_auth_mode=proxy_mode["auth_mode"],
     )
 
 
