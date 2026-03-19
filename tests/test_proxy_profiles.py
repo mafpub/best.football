@@ -5,7 +5,8 @@ from pipeline import proxy
 
 def test_get_proxy_profile_defaults_and_override(monkeypatch):
     monkeypatch.delenv("OXYLABS_PROXY_PROFILE", raising=False)
-    assert proxy.get_proxy_profile() == "mobile"
+    monkeypatch.delenv("OXYLABS_DATACENTER_PROXY_SERVER", raising=False)
+    assert proxy.get_proxy_profile() == "datacenter"
 
     monkeypatch.setenv("OXYLABS_PROXY_PROFILE", "datacenter")
     assert proxy.get_proxy_profile() == "datacenter"

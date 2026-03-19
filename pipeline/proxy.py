@@ -28,9 +28,9 @@ PROXY_PROFILE_OPTIONS = {"mobile", "datacenter"}
 
 def get_proxy_profile(profile: str | None = None) -> str:
     """Return active proxy profile from argument or environment."""
-    raw = (profile or os.environ.get("OXYLABS_PROXY_PROFILE") or "mobile").strip().lower()
+    raw = (profile or os.environ.get("OXYLABS_PROXY_PROFILE") or "datacenter").strip().lower()
     if not raw:
-        return "mobile"
+        return "datacenter"
 
     if raw not in PROXY_PROFILE_OPTIONS:
         raise ValueError(

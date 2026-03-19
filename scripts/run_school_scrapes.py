@@ -145,7 +145,7 @@ def main() -> int:
     parser.add_argument(
         "--proxy-profile",
         choices=["mobile", "datacenter"],
-        help="Select proxy profile (mobile|datacenter). Defaults to OXYLABS_PROXY_PROFILE/mobile.",
+        help="Select proxy profile (mobile|datacenter). Defaults to OXYLABS_PROXY_PROFILE/datacenter.",
     )
     args = parser.parse_args()
 

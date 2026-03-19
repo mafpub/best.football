@@ -209,7 +209,7 @@ def main() -> int:
     parser.add_argument(
         "--proxy-profile",
         choices=["mobile", "datacenter"],
-        help="Select proxy profile (mobile|datacenter). Defaults to OXYLABS_PROXY_PROFILE/mobile.",
+        help="Select proxy profile (mobile|datacenter). Defaults to OXYLABS_PROXY_PROFILE/datacenter.",
     )
     parser.add_argument("--seed-missing", action="store_true", help="Seed queue from schools before running")
     parser.add_argument("--dry-run", action="store_true", help="Do not invoke command or write final statuses")

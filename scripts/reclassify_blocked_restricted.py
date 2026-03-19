@@ -85,7 +85,7 @@ def main() -> int:
     parser.add_argument(
         "--proxy-profile",
         choices=["mobile", "datacenter"],
-        help="Select proxy profile (mobile|datacenter). Defaults to OXYLABS_PROXY_PROFILE/mobile.",
+        help="Select proxy profile (mobile|datacenter). Defaults to OXYLABS_PROXY_PROFILE/datacenter.",
     )
     parser.add_argument("--limit", type=int, help="Optional max rows to inspect")
     parser.add_argument("--timeout", type=int, default=20, help="curl max-time per proxy")
