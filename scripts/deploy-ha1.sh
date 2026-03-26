@@ -4,8 +4,18 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-echo "Building static site..."
-uv run python scripts/build_site.py
+SKIP_BUILD=0
+if [[ "${1:-}" == "--skip-build" ]]; then
+  SKIP_BUILD=1
+  shift
+fi
+
+if [[ $SKIP_BUILD -eq 0 ]]; then
+  echo "Building static site..."
+  uv run python scripts/build_site.py
+else
+  echo "Skipping local build; syncing existing artifacts..."
+fi
 
 echo "Syncing htdocs to ha1..."
 rsync -avz --delete htdocs/ ha1:/home/bestfootball/htdocs/

@@ -134,6 +134,10 @@ uv run python scripts/run_repair_queue.py \
     --failure-reason {failure_reason}" \
   --proxy-profile datacenter
 
+# Run the local maintenance loop from this machine:
+# scrape completed schools, drain repairs through Codex, rebuild, and upload to ha1
+uv run python scripts/local_school_maintenance.py --proxy-profile datacenter --deploy-ha1
+
 # Requeue blocked schools whose recheck date has arrived
 uv run python scripts/recheck_blocked.py
 

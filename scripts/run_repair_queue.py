@@ -213,6 +213,11 @@ def main() -> int:
     )
     parser.add_argument("--state", help="Optional state filter")
     parser.add_argument("--continuous", action="store_true", help="Run continuously")
+    parser.add_argument(
+        "--drain-until-empty",
+        action="store_true",
+        help="Process repairs until no needs_repair rows remain, then exit",
+    )
     parser.add_argument("--sleep-seconds", type=int, default=30, help="Idle sleep seconds")
     parser.add_argument(
         "--proxy-profile",
@@ -237,6 +242,16 @@ def main() -> int:
                 )
                 if not handled:
                     time.sleep(max(1, args.sleep_seconds))
+        elif args.drain_until_empty:
+            while True:
+                handled = _process_one(
+                    args.repair_command,
+                    args.state,
+                    args.dry_run,
+                    args.proxy_profile,
+                )
+                if not handled:
+                    break
         else:
             _process_one(
                 args.repair_command,

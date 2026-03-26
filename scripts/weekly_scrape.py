@@ -1,29 +1,12 @@
 #!/usr/bin/env python3
-"""Weekly scrape cron entry point.
+"""Weekly deterministic school scrape entry point."""
 
-This script is run by cron (Sundays at 2 AM) to:
-1. Run all scrapers sequentially
-2. Detect changes in athletic data
-3. Update affected school pages
-4. Trigger repair agents if scrapers fail
-
-Usage:
-    python scripts/weekly_scrape.py [--dry-run]
-
-Cron entry:
-    0 2 * * 0 cd /home/dd/code/sites/best.football && uv run python scripts/weekly_scrape.py >> /var/log/best.football/scrape.log 2>&1
-"""
-
-import asyncio
+import argparse
 import logging
+import os
+import subprocess
 import sys
 from pathlib import Path
-
-# Add project root to path
-PROJECT_ROOT = Path(__file__).parent.parent
-sys.path.insert(0, str(PROJECT_ROOT))
-
-from orchestrator.runner import SequentialOrchestrator
 
 
 def setup_logging(dry_run: bool = False):
@@ -44,36 +27,96 @@ def setup_logging(dry_run: bool = False):
     )
 
 
-async def main():
-    """Main entry point for weekly scrape."""
-    dry_run = "--dry-run" in sys.argv or "-n" in sys.argv
+def build_weekly_commands(
+    *,
+    dry_run: bool,
+    repair_command: str | None,
+    workers: int,
+    proxy_profile: str | None,
+) -> list[list[str]]:
+    commands: list[list[str]] = [
+        [
+            "uv",
+            "run",
+            "python",
+            "scripts/run_school_scrapes.py",
+            "--workers",
+            str(workers),
+        ]
+    ]
 
-    setup_logging(dry_run)
+    if proxy_profile:
+        commands[0].extend(["--proxy-profile", proxy_profile])
+
+    if dry_run:
+        commands[0].append("--dry-run")
+        return commands
+
+    if repair_command:
+        repair_args = [
+            "uv",
+            "run",
+            "python",
+            "scripts/run_repair_queue.py",
+            "--drain-until-empty",
+            "--repair-command",
+            repair_command,
+        ]
+        if proxy_profile:
+            repair_args.extend(["--proxy-profile", proxy_profile])
+        commands.append(repair_args)
+
+    commands.append(["uv", "run", "python", "scripts/build_site.py"])
+    return commands
+
+
+def run_weekly_commands(commands: list[list[str]]) -> int:
     logger = logging.getLogger(__name__)
+    project_root = Path(__file__).parent.parent
+
+    for command in commands:
+        logger.info("Running: %s", " ".join(command))
+        result = subprocess.run(command, cwd=project_root, check=False)
+        if result.returncode != 0:
+            logger.error("Command failed with exit code %s", result.returncode)
+            return result.returncode
+
+    return 0
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Run weekly deterministic school scrapes")
+    parser.add_argument("--dry-run", "-n", action="store_true", help="List work without executing scrapers")
+    parser.add_argument("--workers", type=int, default=8, help="Concurrent scraper workers")
+    parser.add_argument(
+        "--proxy-profile",
+        choices=["mobile", "datacenter"],
+        help="Proxy profile for runtime and repair queue",
+    )
+    parser.add_argument(
+        "--repair-command",
+        help="Optional repair command template. Defaults to BEST_FOOTBALL_REPAIR_COMMAND if set.",
+    )
+    args = parser.parse_args()
+
+    setup_logging(args.dry_run)
+    logger = logging.getLogger(__name__)
+    repair_command = args.repair_command or os.environ.get("BEST_FOOTBALL_REPAIR_COMMAND")
 
     logger.info("=" * 60)
-    logger.info("Starting weekly scrape")
-    logger.info("Dry run: %s", dry_run)
+    logger.info("Starting weekly deterministic scrape")
+    logger.info("Dry run: %s", args.dry_run)
+    logger.info("Repair queue enabled: %s", bool(repair_command) and not args.dry_run)
     logger.info("=" * 60)
 
-    try:
-        orchestrator = SequentialOrchestrator(dry_run=dry_run)
-        results = await orchestrator.run_weekly_scrape()
-
-        # Exit with error code if any scrapers failed
-        failed = any(r.get("status") == "failed" for r in results.values())
-
-        if failed:
-            logger.error("Some scrapers failed - check logs")
-            sys.exit(1)
-        else:
-            logger.info("All scrapers completed successfully")
-            sys.exit(0)
-
-    except Exception as e:
-        logger.exception("Fatal error during weekly scrape")
-        sys.exit(1)
+    commands = build_weekly_commands(
+        dry_run=args.dry_run,
+        repair_command=repair_command,
+        workers=max(1, args.workers),
+        proxy_profile=args.proxy_profile,
+    )
+    return run_weekly_commands(commands)
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    raise SystemExit(main())

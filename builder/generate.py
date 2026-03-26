@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Main static site generator orchestrator."""
 
+import json
 import re
 import shutil
 from pathlib import Path
@@ -21,6 +22,159 @@ STATE_NAMES = {
     "FL": "Florida",
     "OH": "Ohio",
 }
+
+
+def _clean_text(value):
+    if not isinstance(value, str):
+        return ""
+    return " ".join(value.split()).strip()
+
+
+def _coerce_dict(value):
+    return value if isinstance(value, dict) else {}
+
+
+def _coerce_list(value):
+    return value if isinstance(value, list) else []
+
+
+def _extract_scraped_program(payload):
+    if not isinstance(payload, dict):
+        return None
+
+    extracted = _coerce_dict(payload.get("extracted_items"))
+    football_program = _coerce_dict(extracted.get("football_program"))
+    football_staff = _coerce_dict(extracted.get("football_staff"))
+    varsity_roster = _coerce_dict(extracted.get("varsity_roster"))
+    directory_contacts = _coerce_list(extracted.get("football_directory_contact"))
+    school_page = _coerce_dict(extracted.get("school_page"))
+    maxpreps = _coerce_dict(extracted.get("maxpreps"))
+    maxpreps_home = _coerce_dict(maxpreps.get("home"))
+    maxpreps_schedule = _coerce_dict(maxpreps.get("schedule"))
+    maxpreps_roster = _coerce_dict(maxpreps.get("roster"))
+    maxpreps_staff = _coerce_dict(maxpreps.get("staff"))
+    booster_site = _coerce_dict(extracted.get("booster_site"))
+
+    coach_roles = []
+    for item in _coerce_list(football_staff.get("coach_roles")):
+        if not isinstance(item, dict):
+            continue
+        name = _clean_text(item.get("name"))
+        role = _clean_text(item.get("role"))
+        if not name:
+            continue
+        coach_roles.append({"name": name, "role": role})
+
+    if not coach_roles:
+        for item in _coerce_list(maxpreps_staff.get("staff")):
+            if not isinstance(item, dict):
+                continue
+            name = _clean_text(item.get("name"))
+            role = _clean_text(item.get("position"))
+            if not name:
+                continue
+            coach_roles.append({"name": name, "role": role})
+
+    contact_phone = _clean_text(football_program.get("contact_phone"))
+    contact_address = _clean_text(football_program.get("contact_address"))
+    if not contact_phone or not contact_address:
+        for item in directory_contacts:
+            if not isinstance(item, dict):
+                continue
+            contact_phone = contact_phone or _clean_text(item.get("phone"))
+            contact_address = contact_address or _clean_text(item.get("address"))
+            if contact_phone and contact_address:
+                break
+
+    if not contact_phone:
+        for line in _coerce_list(school_page.get("relevant_lines")):
+            text = _clean_text(line)
+            if "athletic director" in text.lower() and "@" in text:
+                contact_phone = text
+                break
+
+    roster_count = varsity_roster.get("player_count")
+    if not roster_count:
+        roster_count = len(_coerce_list(varsity_roster.get("players")))
+        roster_count = roster_count or len(_coerce_list(varsity_roster.get("players_sample")))
+    if not roster_count:
+        roster_count = maxpreps_roster.get("player_count") or 0
+
+    schedule_count = len(_coerce_list(extracted.get("varsity_schedule")))
+    if not schedule_count:
+        schedule_count = maxpreps_schedule.get("game_count") or 0
+
+    summary = {
+        "last_scraped_at": _clean_text(_coerce_dict(payload.get("scrape_meta")).get("scraped_at")),
+        "source_pages": [page for page in _coerce_list(payload.get("source_pages")) if isinstance(page, str) and page.strip()],
+        "football_home_url": (
+            _clean_text(football_program.get("football_home_url"))
+            or _clean_text(maxpreps_home.get("url"))
+            or _clean_text(school_page.get("url"))
+            or _clean_text(booster_site.get("home_url"))
+        ),
+        "schedule_url": _clean_text(football_program.get("schedule_url")) or _clean_text(maxpreps_schedule.get("url")),
+        "roster_url": _clean_text(football_program.get("roster_url")) or _clean_text(maxpreps_roster.get("url")),
+        "staff_url": (
+            _clean_text(football_program.get("staff_url"))
+            or _clean_text(maxpreps_staff.get("url"))
+            or _clean_text(booster_site.get("contact_url"))
+        ),
+        "contact_phone": contact_phone,
+        "contact_address": contact_address or _clean_text(booster_site.get("contact_email")),
+        "coach_roles": coach_roles[:6],
+        "schedule_count": schedule_count,
+        "roster_count": roster_count or 0,
+    }
+
+    if not any(
+        [
+            summary["football_home_url"],
+            summary["schedule_url"],
+            summary["roster_url"],
+            summary["staff_url"],
+            summary["contact_phone"],
+            summary["contact_address"],
+            summary["coach_roles"],
+            summary["schedule_count"],
+            summary["roster_count"],
+            summary["source_pages"],
+        ]
+    ):
+        return None
+
+    return summary
+
+
+def _load_latest_successful_scrape_payloads(conn) -> dict[str, dict]:
+    rows = conn.execute(
+        """
+        SELECT r.nces_id, r.output_json
+        FROM school_scrape_runs r
+        JOIN (
+            SELECT nces_id, MAX(ended_at) AS latest_ended_at
+            FROM school_scrape_runs
+            WHERE status = 'success' AND output_json IS NOT NULL AND TRIM(output_json) != ''
+            GROUP BY nces_id
+        ) latest
+          ON latest.nces_id = r.nces_id
+         AND latest.latest_ended_at = r.ended_at
+        WHERE r.status = 'success'
+        """
+    ).fetchall()
+
+    payloads: dict[str, dict] = {}
+    for row in rows:
+        raw = row["output_json"]
+        if not isinstance(raw, str) or not raw.strip():
+            continue
+        try:
+            payload = json.loads(raw)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(payload, dict):
+            payloads[row["nces_id"]] = payload
+    return payloads
 
 
 def slugify(text: str) -> str:
@@ -46,6 +200,7 @@ def generate_school_pages(env: Environment) -> int:
     count = 0
 
     with get_db() as conn:
+        latest_scrape_payloads = _load_latest_successful_scrape_payloads(conn)
         schools = conn.execute("""
             SELECT s.*, ap.classification, ap.conference, ap.division,
                    c.name as county_name, c.population as county_pop,
@@ -174,6 +329,9 @@ def generate_school_pages(env: Environment) -> int:
                 county=county,
                 related_schools=related_schools,
                 nearby_camps=nearby_camps,
+                scraped_program=_extract_scraped_program(
+                    latest_scrape_payloads.get(school["nces_id"])
+                ),
             )
 
             output_path = state_dir / f"{school['slug']}.html"

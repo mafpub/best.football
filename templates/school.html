@@ -142,10 +142,10 @@
             </dl>
         </section>
 
+        {% if program %}
         <section class="bg-white rounded-lg shadow p-6">
             <h2 class="text-lg font-semibold mb-4 text-field-dark">Football Program</h2>
             <dl class="space-y-2">
-                {% if program %}
                 <div class="flex justify-between">
                     <dt class="text-gray-600">Classification</dt>
                     <dd>{{ program.classification or 'N/A' }}</dd>
@@ -160,11 +160,9 @@
                     <dd>{{ program.division }}</dd>
                 </div>
                 {% endif %}
-                {% else %}
-                <p class="text-gray-500">No athletic program data available.</p>
-                {% endif %}
             </dl>
         </section>
+        {% endif %}
     </div>
 
     {% if metrics %}
@@ -189,6 +187,85 @@
                 <div class="text-sm text-gray-600">Playoff Apps (5yr)</div>
             </div>
             {% endif %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if scraped_program %}
+    <section class="bg-white rounded-lg shadow p-6 mb-8">
+        <h2 class="text-lg font-semibold mb-4 text-field-dark">Latest Football Data</h2>
+        {% if scraped_program.last_scraped_at %}
+        <p class="text-sm text-gray-600 mb-4">Last verified scrape: {{ scraped_program.last_scraped_at }}</p>
+        {% endif %}
+        <div class="grid md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="font-medium text-gray-700 mb-2">Program Links</h3>
+                <ul class="space-y-1">
+                    {% if scraped_program.football_home_url %}
+                    <li><a href="{{ scraped_program.football_home_url }}" class="text-field hover:underline">Football Home</a></li>
+                    {% endif %}
+                    {% if scraped_program.schedule_url %}
+                    <li><a href="{{ scraped_program.schedule_url }}" class="text-field hover:underline">Schedule</a></li>
+                    {% endif %}
+                    {% if scraped_program.roster_url %}
+                    <li><a href="{{ scraped_program.roster_url }}" class="text-field hover:underline">Roster</a></li>
+                    {% endif %}
+                    {% if scraped_program.staff_url %}
+                    <li><a href="{{ scraped_program.staff_url }}" class="text-field hover:underline">Staff Directory</a></li>
+                    {% endif %}
+                </ul>
+
+                {% if scraped_program.contact_phone or scraped_program.contact_address %}
+                <h3 class="font-medium text-gray-700 mt-4 mb-2">Football Contact</h3>
+                <dl class="space-y-1">
+                    {% if scraped_program.contact_phone %}
+                    <div class="flex justify-between gap-4">
+                        <dt class="text-gray-600">Phone</dt>
+                        <dd>{{ scraped_program.contact_phone }}</dd>
+                    </div>
+                    {% endif %}
+                    {% if scraped_program.contact_address %}
+                    <div class="flex justify-between gap-4">
+                        <dt class="text-gray-600">Address</dt>
+                        <dd class="text-right">{{ scraped_program.contact_address }}</dd>
+                    </div>
+                    {% endif %}
+                </dl>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3 class="font-medium text-gray-700 mb-2">Current Snapshot</h3>
+                <dl class="space-y-1">
+                    {% if scraped_program.schedule_count %}
+                    <div class="flex justify-between gap-4">
+                        <dt class="text-gray-600">Schedule Entries</dt>
+                        <dd>{{ scraped_program.schedule_count }}</dd>
+                    </div>
+                    {% endif %}
+                    {% if scraped_program.roster_count %}
+                    <div class="flex justify-between gap-4">
+                        <dt class="text-gray-600">Roster Size</dt>
+                        <dd>{{ scraped_program.roster_count }}</dd>
+                    </div>
+                    {% endif %}
+                    {% if scraped_program.source_pages %}
+                    <div class="flex justify-between gap-4">
+                        <dt class="text-gray-600">Pages Checked</dt>
+                        <dd>{{ scraped_program.source_pages|length }}</dd>
+                    </div>
+                    {% endif %}
+                </dl>
+
+                {% if scraped_program.coach_roles %}
+                <h3 class="font-medium text-gray-700 mt-4 mb-2">Coaching Staff</h3>
+                <ul class="space-y-1">
+                    {% for coach in scraped_program.coach_roles %}
+                    <li>{{ coach.name }}{% if coach.role %} - {{ coach.role }}{% endif %}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
         </div>
     </section>
     {% endif %}
