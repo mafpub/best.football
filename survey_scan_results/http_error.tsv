@@ -1,0 +1,566 @@
+nces_id	state	school_name	website	normalized_url	probe_method	status_code	redirect_target	error_type	error_message	response_headers_json	checked_at
+060001407287	CA	Shadow Ridge	www.shadowridgehs.org	https://www.shadowridgehs.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:39:41.173804+00:00
+060001408296	CA	Hesperia Community Day	www.husdcommunityday.org	https://www.husdcommunityday.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:39:41.401793+00:00
+060001409073	CA	Mojave High	www.mojavehigh.org	https://www.mojavehigh.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:39:41.174113+00:00
+060001412100	CA	Canyon Ridge High	www.canyonridgehs.org	https://www.canyonridgehs.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:39:41.173972+00:00
+060002909685	CA	Murrieta Valley High	www.murrieta.k12.ca.us/mvhs	https://www.murrieta.k12.ca.us/mvhs	HEAD	404				{"cf-ray": "9deef1e1697baf4b-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:39:46.477138+00:00
+060002911241	CA	Murrieta Canyon Academy	www.murrieta.k12.ca.us/mca	https://www.murrieta.k12.ca.us/mca	HEAD	404				{"cf-ray": "9deef1e16b3bf7cf-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:39:46.476805+00:00
+060002911249	CA	Vista Murrieta High	www.murrieta.k12.ca.us/vmhs	https://www.murrieta.k12.ca.us/vmhs	HEAD	404				{"cf-ray": "9deef1ff4b95cb82-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:39:51.089023+00:00
+060003907540	CA	Delhi High	www.delhi.k12.ca.us/	https://www.delhi.k12.ca.us/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:39:52.784150+00:00
+060004205341	CA	Warner Junior/Senior High	www.warnerusd.net	https://www.warnerusd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:39:55.144318+00:00
+060004707371	CA	Merrill F. West High	www.tracy.k12.ca.us/sites/whs	https://www.tracy.k12.ca.us/sites/whs	HEAD	404				{"cf-ray": "9deef224cf3090fe-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:39:55.602999+00:00
+060004707380	CA	Tracy High	www.tracy.k12.ca.us/sites/ths	https://www.tracy.k12.ca.us/sites/ths	HEAD	404				{"cf-ray": "9deef224fab92aab-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:39:55.748615+00:00
+060004712105	CA	George and Evelyn Stein Continuation	www.tracy.k12.ca.us/sites/shs	https://www.tracy.k12.ca.us/sites/shs	HEAD	404				{"cf-ray": "9deef231ffa690fe-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:39:57.815869+00:00
+060004712372	CA	John C. Kimball High	www.tracy.k12.ca.us/sites/khs	https://www.tracy.k12.ca.us/sites/khs	HEAD	404				{"cf-ray": "9deef2302ccc2aab-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:39:57.601302+00:00
+060006312193	CA	Sentinel High	www.waterford.k12.ca.us	https://www.waterford.k12.ca.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:39:59.587976+00:00
+060006908608	CA	Oak Glen High	oghs.vcpusd.org	https://oghs.vcpusd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:40:05.835909+00:00
+060006910646	CA	Valley Center Prep	vcprep.vcpusd.org	https://vcprep.vcpusd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:40:05.846637+00:00
+060009010744	CA	Butte County ROP	www.bcoe.org/rop	https://www.bcoe.org/rop	HEAD	404				{"content-length": "1245", "content-type": "text/html", "server": "Microsoft-IIS/10.0"}	2026-03-19T19:40:05.862344+00:00
+060012010972	CA	Mission Trails ROP	www.salinasuhsd.org/Domain/18	https://www.salinasuhsd.org/Domain/18	HEAD	404				{"cf-ray": "9deef2954ecf1f54-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:40:14.222796+00:00
+060012911485	CA	Sonoma County ROP	www.scoe.org/depts/rop/	https://www.scoe.org/depts/rop/	HEAD	404				{"cf-ray": "9deef2af8d28c1fe-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:40:18.019360+00:00
+060014511522	CA	Tri-County ROP	www.sutter.k12.ca.us/rop/rop.htm	https://www.sutter.k12.ca.us/rop/rop.htm	HEAD	404				{"content-length": "1245", "content-type": "text/html", "server": "Microsoft-IIS/10.0"}	2026-03-19T19:40:33.900157+00:00
+060133106605	CA	Trinity High	www.trinitywolves.org/	https://www.trinitywolves.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:40:36.533152+00:00
+060140900491	CA	Bishop Union High	www.bishopschools.org	https://www.bishopschools.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:40:38.200734+00:00
+060140904490	CA	Keith B. Bright High (Juvenile Hall)	www.bishopschools.org	https://www.bishopschools.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:40:38.176173+00:00
+060140912412	CA	Bishop Independent Study	www.bishopschools.org	https://www.bishopschools.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:40:40.301566+00:00
+060140913022	CA	CDS Bishop High	www.bishopschools.org	https://www.bishopschools.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:40:40.335493+00:00
+060142702295	CA	Vantage Point Charter	www.pvuesd.org	https://www.pvuesd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:40:43.506530+00:00
+060151414257	CA	Latitude 37.8 High	www.efcps.org/latitude-high-37-8	https://www.efcps.org/latitude-high-37-8	HEAD	404				{"cf-ray": "9deef3e9eeb7c28f-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:41:09.767010+00:00
+060165010751	CA	Acalanes Center for Independent Study	www.acalanes.k12.ca.us/cis	https://www.acalanes.k12.ca.us/cis	HEAD	404				{"cf-ray": "9deef55cce0e8ea3-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:42:07.700617+00:00
+060184311953	CA	CORE Butte Charter	www.corebutte.org	https://www.corebutte.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:43:30.177528+00:00
+060199608658	CA	Yuba City Charter	www.yubacitycharter.org	https://www.yubacitycharter.org	HEAD	500				{"content-type": "text/html; charset=UTF-8", "server": "openresty/1.25.3.1"}	2026-03-19T19:44:26.957464+00:00
+060223113851	CA	Collegiate Charter High School of Los Angeles	www.collegiatecharterhighschooloflosangeles.org	https://www.collegiatecharterhighschooloflosangeles.org	HEAD	404				{"content-type": "text/html;charset=utf-8", "server": "Squarespace"}	2026-03-19T19:45:33.784287+00:00
+060232311139	CA	Learning Choice Academy	www.learningchoice.org/about-us/	https://www.learningchoice.org/about-us/	HEAD	404				{"cf-ray": "9deefb0dfb0e489a-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:46:00.935296+00:00
+060248310681	CA	MIT Academy	www.mitacademy.org	https://www.mitacademy.org	HEAD	525				{"cf-ray": "9deefd13df56b829-PHX", "content-length": "0", "server": "cloudflare"}	2026-03-19T19:47:22.963713+00:00
+060270010671	CA	Anderson New Technology High	www.anths.org	https://www.anths.org	HEAD	404				{"cf-ray": "9deefdca2bb03511-LAX", "content-type": "text/html; charset=us-ascii", "server": "cloudflare"}	2026-03-19T19:47:52.386371+00:00
+060285000207	CA	Antioch High	www.antiochschools.net/domain/26	https://www.antiochschools.net/domain/26	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:47:58.448778+00:00
+060285000213	CA	Live Oak High (Continuation)	www.antiochschools.net/domain/31	https://www.antiochschools.net/domain/31	HEAD	404				{"content-length": "232126", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T19:47:59.183481+00:00
+060285005724	CA	Deer Valley High	www.antiochschools.net/domain/27	https://www.antiochschools.net/domain/27	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:47:58.508778+00:00
+060285009517	CA	Prospects High (Alternative)	www.antiochschools.net/domain/29	https://www.antiochschools.net/domain/29	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:47:58.440200+00:00
+060285011573	CA	Bidwell Continuation High	www.antiochschools.net/domain/30	https://www.antiochschools.net/domain/30	HEAD	404				{"content-length": "232196", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T19:47:59.378833+00:00
+060285012278	CA	Dozier-Libbey Medical High	www.antiochschools.net/domain/28	https://www.antiochschools.net/domain/28	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:47:58.440501+00:00
+060444000408	CA	Somerset High	www.busd.k12.ca.us/somerset	https://www.busd.k12.ca.us/somerset	HEAD	404				{"cf-ray": "9deefe023a4ee8ef-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:48:02.162985+00:00
+060582000524	CA	Brawley Union High	www.brawleyhigh.org	https://www.brawleyhigh.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:48:03.799784+00:00
+060582000525	CA	Desert Valley High (Continuation)	www.brawleyhigh.org	https://www.brawleyhigh.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:48:07.106112+00:00
+060702007657	CA	Palisades High (Continuation)	cjshs.calistogaschools.org/	https://cjshs.calistogaschools.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:48:10.632713+00:00
+060756000727	CA	Carpinteria Senior High	www.cusd.net/chs/	https://www.cusd.net/chs/	HEAD	404				{"content-length": "0", "content-type": "text/html; charset=utf-8", "server": "ESF"}	2026-03-19T19:48:15.699907+00:00
+060813011488	CA	Whitmore Charter High	www.ceres.k12.ca.us/wcs	https://www.ceres.k12.ca.us/wcs	HEAD	404				{"content-length": "207967", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T19:48:22.903490+00:00
+060813011489	CA	Central Valley High	www.ceres.k12.ca.us/cvhsweb	https://www.ceres.k12.ca.us/cvhsweb	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:48:21.362434+00:00
+060846000833	CA	Buena Vista Continuation High	www.chino.k12.ca.us/domain/36	https://www.chino.k12.ca.us/domain/36	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T19:48:25.007108+00:00
+060846000835	CA	Chino High	www.chino.k12.ca.us/domain/37	https://www.chino.k12.ca.us/domain/37	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T19:48:27.309523+00:00
+060846000838	CA	Don Antonio Lugo High	www.chino.k12.ca.us/domain/39	https://www.chino.k12.ca.us/domain/39	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T19:48:27.054715+00:00
+060846009757	CA	Ruben S. Ayala High	www.chino.k12.ca.us/ayala	https://www.chino.k12.ca.us/ayala	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T19:48:26.311429+00:00
+060846010360	CA	Chino Hills High	www.chino.k12.ca.us/domain/38	https://www.chino.k12.ca.us/domain/38	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T19:48:27.330387+00:00
+060939012987	CA	Grand Terrace High Sch at the Ray Abril Jr. Edal Complex	www.cjusd.net/gths	https://www.cjusd.net/gths	HEAD	404				{"cf-ray": "9deeff269c000d82-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:48:48.764524+00:00
+060966514657	CA	Fin and Claw Academy	www.leggett.k12.ca.us	https://www.leggett.k12.ca.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:48:52.187147+00:00
+061035001158	CA	Lovell High	lov.cojusd.org/lovell-high-school/index.html	https://lov.cojusd.org/lovell-high-school/index.html	HEAD	404				{"cf-ray": "9deeff6c782eb4c4-LAX", "content-type": "text/html;charset=utf-8", "server": "cloudflare", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T19:48:59.651755+00:00
+061035008419	CA	Cutler-Orosi Community Day	lov.cojusd.org/cutler-orosi-community-day-school/index.html	https://lov.cojusd.org/cutler-orosi-community-day-school/index.html	HEAD	404				{"cf-ray": "9deeff6c7a10885c-LAX", "content-type": "text/html;charset=utf-8", "server": "cloudflare", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T19:48:59.438455+00:00
+061146014595	CA	Downey Unified Virtual Acad at Lynn L. Pace Ed Center	web.dusd.net/virtualacademy	https://web.dusd.net/virtualacademy	HEAD	410				{"content-length": "0", "content-type": "text/html; charset=UTF-8", "server": "Microsoft-IIS/10.0"}	2026-03-19T19:49:09.866409+00:00
+061170001294	CA	Dunsmuir High	www.dunsmuirhigh.k12.ca.us	https://www.dunsmuirhigh.k12.ca.us	HEAD	500				{"content-length": "3490", "content-type": "text/html; charset=utf-8", "server": "Microsoft-IIS/10.0"}	2026-03-19T19:49:26.075084+00:00
+061173001296	CA	Durham High	www.durhamunified.org	https://www.durhamunified.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:49:10.325692+00:00
+061212001367	CA	Fernando R. Ledesma Continuation High	www.emuhsd.org/flhs	https://www.emuhsd.org/flhs	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T19:49:31.855280+00:00
+061336001510	CA	Armijo High	www.fsusd.org	https://www.fsusd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:49:36.511537+00:00
+061336012633	CA	H. Glenn Richardson	www.fsusd.org	https://www.fsusd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:49:36.476377+00:00
+061347001533	CA	Burney Junior-Senior High	www.frjusd.org	https://www.frjusd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:49:36.475142+00:00
+061347001536	CA	Fall River Junior-Senior High	www.frjusd.org	https://www.frjusd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:49:36.507441+00:00
+061347007814	CA	Soldier Mountain High (Continuation)	www.frjusd.org	https://www.frjusd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:49:37.433403+00:00
+061632302033	CA	Gustine High	www.gustineusd.org	https://www.gustineusd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:50:18.835223+00:00
+061692002154	CA	Hemet High	www.hemethigh.com	https://www.hemethigh.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:50:40.650007+00:00
+061692009555	CA	Academy of Innovation	www.theacademyofinnovation.org	https://www.theacademyofinnovation.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:50:45.428696+00:00
+061692011020	CA	Hamilton	www.hamiltonbobcats.net	https://www.hamiltonbobcats.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:50:47.086133+00:00
+061692012024	CA	Tahquitz High	www.tahquitzhs.org	https://www.tahquitzhs.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:50:47.080592+00:00
+061722007180	CA	Colony Basic Skills Alternative High	www.hilmar.k12.ca.us/ichs/	https://www.hilmar.k12.ca.us/ichs/	HEAD	404				{"content-length": "1245", "content-type": "text/html", "server": "Microsoft-IIS/10.0"}	2026-03-19T19:50:47.099993+00:00
+061722009855	CA	Irwin High (Continuation)	www.hilmar.k12.ca.us/ichs/	https://www.hilmar.k12.ca.us/ichs/	HEAD	404				{"content-length": "1245", "content-type": "text/html", "server": "Microsoft-IIS/10.0"}	2026-03-19T19:50:47.100986+00:00
+061911002305	CA	Julian High	www.juhsd.org	https://www.juhsd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:51:16.308580+00:00
+061949014540	CA	Kerman Unified Online	www.kermanusd.com	https://www.kermanusd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:51:15.942472+00:00
+061962006745	CA	Keyes to Learning Charter	www.keyestolearning.com/	https://www.keyestolearning.com/	HEAD	502				{"content-length": "154", "content-type": "text/html", "server": "openresty"}	2026-03-19T19:51:23.348913+00:00
+062106007104	CA	Lassen Community Day	www.lassenhigh.org	https://www.lassenhigh.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:51:29.360571+00:00
+062160002572	CA	La Paloma High (Continuation)	www.luhsd.net/lapaloma	https://www.luhsd.net/lapaloma	HEAD	404				{"cf-ray": "9def03273b240fe0-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:51:32.841423+00:00
+062160002573	CA	Liberty High	www.luhsd.net/liberty	https://www.luhsd.net/liberty	HEAD	404				{"cf-ray": "9def0328a90e7c1e-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:51:33.252164+00:00
+062160008457	CA	Independence High	www.luhsd.net/independence	https://www.luhsd.net/independence	HEAD	404				{"cf-ray": "9def03273983cc65-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:51:32.796400+00:00
+062259007304	CA	Los Alamitos High	www.losal.org/schools/lahs	https://www.losal.org/schools/lahs	HEAD	404				{"cf-ray": "9def034b09b09dfc-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:51:39.085756+00:00
+062274012432	CA	Pacheco High	www.losbanosusd.k12.ca.us	https://www.losbanosusd.k12.ca.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:52:58.785856+00:00
+062515011812	CA	James C. Enochs High	www.monet.k12.ca.us/ehs	https://www.monet.k12.ca.us/ehs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:53:15.106385+00:00
+062519003764	CA	Modoc High	www.modoc.k12.ca.us	https://www.modoc.k12.ca.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:53:15.141698+00:00
+062580008561	CA	March Valley	marchvalley.mvusd.net/	https://marchvalley.mvusd.net/	HEAD	404				{"cf-ray": "9def05c99880f039-LAX", "content-type": "text/plain; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:53:19.856071+00:00
+062580011025	CA	Alessandro	alessandro.mvusd.net/	https://alessandro.mvusd.net/	HEAD	404				{"cf-ray": "9def05c999e82b8c-LAX", "content-type": "text/plain; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:53:19.862321+00:00
+062676004057	CA	Needles High	www.needlesusd.org/	https://www.needlesusd.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:53:27.028529+00:00
+062676013912	CA	Needles Community Day	www.needlesusd.org	https://www.needlesusd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:53:27.015649+00:00
+062805012610	CA	Home and Hospital Program	www.ousd.org/home/hospital	https://www.ousd.org/home/hospital	HEAD	404				{"cf-ray": "9def066dda377baa-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:53:46.901403+00:00
+062825014502	CA	Surfside Academy	www.oside.us/nontraditionaled	https://www.oside.us/nontraditionaled	HEAD	404				{"cf-ray": "9def066df8e44e43-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:53:47.183848+00:00
+062825014503	CA	Oceanside Unified School District Adult Transition Program	www.oside.us/atp	https://www.oside.us/atp	HEAD	404				{"cf-ray": "9def066dfa8cf7c1-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:53:46.837687+00:00
+062827004379	CA	Nordhoff High	www.ojaiusd.org/o/nhs	https://www.ojaiusd.org/o/nhs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:53:46.006974+00:00
+062827014449	CA	Summit	www.ojaiusd.org/o/ois	https://www.ojaiusd.org/o/ois	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:53:48.813554+00:00
+063003004703	CA	Patterson High	www.patterson.k12.ca.us/phs	https://www.patterson.k12.ca.us/phs	HEAD	404				{"cf-ray": "9def07603c7d3f13-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:54:25.703696+00:00
+063021014362	CA	Pathways for Adult Life Skills	www.puhsd.org/en/pages/pals	https://www.puhsd.org/en/pages/pals	HEAD	404				{"cf-ray": "9def07749b6b2283-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:54:29.283859+00:00
+063162004902	CA	Princeton High	www.pjusd.org	https://www.pjusd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:55:24.347436+00:00
+063398005332	CA	Alisal High	www.salinasuhsd.org/domain/10	https://www.salinasuhsd.org/domain/10	HEAD	404				{"cf-ray": "9def097e4d556ca9-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:55:52.417614+00:00
+063398005336	CA	Salinas High	www.salinasuhsd.org/domain/16	https://www.salinasuhsd.org/domain/16	HEAD	404				{"cf-ray": "9def09e74fa908fa-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:56:09.794563+00:00
+063398010561	CA	Carr Lake Community Day	www.salinasuhsd.org/domain/4	https://www.salinasuhsd.org/domain/4	HEAD	404				{"cf-ray": "9def09e749499e1f-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:56:09.975771+00:00
+063398012977	CA	El Puente	www.salinasuhsd.org/domain/8	https://www.salinasuhsd.org/domain/8	HEAD	404				{"cf-ray": "9def09e74c600fbb-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:56:09.822712+00:00
+063398014401	CA	Rancho San Juan High	www.salinasuhsd.org/domain/21	https://www.salinasuhsd.org/domain/21	HEAD	404				{"cf-ray": "9def09e74e4ea733-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:56:09.960558+00:00
+063417014659	CA	Virtual Academy	www.sbcusd.com/virtual_academy	https://www.sbcusd.com/virtual_academy	HEAD	404				{"cf-ray": "9def09e75dd22aaf-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:56:09.725947+00:00
+063570002173	CA	Malibu High	www.smmusd.org/malibu	https://www.smmusd.org/malibu	HEAD	404				{"cf-ray": "9def0b0f5c00b81f-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:56:56.442614+00:00
+063570006098	CA	Olympic High (Continuation)	www.smmusd.org/olympic	https://www.smmusd.org/olympic	HEAD	404				{"cf-ray": "9def0b0f5e430b78-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:56:58.864382+00:00
+063570006102	CA	Santa Monica High	www.smmusd.org/samohi	https://www.smmusd.org/samohi	HEAD	404				{"cf-ray": "9def0b0f5fcdf8cf-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:56:55.725393+00:00
+063627014690	CA	STRIVE Academy	www.selmausd.org/Home	https://www.selmausd.org/Home	HEAD	404				{"cf-ray": "9def0bb449d0f8b7-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:57:23.312722+00:00
+063645006203	CA	Shandon High	www.shandonschools.org	https://www.shandonschools.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:57:22.331213+00:00
+063680500399	CA	Sierra Alternative High	www.sierrausd.org/alternative	https://www.sierrausd.org/alternative	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T19:57:33.358836+00:00
+063680500401	CA	Sierra High	www.sierrausd.org/shs	https://www.sierrausd.org/shs	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T19:57:33.015206+00:00
+063680503059	CA	Sierra@Home	www.sierrausd.org/alternative	https://www.sierrausd.org/alternative	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T19:57:33.064090+00:00
+063697207281	CA	Cobalt Institute of Math and Science	www.vvuhsd.org/cms	https://www.vvuhsd.org/cms	HEAD	404				{"cf-ray": "9def0d037db0e9dd-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:58:17.346828+00:00
+063783014698	CA	Saint Helena Opportunities Program	www.sthelenaunified.org/shop	https://www.sthelenaunified.org/shop	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T19:58:19.964757+00:00
+063801012846	CA	Pacific Law Academy	www.stocktonusd.net/pla	https://www.stocktonusd.net/pla	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T19:58:22.268245+00:00
+063873006510	CA	Buena Vista High (Continuation)	www.taftunion.org/buenavista	https://www.taftunion.org/buenavista	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T19:58:30.793946+00:00
+063877006514	CA	North Tahoe High	nths.ttusd.org/pages/north_tahoe_high	https://nths.ttusd.org/pages/north_tahoe_high	HEAD	404				{"cf-ray": "9def0d5f195ba69a-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:58:30.337622+00:00
+063877006517	CA	Sierra High (Continuation)	shs.ttusd.org/pages/sierra_high	https://shs.ttusd.org/pages/sierra_high	HEAD	404				{"cf-ray": "9def0d5ffec35397-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:58:31.881791+00:00
+063877006520	CA	Tahoe Truckee High	ths.ttusd.org/pages/tahoe_truckee_high	https://ths.ttusd.org/pages/tahoe_truckee_high	HEAD	404				{"cf-ray": "9def0d5fbfa93f0c-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:58:31.841439+00:00
+063879006523	CA	Redwood High	www.tamdistrict.org/domain/66	https://www.tamdistrict.org/domain/66	HEAD	404				{"cf-ray": "9def0d73482b565f-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:58:36.098494+00:00
+063963006600	CA	Vanden High	www.travisusd.org/domain/14	https://www.travisusd.org/domain/14	HEAD	404				{"cf-ray": "9def0d73499088bd-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T19:58:34.620460+00:00
+064235006930	CA	Wheatland Union High	www.wheatlandhigh.org	https://www.wheatlandhigh.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:58:51.695822+00:00
+064235012741	CA	Wheatland Community Day High	www.wheatlandhigh.org	https://www.wheatlandhigh.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:58:51.684748+00:00
+064258000666	CA	Laytonville Continuation High	www.lusd.us	https://www.lusd.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:58:56.615983+00:00
+064258007900	CA	Laytonville High	www.lusd.us	https://www.lusd.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:58:58.568279+00:00
+064356007044	CA	Green Valley High	gvhs.yucaipaschools.com	https://gvhs.yucaipaschools.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:58:58.748013+00:00
+064356011216	CA	Oak View High School & Education Center	ovec.yucaipaschools.com	https://ovec.yucaipaschools.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T19:59:00.436955+00:00
+069100510472	CA	Golden Gate Community	www.cccoe.k12.ca.us/cms/one.aspx?portalid=1077397&pageid=2978892	https://www.cccoe.k12.ca.us/cms/one.aspx?portalid=1077397&pageid=2978892	HEAD	404				{"content-length": "1923", "content-type": "text/html; charset=utf-8", "server": "Microsoft-IIS/10.0"}	2026-03-19T19:59:06.372646+00:00
+069100512486	CA	Mt. McKinley	www.cccoe.k12.ca.us/cms/one.aspx?portalid=1077397&pageid=2978896	https://www.cccoe.k12.ca.us/cms/one.aspx?portalid=1077397&pageid=2978896	HEAD	404				{"content-length": "1923", "content-type": "text/html; charset=utf-8", "server": "Microsoft-IIS/10.0"}	2026-03-19T19:59:06.403939+00:00
+069100813810	CA	Success One!	www.success1charter.org	https://www.success1charter.org	HEAD	404				{"content-type": "text/html;charset=utf-8", "server": "Squarespace"}	2026-03-19T19:59:08.693532+00:00
+069103514054	CA	Opportunity Youth Academy	www.sccoe.org/depts/students/oya/pages/default.aspx	https://www.sccoe.org/depts/students/oya/pages/default.aspx	HEAD	404				{"content-length": "691", "content-type": "text/html; charset=utf-8", "server": "Microsoft-IIS/10.0"}	2026-03-19T19:59:53.028135+00:00
+069104509257	CA	Special Education	www.tcoe.org/special/index.shtm	https://www.tcoe.org/special/index.shtm	HEAD	404				{"content-length": "1245", "content-type": "text/html"}	2026-03-19T19:59:59.962453+00:00
+120003003283	FL	PACE	www.pacecenter.org/alachua	https://www.pacecenter.org/alachua	HEAD	404				{"content-type": "text/html; charset=utf-8", "server": "Microsoft-IIS/10.0"}	2026-03-19T20:00:55.484954+00:00
+120009007830	FL	BAY VIRTUAL FRANCHISE	www.bayvirtualschool.com	https://www.bayvirtualschool.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:01:03.709431+00:00
+120009008901	FL	AMIKIDS MARITIME ACADEMY	www.amikidsmaritimeacademy.org	https://www.amikidsmaritimeacademy.org	HEAD	404				{"cf-ray": "9def111c5f9d1ee0-LAX", "content-length": "0", "server": "cloudflare"}	2026-03-19T20:01:04.299403+00:00
+120027003158	FL	SRMI @ RENAISSANCE CENTER	www.srmischool.com/id9.html	https://www.srmischool.com/id9.html	GET_RANGE	404				{"content-length": "0", "server": "awselb/2.0"}	2026-03-19T20:01:27.812243+00:00
+120039001443	FL	SCHOOL FOR ADVANCED STUDIES - SOUTH	sas.dadeschools.net	https://sas.dadeschools.net	HEAD	404				{"content-length": "315", "content-type": "text/html; charset=us-ascii", "server": "Microsoft-HTTPAPI/2.0"}	2026-03-19T20:02:54.666289+00:00
+120039002715	FL	SCHOOL FOR ADVANCED STUDIES NORTH	sas.dadeschools.net	https://sas.dadeschools.net	HEAD	404				{"content-length": "315", "content-type": "text/html; charset=us-ascii", "server": "Microsoft-HTTPAPI/2.0"}	2026-03-19T20:02:54.661555+00:00
+120039003561	FL	SCHOOL FOR ADVANCED STUDIES-WOLFSON	sas.dadeschools.net	https://sas.dadeschools.net	HEAD	404				{"content-length": "315", "content-type": "text/html; charset=us-ascii", "server": "Microsoft-HTTPAPI/2.0"}	2026-03-19T20:03:27.914054+00:00
+120039007358	FL	SCHOOL FOR ADVANCED STUDIES HOMESTEAD	sas.dadeschools.net	https://sas.dadeschools.net	HEAD	404				{"content-length": "315", "content-type": "text/html; charset=us-ascii", "server": "Microsoft-HTTPAPI/2.0"}	2026-03-19T20:04:01.243153+00:00
+120039007634	FL	TERRA ENVIRONMENTAL RESEARCH INSTITUTE	choice.dadeschools.net/green/	https://choice.dadeschools.net/green/	HEAD	404				{"content-length": "1245", "content-type": "text/html", "server": "Microsoft-IIS/10.0"}	2026-03-19T20:04:20.614523+00:00
+120039008792	FL	IPREP  ACADEMY NORTH	northregion.dadeschoools.net	https://northregion.dadeschoools.net	HEAD	502				{"content-length": "154", "content-type": "text/html", "server": "openresty"}	2026-03-19T20:05:01.508232+00:00
+120048000425	FL	AMIKIDS JACKSONVILLE	www.duvalschools.org/	https://www.duvalschools.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:21.557714+00:00
+120048000635	FL	GRAND PARK CAREER CENTER	www.duvalschools.org/grandpark	https://www.duvalschools.org/grandpark	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:21.556788+00:00
+120048000649	FL	ANDREW JACKSON HIGH SCHOOL	www.duvalschools.org/ajhs	https://www.duvalschools.org/ajhs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:21.557750+00:00
+120048000651	FL	BALDWIN MIDDLE-SENIOR HIGH SCHOOL	www.duvalschools.org/bmsh	https://www.duvalschools.org/bmsh	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:21.556832+00:00
+120048000681	FL	TERRY PARKER HIGH SCHOOL	www.duvalschools.org/tphs	https://www.duvalschools.org/tphs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:21.575353+00:00
+120048000685	FL	ENGLEWOOD HIGH SCHOOL	www.duvalschools.org/ehs	https://www.duvalschools.org/ehs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:21.575909+00:00
+120048000706	FL	STANTON COLLEGE PREPARATORY	www.duvalschools.org/stanton	https://www.duvalschools.org/stanton	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:24.320870+00:00
+120048000714	FL	WILLIAM M. RAINES HIGH SCHOOL	www.duvalschools.org/wmrh	https://www.duvalschools.org/wmrh	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:24.599992+00:00
+120048000720	FL	HOSPITAL AND HOMEBOUND	www.duvalschools.org	https://www.duvalschools.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:24.309747+00:00
+120048000721	FL	YOUTH DEVELOPMENT CENTER	www.duvalschools.org/	https://www.duvalschools.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:24.298019+00:00
+120048000749	FL	SAMUEL W. WOLFSON HIGH SCHOOL	www.duvalschools.org/wolfson	https://www.duvalschools.org/wolfson	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:24.293763+00:00
+120048000759	FL	SANDALWOOD HIGH SCHOOL	www.duvalschools.org/sandalwood	https://www.duvalschools.org/sandalwood	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:24.297315+00:00
+120048000767	FL	EDWARD H. WHITE HIGH SCHOOL	www.duvalschools.org/edwhite	https://www.duvalschools.org/edwhite	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:26.747047+00:00
+120048000769	FL	ALDEN ROAD EXCEP. STUDENT CENTER	www.duvalschools.org/ar	https://www.duvalschools.org/ar	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:26.753764+00:00
+120048000773	FL	A. PHILIP RANDOLPH ACADEMIES	www.duvalschools.org/aprtech	https://www.duvalschools.org/aprtech	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:26.768230+00:00
+120048001571	FL	PRETRIAL DETENTION FACILITY	www.duvalschools.org/	https://www.duvalschools.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:26.768850+00:00
+120048002469	FL	DOUGLAS ANDERSON SCHOOL OF THE ARTS	www.duvalschools.org/anderson	https://www.duvalschools.org/anderson	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:26.755399+00:00
+120048002744	FL	MANDARIN HIGH SCHOOL	www.duvalschools.org/mhs	https://www.duvalschools.org/mhs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:26.764763+00:00
+120048002816	FL	DARNELL COOKMAN MIDDLE/HIGH SCHOOL	www.duvalschools.org/darnellcookman	https://www.duvalschools.org/darnellcookman	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:26.782793+00:00
+120048003053	FL	MT. HERMAN ESE CENTER	www.duvalschools.org/mhesc	https://www.duvalschools.org/mhesc	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:28.617311+00:00
+120048007629	FL	ATLANTIC COAST HIGH SCHOOL	www.duvalschools.org/achs	https://www.duvalschools.org/achs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:28.598181+00:00
+120048007860	FL	DUVAL VIRTUAL ACADEMY FRANCHISE	www.duvalschools.org/dvia	https://www.duvalschools.org/dvia	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:05:28.614229+00:00
+120063000862	FL	TRENTON HIGH SCHOOL	www.gilchristschools.org/	https://www.gilchristschools.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:06:16.466610+00:00
+120063000863	FL	BELL HIGH SCHOOL	www.gilchristschools.org/	https://www.gilchristschools.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:06:16.450707+00:00
+120066000864	FL	MOORE HAVEN MIDDLE HIGH SCHOOL.	www.gladesedu.org	https://www.gladesedu.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:06:16.453119+00:00
+120075000877	FL	HARDEE SENIOR HIGH SCHOOL	www.hardee.k12.fl.us/High_School	https://www.hardee.k12.fl.us/High_School	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:06:16.445164+00:00
+120075000878	FL	HARDEE JUNIOR HIGH SCHOOL	www.hardee.k12.fl.us/Junior_High	https://www.hardee.k12.fl.us/Junior_High	HEAD	404				{"content-length": "200476", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:06:29.238301+00:00
+120075002245	FL	PIONEER CAREER ACADEMY	www.hardee.k12.fl.us/Pioneer_Career	https://www.hardee.k12.fl.us/Pioneer_Career	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:06:19.284211+00:00
+120075007656	FL	HARDEE VIRTUAL INSTRUCTION PROGRAM	www.hardee.k12.fl.us	https://www.hardee.k12.fl.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:06:19.292881+00:00
+120081000890	FL	HERNANDO HIGH SCHOOL	www.hernandoschools.org/hhs	https://www.hernandoschools.org/hhs	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:06:19.988816+00:00
+120081000896	FL	FRANK W. SPRINGSTEAD HIGH SCHOOL	www.hernandoschools.org/hhs	https://www.hernandoschools.org/hhs	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:06:31.355314+00:00
+120081002604	FL	CENTRAL HIGH SCHOOL	www.hernandoschools.org/chs	https://www.hernandoschools.org/chs	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:06:31.369849+00:00
+120081004083	FL	NATURE COAST TECHNICAL HIGH	www.hernandoschools.org/ncths	https://www.hernandoschools.org/ncths	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:06:31.373083+00:00
+120081006808	FL	WEEKI WACHEE HIGH SCHOOL	www.hernandoschools.org/wwhs	https://www.hernandoschools.org/wwhs	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:06:31.353258+00:00
+120087004097	FL	NORTH TAMPA SUCCESS CENTER	www.hillsboroughschools.org/northtampa	https://www.hillsboroughschools.org/northtampa	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:06:33.267946+00:00
+120087006987	FL	BROOKS DEBARTOLO COLLEGIATE HIGH SCHOOL	www.bdchs.org	https://www.bdchs.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:06:37.632950+00:00
+120087007146	FL	HILLSBOROUGH VIRTUAL FRANCHISE HIGH SCHOOL	www.hillsboroughvirtual.com	https://www.hillsboroughvirtual.com	HEAD	404				{"content-type": "text/html; charset=utf-8", "server": "Kestrel"}	2026-03-19T20:06:37.818324+00:00
+120087007499	FL	HILLSBOROUGH VIRT INSTR PRGS	www.hillsboroughvirtual.com	https://www.hillsboroughvirtual.com	HEAD	404				{"content-type": "text/html; charset=utf-8", "server": "Kestrel"}	2026-03-19T20:06:37.851632+00:00
+120087008053	FL	HILLSBOROUGH VIRTUAL SCHOOL	www.hillsboroughvirtual.com	https://www.hillsboroughvirtual.com	HEAD	404				{"content-type": "text/html; charset=utf-8", "server": "Kestrel"}	2026-03-19T20:06:37.824031+00:00
+120093007737	FL	INDIAN RIVER VIRTUAL INSTRUCTION PROGRAM	www.indianriverschools.org	https://www.indianriverschools.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:06:56.629018+00:00
+120105001092	FL	EUSTIS HIGH SCHOOL	ehs.lake.k12.fl.us/	https://ehs.lake.k12.fl.us/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:07:21.484821+00:00
+120105001097	FL	LEESBURG HIGH SCHOOL	lhs.lake.k12.fl.us//	https://lhs.lake.k12.fl.us//	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:07:20.565079+00:00
+120105001102	FL	TAVARES HIGH SCHOOL	ths.lake.k12.fl.us	https://ths.lake.k12.fl.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:07:20.281283+00:00
+120105001105	FL	UMATILLA HIGH SCHOOL	uhs.lake.k12.fl.us	https://uhs.lake.k12.fl.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:07:21.714310+00:00
+120105001118	FL	LAKE HILLS SCHOOL	lhe.lake.k12.fl.us/	https://lhe.lake.k12.fl.us/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:07:21.714388+00:00
+120105001714	FL	SOUTH LAKE HIGH SCHOOL	slh.lake.k12.fl.us	https://slh.lake.k12.fl.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:07:20.281230+00:00
+120105007681	FL	LAKE VIRTUAL INSTRUCTION PROGRAM	lcvs.lake.k12.fl.us/	https://lcvs.lake.k12.fl.us/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:07:23.775756+00:00
+120105007689	FL	LAKE MINNEOLA HIGH SCHOOL	lmh.lake.k12.fl.us/	https://lmh.lake.k12.fl.us/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:07:24.009709+00:00
+120105008829	FL	LAKE SUCCESS ACADEMY	lsa.lake.k12.fl.us/	https://lsa.lake.k12.fl.us/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:07:25.152600+00:00
+120108005778	FL	PACE SCHOOL FOR GIRLS	www.pacecenter.org/locations/lee	https://www.pacecenter.org/locations/lee	HEAD	404				{"content-type": "text/html; charset=utf-8", "server": "Microsoft-IIS/10.0"}	2026-03-19T20:07:33.257849+00:00
+120111000788	FL	SECOND CHANCE AT GHAZVINI LEARNING CENTER	www.leonschools.net/secondchance	https://www.leonschools.net/secondchance	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:07:36.910303+00:00
+120111002079	FL	HOSPITAL HOMEBOUND	www.leonschools.net/Page/741	https://www.leonschools.net/Page/741	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:07:40.381689+00:00
+120111002207	FL	HERITAGE TRAILS COMMUNITY SCHOOL	www.leonschools.net/HeritageTrails	https://www.leonschools.net/HeritageTrails	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:07:40.349687+00:00
+120111003601	FL	LEON CO JUVENILE DETENTION CENTER	www.leonschools.net/Page/30109	https://www.leonschools.net/Page/30109	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:07:40.381613+00:00
+120111007180	FL	LEON COUNTY JAIL	www.leonschools.net/Page/30109	https://www.leonschools.net/Page/30109	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:07:40.381654+00:00
+120111007831	FL	SUCCESS ACADEMY AT GHAZVINI LEARNING CENTER	www.leonschools.net/successacademy	https://www.leonschools.net/successacademy	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:07:42.689621+00:00
+120120002212	FL	MADISON COUNTY HIGH SCHOOL	mchs.madison.k12.fl.us/	https://mchs.madison.k12.fl.us/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:07:45.845373+00:00
+120123001220	FL	BAYSHORE HIGH SCHOOL	www.manateeschools.net/bayshore	https://www.manateeschools.net/bayshore	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:08:01.579719+00:00
+120123001232	FL	PALMETTO HIGH SCHOOL	www.manateeschools.net/palmetto	https://www.manateeschools.net/palmetto	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:08:01.567460+00:00
+120123003425	FL	LAKEWOOD RANCH HIGH SCHOOL	www.manateeschools.net/lakewoodranch	https://www.manateeschools.net/lakewoodranch	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:08:05.392138+00:00
+120123003610	FL	HORIZONS ACADEMY	www.manateeschools.net/horizons	https://www.manateeschools.net/horizons	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:08:04.381820+00:00
+120123004377	FL	ACCESS TO EDUCATION	www.manateeschools.net/domain/5241	https://www.manateeschools.net/domain/5241	HEAD	404				{"content-length": "250681", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:08:05.307839+00:00
+120123005608	FL	BRADEN RIVER HIGH SCHOOL	www.manateeschools.net/bradenriver	https://www.manateeschools.net/bradenriver	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:08:05.412053+00:00
+120123007747	FL	MANATEE VIRTUAL INSTRUCTION PROGRAM	www.manateeschools.net/eLearning	https://www.manateeschools.net/eLearning	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:08:05.385605+00:00
+120123008027	FL	MANATEE VIRTUAL SCHOOL ( VIRTUAL FRANCHISE)	www.manateeschools.net/eLearning	https://www.manateeschools.net/eLearning	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:08:07.136283+00:00
+120132001292	FL	CORAL SHORES HIGH SCHOOL	www.keysschools.com/Domain/213	https://www.keysschools.com/Domain/213	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:08:10.515262+00:00
+120132001294	FL	KEY WEST HIGH SCHOOL	www.keysschools.com/Domain/723	https://www.keysschools.com/Domain/723	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:08:31.959077+00:00
+120132001296	FL	MARATHON SCHOOL	www.keysschools.com/Domain/1071	https://www.keysschools.com/Domain/1071	HEAD	404				{"content-length": "262134", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:08:32.879518+00:00
+120132008681	FL	LOWER KEYS ACADEMIC CONNECTIONS FOR EXCELLENCE	www.keysschools.com	https://www.keysschools.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:08:31.960216+00:00
+120138008315	FL	OKALOOSA ONLINE NON FRANCHISED	www.okaloosaschools.com/online	https://www.okaloosaschools.com/online	HEAD	404				{"content-length": "231621", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:08:36.784648+00:00
+120141008363	FL	OKEECHOBEE VIRTUAL FRANCHISE	www.okee.k12.fl.us	https://www.okee.k12.fl.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:08:35.632327+00:00
+120141008586	FL	OKEECHOBEE VIRTUAL INSTRUCTION PROGRAM	www.okee.k12.fl.us/	https://www.okee.k12.fl.us/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:08:35.594517+00:00
+120144002645	FL	HOSPITAL HOMEBOUND	ocps.net/cms/one.aspx?portalId=54703&pageId=90565	https://ocps.net/cms/one.aspx?portalId=54703&pageId=90565	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:08:43.205982+00:00
+120144002650	FL	SIMON YOUTH FOUND ACAD AT OUTLET MKTPLCE	www.ocps.net/lc/district/sae	https://www.ocps.net/lc/district/sae	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:08:42.826324+00:00
+120144002918	FL	AMIKIDS ORLANDO	www.ocps.net/lc/district/sae	https://www.ocps.net/lc/district/sae	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:08:50.366948+00:00
+120144003994	FL	PROJECT COMPASS	www.ocps.net/lc/district/sae	https://www.ocps.net/lc/district/sae	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:08:52.447525+00:00
+120144003995	FL	BETA	www.ocps.net/lc/district/sae	https://www.ocps.net/lc/district/sae	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:08:52.396951+00:00
+120144007624	FL	ESTEEM ACADEMY	www.ocps.net/cs/ese/programs/hh/Pages/ESTEEM.aspx	https://www.ocps.net/cs/ese/programs/hh/Pages/ESTEEM.aspx	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:08:56.456098+00:00
+120144008559	FL	ESE TRANSITION	www.ocps.net/cs/ese/support/transition/gages/default.aspx	https://www.ocps.net/cs/ese/support/transition/gages/default.aspx	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:09:06.324871+00:00
+120150008018	FL	EDUCATIONAL SERVICES PROGRAM-EAST	www.palmbeachschools.org/9304/	https://www.palmbeachschools.org/9304/	HEAD	404				{"cf-ray": "9def1e3b3e2e6387-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:10:02.387137+00:00
+120150008020	FL	EDUCATIONAL SERVICES PROGRAM-WEST	www.palmbeachschools.org/9304/	https://www.palmbeachschools.org/9304/	HEAD	404				{"cf-ray": "9def1e3baa501e11-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:10:02.386240+00:00
+120150010693	FL	DR. JOAQUIN GARCIA HIGH SCHOOL	brha.palmbeachschools.org/school_info	https://brha.palmbeachschools.org/school_info	HEAD	404				{"cf-ray": "9def1e58faa49dfc-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:10:07.184891+00:00
+120156001675	FL	ST. PETERSBURG HIGH SCHOOL	www.stpetehigh.com	https://www.stpetehigh.com	HEAD	404				{"content-type": "text/html; charset=utf-8", "server": "Kestrel"}	2026-03-19T20:10:41.214263+00:00
+120156008410	FL	PINELLAS GULF COAST ACADEMY	www.pcsb.org/gulfcoast-hs	https://www.pcsb.org/gulfcoast-hs	HEAD	404				{"cf-ray": "9def2008cec68e47-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:11:16.216557+00:00
+120159001790	FL	LAKE WALES SENIOR HIGH SCHOOL	lwcharterschools.com/lwhigh	https://lwcharterschools.com/lwhigh	HEAD	404				{"content-length": "315", "content-type": "text/html; charset=us-ascii", "server": "Microsoft-HTTPAPI/2.0"}	2026-03-19T20:11:36.363127+00:00
+120159008701	FL	RIDGE TECHNICAL ACADEMY	www.polkedpathways.com/ridge-technical-college/	https://www.polkedpathways.com/ridge-technical-college/	GET_RANGE	404				{"content-length": "0", "server": "awselb/2.0"}	2026-03-19T20:11:48.970361+00:00
+120159008733	FL	MAYNARD A TRAVISS TECHNICAL ACADEMY	www.polkedpathways.com/traviss-technical-college/	https://www.polkedpathways.com/traviss-technical-college/	GET_RANGE	404				{"content-length": "0", "server": "awselb/2.0"}	2026-03-19T20:11:48.974421+00:00
+120162001810	FL	CRESCENT CITY JR-SR HIGH SCHOOL	www.putnamschools.org/o/cchs	https://www.putnamschools.org/o/cchs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:11:48.422095+00:00
+120162001811	FL	PALATKA JR - SR HIGH SCHOOL	www.putnamschools.org/o/phs	https://www.putnamschools.org/o/phs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:11:48.403899+00:00
+120162004140	FL	Q.I. ROBERTS JR. - SR. HIGH SCHOOL	www.putnamschools.org/o/qi-roberts	https://www.putnamschools.org/o/qi-roberts	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:11:48.422767+00:00
+120165002257	FL	RADFORD M LOCKLIN TECHNICAL COLLEGE	www.locklintech.com/	https://www.locklintech.com/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:11:52.146898+00:00
+120168001836	FL	PINE VIEW SCHOOL	www.sarasotacountyschools.net/pineview	https://www.sarasotacountyschools.net/pineview	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:11:55.090687+00:00
+120168001847	FL	RIVERVIEW HIGH SCHOOL	www.sarasotacountyschools.net/riverview	https://www.sarasotacountyschools.net/riverview	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:11:55.082137+00:00
+120168001851	FL	VENICE SENIOR HIGH SCHOOL	www.sarasotacountyschools.net/venicehigh	https://www.sarasotacountyschools.net/venicehigh	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:11:55.093024+00:00
+120168001857	FL	OAK PARK SCHOOL	www.sarasotacountyschools.net/oakpark	https://www.sarasotacountyschools.net/oakpark	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:11:55.098887+00:00
+120168003123	FL	TRIAD	www.sarasotacountyschools.net	https://www.sarasotacountyschools.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:11:55.075872+00:00
+120168003800	FL	NORTH PORT HIGH SCHOOL	www.sarasotacountyschools.net/northporthigh	https://www.sarasotacountyschools.net/northporthigh	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:12:11.642280+00:00
+120168007003	FL	SUNCOAST POLYTECHNICAL HIGH SCHOOL	www.sarasotacountyschools.net/suncoastpolytechnical	https://www.sarasotacountyschools.net/suncoastpolytechnical	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:12:11.642886+00:00
+120171007703	FL	SEMINOLE COUNTY VIRTUAL FRANCHISE (SCVS)	www.scps.k12.fl.us/virtualschool	https://www.scps.k12.fl.us/virtualschool	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:12:29.010693+00:00
+120174007833	FL	ST. JOHNS COMMUNITY CAMPUS	www.arcsj.org/communitycampus.html	https://www.arcsj.org/communitycampus.html	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "Apache"}	2026-03-19T20:12:37.937596+00:00
+120177002671	FL	PORT ST. LUCIE HIGH SCHOOL	www.stlucie.k12.fl.us/PHS/	https://www.stlucie.k12.fl.us/PHS/	HEAD	404				{"content-length": "0", "content-type": "text/html; charset=UTF-8"}	2026-03-19T20:12:57.279546+00:00
+120177004149	FL	DALE CASSENS EDUCATION COMPLEX	www.stlucie.k12.fl.us/DCS/	https://www.stlucie.k12.fl.us/DCS/	HEAD	404				{"content-length": "0", "content-type": "text/html; charset=UTF-8"}	2026-03-19T20:12:57.415958+00:00
+120177007973	FL	MOSAIC DIGITAL ACADEMY K-12	www.stlucie.k12.fl.us/mda	https://www.stlucie.k12.fl.us/mda	HEAD	404				{"content-length": "0", "content-type": "text/html; charset=UTF-8"}	2026-03-19T20:12:57.361614+00:00
+120183001946	FL	SUWANNEE HIGH SCHOOL	shs.suwannee.k12.fl.us	https://shs.suwannee.k12.fl.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:12:59.176827+00:00
+120183001948	FL	BRANFORD HIGH SCHOOL	bhs.suwannee.k12.fl.us	https://bhs.suwannee.k12.fl.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:12:59.144084+00:00
+120183007849	FL	COMMUNITY BASE SERVICE STUDENTS	www.suwannee.k12.fl.us	https://www.suwannee.k12.fl.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:12:59.176070+00:00
+120183008860	FL	SUWANNEE OPPORTUNITY SCHOOL	www.suwannee.k12.fl.us	https://www.suwannee.k12.fl.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:12:59.148355+00:00
+120186002002	FL	TAYLOR COUNTY HIGH SCHOOL	taylorcountyhighscho.ipage.com/public_html/	https://taylorcountyhighscho.ipage.com/public_html/	HEAD	404				{"content-type": "text/html"}	2026-03-19T20:13:01.894168+00:00
+120192003134	FL	PACE CENTER FOR GIRLS	www.pacecenter.org/locations/volusia-flagler	https://www.pacecenter.org/locations/volusia-flagler	HEAD	404				{"content-type": "text/html; charset=utf-8", "server": "Microsoft-IIS/10.0"}	2026-03-19T20:13:05.293761+00:00
+120195002017	FL	WAKULLA HIGH SCHOOL	whs.wakullaschooldistrict.org/	https://whs.wakullaschooldistrict.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:13:13.229563+00:00
+120195003280	FL	WAKULLA INSTITUTE	www.wakullaschooldistrict.org/Pathways	https://www.wakullaschooldistrict.org/Pathways	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:13:13.080110+00:00
+120195003810	FL	ALTERNATIVE HIGH SCHOOL PROGRAM	www.wakullaschooldistrict.org/Pathways	https://www.wakullaschooldistrict.org/Pathways	HEAD	404				{"content-length": "213889", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:13:13.576340+00:00
+120195007715	FL	WAKULLA COUNTY VIRTUAL INSTRUCTION PROGRAM	www.wakullaschooldistrict.org/	https://www.wakullaschooldistrict.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:13:13.104707+00:00
+120195008187	FL	WAKULLA VIRTUAL FRANCHISE	www.wakullaschooldistrict.org/	https://www.wakullaschooldistrict.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:13:13.105294+00:00
+120198002020	FL	PAXTON SCHOOL	pax.walton.k12.fl.us/	https://pax.walton.k12.fl.us/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:13:13.875089+00:00
+120198002022	FL	FREEPORT SENIOR HIGH SCHOOL	fhs.walton.k12.fl.us/	https://fhs.walton.k12.fl.us/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:13:13.726433+00:00
+120198002644	FL	EMERALD COAST TECHNICAL COLLEGE	www.ectc.edu/	https://www.ectc.edu/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:13:15.579348+00:00
+120198003138	FL	SEASIDE NEIGHBORHOOD SCHOOL	www.seasideschool.net/	https://www.seasideschool.net/	HEAD	502				{"content-length": "154", "content-type": "text/html", "server": "openresty"}	2026-03-19T20:13:18.172256+00:00
+120198007730	FL	WALTON VIRTUAL SCHOOL FULL TIME	www.walton.k12.fl.us/index.cfm?p=walton-virtual-school	https://www.walton.k12.fl.us/index.cfm?p=walton-virtual-school	HEAD	404				{"content-length": "216122", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:13:16.184791+00:00
+120198007734	FL	WALTON VIRTUAL FRANCHISE	www.walton.k12.fl.us	https://www.walton.k12.fl.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:13:17.105884+00:00
+120198008849	FL	WALTON VIRTUAL SCHOOL WCSD	www.walton.k12.fl.us/index.cfm?p=walton-virtual-school	https://www.walton.k12.fl.us/index.cfm?p=walton-virtual-school	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:13:17.095926+00:00
+390009704036	OH	Summit Academy Community School Alternative Learners -Xenia	summitacademies.org/schools/xenia-elementary/	https://summitacademies.org/schools/xenia-elementary/	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:13:31.446604+00:00
+390034204879	OH	Summit Academy Transition High School-Columbus	summitacademies.org/schools/columbus-high/	https://summitacademies.org/schools/columbus-high/	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:14:07.054841+00:00
+390034404881	OH	Summit Academy Alternative LearnersWarren Middle & Secondary	summitacademies.org/schools/warren-middle-secondary/	https://summitacademies.org/schools/warren-middle-secondary/	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:14:06.725943+00:00
+390049505205	OH	Summit Academy Secondary - Canton	summitacademies.org/schools/canton-secondary/	https://summitacademies.org/schools/canton-secondary/	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:14:10.322260+00:00
+390049605206	OH	Summit Academy - Toledo	summitacademies.org/schools/toledo-summit-academy/	https://summitacademies.org/schools/toledo-summit-academy/	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:14:10.541986+00:00
+390049705207	OH	Summit Academy Community School-Parma	summitacademies.org/schools/parma-community/	https://summitacademies.org/schools/parma-community/	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:14:10.543281+00:00
+390131405407	OH	Zanesville Community High School	www.zanesvillecommunityhighschool.com/	https://www.zanesvillecommunityhighschool.com/	HEAD	522				{"cf-ray": "9def2475cb45f039-LAX", "content-length": "7377", "content-type": "text/html; charset=UTF-8", "server": "cloudflare"}	2026-03-19T20:14:35.780822+00:00
+390142005577	OH	North Central Academy	www.northcentralacademy.org/	https://www.northcentralacademy.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:14:37.436390+00:00
+390149005710	OH	Metro Early College High School	www.themetroschool.org	https://www.themetroschool.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:14:40.100722+00:00
+390153505818	OH	Global Impact STEM Academy	www.globalimpactacademy.org	https://www.globalimpactacademy.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:14:40.340733+00:00
+390153905804	OH	Albert Einstein Academy for Letters Arts and Sciences-Ohio	www.aeaohio.org	https://www.aeaohio.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:14:40.188035+00:00
+390155105783	OH	Liberty Preparatory School	libertypreparatoryschool.weebly.com/	https://libertypreparatoryschool.weebly.com/	HEAD	404				{"cf-ray": "9def251f1faad7a7-LAX", "content-type": "text/html; charset=UTF-8", "server": "cloudflare"}	2026-03-19T20:14:43.127176+00:00
+390440206210	OH	Galion Online Academy	www.galionschools.org	https://www.galionschools.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:15:09.689182+00:00
+390441005959	OH	Miami School	www.hamiltoncityschools.com/miamischool	https://www.hamiltoncityschools.com/miamischool	HEAD	404				{"cf-ray": "9def25c52d4ccdfb-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:15:10.822435+00:00
+390443501286	OH	Washington High School	www.massillonschools.org	https://www.massillonschools.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:15:09.625624+00:00
+390458602367	OH	Grand Valley High School	www.grand-valley.k12.oh.us	https://www.grand-valley.k12.oh.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:15:35.109455+00:00
+390459106105	OH	Federal Hocking Local Schools	www.fedhock.com	https://www.fedhock.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:15:51.909617+00:00
+390459206106	OH	Trimble Learning Academy	www.trimble.k12.oh.us	https://www.trimble.k12.oh.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:15:52.171056+00:00
+390462302475	OH	Greenon High School	www.greenon.k12.oh.us	https://www.greenon.k12.oh.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:15:52.132535+00:00
+390465202586	OH	Wynford High School	www.wynfordroyals.org	https://www.wynfordroyals.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:15:54.625400+00:00
+390465602589	OH	Independence High School	www.independence.k12.oh.us/high-school	https://www.independence.k12.oh.us/high-school	HEAD	404				{"content-length": "221957", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:15:54.725707+00:00
+390467002626	OH	Ayersville High School	www.ayersville.org	https://www.ayersville.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:15:54.764519+00:00
+390477402961	OH	Western Reserve High School	www.western-reserve.org	https://www.western-reserve.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:16:16.680516+00:00
+390478803020	OH	Madison High School	www.madisonschools.net/mhsweb/	https://www.madisonschools.net/mhsweb/	HEAD	404				{"cf-ray": "9def27683eec0b78-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:16:17.665408+00:00
+390479603059	OH	Symmes Valley High School	www.symmesvalley.k12.oh.us	https://www.symmesvalley.k12.oh.us	HEAD	404				{"content-type": "text/html; charset=utf-8", "server": "Pepyaka", "via": "1.1 google"}	2026-03-19T20:16:16.931338+00:00
+390481706139	OH	Midview Virtual Programming	www.midviewk12.org/o/mvp	https://www.midviewk12.org/o/mvp	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:16:19.353997+00:00
+390482303171	OH	Whitmer High School	www.wls4kids.org	https://www.wls4kids.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:16:20.120904+00:00
+390485803305	OH	St Henry High School	www.noacsc.org/mercer/sh	https://www.noacsc.org/mercer/sh	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "Apache/2.4.65 (Win64) OpenSSL/3.6.1 PHP/8.3.29"}	2026-03-19T20:16:20.156856+00:00
+390493803576	OH	Ottoville High School	www.noacsc.org/putnam/ov	https://www.noacsc.org/putnam/ov	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "Apache/2.4.65 (Win64) OpenSSL/3.6.1 PHP/8.3.29"}	2026-03-19T20:16:24.088769+00:00
+390496403659	OH	Valley High School	www.valley.k12.oh.us/highschool	https://www.valley.k12.oh.us/highschool	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:16:23.191918+00:00
+390496503665	OH	Portsmouth West High School	www.westsenators.org	https://www.westsenators.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:16:23.053933+00:00
+390499703780	OH	Woodridge High School	www.woodridge.k12.oh.us/mainpage.htm	https://www.woodridge.k12.oh.us/mainpage.htm	HEAD	404				{"content-type": "text/html; charset=iso-8859-1", "server": "Apache"}	2026-03-19T20:16:27.734357+00:00
+390501910887	OH	Liberty Leopard Cyber Academy	www.libertylocalschools.org	https://www.libertylocalschools.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:16:27.946881+00:00
+390504403948	OH	Little Miami High School	www.littlemiamischools.com	https://www.littlemiamischools.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:16:44.446120+00:00
+390504806172	OH	Cadet Virtual Academy	www.fortfrye.k12.oh.us	https://www.fortfrye.k12.oh.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:16:44.361913+00:00
+390507904052	OH	Southern Hills Career Technical Center	www.shctc.us	https://www.shctc.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:16:44.385688+00:00
+390509404059	OH	Polaris Career Center	www.polaris.edu	https://www.polaris.edu	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:16:55.016376+00:00
+390513304079	OH	Ohio Hi-Point	www.ohiohipoint.com	https://www.ohiohipoint.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:16:55.097183+00:00
+480000204732	TX	SPUR SCHOOL	www.spurbulldogs.com	https://www.spurbulldogs.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:17:05.436541+00:00
+480001005244	TX	JACK C HAYS H S	www.hayscisd.net	https://www.hayscisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:17:05.439287+00:00
+480001008835	TX	LIVE OAK ACADEMY	www.hayscisd.net	https://www.hayscisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:17:09.604691+00:00
+480001009624	TX	LEHMAN H S	www.hayscisd.net	https://www.hayscisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:17:09.616729+00:00
+480012508249	TX	EMPOWERMENT H S	www.swschools.org	https://www.swschools.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:17:43.516091+00:00
+480015912097	TX	COASTAL HORIZONS ACADEMY	www.shorelineacademy.com	https://www.shorelineacademy.com	HEAD	404				{"content-type": "text/html; charset=utf-8", "server": "Kestrel"}	2026-03-19T20:17:47.898779+00:00
+480017908438	TX	JUBILEE SAN ANTONIO	www.jubileeacademies.org/jubilee-san-antonio	https://www.jubileeacademies.org/jubilee-san-antonio	HEAD	404				{"content-length": "30321", "content-type": "text/html;charset=utf-8", "server": "Squarespace"}	2026-03-19T20:17:54.055555+00:00
+480017912180	TX	JUBILEE - LAKE VIEW UNIVERSITY PREP	www.jubileeacademies.org/jubilee-lake-view	https://www.jubileeacademies.org/jubilee-lake-view	HEAD	404				{"content-length": "30321", "content-type": "text/html;charset=utf-8", "server": "Squarespace"}	2026-03-19T20:17:54.060562+00:00
+480017912987	TX	JUBILEE WELLS BRANCH	www.jubileeacademies.org/jubilee-wells-branch	https://www.jubileeacademies.org/jubilee-wells-branch	HEAD	404				{"content-length": "30321", "content-type": "text/html;charset=utf-8", "server": "Squarespace"}	2026-03-19T20:17:54.055801+00:00
+480017913941	TX	JUBILEE SENDERO	www.jubileeacademies.org/jubilee-sendero	https://www.jubileeacademies.org/jubilee-sendero	HEAD	404				{"content-length": "30321", "content-type": "text/html;charset=utf-8", "server": "Squarespace"}	2026-03-19T20:17:54.061772+00:00
+480144722864	TX	KI CHARTER - DENTON	www.kicharter.org/	https://www.kicharter.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:27.886078+00:00
+480744000010	TX	ABILENE H S	www.abileneisd.org	https://www.abileneisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:33.884733+00:00
+480744000016	TX	COOPER H S	www.abileneisd.org	https://www.abileneisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:33.886534+00:00
+480744007449	TX	DAEP	www.abileneisd.org	https://www.abileneisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:37.962792+00:00
+480744009497	TX	JUVENILE DETENTION CENTER	www.abileneisd.org	https://www.abileneisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:37.970371+00:00
+480765000053	TX	ALBA-GOLDEN H S	www.agisd.org	https://www.agisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:38.160427+00:00
+480783000103	TX	ELSIK H S	www.aliefisd.net	https://www.aliefisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:46.412597+00:00
+480783000104	TX	HASTINGS H S	www.aliefisd.net	https://www.aliefisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:46.411948+00:00
+480783008598	TX	TAYLOR H S	www.aliefisd.net	https://www.aliefisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:48.875659+00:00
+480783008599	TX	ALIEF LEARNING CTR (6-12)	www.aliefisd.net	https://www.aliefisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:48.854431+00:00
+480783012389	TX	ALIEF EARLY COLLEGE H S	www.aliefisd.net	https://www.aliefisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:48.894811+00:00
+480783015742	TX	KERR H S	www.aliefisd.net	https://www.aliefisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:48.865071+00:00
+480789008146	TX	LOWERY FRESHMAN CENTER	www.allenisd.org/o/lfc	https://www.allenisd.org/o/lfc	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:49.144377+00:00
+480809000132	TX	ALVIN H S	www.alvinisd.net/Domain/22	https://www.alvinisd.net/Domain/22	HEAD	404				{"content-length": "215176", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:19:49.943907+00:00
+480809010456	TX	MANVEL H S	www.alvinisd.net/Domain/26	https://www.alvinisd.net/Domain/26	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:51.885155+00:00
+480809010458	TX	RISE	www.alvinisd.net/Domain/30	https://www.alvinisd.net/Domain/30	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:51.898904+00:00
+480809013109	TX	SHADOW CREEK H S	www.alvinisd.net/Domain/4091	https://www.alvinisd.net/Domain/4091	HEAD	404				{"content-length": "215147", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:19:53.017227+00:00
+480809013725	TX	IOWA COLONY H S	www.alvinisd.net/Domain/8	https://www.alvinisd.net/Domain/8	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:51.887761+00:00
+480813007086	TX	AMTECH CAREER ACADEMY	www.amaisd.org/aacal	https://www.amaisd.org/aacal	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:19:55.209097+00:00
+480840000208	TX	ANSON H S	www.ansontigers.com	https://www.ansontigers.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:56.952338+00:00
+480887000277	TX	ATHENS H S	www.athensisd.net	https://www.athensisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:19:59.816797+00:00
+480920012892	TX	AZLE HORNET ACADEMY	www.azleisd.net/o/ha	https://www.azleisd.net/o/ha	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:06.994634+00:00
+480967005951	TX	WEST BROOK SR H S	www.bmtisd.com/westbrook/	https://www.bmtisd.com/westbrook/	HEAD	404				{"cf-ray": "9def2d18cb9b5d5c-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:20:10.582656+00:00
+480986008100	TX	BELL CO J J A E P	www.bellcountytx.com/departments/juvenile_probation/juvenile_justice_alternative_education_p	https://www.bellcountytx.com/departments/juvenile_probation/juvenile_justice_alternative_education_p	HEAD	404				{"content-length": "0"}	2026-03-19T20:20:13.537409+00:00
+481050000527	TX	BLOOMINGTON H S	www.bisd-tx.org	https://www.bisd-tx.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:19.984096+00:00
+481099000563	TX	BOWIE H S	www.bowieisd.net/	https://www.bowieisd.net/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:22.417414+00:00
+481143000618	TX	BROADDUS H S	www.broaddusisd.com	https://www.broaddusisd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:24.586734+00:00
+481158000630	TX	FALFURRIAS H S	fhs.bcisdistrict.net	https://fhs.bcisdistrict.net	HEAD	502				{"content-length": "154", "content-type": "text/html", "server": "openresty"}	2026-03-19T20:20:34.786799+00:00
+481168000641	TX	HANNA EARLY COLLEGE H S	www.bisd.us/hanna/	https://www.bisd.us/hanna/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:41.844255+00:00
+481168000642	TX	PORTER EARLY COLLEGE H S	www.bisd.us/porter/	https://www.bisd.us/porter/	HEAD	404				{"content-length": "285618", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:20:41.622649+00:00
+481168000643	TX	PACE EARLY COLLEGE H S	www.bisd.us/pace/	https://www.bisd.us/pace/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:41.633171+00:00
+481168003324	TX	LOPEZ EARLY COLLEGE H S	www.bisd.us/lopez/	https://www.bisd.us/lopez/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:41.629415+00:00
+481168005663	TX	LINCOLN PARK SCH	www.bisd.us/lincolnpark/	https://www.bisd.us/lincolnpark/	HEAD	404				{"content-length": "285764", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:20:41.735065+00:00
+481168006517	TX	RIVERA EARLY COLLEGE H S	www.bisd.us/rivera/	https://www.bisd.us/rivera/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:41.620105+00:00
+481168008461	TX	BROWNSVILLE ACADEMIC CENTER	www.bisd.us/bac/	https://www.bisd.us/bac/	HEAD	404				{"content-length": "285691", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:20:41.546024+00:00
+481168011159	TX	BROWNSVILLE LEARNING ACADEMY	www.bisd.us/bla/	https://www.bisd.us/bla/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:41.614934+00:00
+481168012029	TX	VETERANS MEMORIAL EARLY COLLEGE H S	www.bisd.us/VeteransMemorial/	https://www.bisd.us/VeteransMemorial/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:41.628657+00:00
+481168012172	TX	BROWNSVILLE EARLY COLLEGE H S	www.bisd.us/bechs	https://www.bisd.us/bechs	HEAD	404				{"content-length": "285631", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:20:43.815186+00:00
+481179000682	TX	TRAVIS B BRYAN H S	bryanhs.bryanisd.org/	https://bryanhs.bryanisd.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:44.025371+00:00
+481179011154	TX	JAMES EARL RUDDER H S	rudderhs.bryanisd.org/	https://rudderhs.bryanisd.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:44.023553+00:00
+481179011507	TX	BRYAN COLLEGIATE H S	bcollegiate.bryanisd.org/	https://bcollegiate.bryanisd.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:43.729016+00:00
+481212000707	TX	BURKBURNETT H S	www.burkburnettisd.org	https://www.burkburnettisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:52.023240+00:00
+481212007480	TX	GATEWAY STUDENT SUPPORT CTR	www.burkburnettisd.org	https://www.burkburnettisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:52.022687+00:00
+481218013766	TX	GAME DEVELOPMENT DESIGN SCHOOL AT BURLESON ISD	www.burlesonisd.net/Domain/1660	https://www.burlesonisd.net/Domain/1660	HEAD	404				{"cf-ray": "9def2e3e0ad6ff84-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:20:57.451043+00:00
+481246000739	TX	CALDWELL H S	www.caldwellisd.net	https://www.caldwellisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:20:56.965258+00:00
+481311000812	TX	CARTHAGE H S	www.carthageisd.org	https://www.carthageisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:02.970996+00:00
+481359000851	TX	CHANNELVIEW H S	www.cvisd.org	https://www.cvisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:08.832504+00:00
+481359001144	TX	ENDEAVOR HS-JOE FRANK CAMPBELL LEARNING CENTER	www.cvisd.org	https://www.cvisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:09.124565+00:00
+481392000879	TX	CHILTON SCHOOL	www.chiltonisd.org	https://www.chiltonisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:11.603887+00:00
+481398000884	TX	CHIRENO H S	www.chirenoisd.org	https://www.chirenoisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:11.887241+00:00
+481401000886	TX	CHRISTOVAL H S	www.christovalisd.org	https://www.christovalisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:11.910890+00:00
+481413011091	TX	WICHITA COUNTY J J A E P	www.cityview-isd.net	https://www.cityview-isd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:12.338611+00:00
+481467000958	TX	COLUMBIA H S	www.cbisd.com	https://www.cbisd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:16.718178+00:00
+481470000963	TX	COLUMBUS H S	www.columbusisd.org/HighSchool/index.html	https://www.columbusisd.org/HighSchool/index.html	HEAD	404				{"cf-ray": "9def2ebc2dfbf7b7-LAX", "content-type": "text/html; charset=iso-8859-1", "server": "cloudflare"}	2026-03-19T20:21:16.865615+00:00
+481488000989	TX	COMO-PICKTON SCHOOL	www.cpcisd.net	https://www.cpcisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:20.229726+00:00
+481500001002	TX	CONROE H S	WWW.Conroeisd.net	https://WWW.Conroeisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:20.236277+00:00
+481500001007	TX	THE WOODLANDS H S	www.conroeisd.net	https://www.conroeisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:20.242344+00:00
+481518001024	TX	LUBBOCK-COOPER H S	www.lcisd.net	https://www.lcisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:24.255649+00:00
+481518013526	TX	LUBBOCK-COOPER NEW HOPE ACADEMY	www.lcisd.net	https://www.lcisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:24.259370+00:00
+481521001028	TX	COPPELL H S	www.coppellisd.com	https://www.coppellisd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:26.862680+00:00
+481521011781	TX	NEW TECH H S AT COPPELL	www.coppellisd.com	https://www.coppellisd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:26.858164+00:00
+481524001030	TX	COPPERAS COVE H S	www.ccisd.com/Domain/97	https://www.ccisd.com/Domain/97	HEAD	404				{"content-length": "251540", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:21:27.210921+00:00
+481524007233	TX	CROSSROADS H S	www.ccisd.com/domain/974	https://www.ccisd.com/domain/974	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:26.807981+00:00
+481527001043	TX	CARROLL H S	carroll.ccisd.us	https://carroll.ccisd.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:26.699531+00:00
+481527001073	TX	ROY MILLER H S AND METRO SCHOOL OF DESIGN	miller.ccisd.us	https://miller.ccisd.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:26.842936+00:00
+481527001075	TX	MOODY H S	moody.ccisd.us	https://moody.ccisd.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:26.609161+00:00
+481527005681	TX	STUDENT SUPPORT CENTER	studentsupportcenter.ccisd.us	https://studentsupportcenter.ccisd.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:29.180377+00:00
+481527006082	TX	COLES H S AND EDUCATIONAL CENTER	coles.ccisd.us	https://coles.ccisd.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:29.133888+00:00
+481527012733	TX	HAROLD T BRANCH ACADEMY FOR CAREER & TECHNICAL ED	branch.ccisd.us	https://branch.ccisd.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:29.428208+00:00
+481527013128	TX	VETERANS MEMORIAL H S	veterans.ccisd.us	https://veterans.ccisd.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:29.117542+00:00
+481602001174	TX	CUMBY COLLEGIATE H S	www.cumbyisd.net	https://www.cumbyisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:21:31.780220+00:00
+481623001205	TX	BRYAN ADAMS H S LEADERSHIP ACADEMY	www.dallasisd.org/Page/23035	https://www.dallasisd.org/Page/23035	HEAD	404				{"cf-ray": "9def2fb19e7722b3-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:21:57.343837+00:00
+481623001379	TX	W W SAMUELL H S	www.dallasisd.org/Page/1542	https://www.dallasisd.org/Page/1542	HEAD	404				{"cf-ray": "9def2fd8bbd6792b-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:22:03.977536+00:00
+481623006930	TX	BARBARA M MANNS H S DAEP	www.dallasisd.org/scgc	https://www.dallasisd.org/scgc	HEAD	404				{"cf-ray": "9def2fed8c08e004-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:22:05.748924+00:00
+481623006965	TX	MAYA ANGELOU H S	www.dallasisd.org/domain/641	https://www.dallasisd.org/domain/641	HEAD	404				{"cf-ray": "9def2fed9a3a78ea-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:22:08.394810+00:00
+481623012028	TX	KATHLYN JOY GILLIAM COLLEGIATE ACADEMY	www.dallasisd.org/Page/1948	https://www.dallasisd.org/Page/1948	HEAD	404				{"cf-ray": "9def2fed9ad42378-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:22:07.260765+00:00
+481623012551	TX	WILMER-HUTCHINS H S	www.dallasisd.org/Page/2614	https://www.dallasisd.org/Page/2614	HEAD	404				{"cf-ray": "9def30090a6ef7cd-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:22:11.357521+00:00
+481710001483	TX	DILLEY H S	www.dilleyisd.net	https://www.dilleyisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:19.780529+00:00
+481739001497	TX	DONNA H S	www.donnaisd.net	https://www.donnaisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:19.474637+00:00
+481739012761	TX	DONNA NORTH H S	www.donnaisd.net	https://www.donnaisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:19.495745+00:00
+481761001515	TX	DUMAS H S	www.dumasisd.org	https://www.dumasisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:22.082204+00:00
+481761017047	TX	NORTH PLAINS OPPORTUNITY CENTER	www.dumasisd.org	https://www.dumasisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:22.081198+00:00
+481770012760	TX	CHISHOLM TRAIL H S	www.ems-isd.net	https://www.ems-isd.net	HEAD	502				{"content-length": "154", "content-type": "text/html", "server": "openresty"}	2026-03-19T20:22:22.193947+00:00
+481815001624	TX	JOHN F KENNEDY H S	www.eisd.net	https://www.eisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:26.611358+00:00
+481815001628	TX	MEMORIAL H S	www.eisd.net	https://www.eisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:26.644918+00:00
+481815009124	TX	BEXAR CO J J A E P	www.eisd.net	https://www.eisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:26.668578+00:00
+481815012382	TX	BURLESON CENTER	www.eisd.net	https://www.eisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:28.876859+00:00
+481821001651	TX	EDNA H S	www.ednaisd.org	https://www.ednaisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:29.177384+00:00
+481821013097	TX	EDNA ALTERNATIVE	www.ednaisd.org	https://www.ednaisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:29.199471+00:00
+481878001755	TX	EVANT H S	www.evantisd.org	https://www.evantisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:36.581369+00:00
+481881012891	TX	EVERMAN ACADEMY H S	www.eisd.org	https://www.eisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:36.678524+00:00
+481935001792	TX	FLORESVILLE H S	www.fisd.us/High/	https://www.fisd.us/High/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:36.918256+00:00
+481935007499	TX	FLORESVILLE ALTER CTR	www.fisd.us/Alternative/	https://www.fisd.us/Alternative/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:36.916326+00:00
+481935008091	TX	WILSON CO J J A E P	www.fisd.us/Alternative/	https://www.fisd.us/Alternative/	HEAD	404				{"content-length": "224562", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:22:41.557809+00:00
+481944001802	TX	FLOYDADA COLLEGIATE H S	www.floydadaisd.esc17.net	https://www.floydadaisd.esc17.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:22:39.864114+00:00
+482025013711	TX	GALENA PARK ISD CAREER & TECHNICAL ECHS	www.galenaparkisd.com/campuspages/echs/	https://www.galenaparkisd.com/campuspages/echs/	HEAD	404				{"cf-ray": "9def315a5922d938-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:23:06.141516+00:00
+482040002056	TX	GARRISON H S	www.garrisonisd.com	https://www.garrisonisd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:23:08.308803+00:00
+482040011313	TX	NACOGDOCHES COUNTY DAEP COOP	www.garrisonisd.com	https://www.garrisonisd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:23:08.298676+00:00
+482060007097	TX	GEORGETOWN ALTER PROG	www.georgetownisd.org/gap	https://www.georgetownisd.org/gap	HEAD	404				{"cf-ray": "9def31839eb7cbaf-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:23:11.869135+00:00
+482064002075	TX	GIDDINGS H S	www.giddingsisd.net/o/ghs	https://www.giddingsisd.net/o/ghs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:23:10.731793+00:00
+482070002078	TX	GILMER H S	www.gilmerisd.org/highschool/	https://www.gilmerisd.org/highschool/	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:23:10.999048+00:00
+482085002088	TX	GLEN ROSE H S	www.grisd.net	https://www.grisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:23:10.731728+00:00
+482109002104	TX	GOODRICH H S	www.goodrichisd.net	https://www.goodrichisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:23:15.206322+00:00
+482148002168	TX	GRANDFALLS-ROYALTY SCHOOL	www.grisd.com	https://www.grisd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:23:35.143485+00:00
+482172002189	TX	GREENVILLE H S	www.greenvilleisd.com	https://www.greenvilleisd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:23:37.526829+00:00
+482184002205	TX	GROOM SCHOOL	www.groomisd.net	https://www.groomisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:23:37.630386+00:00
+482253002284	TX	HARLINGEN H S	www.hcisd.org/hhs	https://www.hcisd.org/hhs	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:23:57.813680+00:00
+482253006267	TX	HARLINGEN H S - SOUTH	www.hcisd.org/south	https://www.hcisd.org/south	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:23:57.841958+00:00
+482253006940	TX	SECONDARY ALTER CTR	www.hcisd.org/sac	https://www.hcisd.org/sac	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:23:57.845529+00:00
+482253009155	TX	EDNA TAMAYO HOUSE	www.hcisd.org/Page/845	https://www.hcisd.org/Page/845	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:23:57.851792+00:00
+482253011541	TX	HARLINGEN COLLEGIATE H S	www.hcisd.org/echs	https://www.hcisd.org/echs	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:23:57.811104+00:00
+482253012777	TX	DR ABRAHAM P CANO FRESHMAN ACADEMY	www.hcisd.org/drcanoacademy	https://www.hcisd.org/drcanoacademy	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:23:57.835032+00:00
+482253013014	TX	HARLINGEN SCHOOL OF HEALTH PROFESSIONS	www.hcisd.org/healthschool	https://www.hcisd.org/healthschool	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:23:57.826948+00:00
+482262002298	TX	HARROLD SCHOOL	www.harroldisd.net/	https://www.harroldisd.net/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:24:18.926253+00:00
+482280002311	TX	HAWLEY H S	www.hawley.esc14.net/campuses/hawley_high_school	https://www.hawley.esc14.net/campuses/hawley_high_school	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:24:18.855896+00:00
+482280023027	TX	HAWLEY CENTER FOR ACCELERATED LEARNING	www.hawley.esc14.net	https://www.hawley.esc14.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:24:18.861905+00:00
+482301002335	TX	HEREFORD H S	www.herefordisd.net	https://www.herefordisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:24:18.779234+00:00
+482319002353	TX	HIGHLAND SCHOOL	www.highland.esc14.net	https://www.highland.esc14.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:24:21.230794+00:00
+482391002646	TX	HUMBLE H S	www.humbleisd.net/hhs	https://www.humbleisd.net/hhs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:24:51.395670+00:00
+482391005502	TX	KINGWOOD H S	www.humbleisd.net/khs	https://www.humbleisd.net/khs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:24:51.396287+00:00
+482391011266	TX	KINGWOOD PARK H S	www.humbleisd.net/kphs	https://www.humbleisd.net/kphs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:24:54.272313+00:00
+482391011267	TX	SUMMER CREEK H S	www.humbleisd.net/schs	https://www.humbleisd.net/schs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:24:54.262903+00:00
+482410023084	TX	HUTTO VIRTUAL ACADEMY	www.hipponation.org/domain/4381	https://www.hipponation.org/domain/4381	HEAD	404				{"cf-ray": "9def340b2ad63bb9-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:24:55.336060+00:00
+482418002697	TX	INGLESIDE H S	www.inglesideisd.org	https://www.inglesideisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:24:58.949118+00:00
+482426002703	TX	IOWA PARK H S	www.ipcisd.net	https://www.ipcisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:24:57.372103+00:00
+482445002740	TX	ITALY H S	www.italyisd.org	https://www.italyisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:01.929926+00:00
+482453002746	TX	JACKSBORO H S	www.jacksboroisd.net	https://www.jacksboroisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:01.722882+00:00
+482490002779	TX	JONESBORO SCHOOL	www.jonesboroisd.net	https://www.jonesboroisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:04.035927+00:00
+482496012836	TX	JOURDANTON DAEP	www.jourdantonisd.net	https://www.jourdantonisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:07.858666+00:00
+482550002839	TX	KENNEDALE H S	www.kennedaleisd.net/Domain/111	https://www.kennedaleisd.net/Domain/111	HEAD	404				{"cf-ray": "9def347f7aae78da-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:25:13.873820+00:00
+482566002866	TX	C E ELLISON H S	www.killeenisd.org	https://www.killeenisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:16.562741+00:00
+482566002871	TX	KILLEEN H S	www.killeenisd.org	https://www.killeenisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:16.955009+00:00
+482566007783	TX	KILLEEN JJAEP	www.killeenisd.org	https://www.killeenisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:16.546934+00:00
+482566008695	TX	HARKER HEIGHTS H S	www.killeenisd.org	https://www.killeenisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:16.564495+00:00
+482566013234	TX	KILLEEN ISD EARLY COLLEGE H S	www.killeenisd.org	https://www.killeenisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:16.591103+00:00
+482574005522	TX	KLEIN FOREST H S	www.kleinisd.net	https://www.kleinisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:20.674486+00:00
+482574005759	TX	KLEIN OAK H S	www.kleinisd.net	https://www.kleinisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:20.694759+00:00
+482574008631	TX	KLEIN COLLINS H S	www.kleinisd.net	https://www.kleinisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:20.660314+00:00
+482574008632	TX	K E KAUFMAN ALTERNATIVE EDUCATION CENTER	www.kleinisd.net	https://www.kleinisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:20.676609+00:00
+482598002925	TX	KRUM H S	www.krumisd.net/khs	https://www.krumisd.net/khs	HEAD	404				{"cf-ray": "9def34c12943c4c6-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:25:24.983717+00:00
+482631002968	TX	LA VERNIA H S	www.lvisd.org	https://www.lvisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:28.178783+00:00
+482634006130	TX	LA VILLA EARLY COLLEGE H S	www.lavillaisd.org	https://www.lavillaisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:30.770463+00:00
+482658013860	TX	DR THOMAS E RANDLE H S	www.lcisd.org/campuses/randlehs/home	https://www.lcisd.org/campuses/randlehs/home	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:25:33.714473+00:00
+482691003035	TX	LATEXO H S	www.latexoisd.net	https://www.latexoisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:33.452473+00:00
+482709003047	TX	LEFORS SCHOOL	www.leforsisd.net	https://www.leforsisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:36.222356+00:00
+482712003049	TX	LEGGETT H S	www.leggettisd.net	https://www.leggettisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:36.241890+00:00
+482760003102	TX	LINGLEVILLE SCHOOL	www.lingleville.us	https://www.lingleville.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:36.259602+00:00
+482802003137	TX	LONE OAK H S	www.loisd.net	https://www.loisd.net	HEAD	404				{"cf-ray": "9def35217b344adb-LAX", "content-type": "text/plain; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:25:38.928677+00:00
+482814003154	TX	LOOP SCHOOL	www.loopisd.net	https://www.loopisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:38.844976+00:00
+482853003223	TX	LUEDERS-AVOCA H S	www.laisd.esc14.net	https://www.laisd.esc14.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:43.602892+00:00
+482855007762	TX	LUFKIN H S	www.lufkinisd.org	https://www.lufkinisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:43.253136+00:00
+482855008420	TX	ALTER SCH	www.lufkinisd.org	https://www.lufkinisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:43.248606+00:00
+482916013949	TX	MARSHALL EARLY GRADUATION SCHOOL	www.marshallisd.com	https://www.marshallisd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:25:52.881349+00:00
+482925003305	TX	MARTINSVILLE SCHOOL	www.martinsvilleisd.com	https://www.martinsvilleisd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:09.730404+00:00
+482967003339	TX	MCALLEN H S	mchi.mcallenisd.org	https://mchi.mcallenisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:09.628560+00:00
+482967006752	TX	INSTR/GUID CENTER	ig.mcallenisd.org	https://ig.mcallenisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:09.457520+00:00
+482967011859	TX	ACHIEVE EARLY COLLEGE H S	aechs.mcallenisd.org	https://aechs.mcallenisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:19.404962+00:00
+482967021346	TX	LAMAR ACADEMY	lamar.mcallenisd.org	https://lamar.mcallenisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:19.114447+00:00
+482970003346	TX	MCCAMEY H S	www.mcisd.esc18.net	https://www.mcisd.esc18.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:18.966659+00:00
+483000003370	TX	MEADOW SCHOOL	www.meadowisd.net/	https://www.meadowisd.net/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:19.013529+00:00
+483012010505	TX	MELISSA H S	www.melissaisd.org	https://www.melissaisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:22.133494+00:00
+483025003388	TX	MERCEDES H S	www.misdtx.net	https://www.misdtx.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:21.795137+00:00
+483025006996	TX	MERCEDES ACADEMIC ACADEMY	www.misdtx.net	https://www.misdtx.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:21.788323+00:00
+483030003394	TX	MERIDIAN H S	www.meridianisd.org	https://www.meridianisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:22.030294+00:00
+483042003425	TX	MEXIA H S	www.mexiaisd.net	https://www.mexiaisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:24.404394+00:00
+483042007028	TX	DEVELOPMENTAL CTR	www.mexiaisd.net	https://www.mexiaisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:24.391186+00:00
+483057012458	TX	EARLY COLLEGE H S AT MIDLAND COLLEGE	www.midlandisd.net/Domain/2484	https://www.midlandisd.net/Domain/2484	HEAD	404				{"cf-ray": "9def3651bf3e2b8f-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:26:27.661874+00:00
+483057012704	TX	MIDLAND ALTERNATIVE PROGRAM	www.midlandisd.net/Domain/2240	https://www.midlandisd.net/Domain/2240	HEAD	404				{"cf-ray": "9def3651bfb8cbac-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:26:27.630960+00:00
+483057013952	TX	IDEA TRAVIS ACADEMY	www.midlandisd.net/domain/47	https://www.midlandisd.net/domain/47	HEAD	404				{"cf-ray": "9def3654cc8d2f2f-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:26:28.144916+00:00
+483123012311	TX	MONTE ALTO H S	www.montealtoisd.org	https://www.montealtoisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:35.880789+00:00
+483156003528	TX	MOULTON H S	www.moultonisd.net	https://www.moultonisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:35.586289+00:00
+483209009000	TX	NACOGDOCHES CO ALTER ED COOP	www.nacisd.org	https://www.nacisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:42.947054+00:00
+483209011314	TX	MARGIE CHUMBLEY ACADEMY FOR SUCCESS	www.nacisd.org	https://www.nacisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:42.958706+00:00
+483240003596	TX	NEW CANEY H S	www.newcaneyisd.org/Domain/24	https://www.newcaneyisd.org/Domain/24	HEAD	404				{"cf-ray": "9def36d089543434-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:26:47.865427+00:00
+483240013059	TX	INFINITY EARLY COLLEGE H S	www.newcaneyisd.org/Domain/23	https://www.newcaneyisd.org/Domain/23	HEAD	404				{"cf-ray": "9def36d08e35db9e-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:26:48.848815+00:00
+483261003608	TX	NEW SUMMERFIELD SCHOOL	www.newsummerfieldisd.org/	https://www.newsummerfieldisd.org/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:47.914050+00:00
+483264003609	TX	NEW WAVERLY H S	www.new-waverly.k12.tx.us	https://www.new-waverly.k12.tx.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:26:50.834907+00:00
+483318012421	TX	JAMES M STEELE EARLY COLLEGE H S	sahs.nisdtx.org	https://sahs.nisdtx.org	HEAD	522				{"cf-ray": "9def371dfe9df514-LAX", "content-length": "7244", "content-type": "text/html; charset=UTF-8", "server": "cloudflare"}	2026-03-19T20:27:19.761942+00:00
+483334003742	TX	OAKWOOD H S	www.oakwoodisd.net	https://www.oakwoodisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:27:01.280711+00:00
+483378003767	TX	ORANGEFIELD H S	www.orangefieldisd.com	https://www.orangefieldisd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:27:21.581796+00:00
+483387003772	TX	OVERTON H S	www.overtonisd.org	https://www.overtonisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:27:21.505924+00:00
+483398003779	TX	PAINT ROCK SCHOOL	www.paintrockisd.net	https://www.paintrockisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:27:21.525975+00:00
+483405003788	TX	PALESTINE H S	www.palestineschools.org	https://www.palestineschools.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:27:21.501456+00:00
+483411003794	TX	PALMER H S	www.palmer-isd.org	https://www.palmer-isd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:27:38.438677+00:00
+483444003863	TX	PEARLAND H S	www.pearlandisd.org/pearlandhs	https://www.pearlandisd.org/pearlandhs	HEAD	404				{"cf-ray": "9def380e98481e08-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:27:39.561478+00:00
+483444009141	TX	PACE CENTER	www.pearlandisd.org/pace	https://www.pearlandisd.org/pace	HEAD	404				{"cf-ray": "9def380e98d3cd33-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:27:39.901135+00:00
+483444011446	TX	GLENDA DAWSON H S	www.pearlandisd.org/dawson	https://www.pearlandisd.org/dawson	HEAD	404				{"cf-ray": "9def3821c898fc10-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:27:43.259577+00:00
+483444012910	TX	ROBERT TURNER COLLEGE AND CAREER H S	www.pearlandisd.org/turner	https://www.pearlandisd.org/turner	HEAD	404				{"cf-ray": "9def38219c1208ec-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:27:42.778738+00:00
+483447003867	TX	PEARSALL H S	www.pearsallisd.org	https://www.pearsallisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:27:41.693239+00:00
+483504003942	TX	PLAINS H S	www.plainsisd.net/vnews/display.v/SEC/Hi	https://www.plainsisd.net/vnews/display.v/SEC/Hi	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:27:53.144619+00:00
+483507021279	TX	PLAINVIEW H S	www.plainviewisd.org/phs	https://www.plainviewisd.org/phs	HEAD	404				{"content-length": "199825", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:27:53.952566+00:00
+483519003984	TX	PLEASANTON H S	www.pisd.us	https://www.pisd.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:08.430162+00:00
+483531003992	TX	PONDER H S	www.ponderisd.net	https://www.ponderisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:08.259536+00:00
+483556006160	TX	HIGHLAND PARK H S	www.hpisd.net	https://www.hpisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:08.126450+00:00
+483570004042	TX	PRAIRIE LEA SCHOOL	www.plisd.net	https://www.plisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:13.276835+00:00
+483576004050	TX	PREMONT COLLEGIATE H S	www.premontisd.net/phs.html	https://www.premontisd.net/phs.html	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:28:13.769486+00:00
+483600012929	TX	PROSPER DAEP	www.prosper-isd.net	https://www.prosper-isd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:16.059175+00:00
+483630004078	TX	QUITMAN H S	www.quitmanisd.net	https://www.quitmanisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:15.789922+00:00
+483636004081	TX	RAINS H S	www.rainsisd.org	https://www.rainsisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:15.671912+00:00
+483651004093	TX	RANKIN SCHOOL	www.rankinisd.net	https://www.rankinisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:18.380651+00:00
+483678004111	TX	REFUGIO H S	www.refugioisd.net	https://www.refugioisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:18.481988+00:00
+483708004169	TX	RICHLAND SPRINGS SCHOOL	www.rscoyotes.net	https://www.rscoyotes.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:22.145142+00:00
+483717004184	TX	RIO HONDO H S	www.riohondoisd.net	https://www.riohondoisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:24.453353+00:00
+483741004198	TX	ROBINSON H S	www.risdweb.org	https://www.risdweb.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:27.930078+00:00
+483750004212	TX	ROCHELLE SCHOOL	www.rochelleisd.net	https://www.rochelleisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:28.201165+00:00
+483765004221	TX	ROCKWALL H S	www.rockwallisd.com/Domain/8	https://www.rockwallisd.com/Domain/8	HEAD	404				{"cf-ray": "9def39407a73d498-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:28:28.994542+00:00
+483765007060	TX	ROCKWALL QUEST ACADEMY	www.rockwallisd.com/Domain/10	https://www.rockwallisd.com/Domain/10	HEAD	404				{"cf-ray": "9def39407f33be08-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:28:28.719003+00:00
+483765011000	TX	ROCKWALL-HEATH H S	www.rockwallisd.com/Domain/9	https://www.rockwallisd.com/Domain/9	HEAD	404				{"cf-ray": "9def39aaecf75f80-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:28:45.665769+00:00
+483804004245	TX	ROTAN K-12	www.rotan.org	https://www.rotan.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:45.390927+00:00
+483810004259	TX	ROUND TOP-CARMINE H S	www.rtcisd.net	https://www.rtcisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:49.764735+00:00
+483822004268	TX	ROYSE CITY H S	www.rcisd.org	https://www.rcisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:49.604809+00:00
+483849004285	TX	SABINE PASS SCHOOL	www.sabinepass.net	https://www.sabinepass.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:51.823693+00:00
+483882004430	TX	SAN DIEGO H S	www.sdisd.us	https://www.sdisd.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:28:55.567758+00:00
+483948004488	TX	SAMUEL CLEMENS H S	www.scuc.txed.net/Domain/2065	https://www.scuc.txed.net/Domain/2065	HEAD	404				{"content-length": "237", "content-type": "text/html; charset=utf-8", "server": "GitHub.com", "via": "1.1 varnish"}	2026-03-19T20:29:07.356013+00:00
+483948010700	TX	BYRON P STEELE II H S	www.scuc.txed.net/Domain/1830	https://www.scuc.txed.net/Domain/1830	HEAD	404				{"content-length": "237", "content-type": "text/html; charset=utf-8", "server": "GitHub.com", "via": "1.1 varnish"}	2026-03-19T20:29:07.352618+00:00
+483948016965	TX	ALLISON L STEELE E L C	www.scuc.txed.net/Domain/1748	https://www.scuc.txed.net/Domain/1748	HEAD	404				{"content-length": "237", "content-type": "text/html; charset=utf-8", "server": "GitHub.com", "via": "1.1 varnish"}	2026-03-19T20:29:10.920901+00:00
+483957004497	TX	SCURRY-ROSSER H S	www.scurry-rosser.com	https://www.scurry-rosser.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:06.069636+00:00
+484055004590	TX	SMITHVILLE H S	www.smithvilleisd.org	https://www.smithvilleisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:21.946619+00:00
+484062004595	TX	SNOOK SECONDARY	www.snookisd.org	https://www.snookisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:20.921616+00:00
+484065004601	TX	SNYDER H S	www.snyderisd.net	https://www.snyderisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:23.754981+00:00
+484071006914	TX	MONTWOOD H S	www.sisd.net	https://www.sisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:23.797543+00:00
+484071007276	TX	AMERICAS H S	www.sisd.net	https://www.sisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:23.761185+00:00
+484071011391	TX	EASTLAKE H S	www.sisd.net	https://www.sisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:23.769802+00:00
+484074004623	TX	SOMERSET H S	www.sisdk12.net/o/shs	https://www.sisdk12.net/o/shs	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:26.838756+00:00
+484101004664	TX	SPEARMAN H S	www.spearmanisd.net	https://www.spearmanisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:29.921044+00:00
+484122004720	TX	SPRING H S	www.springisd.org/Domain/8	https://www.springisd.org/Domain/8	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:34.744652+00:00
+484122004721	TX	WESTFIELD H S	www.springisd.org/Domain/44	https://www.springisd.org/Domain/44	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:34.745616+00:00
+484122011277	TX	CARL WUNSCHE SR H S	www.springisd.org/Domain/45	https://www.springisd.org/Domain/45	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:34.750131+00:00
+484122012718	TX	MOMENTUM H S	www.springisd.org/Domain/46	https://www.springisd.org/Domain/46	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:34.745576+00:00
+484122012719	TX	SPRING EARLY COLLEGE ACADEMY	www.springisd.org/Domain/43	https://www.springisd.org/Domain/43	HEAD	404				{"content-length": "282444", "content-type": "text/html;charset=utf-8", "via": "1.1 varnish, 1.1 varnish"}	2026-03-19T20:29:35.458932+00:00
+484143004740	TX	STANTON H S	www.stanton.esc18.net	https://www.stanton.esc18.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:37.572685+00:00
+484158004751	TX	WEST TEXAS SECONDARY SCHOOL	www.pspcisd.net	https://www.pspcisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:37.760235+00:00
+484170004759	TX	STRAWN SCHOOL	www.strawnschool.net	https://www.strawnschool.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:37.460948+00:00
+484188011997	TX	SUNNYVALE H S	www.sunnyvaleisd.com/	https://www.sunnyvaleisd.com/	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:41.139242+00:00
+484191004777	TX	SUNRAY H S	www.sunrayisd.org	https://www.sunrayisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:40.867177+00:00
+484203004788	TX	SWEETWATER H S	www.sweetwaterisd.net	https://www.sweetwaterisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:40.921484+00:00
+484206004791	TX	TAFT H S	www.taftisd.net	https://www.taftisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:41.243130+00:00
+484245012620	TX	TERRELL ALTERNATIVE EDUCATION CENTER/PHOENIX SCH	www.terrellisd.org/taec	https://www.terrellisd.org/taec	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:44.924182+00:00
+484269004874	TX	THREE RIVERS JR/SR H S	www.trisd.org	https://www.trisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:50.036525+00:00
+484299004898	TX	TORNILLO H S	www.tisd.us	https://www.tisd.us	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:52.836606+00:00
+484317004904	TX	TRINIDAD SCHOOL	www.trinidadisd.com	https://www.trinidadisd.com	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:52.884779+00:00
+484372014019	TX	CROSSROADS ACADEMY	www.ucisd.net/Domain/1452	https://www.ucisd.net/Domain/1452	HEAD	404				{"cf-ray": "9def3b767f91b8d4-LAX", "content-type": "text/html; charset=utf-8", "server": "cloudflare"}	2026-03-19T20:29:59.850400+00:00
+484376004977	TX	VALLEY MILLS H S	www.vmisd.net	https://www.vmisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:58.314521+00:00
+484380021360	TX	VALLEY VIEW H S	www.vviewisd.net	https://www.vviewisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:29:59.134277+00:00
+484411004998	TX	VERNON H S	www.vernonisd.org	https://www.vernonisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:30:01.761808+00:00
+484411006493	TX	NORTH TEXAS STATE HOSPITAL - AFP - VERNON	www.vernonisd.org	https://www.vernonisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:30:01.805401+00:00
+484416005025	TX	VIDOR H S	www.vidorisd.org/vhswebsite/VHShome.htm	https://www.vidorisd.org/vhswebsite/VHShome.htm	HEAD	404				{"content-type": "text/html; charset=UTF-8", "server": "nginx"}	2026-03-19T20:30:01.999678+00:00
+484431005063	TX	WAELDER SCHOOL	www.waelderisd.org	https://www.waelderisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:30:04.447796+00:00
+484471005090	TX	WATER VALLEY SCHOOL	www.wvisd.net	https://www.wvisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:30:04.161613+00:00
+484518005154	TX	WEST SABINE H S	www.westsabineisd.net	https://www.westsabineisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:30:10.349919+00:00
+484542005168	TX	WHEELER SCHOOL	www.wheelerschools.net	https://www.wheelerschools.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:30:13.316879+00:00
+484623005274	TX	WINONA H S	www.winonaisd.org	https://www.winonaisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:30:19.973309+00:00
+484626005276	TX	WINTERS H S	www.wintersisd.org	https://www.wintersisd.org	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:30:20.016911+00:00
+484659005298	TX	YANTIS SCHOOL	www.yantisisd.net	https://www.yantisisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:30:19.972255+00:00
+484668005307	TX	BEL AIR H S	belair.yisd.net	https://belair.yisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:30:24.351202+00:00
+484668005323	TX	J M HANKS H S	hanks.yisd.net	https://hanks.yisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:30:24.102169+00:00
+484668013208	TX	YOUNG WOMEN'S LEADERSHIP ACADEMY	ywla.yisd.net	https://ywla.yisd.net	HEAD	406				{"via": "1.1 varnish"}	2026-03-19T20:30:27.835320+00:00

@@ -1,0 +1,348 @@
+nces_id	state	school_name	website	normalized_url	probe_method	status_code	redirect_target	error_type	error_message	response_headers_json	checked_at
+060000210346	CA	California School for the Blind	www.csb-cde.ca.gov/	https://www.csb-cde.ca.gov/	HEAD			ProxyError	403 Forbidden		2026-03-19T19:39:37.267221+00:00
+060000710348	CA	California School for the Deaf-Riverside	www.csdr-cde.ca.gov	https://www.csdr-cde.ca.gov	HEAD			ProxyError	403 Forbidden		2026-03-19T19:39:37.267032+00:00
+060003202227	CA	Patricia Dreizler Continuation High	pdchs.rbusd.org	https://pdchs.rbusd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:39:47.787662+00:00
+060004308369	CA	Scotts Valley High	www.svhs.scottsvalleyusd.org	https://www.svhs.scottsvalleyusd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:39:54.776962+00:00
+060006210697	CA	East Stanislaus High	eshs.ojusd.org	https://eshs.ojusd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:39:59.314254+00:00
+060008211008	CA	Forty-Niner ROP	www.49errop.com	https://www.49errop.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:40:05.507372+00:00
+060011210925	CA	Antelope Valley ROP	www.avrop.avhsd.org	https://www.avrop.avhsd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:40:08.762129+00:00
+060012611469	CA	William R. Rouse ROP	www.sierra-coe.k12.ca.us	https://www.sierra-coe.k12.ca.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:40:28.875454+00:00
+060012711472	CA	Siskiyou County ROP	sisnet.ssku.k12.ca.us	https://sisnet.ssku.k12.ca.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:40:32.237084+00:00
+060014311465	CA	Santa Cruz County ROP	www.rop.santacruz.k2.ca.us	https://www.rop.santacruz.k2.ca.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:40:16.774132+00:00
+060142613751	CA	Bonsall High	www.bonsallhs.com	https://www.bonsallhs.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:40:57.299175+00:00
+060152813030	CA	Insight @ San Diego	ca.insightschools.net	https://ca.insightschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:41:07.347603+00:00
+060161614251	CA	California Virtual Academy at Fresno	www.caliva.org	https://www.caliva.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:41:38.152506+00:00
+060169710664	CA	San Jose Conservation Corps Charter	www.sjcccharterschool.org	https://www.sjcccharterschool.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:42:09.541515+00:00
+060171612034	CA	California Virtual Academy @ Los Angeles	www.caliva.org	https://www.caliva.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:42:27.933192+00:00
+060174011518	CA	South Sutter Charter	www.southsuttercs.org	https://www.southsuttercs.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:42:45.098706+00:00
+060174513167	CA	Insight School of California	www.caliva.org	https://www.caliva.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:42:44.760105+00:00
+060180211787	CA	California Virtual Academy San Mateo	www.caliva.org	https://www.caliva.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:43:11.331847+00:00
+060180510641	CA	California Virtual Academy @ San Diego	www.caliva.org	https://www.caliva.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:43:11.212032+00:00
+060181013698	CA	California Virtual Academy at Sutter	www.caliva.org	https://www.caliva.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:43:28.108079+00:00
+060181510737	CA	Leadership Public Schools - Hayward	www.leadps.org/hayward.html	https://www.leadps.org/hayward.html	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:43:28.108202+00:00
+060188411996	CA	California Virtual Academy at Kings	www.caliva.org	https://www.caliva.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:43:56.645797+00:00
+060189211225	CA	Leadership Public Schools: Richmond	www.leadps.org	https://www.leadps.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:43:56.521829+00:00
+060193514219	CA	Mojave River Academy - National Trails	www.mojave.net	https://www.mojave.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:44:00.924898+00:00
+060196412477	CA	iQ Academy California-Los Angeles	iqca.k12start.com	https://iqca.k12start.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:44:23.525646+00:00
+060196713155	CA	LPS Oakland R & D Campus	www.leadps.org	https://www.leadps.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:44:23.653591+00:00
+060197013723	CA	Taylion High Desert Academy/Adelanto	www.taylionhighdesert.com	https://www.taylionhighdesert.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:44:23.655272+00:00
+060197514165	CA	Clarksville Charter	www.clarksvillecharterschool.org	https://www.clarksvillecharterschool.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:44:24.991683+00:00
+060198910387	CA	All Tribes Charter	www.alltribescharter.net	https://www.alltribescharter.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:44:24.964648+00:00
+060207107649	CA	Chula Vista Learning Community Charter	schools.cvesd.org/schools/cvlcc/	https://schools.cvesd.org/schools/cvlcc/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:44:55.084653+00:00
+060209212248	CA	Alain Leroy Locke College Preparatory Academy	www.ca.greendot.org/locke/	https://www.ca.greendot.org/locke/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:44:59.968508+00:00
+060217113952	CA	Insight @ San Joaquin	ca.insightschools.net/	https://ca.insightschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:45:06.639610+00:00
+060225511889	CA	Discovery Charter Preparatory #2	discoveryprep.org	https://discoveryprep.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:45:48.907054+00:00
+060231611478	CA	California Virtual Academy @ Sonoma	www.caliva.org	https://www.caliva.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:46:15.243230+00:00
+060232813918	CA	California Pacific Charter - San Diego	www.cal-pacs.org	https://www.cal-pacs.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:46:32.195136+00:00
+060244213830	CA	Highlands Community Charter	www.hccts.org	https://www.hccts.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:47:21.320551+00:00
+060245114255	CA	California Virtual Academy at Maricopa	www.caliva.org	https://www.caliva.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:47:21.319435+00:00
+060247013741	CA	TEACH Tech Charter High	tech.teachpublicschools.org	https://tech.teachpublicschools.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:47:22.641099+00:00
+060250914417	CA	California Innovative Career Academy	www.hccts.org	https://www.hccts.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:47:41.035614+00:00
+060723000673	CA	Prospect High	www.prospect.cuhsd.org	https://www.prospect.cuhsd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:48:10.322640+00:00
+060750013058	CA	Sage Creek High	carlsbadusd.k12.ca.us	https://carlsbadusd.k12.ca.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:48:15.206425+00:00
+060797005777	CA	Central East High	chse.centralunified.org	https://chse.centralunified.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:48:17.590171+00:00
+060797014455	CA	Central Online Home	online.centralunified.org/	https://online.centralunified.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:48:17.597424+00:00
+060969001035	CA	Corcoran High	corcoranhs.corcoranunified.com/	https://corcoranhs.corcoranunified.com/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:48:51.879078+00:00
+060969011284	CA	Kings Lake Education Center	kingslake.corcoranunified.com/	https://kingslake.corcoranunified.com/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:48:51.934184+00:00
+060969011955	CA	Corcoran Academy	kingslake.corcoranunified.com/	https://kingslake.corcoranunified.com/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:48:51.934644+00:00
+061005001105	CA	South Hills High	www.southhillshigh.com	https://www.southhillshigh.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:48:58.894477+00:00
+061146014075	CA	Woodruff Academy	www.dusd.net/columbus/	https://www.dusd.net/columbus/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:49:24.914686+00:00
+061425001637	CA	Fowler Academy Continuation	www.fowler.k12.ca.us	https://www.fowler.k12.ca.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:49:46.725732+00:00
+061425001638	CA	Fowler High	www.fowler.k12.ca.us	https://www.fowler.k12.ca.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:50:02.325202+00:00
+061425010773	CA	Fowler Academy Community Day (9-12)	www.fowler.k12.ca.us	https://www.fowler.k12.ca.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:49:47.734549+00:00
+061425012543	CA	Fowler Academy Independent Study	www.fowler.k12.ca.us	https://www.fowler.k12.ca.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:49:49.753305+00:00
+062067002484	CA	Clear Lake High	ca50000532.schoolwires.net/domain/10#calendar1/20220822/month	https://ca50000532.schoolwires.net/domain/10#calendar1/20220822/month	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:51:28.893635+00:00
+062067012081	CA	Lakeport Community Day	ca50000532.schoolwires.net/domain/11	https://ca50000532.schoolwires.net/domain/11	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:51:28.900526+00:00
+062271002899	CA	Carson Senior High	carsonhighschool.org	https://carsonhighschool.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:51:40.499060+00:00
+062271002970	CA	Eagle Rock High	www.erhs.la	https://www.erhs.la	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:51:42.666770+00:00
+062271013831	CA	Sylmar Biotech Health and Engineering Magnet	www.wearesbha.org	https://www.wearesbha.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:52:54.781018+00:00
+062334003548	CA	Madera High	www.madera.k12.ca.us/mhs	https://www.madera.k12.ca.us/mhs	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:53:02.811932+00:00
+062334004611	CA	Duane E. Furman Independent Study	www.madera.k12.ca.us/fhs	https://www.madera.k12.ca.us/fhs	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:53:02.810235+00:00
+062334011679	CA	Madera South High	www.madera.k12.ca.us/mshs	https://www.madera.k12.ca.us/mshs	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:53:02.811427+00:00
+062334012739	CA	Madera Unified Adult Transition Program	www.madera.k12.ca.us/adulted	https://www.madera.k12.ca.us/adulted	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:53:07.103606+00:00
+062334012807	CA	Mountain Vista High	www.madera.k12.ca.us/mvhs	https://www.madera.k12.ca.us/mvhs	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:53:07.103313+00:00
+062334013848	CA	Ripperdan Community Day	www.madera.k12.ca.us/ripperdan	https://www.madera.k12.ca.us/ripperdan	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:53:07.103982+00:00
+062825004367	CA	Surfside High (Continuation)	oshs.oside.us/	https://oshs.oside.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:53:45.694047+00:00
+062913007947	CA	Oroville High Community Day	cds.ouhsd.org	https://cds.ouhsd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:54:07.209274+00:00
+062949008364	CA	Pacific Coast Charter	www.pccs.pvusd.net	https://www.pccs.pvusd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:54:19.689010+00:00
+062949008366	CA	Diamond Technology Institute	www.avci.pvusd.net	https://www.avci.pvusd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:54:19.717759+00:00
+062949014508	CA	PVUSD Virtual Academy	www.virtualacademy.pvusd.net	https://www.virtualacademy.pvusd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:54:19.691202+00:00
+063021014047	CA	Scholar Plus Online Learning	academy.puhsd.org/	https://academy.puhsd.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:54:27.737095+00:00
+063025004715	CA	Casa Grande High	www.casagrandehighschool.org	https://www.casagrandehighschool.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:54:27.846589+00:00
+063025004723	CA	Petaluma High	216.82.92.50	https://216.82.92.50	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:54:46.885450+00:00
+063025005439	CA	Valley Oaks High (Alternative)	www.valleyoaksschool.org	https://www.valleyoaksschool.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:54:27.882348+00:00
+063132004842	CA	Garey High	www.pusd.org	https://www.pusd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:55:19.013955+00:00
+063132007136	CA	Diamond Ranch High	www.pusd.org	https://www.pusd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:55:20.033620+00:00
+063132012112	CA	School of Extended Educational Options	www.pusd.org.seeo	https://www.pusd.org.seeo	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:55:21.361384+00:00
+063398004694	CA	Everett Alvarez High	www.salinas.k12.ca.us/sites/eahs/index.htm	https://www.salinas.k12.ca.us/sites/eahs/index.htm	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:56:06.648637+00:00
+063398005334	CA	Mount Toro High	www.salinas.k12.ca.us/highschools.html	https://www.salinas.k12.ca.us/highschools.html	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:56:23.253618+00:00
+063432002688	CA	Scripps Ranch High	srhs.falcons.org	https://srhs.falcons.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:56:16.006039+00:00
+063432008962	CA	San Diego SCPA	www.scpa.sandi.net	https://www.scpa.sandi.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:56:28.599033+00:00
+063498005926	CA	San Mateo High	www.sanmateohigh.org/	https://www.sanmateohigh.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:56:44.437179+00:00
+063513005943	CA	California High	www.chs.srvusd.net	https://www.chs.srvusd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:56:44.342987+00:00
+063513005946	CA	Del Amigo High (Continuation)	www.dahs.srvusd.net	https://www.dahs.srvusd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:56:44.337872+00:00
+063513005952	CA	Monte Vista High	www.mvhigh.net	https://www.mvhigh.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:56:44.308165+00:00
+063583006132	CA	Santa Rosa High	www.santarosahighschool.net	https://www.santarosahighschool.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:57:15.478744+00:00
+063697211114	CA	University Preparatory	www.vvuhsd.k12.ca.us/ups	https://www.vvuhsd.k12.ca.us/ups	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:58:15.422549+00:00
+063864014532	CA	Launch Virtual Academy	launch.sweetwaterschools.org/	https://launch.sweetwaterschools.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:58:29.997986+00:00
+064119006824	CA	Vista High	www.vhs.vistausd.org	https://www.vhs.vistausd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:58:45.225201+00:00
+064128006837	CA	Ron Hockwalt Academies (Continuation)	www.wvusd.k12.ca.us	https://www.wvusd.k12.ca.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:58:49.932020+00:00
+064128006843	CA	Walnut High	www.wvusd.k12.ca.us	https://www.wvusd.k12.ca.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:58:49.933391+00:00
+064128007894	CA	Diamond Bar High	www.wvusd.k12.ca.us	https://www.wvusd.k12.ca.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:58:46.948157+00:00
+069100214213	CA	Achieve Charter High	www.achsparadise.org/	https://www.achsparadise.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T19:59:02.667670+00:00
+069105212994	CA	Urban Corps of San Diego County Charter	urbancorpssd.org/	https://urbancorpssd.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:00:40.502114+00:00
+069106310762	CA	Elk Creek	www.elkcreekschool.org	https://www.elkcreekschool.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:00:41.995762+00:00
+069113511047	CA	Citrus Hill High	www.vvusd.edu	https://www.vvusd.edu	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:00:48.260072+00:00
+120003003141	FL	HOSPITAL HOMEBOUND	fl02219191.schoolwires.net/Page/23	https://fl02219191.schoolwires.net/Page/23	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:00:54.987942+00:00
+120003003282	FL	AMIKIDS	AMIKids-Gainesville.org	https://AMIKids-Gainesville.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:00:55.024582+00:00
+120015000078	FL	TITUSVILLE HIGH SCHOOL	www.titusville.brevard.k12.fl.us	https://www.titusville.brevard.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:05.678307+00:00
+120015000088	FL	ASTRONAUT HIGH SCHOOL	www.astronaut.brevard.k12.fl.us/	https://www.astronaut.brevard.k12.fl.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:06.322510+00:00
+120015000090	FL	ROCKLEDGE SENIOR HIGH SCHOOL	www.rockledge.brevard.k12.fl.us	https://www.rockledge.brevard.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:06.763795+00:00
+120015000100	FL	COCOA HIGH SCHOOL	www.cocoa.brevard.k12.fl.us	https://www.cocoa.brevard.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:06.081285+00:00
+120015000103	FL	MELBOURNE SENIOR HIGH SCHOOL	www.melbourne.hs.brevard.k12.fl.us	https://www.melbourne.hs.brevard.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:06.321324+00:00
+120015000104	FL	PALM BAY MAGNET SENIOR HIGH SCHOOL	www.palmbay.hs.brevard.k12.fl.us	https://www.palmbay.hs.brevard.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:06.028367+00:00
+120015000109	FL	EAU GALLIE HIGH SCHOOL	www.eghs.brevard.k12.fl.us	https://www.eghs.brevard.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:05.685410+00:00
+120015000118	FL	MERRITT ISLAND HIGH SCHOOL	www.merritt.hs.brevard.k12.fl.us	https://www.merritt.hs.brevard.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:05.741354+00:00
+120015000119	FL	EDGEWOOD JR/SR HIGH SCHOOL	www.edgewood.brevard.k12.fl.us	https://www.edgewood.brevard.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:05.680164+00:00
+120015000127	FL	COCOA BEACH JUNIOR/SENIOR HIGH SCHOOL	www.cbhs.brevard.k12.fl.us/	https://www.cbhs.brevard.k12.fl.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:08.135834+00:00
+120015000131	FL	SATELLITE SENIOR HIGH SCHOOL	www.scorpnet.brevard.k12.fl.us	https://www.scorpnet.brevard.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:08.186370+00:00
+120015002977	FL	SPACE COAST JUNIOR/SENIOR HIGH SCHOOL	www.spacecoast.brevard.k12.fl.us	https://www.spacecoast.brevard.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:08.135443+00:00
+120015003293	FL	BAYSIDE HIGH SCHOOL	www.bayside.brevard.k12.fl.us/	https://www.bayside.brevard.k12.fl.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:08.147515+00:00
+120015003296	FL	WEST SHORE JUNIOR/SENIOR HIGH SCHOOL	www.westshore.brevard.k12.fl.us	https://www.westshore.brevard.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:08.136984+00:00
+120015004244	FL	VIERA HIGH SCHOOL	www.vhs.brevardschools.org	https://www.vhs.brevardschools.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:08.145818+00:00
+120015007530	FL	HERITAGE HIGH SCHOOL	www.heritage.brevard.k12.fl.us	https://www.heritage.brevard.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:08.135034+00:00
+120018007904	FL	ANDREWS HIGH SCHOOL	maverickshigh.com/pompano	https://maverickshigh.com/pompano	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:14.642776+00:00
+120027000315	FL	WITHLACOOCHEE TECHNICAL COLLEGE	wtcollege.org/	https://wtcollege.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:41.970901+00:00
+120027007745	FL	CITRUS VIRTUAL INSTRUCTION PROGRAM	cvs.citrusschools.org/	https://cvs.citrusschools.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:26.827908+00:00
+120027008728	FL	PACE CENTER FOR GIRLS	www.pacecenter.org /locations/citrus	https://www.pacecenter.org /locations/citrus	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:43.310314+00:00
+120027008904	FL	CITRUS ESCHOOL	cvs.citrusschools.org/	https://cvs.citrusschools.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:01:43.312291+00:00
+120033007759	FL	ECOLLIER ACADEMY	www.ecollieracademy.com	https://www.ecollieracademy.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:02.335852+00:00
+120039000547	FL	CUTLER BAY SENIOR HIGH SCHOOL	cms.dadeschools.net/	https://cms.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:19.180834+00:00
+120039000589	FL	AMERICAN SENIOR HIGH SCHOOL	american.dade.k12.fl.us/	https://american.dade.k12.fl.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:03.973410+00:00
+120039000592	FL	HIALEAH-MIAMI LAKES SENIOR HIGH	schoolsites.schoolworld.com/schools/Hialeah/	https://schoolsites.schoolworld.com/schools/Hialeah/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:03.811462+00:00
+120039000595	FL	MIAMI CAROL CITY SENIOR HIGH	mccsh.dadeschools.net/	https://mccsh.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:35.946907+00:00
+120039000599	FL	MIAMI CORAL PARK SENIOR HIGH	cphs.dadeschools.net/	https://cphs.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:35.939394+00:00
+120039000600	FL	MIAMI EDISON SENIOR HIGH SCHOOL	edison.dadeschools.net/	https://edison.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:35.948534+00:00
+120039000603	FL	MIAMI NORLAND SENIOR HIGH SCHOOL	mnorland.dadeschools.net/	https://mnorland.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:35.947837+00:00
+120039000606	FL	MIAMI SENIOR HIGH SCHOOL	mhs.dadeschools.net/home.html	https://mhs.dadeschools.net/home.html	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:35.948340+00:00
+120039000608	FL	MIAMI SUNSET SENIOR HIGH SCHOOL	sunsethigh.dade.k12.fl.us/	https://sunsethigh.dade.k12.fl.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:37.370451+00:00
+120039000609	FL	NORTH MIAMI BEACH SENIOR HIGH	nmbchargers.org	https://nmbchargers.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:52.595850+00:00
+120039000610	FL	NORTH MIAMI SENIOR HIGH SCHOOL	nmhs2.dadeschools.net/	https://nmhs2.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:37.338451+00:00
+120039000612	FL	SOUTH DADE SENIOR HIGH SCHOOL	sdhs.dadeschools.net/	https://sdhs.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:52.596158+00:00
+120039000615	FL	SOUTHWEST MIAMI SENIOR HIGH	sweagles.dadeschools.net/	https://sweagles.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:52.594886+00:00
+120039001478	FL	WILLIAM H. TURNER TECHNICAL ARTS HIGH SCHOOL	http//turnertech.dadeschools.net	https://http//turnertech.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:53.941776+00:00
+120039002132	FL	ALTERNATIVE OUTREACH PROGRAM	outreach.dadeschools.net/	https://outreach.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:54.018642+00:00
+120039002138	FL	LINDSEY HOPKINS TECHNICAL COLLEGE	lindsey.dadeschools.net/	https://lindsey.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:02:54.019804+00:00
+120039002428	FL	NEVA KING COOPER EDUCATIONAL CENTER	nkc.dadeschools.net/	https://nkc.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:09.223827+00:00
+120039002735	FL	G. HOLMES BRADDOCK SENIOR HIGH	ghbraddock.dadeschools.net/	https://ghbraddock.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:25.866925+00:00
+120039002809	FL	MAST ACADEMY	mast.dade.k12.fl.us/	https://mast.dade.k12.fl.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:10.616578+00:00
+120039002814	FL	RUTH OWENS KRUSE EDUCATION CENTER	rok.dadeschools.net/	https://rok.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:25.867212+00:00
+120039003562	FL	BOOKER T. WASHINGTON SENIOR HIGH	btw.dadeschools.net/	https://btw.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:42.502631+00:00
+120039003699	FL	DORAL ACADEMY CHARTER HIGH SCHOOL	dachs.dadeschools.net	https://dachs.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:27.223164+00:00
+120039003975	FL	SOMERSET ACADEMY CHARTER HIGH SCHOOL	www.middlehigh.somersetsilverpalms.net	https://www.middlehigh.somersetsilverpalms.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:27.254399+00:00
+120039003977	FL	INTERNATIONAL STUDIES CHARTER HIGH SCHOOL	ischs.dadeschools.net	https://ischs.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:27.239872+00:00
+120039004078	FL	ROBERT MORGAN EDUCATIONAL CENTER	rmec.dadeschools.net/	https://rmec.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:42.503365+00:00
+120039004340	FL	FELIX VARELA SENIOR HIGH SCHOOL	www.varelahs.com/	https://www.varelahs.com/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:44.888999+00:00
+120039004726	FL	RONALD W. REAGAN/DORAL SENIOR HIGH SCHOOL	reagandoral.dadeschools.net/	https://reagandoral.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:59.187078+00:00
+120039005493	FL	DORAL PERFORMING ARTS & ENTERTAINMENT ACADEMY	dachs.dadeschools.net	https://dachs.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:43.844819+00:00
+120039005861	FL	WESTLAND HIALEAH SENIOR HIGH SCHOOL	westland.dadeschools.net	https://westland.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:59.187459+00:00
+120039007016	FL	YOUNG WOMENS PREPARATORY ACADEMY	ywpa.dadeschools.net/	https://ywpa.dadeschools.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:03:59.187264+00:00
+120039007221	FL	GEORGE T. BAKER AVIATION TECHNICAL COLLEGE	www.bakeraviation.edu	https://www.bakeraviation.edu	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:00.594406+00:00
+120039007318	FL	BOYSTOWN	outreach.dadeschools.net	https://outreach.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:00.529846+00:00
+120039007352	FL	HERE'S HELP	outreach.dadeschools.net	https://outreach.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:00.525964+00:00
+120039007420	FL	YOUNG MEN'S PREPARATORY ACADEMY	ympa.dadeschools.net	https://ympa.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:15.780456+00:00
+120039007453	FL	PINECREST PREPARATORY ACADEMY CHARTER HIGH SCHOOL	www.ppmcharterschool.org	https://www.ppmcharterschool.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:00.530256+00:00
+120039007454	FL	CITY OF HIALEAH EDUCATIONAL ACADEMY	www.hialeaheduacademy	https://www.hialeaheduacademy	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:00.536847+00:00
+120039007496	FL	LAW ENFORCEMENT OFFICERS MEMORIAL HIGH SCHOOL	schoolof justice.dadeschools.net	https://schoolof justice.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:17.233187+00:00
+120039007516	FL	CITRUS HEALTH SIPP/CRISIS	outreach.dadeschools.net	https://outreach.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:17.225421+00:00
+120039007591	FL	NICKLAUS CHILDREN'S HOSPITAL	outreach.dadeschools.net	https://outreach.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:17.237743+00:00
+120039007631	FL	MIAMI ARTS STUDIO 6-12 AT ZELDA GLAZER	zgm.dadeschools.net	https://zgm.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:35.235206+00:00
+120039007783	FL	SECONDARY STUDENT SUCCESS CENTER 803	outreach.dadeschools.net	https://outreach.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:19.754707+00:00
+120039007828	FL	SECONDARY STUDENT SUCCESS CENTER 802	outreach.dadeschools.net	https://outreach.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:19.756796+00:00
+120039007855	FL	I PREPARATORY ACADEMY	iprep.dadeschools.net	https://iprep.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:35.234164+00:00
+120039007871	FL	SECONDARY STUDENT SUCCESS CENTER 801	outreach.dadeschools.net	https://outreach.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:19.754388+00:00
+120039007971	FL	SOMERSET ACADEMY CHARTER HIGH SCHOOL (SOUTH HOMESTEAD)	www.somersetacademy.dadeschools.net	https://www.somersetacademy.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:36.591398+00:00
+120039007979	FL	SECONDARY STUDENT SUCCESS CENTER-804	outreach.dadeschools.net	https://outreach.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:36.582659+00:00
+120039007980	FL	GREEN SPRINGS HIGH SCHOOL	www.greensrpingshs.com	https://www.greensrpingshs.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:42.878900+00:00
+120039008125	FL	YOUTH CO-OP PREPARATORY HIGH SCHOOL	yccs.dadeschools.net	https://yccs.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:36.599929+00:00
+120039008302	FL	MAST@FIU	mastfiu@dadeschools.net	https://mastfiu@dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:59.599019+00:00
+120039008362	FL	METRO WEST DETENTION FACILITY	outreach.dadeschools.net	https://outreach.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:44.222406+00:00
+120039008402	FL	COLEGIATE PREPARATORY ACADEMY	www.sommersetvirtual.academy.com	https://www.sommersetvirtual.academy.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:04:44.249469+00:00
+120039008543	FL	GRADUATION ALLIANCE7831	eaop.us.	https://eaop.us.	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:05:02.978544+00:00
+120039008558	FL	SCHOOL FOR ADVANCED STUDIES	sas.dadeschools.net	https://sas.dadeschools.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:05:16.451064+00:00
+120039008703	FL	CHARTER HIGH SCHOOL OF THE AMERICAS (FLORIDA CITY CAMPUS)	www.lincolnmartischarterschools.com	https://www.lincolnmartischarterschools.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:05:00.964207+00:00
+120039010618	FL	DOROTHY M. WALLACE COPE CENTER	copes.dadeschools.net/copes/	https://copes.dadeschools.net/copes/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:05:17.801831+00:00
+120039010747	FL	SOUTH FLORIDA YOUTH ACADEMY	eaop.us	https://eaop.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:05:17.796890+00:00
+120048007825	FL	LONE STAR HIGH SCHOOL	www.jaxlonestarhs.com	https://www.jaxlonestarhs.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:05:43.841791+00:00
+120048008016	FL	DUVAL CHARTER HIGH SCHOOL AT BAYMEADOWS	www.duvalcharterhigh.org	https://www.duvalcharterhigh.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:06:00.523921+00:00
+120048008243	FL	SAN JOSE PREP	www.sanjoseacademy.org	https://www.sanjoseacademy.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:05:45.180631+00:00
+120048008264	FL	BISCAYNE HIGH SCHOOL	www.biscaynehs.com	https://www.biscaynehs.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:06:00.524265+00:00
+120048009001	FL	HORIZON INSTITUTE	horizoninstitutes.org	https://horizoninstitutes.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:06:01.875757+00:00
+120048009004	FL	SAN JOSE CYBER	www.sanjosecyber.org	https://www.sanjosecyber.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:06:04.283526+00:00
+120081003068	FL	ENDEAVOR ACADEMY	www.edline.net/pages/HCSB_STAR	https://www.edline.net/pages/HCSB_STAR	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:06:31.378894+00:00
+120087008893	FL	WINTHROP COLLEGE PREP ACADEMY	dkelmanson@charterschoosusa.com	https://dkelmanson@charterschoosusa.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:06:39.224675+00:00
+120093002073	FL	WABASSO SCHOOL	www.indianriverschool.org	https://www.indianriverschool.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:06:54.751010+00:00
+120099004104	FL	TURNING POINT	www.jeffersonschooldistrict.org/	https://www.jeffersonschooldistrict.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:07:01.208043+00:00
+120099007878	FL	JEFFERSON VIRTUAL INSTRUCTION PROGRAM	www.jeffersonschooldistrict.org/Content2/JFLVS	https://www.jeffersonschooldistrict.org/Content2/JFLVS	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:07:01.436429+00:00
+120102001085	FL	LAFAYETTE HIGH SCHOOL	www.lafayette.k12.fl.us/	https://www.lafayette.k12.fl.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:07:18.115616+00:00
+120102007711	FL	LAFAYETTE VIRTUAL INSTRUCTION PROGRAM	www.lafayette.k12.fl.us/	https://www.lafayette.k12.fl.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:07:18.114942+00:00
+120105002331	FL	NONSCHOOL EXCEPTIONAL EDUCATION	www.lake.k12.fl.us12.fl.us//	https://www.lake.k12.fl.us12.fl.us//	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:07:19.461727+00:00
+120105003414	FL	LAKE COUNTY ACER PROGRAM	www.lake.k12.fl.us12.fl.us/	https://www.lake.k12.fl.us12.fl.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:07:19.465455+00:00
+120114008806	FL	JAIL SERVICES	www.levy.k12.fl.us/	https://www.levy.k12.fl.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:07:59.785762+00:00
+120117001205	FL	LIBERTY COUNTY HIGH SCHOOL	lchsbulldogs.com	https://lchsbulldogs.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:07:44.459953+00:00
+120117003423	FL	LIBERTY WILDERNESS CROSSROADS	tofosmdm.com/twinoaks.htm	https://tofosmdm.com/twinoaks.htm	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:07:44.460475+00:00
+120120008885	FL	WAYPOINT CHARTER ACADEMY	www.waypointcharteracademy	https://www.waypointcharteracademy	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:08:01.249928+00:00
+120144007442	FL	PROSPERITAS LEADERSHIP ACADEMY CHARTER	pla1.org/	https://pla1.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:08:54.390393+00:00
+120144007785	FL	INNOVATIONS MIDDLE CHARTER	www.imscharter.webs.com	https://www.imscharter.webs.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:08:55.773235+00:00
+120144007955	FL	INNOVATION MONTESSORI OCOEE	www.montessoriwgc.com/	https://www.montessoriwgc.com/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:09:05.593909+00:00
+120150002234	FL	SOUTH TECH ACADEMY	www.southtechacademy.com	https://www.southtechacademy.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:09:20.963656+00:00
+120150002878	FL	ESE OTHER TEACHING SERVICES	www.palmbeach.k12.fl.us/ese	https://www.palmbeach.k12.fl.us/ese	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:09:41.021668+00:00
+120150008009	FL	PALM BEACH PREPARATORY CHARTER ACADEMY	www.mavericksineducation.com	https://www.mavericksineducation.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:09:54.883197+00:00
+120150008231	FL	SOMERSET ACADEMY CANYONS HIGH SCHOOL	www.somsertcanyons.com	https://www.somsertcanyons.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:10:00.548786+00:00
+120150008589	FL	ESE HOSPITAL HOMEBOUND INSTRUCTIONAL SERVICES	www.palmbeachschools..org/ese/hh/	https://www.palmbeachschools..org/ese/hh/	HEAD			ProxyError	400 Bad Request		2026-03-19T20:10:00.541931+00:00
+120153008339	FL	PEPIN ACADEMIES OF PASCO COUNTY	pasco.pepinacademies.com/	https://pasco.pepinacademies.com/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:10:33.915116+00:00
+120156001616	FL	DUNEDIN HIGH SCHOOL	www.dhs.pinellas.k12.fl.us	https://www.dhs.pinellas.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:10:36.487547+00:00
+120156001660	FL	RICHARD L. SANDERS SCHOOL	it.pinellas.k12.fl.us/schools/sanders	https://it.pinellas.k12.fl.us/schools/sanders	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:10:56.147130+00:00
+120156001662	FL	PINELLAS HIGH INNOVATION	it.pinellas.k12.fl.us/schools/clearwater-ms	https://it.pinellas.k12.fl.us/schools/clearwater-ms	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:10:56.147579+00:00
+120156001693	FL	TARPON SPRINGS HIGH SCHOOL	www.tshs.pinellas.k12.fl.us	https://www.tshs.pinellas.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:10:56.038738+00:00
+120156002788	FL	DISSTON ACADEMY	www.hamilton.pinellas.k12.fl.us	https://www.hamilton.pinellas.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:10:57.628928+00:00
+120156002889	FL	DROPOUT PREVENTION SCHOOL	it.pinellas.K12.fl.us/schools/dropout-prevent/	https://it.pinellas.K12.fl.us/schools/dropout-prevent/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:12.909451+00:00
+120156002890	FL	HOSPITAL/HOMEBOUND	it.pinellas.k12.fl.us/schools/homebound/	https://it.pinellas.k12.fl.us/schools/homebound/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:12.785228+00:00
+120156003014	FL	PALM HARBOR UNIVERSITY HIGH	www.phuhs.org/	https://www.phuhs.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:13.037718+00:00
+120156003486	FL	PACE CENTER FOR GIRLS	it.pinellas.k12.fl.us/schools/dropout-prevent/pace.html	https://it.pinellas.k12.fl.us/schools/dropout-prevent/pace.html	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:12.785411+00:00
+120156003488	FL	PINELLAS JUVENILE DET CENTER	it.pinellas.k12.fl.us/schools/dropout-prevent/juveniledetention.html	https://it.pinellas.k12.fl.us/schools/dropout-prevent/juveniledetention.html	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:12.784464+00:00
+120156004033	FL	ST. PETERSBURG COLLEGIATE HIGH SCHOOL	WWW.SPCHS.SPCOLLEGE.EDU	https://WWW.SPCHS.SPCOLLEGE.EDU	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:14.402629+00:00
+120156004431	FL	PINELLAS SECONDARY SCHOOL	it.pinellas.k12.fl.us/schools/pinellas-sec/	https://it.pinellas.k12.fl.us/schools/pinellas-sec/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:29.830902+00:00
+120159001762	FL	MULBERRY SENIOR HIGH SCHOOL	mhs.polk-fl.net	https://mhs.polk-fl.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:31.261144+00:00
+120165001813	FL	CENTRAL SCHOOL	www.santarosa.k12.fl.us/chs/	https://www.santarosa.k12.fl.us/chs/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:48.104815+00:00
+120165001821	FL	GULF BREEZE HIGH SCHOOL	www.santarosa.k12.fl.us/schools/gbh/	https://www.santarosa.k12.fl.us/schools/gbh/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:53.110512+00:00
+120165001823	FL	JAY HIGH SCHOOL	www.santarosa.k12.fl.us/schools/jhs/	https://www.santarosa.k12.fl.us/schools/jhs/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:51.830853+00:00
+120165001826	FL	MILTON HIGH SCHOOL	www.santarosa.k12.fl.us/schools/mhs/	https://www.santarosa.k12.fl.us/schools/mhs/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:51.831345+00:00
+120165001830	FL	PACE HIGH SCHOOL	www.santarosa.k12.fl.us/schools/phs/	https://www.santarosa.k12.fl.us/schools/phs/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:53.108578+00:00
+120165002408	FL	SANTA ROSA HIGH SCHOOL	www.santarosa.k12.fl.us/schools/sras/	https://www.santarosa.k12.fl.us/schools/sras/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:51.835841+00:00
+120165003122	FL	NAVARRE HIGH SCHOOL	www.santarosa.k12.fl.us/schools/nhs/	https://www.santarosa.k12.fl.us/schools/nhs/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:53.109381+00:00
+120165003505	FL	LEARNING ACADEMY OF SANTA ROSA	www.lasr.us/	https://www.lasr.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:51.839545+00:00
+120165003666	FL	ESE DEVELOPMENT CENTER	www.santarosa.k12.fl.us/stuserv/	https://www.santarosa.k12.fl.us/stuserv/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:51.835342+00:00
+120165007684	FL	SANTA ROSA VIRTUAL FRANCHISE	www.santarosa.k12.fl.us	https://www.santarosa.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:53.110808+00:00
+120165007727	FL	SANTA ROSA ONLINE VIRTUAL INSTRUCTION PROGRAM	www.santarosa.k12.fl.us	https://www.santarosa.k12.fl.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:11:54.464826+00:00
+120168001861	FL	SUNCOAST TECHNICAL COLLEGE	www.suncoast.edu	https://www.suncoast.edu	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:12:09.970999+00:00
+120168008787	FL	STATE COLLEGE OF FLA COLLEGIATE SCHOOL-VENICE	scfcs.scf.edu/	https://scfcs.scf.edu/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:12:26.866163+00:00
+120171007695	FL	SEMINOLE VIRTUAL INSTRUCTION PROGRAM (SVIP)	ww.scps.k12.fl.us/virtualschool	https://ww.scps.k12.fl.us/virtualschool	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:12:28.269629+00:00
+120177008089	FL	SOMERSET COLLEGE PREPARATORY ACADEMY	www.prepacadtc.org	https://www.prepacadtc.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:12:55.231451+00:00
+590009200041	FL	Ahfachkee Day School	www.seminolewarriors.net	https://www.seminolewarriors.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:13:22.020706+00:00
+390006803315	OH	Constellation Schools: Parma Community	parmacommunity.constellationschools.com/	https://parmacommunity.constellationschools.com/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:13:31.748971+00:00
+390012303957	OH	Sciotoville Community School	www.east.k12.oh.us/	https://www.east.k12.oh.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:13:50.115551+00:00
+390050205212	OH	Bridges Community Academy dba Bridges Preparatory Academy	bcatiffin.org	https://bcatiffin.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:14:08.691321+00:00
+390151605812	OH	Cincinnati Technology Academy	www.cintitechacademy.com	https://www.cintitechacademy.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:14:39.748703+00:00
+390161606017	OH	Priority High School	www.priorityhighschool.org	https://www.priorityhighschool.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:14:44.989756+00:00
+390437805476	OH	MC^2 STEM High School	www.cmsdnet.net	https://www.cmsdnet.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:15:06.629723+00:00
+390438410827	OH	The International School	daytonpublicschools.com	https://daytonpublicschools.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:15:07.937616+00:00
+390441601086	OH	Theodore Roosevelt High School	kent.k12.oh.us/kcs/campus/roosevelt.php	https://kent.k12.oh.us/kcs/campus/roosevelt.php	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:15:24.806233+00:00
+390446310832	OH	Parma Virtual Learning Academy	parmacityschoools.org	https://parmacityschoools.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:15:26.172349+00:00
+390455402270	OH	Newcomerstown High School	www.nct.k12.oh.us	https://www.nct.k12.oh.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:15:50.126170+00:00
+390465702595	OH	Olmsted Falls High School	www.ofcs.k12.oh.us/high/index.html	https://www.ofcs.k12.oh.us/high/index.html	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:15:54.687376+00:00
+390469902734	OH	New Albany High School	www.new-albany.k12.oh.us	https://www.new-albany.k12.oh.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:16:09.605951+00:00
+390494203583	OH	Crestview High School	www.crestviewschool.net	https://www.crestviewschool.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:16:22.740101+00:00
+390498703726	OH	Louisville High School	www.leopard.sparcc.org	https://www.leopard.sparcc.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:16:42.553973+00:00
+390619004105	OH	North Adams High School	nahs.ovsd.us	https://nahs.ovsd.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:16:57.084815+00:00
+390619004108	OH	Peebles High School	phs.ovsd.us/	https://phs.ovsd.us/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:16:57.083410+00:00
+390619004114	OH	West Union High School	wuhs.ovsd.us	https://wuhs.ovsd.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:16:57.081990+00:00
+390619004234	OH	Ohio Valley Career & Technical Center	ovctc.ovsd.us	https://ovctc.ovsd.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:16:57.075624+00:00
+391004510831	OH	The Dayton School	www.thedaytonschool.org	https://www.thedaytonschool.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:17:00.972895+00:00
+391005010868	OH	AkroTech High School	www.akrotech4kids.org	https://www.akrotech4kids.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:17:00.827515+00:00
+480000801508	TX	DRIPPING SPRINGS H S	www.dsisd.txed.net	https://www.dsisd.txed.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:17:04.947032+00:00
+480009308164	TX	DALLAS COUNTY JUVENILE JUSTICE	www.dallascounty.org	https://www.dallascounty.org	HEAD			ProxyError	403 Forbidden		2026-03-19T20:17:39.389291+00:00
+480019508649	TX	VANGUARD REMBRANDT	vanguardacademy.edu	https://vanguardacademy.edu	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:17:55.914404+00:00
+480019513037	TX	VANGUARD MOZART	vanguardacademy.edu	https://vanguardacademy.edu	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:17:55.913371+00:00
+480019513536	TX	VANGUARD BEETHOVEN	vanguardacademy.edu	https://vanguardacademy.edu	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:17:55.914621+00:00
+480027111189	TX	RICHLAND COLLEGIATE H S OF MATH SCIENCE ENGINEERIN	RichlandCollege.edu/RCHS/	https://RichlandCollege.edu/RCHS/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:18:45.504662+00:00
+480027412489	TX	HARMONY SCHOOL OF DISCOVERY - HOUSTON	hsdharmonytx.org/	https://hsdharmonytx.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:18:45.503708+00:00
+480029212606	TX	HARMONY SCHOOL OF EXCELLENCE - DALLAS	hsnature.harmonytx.org/	https://hsnature.harmonytx.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:18:49.572614+00:00
+480029212871	TX	HARMONY SCHOOL OF INNOVATION - DALLAS	hsbdallas.harmonytx.org/	https://hsbdallas.harmonytx.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:18:49.570175+00:00
+480143208458	TX	LONE STAR H S WEST	www.tjjd.texas.gov/programs/education.aspx	https://www.tjjd.texas.gov/programs/education.aspx	HEAD			ProxyError	403 Forbidden		2026-03-19T20:19:00.467599+00:00
+480143208500	TX	LONE STAR H S NORTH	www.tjjd.texas.gov/programs/education.aspx	https://www.tjjd.texas.gov/programs/education.aspx	HEAD			ProxyError	403 Forbidden		2026-03-19T20:19:00.468148+00:00
+480143208662	TX	LONE STAR H S SOUTH	www.tjjd.texas.gov/programs/education.aspx	https://www.tjjd.texas.gov/programs/education.aspx	HEAD			ProxyError	403 Forbidden		2026-03-19T20:19:00.468730+00:00
+480143208968	TX	LONE STAR H S SOUTHEAST	www.tjjd.texas.gov/programs/education.aspx	https://www.tjjd.texas.gov/programs/education.aspx	HEAD			ProxyError	403 Forbidden		2026-03-19T20:19:00.467019+00:00
+480143209576	TX	LONE STAR H S CENTRAL	www.tjjd.texas.gov/programs/education.aspx	https://www.tjjd.texas.gov/programs/education.aspx	HEAD			ProxyError	403 Forbidden		2026-03-19T20:19:00.466475+00:00
+480768000054	TX	ALBANY JR-SR H S	albany.esc14.net	https://albany.esc14.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:19:42.135481+00:00
+480771007620	TX	ALDINE J J A E P	hcjpd-edu.harriscountytx.gov	https://hcjpd-edu.harriscountytx.gov	HEAD			ProxyError	403 Forbidden		2026-03-19T20:19:41.998310+00:00
+480789000117	TX	ALLEN H S	ahs.allenisd.org/	https://ahs.allenisd.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:19:48.600438+00:00
+480819000190	TX	ANAHUAC H S	anahuacisd.net	https://anahuacisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:19:54.484056+00:00
+481023013066	TX	SHANNON H S	schools.birdvilleschools.net/Domain/1272	https://schools.birdvilleschools.net/Domain/1272	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:20:15.352109+00:00
+481071000535	TX	BOERNE H S	www.boerne-isd.net	https://www.boerne-isd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:20:19.554199+00:00
+481071012014	TX	BOERNE - SAMUEL V CHAMPION H S	www.boerne-isd.net	https://www.boerne-isd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:20:19.553415+00:00
+481107000572	TX	BRACKETT H S	www.brackett.isd.net	https://www.brackett.isd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:20:21.846357+00:00
+481125000601	TX	BREMOND H S	bremondisd.net	https://bremondisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:20:39.553929+00:00
+481149000623	TX	BRONTE ISD	bronte.netxv.net	https://bronte.netxv.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:20:24.214372+00:00
+481353008582	TX	HARDIN CO ALTER ED	www.lumberton.k12.tx.us	https://www.lumberton.k12.tx.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:21:08.347929+00:00
+481431001614	TX	TEAM SCH	www.cleburne.k12.tx.us	https://www.cleburne.k12.tx.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:21:16.401439+00:00
+481527011318	TX	COLLEGIATE H S	collegiate.ccisd.us	https://collegiate.ccisd.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:21:28.809045+00:00
+481591001155	TX	CROWLEY H S	www.crowley.k12.tx.us	https://www.crowley.k12.tx.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:21:31.466978+00:00
+481591008040	TX	NORTH CROWLEY H S	www.crowley.k12.tx.us	https://www.crowley.k12.tx.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:21:31.470760+00:00
+481591009055	TX	CROWLEY ALTERNATIVE SCHOOL	www.crowley.k12.tx.us	https://www.crowley.k12.tx.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:21:31.468138+00:00
+481632001699	TX	DARROUZETT SCHOOLS	darrouzettisd.gov/	https://darrouzettisd.gov/	HEAD			ProxyError	403 Forbidden		2026-03-19T20:22:09.650718+00:00
+481635001399	TX	DAWSON SCHOOL	www.dawson.esc17.net	https://www.dawson.esc17.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:09.803262+00:00
+481644001405	TX	DE LEON H S	www.deleon.esc14.net	https://www.deleon.esc14.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:13.444145+00:00
+481662001424	TX	DEL VALLE H S	sites.dvisd.net/dvhs/	https://sites.dvisd.net/dvhs/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:13.443371+00:00
+481662021529	TX	DEL VALLE OPPORTUNITY CTR	sites.dvisd.net/oc/	https://sites.dvisd.net/oc/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:13.456494+00:00
+481665001429	TX	DELL CITY SCHOOL	dellcity.schoolwires.com	https://dellcity.schoolwires.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:13.475081+00:00
+481758001512	TX	DUBLIN H S	www.dublin.k12.tx.us	https://www.dublin.k12.tx.us	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:21.814495+00:00
+481770007731	TX	TARRANT CO J J A E P	tarrantcountyjjaep.com	https://tarrantcountyjjaep.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:21.789490+00:00
+481830001661	TX	ANDRESS H S	andress.episd.org	https://andress.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:28.628746+00:00
+481830001663	TX	AUSTIN H S	austin.episd.org	https://austin.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:28.566702+00:00
+481830001668	TX	BOWIE H S	bowie.episd.org	https://bowie.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:28.560833+00:00
+481830001669	TX	BURGES H S	burges.episd.org	https://burges.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:28.679887+00:00
+481830001678	TX	CORONADO H S	coronado.episd.org	https://coronado.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:28.565818+00:00
+481830001683	TX	EL PASO H S	elpaso.episd.org	https://elpaso.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:30.996747+00:00
+481830001694	TX	IRVIN H S	irvin.episd.org	https://irvin.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:30.998025+00:00
+481830001695	TX	JEFFERSON H S	jefferson.episd.org	https://jefferson.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:30.997358+00:00
+481830003786	TX	FRANKLIN H S	franklin.episd.org	https://franklin.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:30.995547+00:00
+481830003791	TX	SILVA HEALTH MAGNET	silva.episd.org	https://silva.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:30.998372+00:00
+481830003812	TX	DELTA ACADEMY	delta.episd.org	https://delta.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:30.996559+00:00
+481830005464	TX	COLLEGE CAREER TECHNOLOGY ACADEMY (CCTA)	ccta.episd.org	https://ccta.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:30.996946+00:00
+481830006945	TX	TELLES ACADEMY	telles.episd.org	https://telles.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:30.997840+00:00
+481830008776	TX	CHAPIN H S	chapin.episd.org	https://chapin.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:30.996302+00:00
+481830012055	TX	TRANSMOUNTAIN EARLY COLLEGE H S	tmechs.episd.org	https://tmechs.episd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:32.894547+00:00
+481953001808	TX	FORESTBURG SCHOOL	www2.esc9.net/forestburgisd/	https://www2.esc9.net/forestburgisd/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:39.549659+00:00
+481970012392	TX	YOUNG WOMEN'S LEADERSHIP ACADEMY	schools.fwisd.org/ywla/Pages/default.asp	https://schools.fwisd.org/ywla/Pages/default.asp	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:22:47.179355+00:00
+482115013539	TX	STUART CAREER TECH H S	gccisd.net	https://gccisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:23:29.998367+00:00
+482202002217	TX	GUTHRIE SCHOOL	www.guthriecsd.net	https://www.guthriecsd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:23:55.645641+00:00
+482364012618	TX	MICKEY LELAND COLLEGE PREP ACAD FOR YOUNG MEN	www.ymcpa.org	https://www.ymcpa.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:24:49.148529+00:00
+482364012621	TX	YOUNG WOMEN'S COLLEGE PREP ACADEMY	schools.houstonisd.org/YWCPA	https://schools.houstonisd.org/YWCPA	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:24:49.272292+00:00
+482459002750	TX	JACKSONVILLE H S	www.jacksonvilleisd.org/jacksonville_high_school1.htm	https://www.jacksonvilleisd.org/jacksonville_high_school1.htm	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:25:01.448443+00:00
+482459007213	TX	COMPASS CENTER	www.jacksonvilleisd.org/compass_center1.htm	https://www.jacksonvilleisd.org/compass_center1.htm	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:25:01.385181+00:00
+482619021038	TX	LA PORTE H S	www.laporte.isd.esc4.net/campuses/lphs/	https://www.laporte.isd.esc4.net/campuses/lphs/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:25:27.816364+00:00
+482757003100	TX	LINDSAY H S	www.lindayisd.org	https://www.lindayisd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:25:35.903473+00:00
+482878011281	TX	GATEWAY	wwww.malakoffisd.org	https://wwww.malakoffisd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:25:45.033434+00:00
+482901003274	TX	MARBLE FALLS H S	www.mfisd.txed.org	https://www.mfisd.txed.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:25:52.331086+00:00
+482901010469	TX	FALLS CAREER H S	www.mfisd.txed.org	https://www.mfisd.txed.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:25:52.334617+00:00
+482910003280	TX	MARION H S	www.marionisd.net	https://www.marionisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:26:07.742585+00:00
+482910013401	TX	MARION ALTERNATIVE CENTER	www.marionisd.net	https://www.marionisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:26:07.743010+00:00
+483034003396	TX	MERKEL H S	www.merkel.esc14.net	https://www.merkel.esc14.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:26:21.443778+00:00
+483066003461	TX	MIDWAY SCHOOL	www2.esc9.net/midway/	https://www2.esc9.net/midway/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:26:31.851513+00:00
+483372003763	TX	ORANGE GROVE H S	ogisd.net	https://ogisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:27:36.699224+00:00
+483465003889	TX	PERRYTON H S	www.perrytonisd.com	https://www.perrytonisd.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:27:41.461995+00:00
+483465009006	TX	LUDI PENA MARTIN ACCELERATED EDUCATION CENTER	www.perrytonisd.com	https://www.perrytonisd.com	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:27:48.762031+00:00
+483657004101	TX	REAGAN COUNTY H S	rcisd.esc18.net	https://rcisd.esc18.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:28:17.953031+00:00
+483715000429	TX	SOUTH TEXAS ISD SCIENCE ACADEMY	scitech.stisd.net	https://scitech.stisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:28:24.193063+00:00
+483715006033	TX	SOUTH TEXAS ISD HEALTH PROFESSIONS	medhigh.stisd.net	https://medhigh.stisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:28:24.191898+00:00
+483738010485	TX	FAIRVIEW SPECIAL PROGRAMS	FV.Wallisd.net	https://FV.Wallisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:28:27.286653+00:00
+483738016035	TX	FAIRVIEW ACCELERATED	FV.Wallisd.net	https://FV.Wallisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:28:27.281787+00:00
+483744004204	TX	ROBSTOWN EARLY COLLEGE H S	robstownisd.org	https://robstownisd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:28:42.876286+00:00
+483790004242	TX	ROSEBUD-LOTT H S	hs.rlisd.org/	https://hs.rlisd.org/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:28:44.496899+00:00
+483897004452	TX	SAN MARCOS H S	smcisd.net	https://smcisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:29:03.036132+00:00
+483918004468	TX	SANGER H S	sisd.sangerisd.net	https://sisd.sangerisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:29:03.041276+00:00
+483918010623	TX	DENTON CO J J A E P	sisd.sangerisd.net	https://sisd.sangerisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:29:03.050639+00:00
+484095012867	TX	SOUTHWEST LEGACY H S	swisd.net	https://swisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:29:26.324360+00:00
+484372004971	TX	UVALDE H S	uhs.uvaldecisd.net	https://uhs.uvaldecisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:29:57.626698+00:00
+484404007463	TX	VERIBEST H S	veribest.netxv.net	https://veribest.netxv.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:30:01.248786+00:00
+484428005054	TX	WACO H S	wacohigh.wacoisd.org/cms/One.aspx	https://wacohigh.wacoisd.org/cms/One.aspx	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:30:01.264430+00:00
+484428005059	TX	UNIVERSITY H S	unihigh.wacoisd.org/cms/One.aspx	https://unihigh.wacoisd.org/cms/One.aspx	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:30:01.303720+00:00
+484428007397	TX	CHALLENGE ACADEMY	mcca.wacoisd.org	https://mcca.wacoisd.org	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:30:03.909751+00:00
+484668003897	TX	CESAR CHAVEZ ACADEMY	cesarchavez.yisd.net	https://cesarchavez.yisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:30:23.818856+00:00
+484668005315	TX	EASTWOOD H S	eastwood.yisd.net	https://eastwood.yisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:30:23.798761+00:00
+484668005330	TX	PARKLAND H S	parkland.yisd.net	https://parkland.yisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:30:23.772270+00:00
+484668005337	TX	RIVERSIDE H S	riverside.yisd.net	https://riverside.yisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:30:23.805285+00:00
+484668005347	TX	YSLETA H S	ysletahs.yisd.net	https://ysletahs.yisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:30:23.962223+00:00
+484668006496	TX	DEL VALLE H S	delvalle.yisd.net	https://delvalle.yisd.net	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:30:23.809286+00:00
+484677005356	TX	ZEPHYR SCHOOL	zephyr.netxv.net/	https://zephyr.netxv.net/	HEAD			ProxyError	503 Service Unavailable		2026-03-19T20:30:27.220660+00:00

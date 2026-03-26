@@ -1,6 +1,6 @@
 # School Scraper Progress
 
-**Last Updated:** 2026-03-05  
+**Last Updated:** 2026-03-23  
 **System:** Deterministic per-school Playwright scrapers (current implementation)
 
 ---
@@ -8,13 +8,16 @@
 ## Current Queue Snapshot
 
 - **Total schools with websites:** 5,353
-- **Pending:** 5,334
-- **In Progress:** 0
-- **Complete:** 14
-- **Blocked:** 4
-- **Failed:** 1
+- **Pending:** 5,193
+- **In Progress:** 1
+- **Complete:** 50
+- **No Football:** 55
+- **Blocked:** 13
+- **Restricted:** 36
+- **Failed:** 5
 - **Needs Repair:** 0
-- **Progress (complete only):** 0.3%
+- **Progress (complete only):** 0.9%
+- **Resolved (complete + no_football):** 2.0%
 
 Notes:
 - Queue is now the single source of truth in `school_scraper_status`.
@@ -84,7 +87,9 @@ Valid statuses:
 - `pending`
 - `in_progress`
 - `complete`
+- `no_football`
 - `blocked`
+- `restricted`
 - `failed`
 - `needs_repair`
 
@@ -119,9 +124,11 @@ uv run python scripts/discover_schools.py --claim-next
 uv run python scripts/discover_schools.py --complete <nces_id> \
   --scraper-file scrapers/schools/<state>/<nces_id>.py
 
-# Mark blocked / failed / needs_repair manually
+# Mark blocked / restricted / failed / no_football / needs_repair manually
 uv run python scripts/discover_schools.py --blocked <nces_id> --reason "<reason>"
+uv run python scripts/discover_schools.py --restricted <nces_id> --reason "<reason>"
 uv run python scripts/discover_schools.py --failed <nces_id> --reason "<reason>"
+uv run python scripts/discover_schools.py --no-football <nces_id> --reason "<reason>" --notes "<evidence>"
 uv run python scripts/discover_schools.py --needs-repair <nces_id> --reason "<reason>"
 
 # Requeue blocked rows whose recheck date is due

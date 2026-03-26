@@ -1,0 +1,9 @@
+nces_id	state	school_name	website	normalized_url	probe_method	status_code	redirect_target	error_type	error_message	response_headers_json	checked_at
+062271014456	CA	Valley Oaks Center for Enriched Studies	vocesmagnet.org	https://vocesmagnet.org	GET_RANGE			RemoteProtocolError	Server disconnected without sending a response.		2026-03-19T19:53:01.477281+00:00
+069102509030	CA	Placer County Special Education	www.placercoe.org	https://www.placercoe.org	GET_RANGE			RemoteProtocolError	Server disconnected without sending a response.		2026-03-19T19:59:24.587140+00:00
+069102511859	CA	Sierra Vista	www.placercoe.org	https://www.placercoe.org	GET_RANGE			RemoteProtocolError	Server disconnected without sending a response.		2026-03-19T19:59:24.582097+00:00
+069102513072	CA	Placer County Pathways Charter	www.placercoe.org	https://www.placercoe.org	GET_RANGE			RemoteProtocolError	Server disconnected without sending a response.		2026-03-19T19:59:24.895874+00:00
+120039008336	FL	BIOTECH@RICHMOND HEIGHTS 9-12 HIGH SCHOOL	biotech@dadeschools.net	https://biotech@dadeschools.net	GET_RANGE			RemoteProtocolError	Server disconnected without sending a response.		2026-03-19T20:04:45.820273+00:00
+120039008994	FL	PINECREST NORTH PREPARATORY HIGH SCHOOL	hhtps://pinecrestnorthhigh.com	hhtps://pinecrestnorthhigh.com	HEAD			UnsupportedProtocol	Request URL has an unsupported protocol 'hhtps://'.		2026-03-19T20:05:17.467952+00:00
+120132010788	FL	THE COLLEGE OF THE FLORIDA KEYS ACADEMY	htps://www.cfk.edu/cfkacademy	htps://www.cfk.edu/cfkacademy	HEAD			UnsupportedProtocol	Request URL has an unsupported protocol 'htps://'.		2026-03-19T20:08:31.336906+00:00
+482142007575	TX	P A S S LEARNING CTR	passlearningcenter.gpsid.org	https://passlearningcenter.gpsid.org	GET_RANGE			RemoteProtocolError	Server disconnected without sending a response.		2026-03-19T20:23:32.695904+00:00

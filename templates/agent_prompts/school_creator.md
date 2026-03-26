@@ -36,4 +36,4 @@ If useful public football content does not exist:
 - Return `no_football` with a clear reason and a short `notes` summary of the evidence.
 
 Return one-line JSON only:
-{"status":"complete|no_football|blocked|restricted|failed","script_path":"{script_path}","reason":"...","notes":"..."}
+{{"status":"complete|no_football|blocked|restricted|failed","script_path":"{script_path}","reason":"...","notes":"..."}}

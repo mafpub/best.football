@@ -1,0 +1,5 @@
+nces_id	state	school_name	website	normalized_url	probe_method	status_code	redirect_target	error_type	error_message	response_headers_json	checked_at
+120018008373	FL	BROWARD MATH AND SCIENCE SCHOOLS	http:www.bmsschools.org/	https://http:www.bmsschools.org/	HEAD			InvalidURL	Invalid port: 'www.bmsschools.org'		2026-03-19T20:01:13.780384+00:00
+120036007700	FL	COLUMBIA VIRTUAL INSTRUCTION PROGRAM	http:www.flvs.net	https://http:www.flvs.net	HEAD			InvalidURL	Invalid port: 'www.flvs.net'		2026-03-19T20:01:49.894119+00:00
+120078007725	FL	DIGITAL ACADEMY OF FLORIDA	http:www.hendry-schools.org	https://http:www.hendry-schools.org	HEAD			InvalidURL	Invalid port: 'www.hendry-schools.org'		2026-03-19T20:06:18.671304+00:00
+120150006206	FL	BELIEVERS ACADEMY	http:www.believersacademyinc.org	https://http:www.believersacademyinc.org	HEAD			InvalidURL	Invalid port: 'www.believersacademyinc.org'		2026-03-19T20:09:54.537915+00:00

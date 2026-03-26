@@ -24,4 +24,4 @@ Validation target:
 - If site truly has no useful public football content, return `no_football` with reason and a short `notes` summary.
 
 Return one-line JSON only:
-{"status":"complete|no_football|blocked|restricted|failed","script_path":"{script_path}","reason":"...","notes":"..."}
+{{"status":"complete|no_football|blocked|restricted|failed","script_path":"{script_path}","reason":"...","notes":"..."}}
